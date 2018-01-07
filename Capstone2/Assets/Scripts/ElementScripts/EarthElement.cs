@@ -10,8 +10,8 @@ public class EarthElement : Element {
 	public override void Use()
 	{
 		base.Use();
-		if (!IsElementUnlocked || IsOnCooldown || player.GetComponent<Energy>().CurrentEnergy < EnergyCost)
-			return;
+		//if (!IsElementUnlocked || IsOnCooldown || player.GetComponent<Energy>().CurrentEnergy < EnergyCost)
+		//	return;
 		//TEMPORARY
 		player.GetComponent<Energy>().RemoveEnergy(EnergyCost);
 		//Debug.Log("Not yet implemented");

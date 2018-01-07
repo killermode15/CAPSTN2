@@ -14,6 +14,6 @@ MonoBehaviour:
   Type: 1
   ElementIcon: {fileID: 21300000, guid: bb254891a66f1914a816592590052d9c, type: 3}
   EnergyCost: 10
-  CooldownDuration: 0
+  CooldownDuration: 4
   IsElementUnlocked: 1
   IsOnCooldown: 0

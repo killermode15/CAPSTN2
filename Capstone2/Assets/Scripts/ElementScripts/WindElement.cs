@@ -9,8 +9,8 @@ public class WindElement : Element {
 	public override void Use()
 	{
 		base.Use();
-		if (!IsElementUnlocked || IsOnCooldown || player.GetComponent<Energy>().CurrentEnergy < EnergyCost)
-			return;
+		//if (!IsElementUnlocked || IsOnCooldown || player.GetComponent<Energy>().CurrentEnergy < EnergyCost)
+		//	return;
 		//TEMPORARY
 		player.GetComponent<Energy>().RemoveEnergy(EnergyCost);
 
