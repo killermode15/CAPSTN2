@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 248e07fbb80273148a9cf331878dc69e, type: 3}
+  m_Name: BaseFireElement
+  m_EditorClassIdentifier: 
+  Type: 3
+  ElementIcon: {fileID: 21300000, guid: 68ea66cb0f3be0f40aa78535c9210550, type: 3}
+  EnergyCost: 10
+  CooldownDuration: 0
+  IsElementUnlocked: 1
+  IsOnCooldown: 0
+  Sphere: {fileID: 1917020989527246, guid: eed6b811d4d55cb4487890d5d2fe9a08, type: 2}
