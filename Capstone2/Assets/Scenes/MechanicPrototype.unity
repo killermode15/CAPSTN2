@@ -918,14 +918,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d07d1306bcae5f499971cb4a2e2ae53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   AbsorbableObjects:
   - {fileID: 854163536}
   - {fileID: 1317948225}
   - {fileID: 1631549046}
   - {fileID: 365260605}
   IsSelectingObject: 0
-=======
 --- !u!54 &959983499
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -970,7 +968,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
->>>>>>> 63b66ab1051bb6194496796d65c740fca7bc800b
 --- !u!1 &1186012621
 GameObject:
   m_ObjectHideFlags: 0
