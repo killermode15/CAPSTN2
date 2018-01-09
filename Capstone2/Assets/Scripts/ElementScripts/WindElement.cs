@@ -4,7 +4,8 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Water Element", menuName = "Element/New Wind Element")]
 public class WindElement : Element {
-	
+
+	public float JumpIncrease;
 
 	public override void Use()
 	{
@@ -15,6 +16,7 @@ public class WindElement : Element {
 		player.GetComponent<Energy>().RemoveEnergy(EnergyCost);
 
 		//TEMPORARY
-		player.position += new Vector3(0, 1.0f, 0);
+		//player.position += new Vector3(0, 1.0f, 0);
+		player.GetComponent<PlayerController>().AddJumpVelocity(JumpIncrease);
 	}
 }

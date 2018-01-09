@@ -19,6 +19,8 @@ public class Element : ScriptableObject {
 	public float CooldownDuration;
 	public bool IsElementUnlocked;
 	public bool IsOnCooldown;
+	public bool IsModifier;
+	public string MoveNameToModify;
 
 	protected Transform player;
 
