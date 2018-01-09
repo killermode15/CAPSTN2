@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AbsorbableObject : MonoBehaviour {
+public class AbsorbableObject : MonoBehaviour, IInteractable {
 
 	//The amount of energy the object has
 	public float Energy;
@@ -14,11 +15,24 @@ public class AbsorbableObject : MonoBehaviour {
 	//If the object is currently being absorbed
 	public bool IsAbsorbing;
 
+	public float AbsorbedEnergy
+	{
+		get
+		{
+			return absorbedEnergy;
+		}
+		set
+		{
+			absorbedEnergy = value;
+		}
+	}
+
 	//Reference to the canvas
 	private GameObject myCanvas;
 	//Max amount of energy the object has
 	private float maxEnergy;
 	private float absorptionRate;
+	private float absorbedEnergy;
 
 	// Use this for initialization
 	void Start ()
@@ -70,5 +84,10 @@ public class AbsorbableObject : MonoBehaviour {
 			return absorptionRate;
 		}
 		return 0;
+	}
+
+	public void InteractWith()
+	{
+		AbsorbedEnergy = AbsorbObject();
 	}
 }

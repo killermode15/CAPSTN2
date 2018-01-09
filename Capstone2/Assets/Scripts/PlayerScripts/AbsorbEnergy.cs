@@ -36,7 +36,8 @@ public class AbsorbEnergy : MonoBehaviour
 					if (!currentSelectedObject.HasEnergyLeft())
 						return;
 					currentSelectedObject.IsAbsorbing = true;
-					GetComponent<Energy>().AddEnergy(currentSelectedObject.AbsorbObject());
+					currentSelectedObject.InteractWith();
+					GetComponent<Energy>().AddEnergy(currentSelectedObject.AbsorbedEnergy);
 				}
 				else
 					currentSelectedObject.IsAbsorbing = false;

@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: EarthElementUIController
+  m_Controller: {fileID: 9100000, guid: fb6087100a81db741927b720fcb093c5, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 8e3129d6c2e7bb04eb69523d1f2b13d9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 371413fa5e15cd846936a36d4c238e23, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6c5c9722465c674498cdfe3e1ee36ed3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 31a59f4cb0cc9e047892c41f58d88b41, type: 2}

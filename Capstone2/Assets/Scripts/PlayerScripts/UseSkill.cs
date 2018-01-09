@@ -34,10 +34,7 @@ public class UseSkill : MonoBehaviour {
 				return;
 			UseActiveElement();
 		}
-		if(Input.GetButtonDown("LeftBumper"))
-		{
-			SelectNextElement();
-		}
+ 
 	}
 
 	public void SelectNextElement()
@@ -74,5 +71,10 @@ public class UseSkill : MonoBehaviour {
 				return;
 			}
 		}
+	}
+
+	public void SwitchElement(ElementType element)
+	{
+		ActiveElement = ElementalSkills.Find(x => x.Type == element);
 	}
 }
