@@ -107,12 +107,12 @@ public class PlayerController : MonoBehaviour
 	{
 		if (controller.isGrounded)
 		{
-			Debug.Log("GROUNDED");
+			//Debug.Log("GROUNDED");
 			canJump = true;
 			return true;
 		}
 
-		Debug.Log("NOT GROUNDED");
+		//Debug.Log("NOT GROUNDED");
 		return false;
 	}
 }
