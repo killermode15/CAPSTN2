@@ -1613,8 +1613,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 6
-  JumpHeight: 10
+  JumpHeight: 9
   TurnSmoothTime: 0.2
+  FallMultiplier: 1.5
+  LowJumpMultiplier: 1
 --- !u!143 &959983501
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1663,9 +1665,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 473ccf332d517584baf6aca93ccae915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tooltip: 'This is a test tooltip for a tutorial.
+  Tooltip: 'Press "X" To Jump.
 
-    Press "X" To Jump.'
+    Press "L2 + X" To Absorb.
+
+    Press "L1 + Right Stick" To Switch Element.'
   TooltipGameObject: {fileID: 1299355056}
   TooltipTextUI: {fileID: 626718740}
 --- !u!1 &1186012621

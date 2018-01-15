@@ -8,9 +8,14 @@ public class PlayerController : MonoBehaviour
 	public float MoveSpeed = 6.0f;
 	public float JumpHeight;
 	public float TurnSmoothTime = 0.02f;
+	public float FallMultiplier;
+	public float LowJumpMultiplier;
+
 	private bool canJump;
 
 	private float turnSmoothVel;
+	private float origZPos;
+	private float currentRotateTo;
 	private Vector3 moveDirection;
 	private CharacterController controller;
 
@@ -20,6 +25,10 @@ public class PlayerController : MonoBehaviour
 		controller = GetComponent<CharacterController>();
 		//Set controller to detect collisions
 		controller.detectCollisions = true;
+
+		canJump = true;
+
+		origZPos = transform.position.z;
 	}
 	void Update()
 	{
@@ -33,16 +42,42 @@ public class PlayerController : MonoBehaviour
 	//or is falling
 	void CalculateGravity()
 	{
-		//If the player is currently jumping or is not grounded
-		if (moveDirection.y > 0 || !IsGrounded())
+
+		transform.position = new Vector3(transform.position.x, transform.position.y, origZPos);
+
+		if (IsGrounded())
 		{
-			//Subtract gravity (per frame) from the y velocity
-			moveDirection.y += Physics.gravity.y * Time.deltaTime;
-		}
-		//If the player is grounded
-		else if (IsGrounded())
+			canJump = true;
 			//Set the y velocity to 0
 			moveDirection.y = 0;
+			Debug.Log("grounded");
+
+		}
+		else
+		{
+			Debug.Log("not grounded");
+			if (moveDirection.y < 0)
+			{
+				moveDirection.y += Physics.gravity.y * FallMultiplier * Time.deltaTime;
+			}
+			else if (moveDirection.y > 0 && !Input.GetButton("Cross"))
+			{
+				moveDirection.y += Physics.gravity.y * LowJumpMultiplier * Time.deltaTime;
+			}
+			moveDirection.y += Physics.gravity.y * Time.deltaTime;
+
+		}
+
+		////If the player is currently jumping or is not grounded
+		//if (moveDirection.y > 0 || !IsGrounded())
+		//{
+		//	//Subtract gravity (per frame) from the y velocity
+		//	moveDirection.y += Physics.gravity.y * Time.deltaTime;
+		//}
+		//If the player is grounded
+		//else if (IsGrounded())
+		//	//Set the y velocity to 0
+		//	moveDirection.y = 0;
 
 		//if (!IsGrounded())
 		//	canJump = false;
@@ -52,7 +87,9 @@ public class PlayerController : MonoBehaviour
 	void Jump()
 	{
 		//If the player presses X while not pressing LeftTrigger and can jump
-		if (Input.GetButtonDown("Cross") && !Input.GetButton("LeftTrigger") && canJump)
+		//if (Input.GetButtonDown("Cross") && !Input.GetButton("LeftTrigger") && canJump)
+		if(InputManager.Instance.GetKeyDown(ControllerInput.Jump) && !InputManager.Instance.GetKey(ControllerInput.TriggerElementWheel)
+			&& canJump)
 		{
 			//Set the y velocity to the specified jump height
 			moveDirection.y = JumpHeight;
@@ -89,10 +126,19 @@ public class PlayerController : MonoBehaviour
 		//Get the normalized movement direction
 		Vector3 moveDir = moveDirection.normalized;
 
+		//if (moveDir.x != 0)
+		//{
+		//	float targetRotation = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
+		//	transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVel, TurnSmoothTime);
+		//}
+
 		if (moveDir.x != 0)
 		{
-			float targetRotation = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
-			transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVel, TurnSmoothTime);
+			currentRotateTo = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
+		}
+		if (transform.eulerAngles.y != currentRotateTo)
+		{
+			transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, currentRotateTo, ref turnSmoothVel, TurnSmoothTime);
 		}
 	}
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1655,6 +1655,7 @@ GameObject:
   - component: {fileID: 959983501}
   - component: {fileID: 959983499}
   - component: {fileID: 959983502}
+  - component: {fileID: 959983503}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1829,8 +1830,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 6
-  JumpHeight: 10
+  JumpHeight: 7
   TurnSmoothTime: 0.2
+  FallMultiplier: 4
+  LowJumpMultiplier: 3
 --- !u!143 &959983501
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1862,6 +1865,19 @@ MonoBehaviour:
   Cooldown: 0
   Capacity: 0
   Shield: {fileID: 1735874175}
+--- !u!114 &959983503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 959983489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac820b5616f07f408e74d229846870d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DashSpeed: 1
+  DashDuration: 0.1
 --- !u!1 &1018154449 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 885ad858f1c995842b56b5bad5d033fe, type: 3}

@@ -26,11 +26,12 @@ public class ElementSelectionUI : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (Input.GetButtonDown("LeftBumper"))
+		//if (Input.GetButtonDown("LeftBumper"))
+		if (InputManager.Instance.GetKeyDown(ControllerInput.TriggerElementWheel))
 		{
 			isSelecting = true;
 		}
-		else if (Input.GetButtonUp("LeftBumper"))
+		else if (InputManager.Instance.GetKeyUp(ControllerInput.TriggerElementWheel))
 		{
 			isSelecting = false;
 		}
@@ -70,7 +71,6 @@ public class ElementSelectionUI : MonoBehaviour
 			if (input.magnitude > 0)
 			{
 				currentRotateTo = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg;
-				Debug.Log(currentRotateTo.ToString());
 			}
 			if ((transform.eulerAngles.z != currentRotateTo))
 				transform.eulerAngles = Vector3.forward * Mathf.SmoothDampAngle(transform.eulerAngles.z, currentRotateTo, ref smoothDampVel, SmoothDampTime);
