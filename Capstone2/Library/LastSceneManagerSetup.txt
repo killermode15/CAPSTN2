@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Dialogue Test Scene.unity
+- path: Assets/Scenes/MechanicPrototype 1.unity
   isLoaded: 1
   isActive: 1

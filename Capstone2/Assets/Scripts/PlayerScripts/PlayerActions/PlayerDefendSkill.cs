@@ -34,7 +34,8 @@ public class PlayerDefendSkill : MonoBehaviour, IPlayerAction {
 		//throw new NotImplementedException();
 		///Gameobject Shield
 		/// NOTE: I made a Shield script (for the collision of the gameobject) "Shield.cs"
-		if (Input.GetButtonDown ("Fire2")) {
+		if (InputManager.Instance.GetKeyDown(ControllerInput.Defend))
+		{
 			Cooldown = 3.0f;
 			Debug.Log ("SHIELD vwwooosh");
 

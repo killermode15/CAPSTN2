@@ -31,6 +31,7 @@ public class TooltipObject : MonoBehaviour, IInteractable {
 
 	public void InteractWith()
 	{
+		StopAllCoroutines();
 		StartCoroutine(ActivateTooltipOnAnimationFinished("OpenTooltipTextUI", TooltipTextUI.gameObject, true));
 	}
 
@@ -61,6 +62,7 @@ public class TooltipObject : MonoBehaviour, IInteractable {
 		{
 			TextUIAnimator.SetBool("IsTooltipOpen", false);
 			TooltipTextUI.gameObject.SetActive(false);
+			StopAllCoroutines();
 			StartCoroutine(ActivateTooltipOnAnimationFinished("CloseTooltipTextUI", TooltipGameObject, false));
 		}
 	}

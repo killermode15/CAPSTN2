@@ -27,7 +27,8 @@ public class AbsorbEnergy : MonoBehaviour
 			if (currentSelectedObject)
 			{
 				currentSelectedObject.IsSelected = true;
-				if (Input.GetButton("Cross"))
+				//if (Input.GetButton("Cross"))
+				if(InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy))
 				{
 					//GetComponent<Energy>().AddEnergy(50);
 					//AbsorbableObjects.Remove(currentSelectedObject);

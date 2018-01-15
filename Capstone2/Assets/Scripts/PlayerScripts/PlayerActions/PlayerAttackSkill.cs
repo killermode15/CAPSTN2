@@ -33,7 +33,7 @@ public class PlayerAttackSkill : MonoBehaviour, IPlayerAction
 	public void UseAction()
 	{
 		//throw new NotImplementedException();
-		if (Input.GetButtonDown ("Fire1")) {
+		if (InputManager.Instance.GetKeyDown(ControllerInput.Attack)) {
 			Cooldown = 3;
 			Debug.Log ("MELEE HAYA");
 
