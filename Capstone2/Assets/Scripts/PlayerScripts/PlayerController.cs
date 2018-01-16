@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
 			//Subtract gravity (per frame) from the y velocity
 			moveDirection.y += Physics.gravity.y * Time.deltaTime;
 		}
-		If the player is grounded
+		//If the player is grounded
 		else if (IsGrounded())
 			//Set the y velocity to 0
 			moveDirection.y = 0;
