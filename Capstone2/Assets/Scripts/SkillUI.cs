@@ -12,6 +12,10 @@ public class SkillUI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		useSkillScript = GetComponent<UseSkill>();
+		if(!SelectedElementImage)
+		{
+			SelectedElementImage = GameObject.FindGameObjectWithTag("SkillUI").GetComponent<Image>();
+		}
 	}
 
 	// Update is called once per frame

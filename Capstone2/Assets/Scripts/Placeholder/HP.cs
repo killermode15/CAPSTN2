@@ -18,6 +18,10 @@ public class HP : MonoBehaviour
 	public void Start()
 	{
 		Health = MaxHealth;
+		if (!HealthBar)
+		{
+			HealthBar = GameObject.FindGameObjectWithTag("HPBar").GetComponent<Slider>();
+		}
 	}
 
 	public void Update()

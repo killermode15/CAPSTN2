@@ -8,8 +8,8 @@ public class PlayerController : MonoBehaviour
 	public float MoveSpeed = 6.0f;
 	public float JumpHeight;
 	public float TurnSmoothTime = 0.02f;
-	public float FallMultiplier;
-	public float LowJumpMultiplier;
+	//public float FallMultiplier;
+	//public float LowJumpMultiplier;
 
 	private bool canJump;
 
@@ -43,44 +43,44 @@ public class PlayerController : MonoBehaviour
 	void CalculateGravity()
 	{
 
-		transform.position = new Vector3(transform.position.x, transform.position.y, origZPos);
+		//transform.position = new Vector3(transform.position.x, transform.position.y, origZPos);
 
-		if (IsGrounded())
-		{
-			canJump = true;
-			//Set the y velocity to 0
-			moveDirection.y = 0;
-			Debug.Log("grounded");
-
-		}
-		else
-		{
-			Debug.Log("not grounded");
-			if (moveDirection.y < 0)
-			{
-				moveDirection.y += Physics.gravity.y * FallMultiplier * Time.deltaTime;
-			}
-			else if (moveDirection.y > 0 && !Input.GetButton("Cross"))
-			{
-				moveDirection.y += Physics.gravity.y * LowJumpMultiplier * Time.deltaTime;
-			}
-			moveDirection.y += Physics.gravity.y * Time.deltaTime;
-
-		}
-
-		////If the player is currently jumping or is not grounded
-		//if (moveDirection.y > 0 || !IsGrounded())
+		//if (IsGrounded())
 		//{
-		//	//Subtract gravity (per frame) from the y velocity
-		//	moveDirection.y += Physics.gravity.y * Time.deltaTime;
-		//}
-		//If the player is grounded
-		//else if (IsGrounded())
+		//	canJump = true;
 		//	//Set the y velocity to 0
 		//	moveDirection.y = 0;
+		//	Debug.Log("grounded");
 
-		//if (!IsGrounded())
-		//	canJump = false;
+		//}
+		//else
+		//{
+		//	Debug.Log("not grounded");
+		//	if (moveDirection.y < 0)
+		//	{
+		//		moveDirection.y += Physics.gravity.y * FallMultiplier * Time.deltaTime;
+		//	}
+		//	else if (moveDirection.y > 0 && !Input.GetButton("Cross"))
+		//	{
+		//		moveDirection.y += Physics.gravity.y * LowJumpMultiplier * Time.deltaTime;
+		//	}
+		//	moveDirection.y += Physics.gravity.y * Time.deltaTime;
+
+		//}
+
+		//If the player is currently jumping or is not grounded
+		if (moveDirection.y > 0 || !IsGrounded())
+		{
+			//Subtract gravity (per frame) from the y velocity
+			moveDirection.y += Physics.gravity.y * Time.deltaTime;
+		}
+		If the player is grounded
+		else if (IsGrounded())
+			//Set the y velocity to 0
+			moveDirection.y = 0;
+
+		if (!IsGrounded())
+			canJump = false;
 	}
 
 	//Launches the player when pressing the jump button

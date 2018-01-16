@@ -16,6 +16,10 @@ public class Energy : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		CurrentEnergy = 0;
+		if (!EnergyBar)
+		{
+			EnergyBar = GameObject.FindGameObjectWithTag("EnergyBar").GetComponent<Slider>();
+		}
 	}
 	
 	// Update is called once per frame

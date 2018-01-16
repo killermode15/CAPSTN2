@@ -21,6 +21,7 @@ public class ElementSelectionUI : MonoBehaviour
 		{
 			ElementUIList.Add(child);
 		}
+		UseSkillScriptRef = GameObject.FindGameObjectWithTag("Player").GetComponent<UseSkill>() ;
 	}
 
 	// Update is called once per frame
