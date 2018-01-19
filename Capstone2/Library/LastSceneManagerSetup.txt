@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/MechanicPrototype 1.unity
+=======
+- path: Assets/Scenes/TutorialLevel_Layout.unity
+>>>>>>> ced487ec57ce9dc2f24c4e977d1fbc236e533ded
   isLoaded: 1
   isActive: 1

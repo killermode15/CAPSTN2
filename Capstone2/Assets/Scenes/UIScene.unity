@@ -246,6 +246,10 @@ Prefab:
       propertyPath: m_TagString
       value: EnergyBar
       objectReference: {fileID: 0}
+    - target: {fileID: 1430317480725716, guid: d981d98bb890b0649b60d4a9f06c206b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d981d98bb890b0649b60d4a9f06c206b, type: 2}
   m_IsPrefabParent: 0

@@ -1,0 +1,12 @@
+diff a/Capstone2/Library/CurrentLayout.dwlt b/Capstone2/Library/CurrentLayout.dwlt	(rejected hunks)
+@@ -48,8 +48,10 @@
+ <<<<<<< HEAD
+     width: 1920
+     height: 997
++=======
+     width: 1536
+     height: 781
++>>>>>>> ced487ec57ce9dc2f24c4e977d1fbc236e533ded
+   m_MinSize: {x: 950, y: 300}
+   m_MaxSize: {x: 10000, y: 10000}
+ --- !u!114 &3
