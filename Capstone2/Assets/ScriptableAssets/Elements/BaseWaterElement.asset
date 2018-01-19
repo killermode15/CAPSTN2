@@ -17,3 +17,6 @@ MonoBehaviour:
   CooldownDuration: 4
   IsElementUnlocked: 1
   IsOnCooldown: 0
+  IsModifier: 0
+  MoveNameToModify: 
+  VFX: {fileID: 1921419411014616, guid: 4bd26132bbec47b4bbdba986f1f70b87, type: 2}

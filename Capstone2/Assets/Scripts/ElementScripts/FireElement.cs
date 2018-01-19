@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Fire Element", menuName = "Element/New Fire Element")]
-public class FireElement : Element {
+public class FireElement : Element
+{
 
 	public GameObject Sphere;
 
@@ -20,5 +21,6 @@ public class FireElement : Element {
 		GameObject ball = Instantiate(Sphere, player.position, Quaternion.identity);
 		ball.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 		ball.AddComponent<Mover>();
+
 	}
 }

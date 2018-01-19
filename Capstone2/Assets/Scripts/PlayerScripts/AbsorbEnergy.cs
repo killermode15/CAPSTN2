@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,10 +13,14 @@ public class AbsorbEnergy : MonoBehaviour
 	private Image AbsorbMeter;
 	private AbsorbableObject currentSelectedObject;
 	private int selectedIndex;
+
+	private bool recentlySwitched;
 	// Use this for initialization
 	void Start()
 	{
-
+		List<AbsorbableObject> absorbableObjects = GameObject.FindObjectsOfType<AbsorbableObject>().ToList();
+		AbsorbableObjects = absorbableObjects;
+		currentSelectedObject = AbsorbableObjects[0];
 	}
 
 	// Update is called once per frame
@@ -60,17 +65,53 @@ public class AbsorbEnergy : MonoBehaviour
 	{
 		if (IsCurrentlySelecting())
 		{
-			if (currentSelectedObject)
+			if(!recentlySwitched)
+			{
+				int inputSelection = (int)Input.GetAxisRaw("RightStickX");
+
+				switch(inputSelection)
+				{
+					case 1:
+						selectedIndex++;
+						break;
+					case -1:
+						selectedIndex--;
+						break;
+				}
+
+				if (selectedIndex > AbsorbableObjects.Count)
+					selectedIndex = 0;
+				else if(selectedIndex < 0)
+					selectedIndex = AbsorbableObjects.Count-1;
+
+				recentlySwitched = true;
+			}
+
+			UpdateSelectedObject();
+		}
+	}
+
+	void UpdateSelectedObject()
+	{
+		//if (currentSelectedObject)
+		{
+			if (currentSelectedObject != AbsorbableObjects[selectedIndex])
 			{
 				GameObject childCanvas = currentSelectedObject.transform.Find("Canvas").gameObject;
-				childCanvas.SetActive(true);
-				AbsorbMeter = childCanvas.GetComponentInChildren<Image>();
+				childCanvas.SetActive(false);
+				AbsorbMeter = null;
+
+				currentSelectedObject = AbsorbableObjects[selectedIndex];
+
+				childCanvas = currentSelectedObject.transform.Find("Canvas").gameObject;
+				childCanvas.SetActive(false);
+				AbsorbMeter = null;
 			}
 		}
 	}
 
 	bool IsCurrentlySelecting()
 	{
-		return (Input.GetButton("LeftTrigger") && AbsorbableObjects.Count > 0);
+		return (InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy) && AbsorbableObjects.Count > 0);
 	}
 }

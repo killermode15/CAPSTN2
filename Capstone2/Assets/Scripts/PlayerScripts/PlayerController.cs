@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 	//public float FallMultiplier;
 	//public float LowJumpMultiplier;
 
-	private bool canJump;
+	private bool canJump = true;
 
 	private float turnSmoothVel;
 	private float origZPos;
@@ -34,6 +34,11 @@ public class PlayerController : MonoBehaviour
 	{
 		Move();
 		Jump();
+	}
+
+	private void LateUpdate()
+	{
+
 		CalculateGravity();
 		RotateCharacter();
 	}
@@ -67,29 +72,54 @@ public class PlayerController : MonoBehaviour
 		//	moveDirection.y += Physics.gravity.y * Time.deltaTime;
 
 		//}
+		Debug.Log(IsGrounded());
 
-		//If the player is currently jumping or is not grounded
-		if (moveDirection.y > 0 || !IsGrounded())
+		canJump = IsGrounded();
+
+		if (!canJump || moveDirection.y > 0)
 		{
-			//Subtract gravity (per frame) from the y velocity
 			moveDirection.y += Physics.gravity.y * Time.deltaTime;
 		}
-		If the player is grounded
-		else if (IsGrounded())
-			//Set the y velocity to 0
+		else if (canJump)
+		{
 			moveDirection.y = 0;
+		}
 
-		if (!IsGrounded())
-			canJump = false;
+
+		////If the player is currently jumping or is not grounded
+		//if (!IsGrounded())
+		//{
+		//	if (!canJump)
+		//		moveDirection.y += Physics.gravity.y * Time.deltaTime;
+		//	else
+		//	{
+		//		canJump = true;
+		//		moveDirection.y = 0;
+		//	}//if (moveDirection.y < 0 || moveDirection.y > 0)
+		//	//{
+		//	//	//Subtract gravity (per frame) from the y velocity
+		//	//}
+		//}
+		////If the player is grounded
+		//else if (IsGrounded())
+		//{
+		//	//Set the y velocity to 0
+		//	moveDirection.y = 0;
+		//	canJump = true;
+		//}
+		//if (!IsGrounded())
+		//	canJump = false;
 	}
 
 	//Launches the player when pressing the jump button
 	void Jump()
 	{
+		if (InputManager.Instance.GetKey(ControllerInput.TriggerElementWheel))
+			Debug.Log("TEST");
 		//If the player presses X while not pressing LeftTrigger and can jump
 		//if (Input.GetButtonDown("Cross") && !Input.GetButton("LeftTrigger") && canJump)
-		if(InputManager.Instance.GetKeyDown(ControllerInput.Jump) && !InputManager.Instance.GetKey(ControllerInput.TriggerElementWheel)
-			&& canJump)
+		if (InputManager.Instance.GetKeyDown(ControllerInput.Jump) && !InputManager.Instance.GetKey(ControllerInput.TriggerElementWheel)
+			&& !InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy) && canJump)
 		{
 			//Set the y velocity to the specified jump height
 			moveDirection.y = JumpHeight;
@@ -118,6 +148,12 @@ public class PlayerController : MonoBehaviour
 		moveDirection.y = currY;
 
 		controller.Move(moveDirection * Time.deltaTime);
+
+		if (IsGrounded())
+		{
+			moveDirection.y = 0;
+			canJump = true;
+		}
 	}
 
 	//Rotates the character based on the direction of movement
@@ -151,14 +187,55 @@ public class PlayerController : MonoBehaviour
 	//Checks if the character is grounded
 	public bool IsGrounded()
 	{
-		if (controller.isGrounded)
-		{
-			//Debug.Log("GROUNDED");
-			canJump = true;
-			return true;
-		}
+		return controller.isGrounded;
+		//	if (canJump)
+		//	{
+		//		if (controller.isGrounded)
+		//			return true;
+		//		else if (!controller.isGrounded)
+		//		{
+		//			//canJump = false;
+		//			return false;
+		//		}
+		//	}
+		//	else if (!canJump)
+		//	{
+		//		if (controller.isGrounded)
+		//		{
+		//			//canJump = true;
+		//			return true;
+		//		}
+		//		else if (!controller.isGrounded)
+		//		{
+		//			return false;
+		//		}
+		//	}
 
-		//Debug.Log("NOT GROUNDED");
-		return false;
+		//	return false;
+
+
+		//if (controller.isGrounded)
+		//{
+		//	if (!canJump)
+		//		canJump = true;
+		//	//Debug.Log("GROUNDED");
+		//	return true;
+		//}
+		//if (canJump)
+		//{
+		//	if (!controller.isGrounded)
+		//	{
+		//		return false;
+		//	}
+		//}
+
+		//else if (!controller.isGrounded)
+		//{
+		//	if (canJump)
+		//		return true;
+		//	return false;
+		//}
+		//else
+
 	}
 }
