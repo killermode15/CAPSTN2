@@ -83,7 +83,8 @@ public class PlayerController : MonoBehaviour
 		else if (canJump)
 		{
 		//If the player is grounded
-		else if (IsGrounded())
+		}
+		else if (IsGrounded()){
 			//Set the y velocity to 0
 			moveDirection.y = 0;
 		}
