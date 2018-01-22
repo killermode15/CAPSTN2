@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class iTweenPathMoveable : MonoBehaviour {
-	
+[ExecuteInEditMode]
+public class iTweenPathMoveable : MonoBehaviour
+{
+
 	public Vector3 PathOffset;
+	public bool UseLocalPosition;
 
 	private iTweenPath path;
 
@@ -20,14 +24,26 @@ public class iTweenPathMoveable : MonoBehaviour {
 		{
 			pathNodes.Add(path.nodes[i]);
 		}
+		enabled = false;
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
+	private void OnEnable()
+	{
+		EditorApplication.update += EditorUpdate;
+	}
+
+	void EditorUpdate()
+	{
 		for (int i = 0; i < path.nodeCount; i++)
 		{
-			path.nodes[i] = pathNodes[i] + new Vector3(transform.parent.position.x, transform.parent.position.y,0) + PathOffset;
+			if (UseLocalPosition)
+				path.nodes[i] = pathNodes[i] + new Vector3(transform.parent.position.x, transform.parent.localPosition.y, 0) + PathOffset;
+			else
+				path.nodes[i] = pathNodes[i] + new Vector3(transform.parent.position.x, transform.parent.position.y, 0) + PathOffset;
 		}
+	}
+	private void OnDisable()
+	{
+		EditorApplication.update -= EditorUpdate;
 	}
 }

@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
 	//or is falling
 	void CalculateGravity()
 	{
-
+		#region old code
 		//transform.position = new Vector3(transform.position.x, transform.position.y, origZPos);
 
 		//if (IsGrounded())
@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
 		//	moveDirection.y += Physics.gravity.y * Time.deltaTime;
 
 		//}
+		#endregion
 		Debug.Log(IsGrounded());
 
 		canJump = IsGrounded();
@@ -82,13 +83,13 @@ public class PlayerController : MonoBehaviour
 		}
 		else if (canJump)
 		{
-		//If the player is grounded
-		else if (IsGrounded())
-			//Set the y velocity to 0
-			moveDirection.y = 0;
+			//If the player is grounded
+			if (IsGrounded())
+				//Set the y velocity to 0
+				moveDirection.y = 0;
 		}
 
-
+		#region old code
 		////If the player is currently jumping or is not grounded
 		//if (!IsGrounded())
 		//{
@@ -112,6 +113,7 @@ public class PlayerController : MonoBehaviour
 		//}
 		//if (!IsGrounded())
 		//	canJump = false;
+		#endregion
 	}
 
 	//Launches the player when pressing the jump button
@@ -139,7 +141,10 @@ public class PlayerController : MonoBehaviour
 		//Get the current y velocity of the movement direction
 		float currY = moveDirection.y;
 		//Then get the movement input from the player
-		moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+		if (!InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy))
+			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+		else
+			moveDirection = Vector3.zero;
 
 		//Currently commented out because movement
 		//is based on where the character is facing
@@ -191,54 +196,6 @@ public class PlayerController : MonoBehaviour
 	public bool IsGrounded()
 	{
 		return controller.isGrounded;
-		//	if (canJump)
-		//	{
-		//		if (controller.isGrounded)
-		//			return true;
-		//		else if (!controller.isGrounded)
-		//		{
-		//			//canJump = false;
-		//			return false;
-		//		}
-		//	}
-		//	else if (!canJump)
-		//	{
-		//		if (controller.isGrounded)
-		//		{
-		//			//canJump = true;
-		//			return true;
-		//		}
-		//		else if (!controller.isGrounded)
-		//		{
-		//			return false;
-		//		}
-		//	}
-
-		//	return false;
-
-
-		//if (controller.isGrounded)
-		//{
-		//	if (!canJump)
-		//		canJump = true;
-		//	//Debug.Log("GROUNDED");
-		//	return true;
-		//}
-		//if (canJump)
-		//{
-		//	if (!controller.isGrounded)
-		//	{
-		//		return false;
-		//	}
-		//}
-
-		//else if (!controller.isGrounded)
-		//{
-		//	if (canJump)
-		//		return true;
-		//	return false;
-		//}
-		//else
 
 	}
 }

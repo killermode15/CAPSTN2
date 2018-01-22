@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Name: BaseEarthElement
   m_EditorClassIdentifier: 
   Type: 0
-  ElementIcon: {fileID: 21300000, guid: c46d509c584f1d54ab369bd8545377e0, type: 3}
+  ElementIcon: {fileID: 21300000, guid: 24b8f40cb34e32b409729f3206336bea, type: 3}
   EnergyCost: 10
   CooldownDuration: 4
   IsElementUnlocked: 1
   IsOnCooldown: 0
+  IsModifier: 0
+  MoveNameToModify: 
   Sphere: {fileID: 1917020989527246, guid: eed6b811d4d55cb4487890d5d2fe9a08, type: 2}

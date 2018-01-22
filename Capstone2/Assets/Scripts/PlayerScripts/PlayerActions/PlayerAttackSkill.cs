@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class PlayerAttackSkill : MonoBehaviour, IPlayerAction
 {
+	public PlayerAnimation Animation;
 	public float Cooldown;
 	public float Damage;
 	public float Range;
-	public GameObject Arm;
 	float MeleeTimer;
 
 	// Use this for initialization
 	void Start () {
-		Arm.SetActive (false);
+
 	}
 	
 	// Update is called once per frame
@@ -25,30 +25,28 @@ public class PlayerAttackSkill : MonoBehaviour, IPlayerAction
 
 		if(MeleeTimer >= 0)
 			MeleeTimer -= Time.deltaTime;
-		if(MeleeTimer <= 0)
-			Arm.SetActive (false);
 		
 	}
 
 	public void UseAction()
 	{
-		//throw new NotImplementedException();
+		Animation.PlayAnimation(PlayerAnimationState.Attack);
 		if (InputManager.Instance.GetKeyDown(ControllerInput.Attack)) {
-			Cooldown = 3;
 			Debug.Log ("MELEE HAYA");
+			
 
 			///Raycasts Punch lel
-			/*RaycastHit hit;
-			if (Physics.Raycast (transform.position, transform.TransformDirection (Vector3.forward), Range)) {
+			RaycastHit hit;
+			if (Physics.Raycast (transform.position, transform.TransformDirection (Vector3.forward), out hit, Range)) {
 				//sending/applying damage
 				//hit.transform.SendMessage("ApplyDamage", Damage, SendMessageOptions.DontRequireReceiver);
-				Debug.Log (Range);
-			}*/
+				Debug.Log (hit.collider.tag);
+			}
 
 			///Gameobject Punch
 			/// NOTE: I made a Melee script (for the collision of the gameobject) "Melee.cs"
 			MeleeTimer = 0.35f;
-			Arm.SetActive(true);
+			//Arm.SetActive(true);
 		}
 
 	}
@@ -56,5 +54,10 @@ public class PlayerAttackSkill : MonoBehaviour, IPlayerAction
 	public void UseActionWithElementModifier(Element element)
 	{
 		throw new NotImplementedException();
+	}
+
+	public void OnDrawGizmosSelected()
+	{
+		Gizmos.DrawLine(transform.position, transform.position + (transform.forward * Range));
 	}
 }

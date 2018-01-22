@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -18,14 +19,34 @@ public class AbsorbEnergy : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		List<AbsorbableObject> absorbableObjects = GameObject.FindObjectsOfType<AbsorbableObject>().ToList();
-		AbsorbableObjects = absorbableObjects;
-		currentSelectedObject = AbsorbableObjects[0];
+		//List<AbsorbableObject> absorbableObjects = GameObject.FindObjectsOfType<AbsorbableObject>().ToList();
+		//AbsorbableObjects = absorbableObjects;
+		//currentSelectedObject = AbsorbableObjects[0];
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
+		GetAllAbsorbableObjects();
+		if (IsCurrentlySelecting())
+		{
+			UpdateCurrentSelectedObject();
+			SelectObject();
+			SwitchBetweenObjects();
+			if (currentSelectedObject)
+			{
+				Absorb();
+			}
+		}
+
+		if (!IsCurrentlySelecting() && currentSelectedObject)
+		{
+			currentSelectedObject.IsSelected = false;
+			currentSelectedObject = null;
+		}
+
+		#region old code
+		/*
 		if (IsCurrentlySelecting())
 		{
 			currentSelectedObject = AbsorbableObjects[selectedIndex];
@@ -33,7 +54,7 @@ public class AbsorbEnergy : MonoBehaviour
 			{
 				currentSelectedObject.IsSelected = true;
 				//if (Input.GetButton("Cross"))
-				if(InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy))
+				if (InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy))
 				{
 					//GetComponent<Energy>().AddEnergy(50);
 					//AbsorbableObjects.Remove(currentSelectedObject);
@@ -58,60 +79,160 @@ public class AbsorbEnergy : MonoBehaviour
 			}
 		}
 
-		UpdateSelectionUI();
+		UpdateSelectionUI();*/
+		#endregion
 	}
 
-	void UpdateSelectionUI()
+	//Used for when the player is just starting to select objects,
+	//this function is called and selects the nearest object
+	//as the default to absorb
+	GameObject FindNearestAbsorbableObject()
 	{
-		if (IsCurrentlySelecting())
+		//The nearest object (default if the first in the list)
+		GameObject nearestObject = (AbsorbableObjects.Count > 0) ? AbsorbableObjects[0].gameObject : null;
+
+		//If there is no nearest object, return null
+		if (!nearestObject)
+			return null;
+
+		//Loop through all objects
+		for (int i = 0; i < AbsorbableObjects.Count; i++)
 		{
-			if(!recentlySwitched)
+			if (AbsorbableObjects[i].CanBeAbsorbed)
 			{
-				int inputSelection = (int)Input.GetAxisRaw("RightStickX");
+				//If the object is the same as the current nearest object
+				if (AbsorbableObjects[i].gameObject == nearestObject)
+					//Continue to the next iteration
+					continue;
 
-				switch(inputSelection)
+				//The distance of the object and player
+				float distBetweenPlayer = (transform.position - AbsorbableObjects[i].transform.position).magnitude;
+				//The distance between the current nearest object and the player
+				float distBetweenNearest = (transform.position - nearestObject.transform.position).magnitude;
+
+				//If the distance of the object to the player is lesser than the 
+				//distance of the current nearest object to the player
+				if (distBetweenPlayer < distBetweenNearest)
 				{
-					case 1:
-						selectedIndex++;
-						break;
-					case -1:
-						selectedIndex--;
-						break;
+					//Set the current object to the nearest object.
+					nearestObject = AbsorbableObjects[i].gameObject;
+					selectedIndex = i;
 				}
-
-				if (selectedIndex > AbsorbableObjects.Count)
-					selectedIndex = 0;
-				else if(selectedIndex < 0)
-					selectedIndex = AbsorbableObjects.Count-1;
-
-				recentlySwitched = true;
 			}
+		}
 
-			UpdateSelectedObject();
+		return nearestObject;
+	}
+
+	void GetAllAbsorbableObjects()
+	{
+		List<AbsorbableObject> absorbableObjects = GameObject.FindObjectsOfType<AbsorbableObject>().ToList();
+		List<AbsorbableObject> visibleAbsorbableObjects = new List<AbsorbableObject>();
+		foreach (AbsorbableObject absorbable in absorbableObjects)
+		{
+			Vector3 screenPoint = Camera.main.WorldToViewportPoint(absorbable.transform.position);
+			bool onScreen = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
+
+			if(onScreen && absorbable.CanBeAbsorbed)
+			{
+				visibleAbsorbableObjects.Add(absorbable);
+			}
+		}
+		AbsorbableObjects = visibleAbsorbableObjects;
+	}
+
+	void SelectObject()
+	{
+		if (!currentSelectedObject)
+			currentSelectedObject = FindNearestAbsorbableObject().GetComponent<AbsorbableObject>();
+
+		if (currentSelectedObject)
+		{
+			if (currentSelectedObject.CanBeAbsorbed)
+			{
+				//Save the currently selected object
+				AbsorbableObject currObject = currentSelectedObject;
+				//Then switch to the currentSelectedObject to a new selected object using selectedIndex
+				currentSelectedObject = AbsorbableObjects[selectedIndex];
+
+				if (currObject != currentSelectedObject)
+				{
+					currObject.IsSelected = false;
+					currentSelectedObject.IsSelected = true;
+				}
+				else
+				{
+					currentSelectedObject.IsSelected = true;
+				}
+			}
 		}
 	}
 
-	void UpdateSelectedObject()
+	void SwitchBetweenObjects()
 	{
-		//if (currentSelectedObject)
+		if (!currentSelectedObject.IsAbsorbing)
 		{
-			if (currentSelectedObject != AbsorbableObjects[selectedIndex])
+			int inputSelection = (int)Input.GetAxisRaw("DPadX");
+			Debug.Log(inputSelection);
+
+			switch (inputSelection)
 			{
-				GameObject childCanvas = currentSelectedObject.transform.Find("Canvas").gameObject;
-				childCanvas.SetActive(false);
-				AbsorbMeter = null;
-
-				currentSelectedObject = AbsorbableObjects[selectedIndex];
-
-				childCanvas = currentSelectedObject.transform.Find("Canvas").gameObject;
-				childCanvas.SetActive(false);
-				AbsorbMeter = null;
+				case 1:
+					if (!recentlySwitched)
+					{
+						selectedIndex++;
+						if (selectedIndex > AbsorbableObjects.Count - 1)
+							selectedIndex = 0;
+						else if (selectedIndex < 0)
+							selectedIndex = AbsorbableObjects.Count - 1;
+					}
+					recentlySwitched = true;
+					break;
+				case -1:
+					if (!recentlySwitched)
+					{
+						selectedIndex--;
+						if (selectedIndex > AbsorbableObjects.Count - 1)
+							selectedIndex = 0;
+						else if (selectedIndex < 0)
+							selectedIndex = AbsorbableObjects.Count - 1;
+					}
+					recentlySwitched = true;
+					break;
+				default:
+					recentlySwitched = false;
+					break;
 			}
+		}
+	}
+
+	void Absorb()
+	{
+		if(InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy))
+		{
+			//currentSelectedObject.InteractWith();
+			GetComponent<Energy>().AddEnergy(currentSelectedObject.AbsorbObject());
+		}
+	}
+
+	void UpdateCurrentSelectedObject()
+	{
+		if(currentSelectedObject)
+		{
+			if(!currentSelectedObject.CanBeAbsorbed)
+			{
+				//AbsorbableObjects.Remove(currentSelectedObject);
+				selectedIndex = 0;
+				currentSelectedObject.IsSelected = false;
+				currentSelectedObject = FindNearestAbsorbableObject().GetComponent<AbsorbableObject>();
+			}
+
 		}
 	}
 
 	bool IsCurrentlySelecting()
 	{
-		return (InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy) && AbsorbableObjects.Count > 0);
+		IsSelectingObject = (Input.GetButton("LeftTrigger") && AbsorbableObjects.Count > 0);
+		return IsSelectingObject;
 	}
 }
