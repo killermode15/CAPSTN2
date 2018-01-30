@@ -16,12 +16,13 @@ public class Element : ScriptableObject {
 	public ElementType Type;
 	public Sprite ElementIcon;
 	public float EnergyCost;
+	public float ModifierEnergyCost;
 	public float CooldownDuration;
 	public bool IsElementUnlocked;
 	public bool IsOnCooldown;
 	public bool IsModifier;
 	public string MoveNameToModify;
-
+	
 	protected Transform player;
 
 	public virtual void Use()
@@ -31,7 +32,15 @@ public class Element : ScriptableObject {
 			player = GameObject.FindGameObjectWithTag("Player").transform;
 		}
 
-		
+
 		//throw new System.NullReferenceException("This is the base class");
+	}
+
+	public virtual void ModifyMove()
+	{
+		if (!player)
+		{
+			player = GameObject.FindGameObjectWithTag("Player").transform;
+		}
 	}
 }

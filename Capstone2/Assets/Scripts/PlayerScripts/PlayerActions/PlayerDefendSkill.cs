@@ -3,30 +3,59 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDefendSkill : MonoBehaviour, IPlayerAction {
-
-	public float Cooldown;
+public class PlayerDefendSkill : MonoBehaviour, IPlayerAction
+{
+	[Tooltip("The percentage of the max capacity of the shield required before being useable again")]
+	[Range(0,1)]
+	public float MaximumCapacityBeforeUseable;
+	public float ShieldRegenerationRate;
 	public float Capacity;
 	public GameObject Shield;
-	float DefenseTimer;
+	public Element ElementModifier;
+
+	private float currentCooldown;
+	private float defenseTimer;
+	private float maxCapacity;
+	private bool isDefendActive;
+	private bool isUseable;
+	private Shield shieldScript;
 
 	// Use this for initialization
-	void Start () {
-		Shield.SetActive (false);
+	void Start()
+	{
+		maxCapacity = Capacity;
+		Shield.GetComponent<ParticleSystem>().Stop();
+		Shield.SetActive(false);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(Cooldown >= 0)
-			Cooldown -= Time.deltaTime;
-		if (Cooldown <= 0) 
-			UseAction ();
 
-		if(DefenseTimer >= 0)
-			DefenseTimer -= Time.deltaTime;
-		if(DefenseTimer <= 0)
-			Shield.SetActive (false);
-		
+	// Update is called once per frame
+	void Update()
+	{
+		UseAction();
+		if(Input.GetKeyDown(KeyCode.P))
+		{
+			Capacity -= 10;
+		}
+
+		if(!isDefendActive)
+		{
+			if(Capacity < maxCapacity)
+			{
+				Capacity += ShieldRegenerationRate * Time.deltaTime;
+			}
+		}
+
+		float percRequirement = maxCapacity * MaximumCapacityBeforeUseable;
+		Debug.Log(percRequirement);
+		if(Capacity <= 0)
+		{
+			isUseable = false;
+		}
+		else if (!isUseable && Capacity >= percRequirement)
+		{
+			isUseable = true;
+		}
+
 	}
 
 	public void UseAction()
@@ -34,18 +63,38 @@ public class PlayerDefendSkill : MonoBehaviour, IPlayerAction {
 		//throw new NotImplementedException();
 		///Gameobject Shield
 		/// NOTE: I made a Shield script (for the collision of the gameobject) "Shield.cs"
-		if (InputManager.Instance.GetKeyDown(ControllerInput.Defend))
+		if (InputManager.Instance.GetKey(ControllerInput.Defend) && Capacity > 0 && isUseable)
 		{
-			Cooldown = 3.0f;
-			Debug.Log ("SHIELD vwwooosh");
-
-			DefenseTimer = 1.0f;
-			Shield.SetActive(true);
+			if(InputManager.Instance.GetKey(ControllerInput.ModifyMove))
+			{
+				UseActionWithElementModifier(ElementModifier);
+			}
+			//Activate shield
+			else if (!isDefendActive)
+			{
+				isDefendActive = true;
+				Shield.SetActive(true);
+				Shield.GetComponent<ParticleSystem>().Play();
+			}
+		}
+		else
+		{
+			if (isDefendActive)
+			{
+				isDefendActive = false;
+				Shield.GetComponent<ParticleSystem>().Stop();
+				Shield.SetActive(false);
+			}
 		}
 	}
 
 	public void UseActionWithElementModifier(Element element)
 	{
-		throw new NotImplementedException();
+		Debug.Log("Element On Cooldown?: " + element.IsOnCooldown);
+		Debug.Log(element);
+		if(!element.IsOnCooldown)
+		{
+			element.ModifyMove();
+		}
 	}
 }

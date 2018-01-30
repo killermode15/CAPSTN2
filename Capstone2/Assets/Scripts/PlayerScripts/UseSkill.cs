@@ -78,4 +78,12 @@ public class UseSkill : MonoBehaviour {
 	{
 		ActiveElement = ElementalSkills.Find(x => x.Type == element);
 	}
+
+	public void SetElementOnCooldown(Element element)
+	{
+		Element elementOnCooldown = ElementalSkills.Find(x => x == element);
+		element.IsOnCooldown = true;
+		elementsOnCooldown.Add(element);
+		currentCooldowns.Add(element.CooldownDuration);
+	}
 }

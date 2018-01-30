@@ -8,11 +8,12 @@ public class PlayerController : MonoBehaviour
 	public float MoveSpeed = 6.0f;
 	public float JumpHeight;
 	public float TurnSmoothTime = 0.02f;
+	public AnimationCurve DashCurve;
 	//public float FallMultiplier;
 	//public float LowJumpMultiplier;
 
 	private bool canJump = true;
-
+	private float dashValue;
 	private float turnSmoothVel;
 	private float origZPos;
 	private float currentRotateTo;
@@ -34,6 +35,11 @@ public class PlayerController : MonoBehaviour
 	{
 		Move();
 		Jump();
+
+		if (dashValue > 0.5f || dashValue < -0.5f)
+			dashValue = Mathf.Lerp(dashValue, 0, Mathf.Sin(dashValue * Mathf.PI * 0.5f * Time.deltaTime));
+		else if (dashValue > -1f || dashValue < 1f)
+			dashValue = 0;
 	}
 
 	private void LateUpdate()
@@ -145,13 +151,14 @@ public class PlayerController : MonoBehaviour
 			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
 		else
 			moveDirection = Vector3.zero;
-
 		//Currently commented out because movement
 		//is based on where the character is facing
 		//moveDirection = transform.TransformDirection(moveDirection);
 
 		//Multiply it to the movespeed
 		moveDirection *= MoveSpeed;
+		//Add dash if turned on
+		moveDirection.x += dashValue;
 		//Then set the y velocity back
 		moveDirection.y = currY;
 
@@ -190,6 +197,15 @@ public class PlayerController : MonoBehaviour
 	public void AddJumpVelocity(float val)
 	{
 		moveDirection.y += val;
+	}
+
+	public void AddForwardVelocity(float val)
+	{
+		if (dashValue <= 0)
+		{
+			dashValue = val * Input.GetAxisRaw("Horizontal");
+			Debug.Log(val * Input.GetAxisRaw("Horizontal"));
+		}
 	}
 
 	//Checks if the character is grounded

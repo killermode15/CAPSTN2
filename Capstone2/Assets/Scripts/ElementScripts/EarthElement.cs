@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Earth Element", menuName = "Element/New Earth Element")]
 public class EarthElement : Element {
 
-	public GameObject Sphere;
+	public float ShieldDuration;
+	public GameObject EarthShield;
 
 	public override void Use()
 	{
@@ -17,6 +18,21 @@ public class EarthElement : Element {
 		//Debug.Log("Not yet implemented");
 
 		//TEMPORARY
-		Destroy(Instantiate(Sphere, player.position, Quaternion.identity), 2);
+		Destroy(Instantiate(EarthShield, player), ShieldDuration);
+	}
+
+	public override void ModifyMove()
+	{
+		base.Use();
+
+		player.GetComponent<UseSkill>().SetElementOnCooldown(this);
+
+		player.GetComponent<Energy>().RemoveEnergy(ModifierEnergyCost);
+		GameObject shield = Instantiate(EarthShield, player);
+		//shield.transform.parent = player.transform;
+
+		//shield.transform.localPosition += new Vector3(0, 0, 0.55f);
+
+		Destroy(shield, ShieldDuration);
 	}
 }

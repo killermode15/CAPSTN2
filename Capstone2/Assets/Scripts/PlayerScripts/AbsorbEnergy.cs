@@ -30,9 +30,9 @@ public class AbsorbEnergy : MonoBehaviour
 		GetAllAbsorbableObjects();
 		if (IsCurrentlySelecting())
 		{
-			UpdateCurrentSelectedObject();
-			SelectObject();
 			SwitchBetweenObjects();
+			SelectObject();
+			UpdateCurrentSelectedObject();
 			if (currentSelectedObject)
 			{
 				Absorb();
@@ -170,38 +170,41 @@ public class AbsorbEnergy : MonoBehaviour
 
 	void SwitchBetweenObjects()
 	{
-		if (!currentSelectedObject.IsAbsorbing)
+		if (currentSelectedObject)
 		{
-			int inputSelection = (int)Input.GetAxisRaw("DPadX");
-			Debug.Log(inputSelection);
-
-			switch (inputSelection)
+			if (!currentSelectedObject.IsAbsorbing)
 			{
-				case 1:
-					if (!recentlySwitched)
-					{
-						selectedIndex++;
-						if (selectedIndex > AbsorbableObjects.Count - 1)
-							selectedIndex = 0;
-						else if (selectedIndex < 0)
-							selectedIndex = AbsorbableObjects.Count - 1;
-					}
-					recentlySwitched = true;
-					break;
-				case -1:
-					if (!recentlySwitched)
-					{
-						selectedIndex--;
-						if (selectedIndex > AbsorbableObjects.Count - 1)
-							selectedIndex = 0;
-						else if (selectedIndex < 0)
-							selectedIndex = AbsorbableObjects.Count - 1;
-					}
-					recentlySwitched = true;
-					break;
-				default:
-					recentlySwitched = false;
-					break;
+				int inputSelection = (int)Input.GetAxisRaw("DPadX");
+				Debug.Log(inputSelection);
+
+				switch (inputSelection)
+				{
+					case 1:
+						if (!recentlySwitched)
+						{
+							selectedIndex++;
+							if (selectedIndex > AbsorbableObjects.Count - 1)
+								selectedIndex = 0;
+							else if (selectedIndex < 0)
+								selectedIndex = AbsorbableObjects.Count - 1;
+						}
+						recentlySwitched = true;
+						break;
+					case -1:
+						if (!recentlySwitched)
+						{
+							selectedIndex--;
+							if (selectedIndex > AbsorbableObjects.Count - 1)
+								selectedIndex = 0;
+							else if (selectedIndex < 0)
+								selectedIndex = AbsorbableObjects.Count - 1;
+						}
+						recentlySwitched = true;
+						break;
+					default:
+						recentlySwitched = false;
+						break;
+				}
 			}
 		}
 	}

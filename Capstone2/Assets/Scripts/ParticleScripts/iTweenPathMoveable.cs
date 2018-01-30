@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
+//using UnityEditor;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -24,15 +24,15 @@ public class iTweenPathMoveable : MonoBehaviour
 		{
 			pathNodes.Add(path.nodes[i]);
 		}
-		enabled = false;
+		//enabled = false;
 	}
 
-	private void OnEnable()
-	{
-		EditorApplication.update += EditorUpdate;
-	}
+	//private void OnEnable()
+	//{
+	//	EditorApplication.update += EditorUpdate;
+	//}
 
-	void EditorUpdate()
+	void Update()
 	{
 		for (int i = 0; i < path.nodeCount; i++)
 		{
@@ -42,8 +42,8 @@ public class iTweenPathMoveable : MonoBehaviour
 				path.nodes[i] = pathNodes[i] + new Vector3(transform.parent.position.x, transform.parent.position.y, 0) + PathOffset;
 		}
 	}
-	private void OnDisable()
-	{
-		EditorApplication.update -= EditorUpdate;
-	}
+	//private void OnDisable()
+	//{
+	//	EditorApplication.update -= EditorUpdate;
+	//}
 }

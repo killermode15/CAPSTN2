@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoveSkill : MonoBehaviour, IPlayerAction {
+public class PlayerMoveSkill : MonoBehaviour, IPlayerAction
+{
 
 	public float DashSpeed;
 	public float DashDuration;
@@ -11,14 +12,15 @@ public class PlayerMoveSkill : MonoBehaviour, IPlayerAction {
 	private PlayerController controllerScriptRef;
 
 	// Use this for initialization
-	void Start () {
+	void Start()
+	{
 		controllerScriptRef = GetComponent<PlayerController>();
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-		if (InputManager.Instance.GetKeyDown(ControllerInput.Move))
-			UseAction();
+	void Update()
+	{
+		UseAction();
 	}
 
 	IEnumerator Dash()
@@ -40,7 +42,9 @@ public class PlayerMoveSkill : MonoBehaviour, IPlayerAction {
 
 	public void UseAction()
 	{
-		StartCoroutine(Dash());
+		if (InputManager.Instance.GetKeyDown(ControllerInput.Move))
+			controllerScriptRef.AddForwardVelocity(DashSpeed);
+			//StartCoroutine(Dash());
 	}
 
 	public void UseActionWithElementModifier(Element element)

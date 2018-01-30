@@ -16,7 +16,7 @@ public class StatePatternEnemy: MonoBehaviour
 
 	public Transform[] patrolPoint;
 
-    [HideInInspector] public IEnemyState currentState;
+    public IEnemyState currentState;
 	[HideInInspector] public ChaseState chaseState;
 	[HideInInspector] public PatrolState patrolState;
 	[HideInInspector] public IdleState idleState;
@@ -46,4 +46,13 @@ public class StatePatternEnemy: MonoBehaviour
 	{
 		currentState.UpdateState ();
 	}
+
+	private void OnDrawGizmosSelected()
+	{
+		Gizmos.color = Color.white;
+		Gizmos.DrawLine(transform.position, transform.position + transform.forward * AttackRange);
+		Gizmos.color = Color.green;
+		Gizmos.DrawWireSphere(transform.position + (transform.up * -0.05f), enemyDetect);
+	}
+
 }

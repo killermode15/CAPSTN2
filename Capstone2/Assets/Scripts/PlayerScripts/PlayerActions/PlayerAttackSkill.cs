@@ -6,10 +6,13 @@ using UnityEngine;
 public class PlayerAttackSkill : MonoBehaviour, IPlayerAction
 {
 	public PlayerAnimation Animation;
+	public int NoOfAttackAnimation;
 	public float Cooldown;
 	public float Damage;
 	public float Range;
-	float MeleeTimer;
+
+	private float meleeTimer;
+	private int attackIndex;
 
 	// Use this for initialization
 	void Start () {
@@ -23,8 +26,8 @@ public class PlayerAttackSkill : MonoBehaviour, IPlayerAction
 		if (Cooldown <= 0) 
 			UseAction ();
 
-		if(MeleeTimer >= 0)
-			MeleeTimer -= Time.deltaTime;
+		if(meleeTimer >= 0)
+			meleeTimer -= Time.deltaTime;
 		
 	}
 
@@ -45,7 +48,7 @@ public class PlayerAttackSkill : MonoBehaviour, IPlayerAction
 
 			///Gameobject Punch
 			/// NOTE: I made a Melee script (for the collision of the gameobject) "Melee.cs"
-			MeleeTimer = 0.35f;
+			meleeTimer = 0.35f;
 			//Arm.SetActive(true);
 		}
 
