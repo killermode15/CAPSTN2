@@ -5,13 +5,19 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour {
 
+	public GameObject Player;
 	public List<State> PossibleStates;
 	public State CurrentState;
+	public float attackRange;
 	public float DetectionRange;
+	public float playerDistance;
 
 	private void OnDrawGizmosSelected()
 	{
+		Gizmos.color = Color.green;
 		Gizmos.DrawWireSphere(transform.position, DetectionRange);
+		Gizmos.color = Color.red;
+		Gizmos.DrawWireSphere(transform.position, attackRange);
 	}
 
 	// Use this for initialization
@@ -22,11 +28,11 @@ public class StateManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		CheckIfPlayerInRange ();
 		StateTransition();
-		Debug.Log(PossibleStates[0].GetType().Name.ToLower());
 	}
 
-	public void StateTransition()
+	public virtual void StateTransition()
 	{
 		//Compare the current state to check if the current state is idle
 		if (CompareToCurrentState(typeof(Idle)))
@@ -43,8 +49,20 @@ public class StateManager : MonoBehaviour {
 			//If the current state is not updating
 			if (!CurrentState.OnUpdate())
 			{
-				//Transition to Patrol
+				//Transition to Idle
 				ChangeState(GetState("Idle"));
+			}
+		}
+		else if(CompareToCurrentState(typeof(Chase)))
+		{
+			if (!CurrentState.OnUpdate())
+			{
+				if (playerDistance >= DetectionRange) {
+					Debug.Log ("out of range!");
+					ChangeState (GetState ("Idle"));
+				} else if (playerDistance <= attackRange) {
+					ChangeState (GetState ("Attack"));
+				}
 			}
 		}
 	}
@@ -64,11 +82,19 @@ public class StateManager : MonoBehaviour {
 		return PossibleStates.Find(x => x.GetType().Name.ToLower() == name.ToLower());
 	}
 
-	bool CompareToCurrentState(System.Type stateType)
+	public bool CompareToCurrentState(System.Type stateType)
 	{
 		if (CurrentState)
 			return CurrentState.GetType() == stateType;
 		else
 			return false;
+	}
+
+	public virtual void CheckIfPlayerInRange(){
+		playerDistance = Vector3.Distance (Player.transform.position, transform.position);
+		if (playerDistance <= DetectionRange) {
+			if(!CompareToCurrentState(typeof(Chase)))
+				ChangeState (GetState("Chase"));
+		}
 	}
 }

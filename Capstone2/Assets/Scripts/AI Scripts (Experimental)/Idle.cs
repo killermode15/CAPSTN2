@@ -6,6 +6,7 @@ public class Idle : State
 {
 
 	public bool IsIdling;
+	public float idleTime;
 
 	public override void OnEnable()
 	{
@@ -31,7 +32,7 @@ public class Idle : State
 	IEnumerator Wait()
 	{
 		IsIdling = true;
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(idleTime);
 		IsIdling = false;
 	}
 
