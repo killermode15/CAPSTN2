@@ -67,3 +67,4 @@ D:\Documents\CAPSTONE2 - Repo\Capstone2\Temp\bin\Debug\UnityEditor.VR.xml
 D:\Documents\CAPSTONE2 - Repo\Capstone2\Temp\bin\Debug\UnityEditor.iOS.Extensions.Xcode.xml
 D:\Documents\CAPSTONE2 - Repo\Capstone2\obj\Debug\Assembly-CSharp.dll
 D:\Documents\CAPSTONE2 - Repo\Capstone2\obj\Debug\Assembly-CSharp.pdb
+D:\Documents\CAPSTONE2 - Repo\Capstone2\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
