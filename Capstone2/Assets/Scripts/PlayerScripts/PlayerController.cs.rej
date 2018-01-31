@@ -1,9 +1,0 @@
-diff a/Capstone2/Assets/Scripts/PlayerScripts/PlayerController.cs b/Capstone2/Assets/Scripts/PlayerScripts/PlayerController.cs	(rejected hunks)
-@@ -87,6 +87,7 @@
- <<<<<<< HEAD
- 		else if (canJump)
- 		{
-+=======
- 		//If the player is grounded
- 		else if (IsGrounded())
- 			//Set the y velocity to 0

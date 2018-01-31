@@ -46,7 +46,6 @@ public class PlayerDefendSkill : MonoBehaviour, IPlayerAction
 		}
 
 		float percRequirement = maxCapacity * MaximumCapacityBeforeUseable;
-		Debug.Log(percRequirement);
 		if(Capacity <= 0)
 		{
 			isUseable = false;

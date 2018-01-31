@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class State : MonoBehaviour {
-
+	public StateManager Manager;
 	// Use this for initialization
 	public virtual void OnEnable()
 	{
-		
+		if(!Manager)
+		{
+			Manager = GetComponent<StateManager>();
+		}
 	}
 
 	public virtual bool OnUpdate()

@@ -16,7 +16,10 @@ public class UseSkill : MonoBehaviour {
 	void Start () {
 
 		foreach (Element element in ElementalSkills)
+		{
 			element.IsOnCooldown = false;
+			element.CurrentUseableEnergy = 0;
+		}
 
 		ActiveElement = ElementalSkills[currentActiveElementIndex];
 		elementsOnCooldown = new List<Element>();

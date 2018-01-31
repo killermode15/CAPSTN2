@@ -21,7 +21,8 @@ public class Patrol : State {
 		base.OnUpdate();
 		if(!IsPatrolDone())
 		{
-
+			//Movement
+			return true;
 		}
 		return false;
 	}

@@ -79,7 +79,6 @@ public class PlayerController : MonoBehaviour
 
 		//}
 		#endregion
-		Debug.Log(IsGrounded());
 
 		canJump = IsGrounded();
 

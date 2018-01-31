@@ -13,26 +13,32 @@ public class EarthElement : Element {
 		base.Use();
 		//if (!IsElementUnlocked || IsOnCooldown || player.GetComponent<Energy>().CurrentEnergy < EnergyCost)
 		//	return;
-		//TEMPORARY
-		player.GetComponent<Energy>().RemoveEnergy(EnergyCost);
-		//Debug.Log("Not yet implemented");
+		if (IsBaseUseable())
+		{
+			//TEMPORARY
+			RemoveEnergy(EnergyCost);
+			//Debug.Log("Not yet implemented");
 
-		//TEMPORARY
-		Destroy(Instantiate(EarthShield, player), ShieldDuration);
+			//TEMPORARY
+			Destroy(Instantiate(EarthShield, player), ShieldDuration);
+		}
 	}
 
 	public override void ModifyMove()
 	{
 		base.Use();
 
-		player.GetComponent<UseSkill>().SetElementOnCooldown(this);
+		if (IsModifierUseable())
+		{
+			player.GetComponent<UseSkill>().SetElementOnCooldown(this);
 
-		player.GetComponent<Energy>().RemoveEnergy(ModifierEnergyCost);
-		GameObject shield = Instantiate(EarthShield, player);
-		//shield.transform.parent = player.transform;
+			RemoveEnergy(ModifierEnergyCost);
+			GameObject shield = Instantiate(EarthShield, player);
+			//shield.transform.parent = player.transform;
 
-		//shield.transform.localPosition += new Vector3(0, 0, 0.55f);
+			//shield.transform.localPosition += new Vector3(0, 0, 0.55f);
 
-		Destroy(shield, ShieldDuration);
+			Destroy(shield, ShieldDuration);
+		}
 	}
 }

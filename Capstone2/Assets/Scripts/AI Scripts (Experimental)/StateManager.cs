@@ -17,11 +17,13 @@ public class StateManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		PossibleStates = GetComponents<State>().ToList();
+		ChangeState(GetState("Idle"));
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		StateTransition();
+		Debug.Log(PossibleStates[0].GetType().Name.ToLower());
 	}
 
 	public void StateTransition()
@@ -49,18 +51,24 @@ public class StateManager : MonoBehaviour {
 
 	public void ChangeState(State newState)
 	{
-		CurrentState.enabled = false;
+		if (CurrentState)
+		{
+			CurrentState.enabled = false;
+		}
 		CurrentState = newState;
 		newState.enabled = true;
 	}
 
 	public State GetState(string name)
 	{
-		return PossibleStates.Find(x => x.name.ToLower() == name.ToLower());
+		return PossibleStates.Find(x => x.GetType().Name.ToLower() == name.ToLower());
 	}
 
 	bool CompareToCurrentState(System.Type stateType)
 	{
-		return CurrentState.GetType() == stateType;
+		if (CurrentState)
+			return CurrentState.GetType() == stateType;
+		else
+			return false;
 	}
 }

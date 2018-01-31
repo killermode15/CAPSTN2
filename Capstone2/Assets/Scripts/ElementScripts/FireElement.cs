@@ -13,14 +13,16 @@ public class FireElement : Element
 		base.Use();
 		//if (!IsElementUnlocked || IsOnCooldown || player.GetComponent<Energy>().CurrentEnergy < EnergyCost)
 		//	return;
-		//TEMPORARY
-		player.GetComponent<Energy>().RemoveEnergy(EnergyCost);
-		//Debug.Log("Not yet implemented");
+		if (IsBaseUseable())
+		{
+			//TEMPORARY
+			RemoveEnergy(EnergyCost);
+			//Debug.Log("Not yet implemented");
 
-		//TEMPORARY
-		GameObject ball = Instantiate(Sphere, player.position, Quaternion.identity);
-		ball.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-		ball.AddComponent<Mover>();
-
+			//TEMPORARY
+			GameObject ball = Instantiate(Sphere, player.position, Quaternion.identity);
+			ball.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+			ball.AddComponent<Mover>();
+		}
 	}
 }

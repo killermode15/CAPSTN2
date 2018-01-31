@@ -16,14 +16,33 @@ public class Element : ScriptableObject {
 	public ElementType Type;
 	public Sprite ElementIcon;
 	public float EnergyCost;
+	public float CurrentUseableEnergy;
 	public float ModifierEnergyCost;
 	public float CooldownDuration;
 	public bool IsElementUnlocked;
 	public bool IsOnCooldown;
 	public bool IsModifier;
-	public string MoveNameToModify;
+	public float MaxUseableEnergy;
 	
 	protected Transform player;
+
+	
+
+	public void AddEnergy(float val)
+	{
+		CurrentUseableEnergy += val;
+		if (CurrentUseableEnergy > MaxUseableEnergy)
+		{
+			CurrentUseableEnergy = MaxUseableEnergy;
+		}
+	}
+
+	public void RemoveEnergy(float val)
+	{
+		CurrentUseableEnergy -= val;
+		if (CurrentUseableEnergy < 0)
+			CurrentUseableEnergy = 0;
+	}
 
 	public virtual void Use()
 	{
@@ -42,5 +61,15 @@ public class Element : ScriptableObject {
 		{
 			player = GameObject.FindGameObjectWithTag("Player").transform;
 		}
+	}
+
+	public bool IsBaseUseable()
+	{
+		return CurrentUseableEnergy >= EnergyCost && !IsOnCooldown && !IsModifier;
+	}
+
+	public bool IsModifierUseable()
+	{
+		return CurrentUseableEnergy >= ModifierEnergyCost && !IsOnCooldown && IsModifier;
 	}
 }

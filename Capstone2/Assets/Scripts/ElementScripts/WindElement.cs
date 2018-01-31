@@ -12,11 +12,17 @@ public class WindElement : Element {
 		base.Use();
 		//if (!IsElementUnlocked || IsOnCooldown || player.GetComponent<Energy>().CurrentEnergy < EnergyCost)
 		//	return;
-		//TEMPORARY
-		player.GetComponent<Energy>().RemoveEnergy(EnergyCost);
 
-		//TEMPORARY
-		//player.position += new Vector3(0, 1.0f, 0);
-		player.GetComponent<PlayerController>().AddJumpVelocity(JumpIncrease);
+		if(IsBaseUseable())
+		{
+
+			//TEMPORARY
+			RemoveEnergy(EnergyCost);
+
+			//TEMPORARY
+			//player.position += new Vector3(0, 1.0f, 0);
+			player.GetComponent<PlayerController>().AddJumpVelocity(JumpIncrease);
+		}
+
 	}
 }

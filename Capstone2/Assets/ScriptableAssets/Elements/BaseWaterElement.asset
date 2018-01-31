@@ -13,10 +13,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   ElementIcon: {fileID: 21300000, guid: c0b0a16551d0d004ca0866bbdfd2584a, type: 3}
-  EnergyCost: 10
+  EnergyCost: 0
+  CurrentUseableEnergy: 0
+  ModifierEnergyCost: 0
   CooldownDuration: 4
   IsElementUnlocked: 1
   IsOnCooldown: 0
   IsModifier: 0
-  MoveNameToModify: 
+  MaxUseableEnergy: 100
   VFX: {fileID: 1921419411014616, guid: 4bd26132bbec47b4bbdba986f1f70b87, type: 2}
