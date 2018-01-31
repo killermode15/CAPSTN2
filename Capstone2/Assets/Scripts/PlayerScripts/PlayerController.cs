@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
 	}
 	void Update()
 	{
+		if (Input.touchCount > 0)
+			Debug.Log(Input.GetTouch(0));
+		Debug.Log(Input.GetAxisRaw("TouchPad"));
 		Move();
 		Jump();
 
@@ -84,8 +87,14 @@ public class PlayerController : MonoBehaviour
 
 		if (!canJump || moveDirection.y > 0)
 		{
+			moveDirection.y += (Physics.gravity.y * Time.deltaTime) * 2;
+		}
+
+		if(moveDirection.y < 0)
+		{
 			moveDirection.y += Physics.gravity.y * Time.deltaTime;
 		}
+
 		else if (canJump)
 		{
 			//If the player is grounded
@@ -195,6 +204,7 @@ public class PlayerController : MonoBehaviour
 	//Adds a value to the y velocity of the movement vector
 	public void AddJumpVelocity(float val)
 	{
+		moveDirection.y = 0;
 		moveDirection.y += val;
 	}
 

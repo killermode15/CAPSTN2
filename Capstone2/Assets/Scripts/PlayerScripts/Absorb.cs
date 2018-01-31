@@ -14,6 +14,7 @@ public class Absorb : MonoBehaviour
 
 	public List<Absorbable> Absorbables;
 	public AbsorbMode CurrentMode;
+	public float Corruption;
 
 
 	private List<Absorbable> allAbsorbable;
@@ -54,14 +55,17 @@ public class Absorb : MonoBehaviour
 	{
 		if(InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy))
 		{
-			switch(CurrentMode)
+			Absorbable selected;
+			switch (CurrentMode)
 			{
 				case AbsorbMode.Corruption:
-
+					selected = currentSelected.GetComponent<AbsorbableCorruption>();
+					selected.InteractWith();
+					Corruption += (selected.AbsorbRate);
 					break;
 				case AbsorbMode.Element:
-					AbsorbableObject selected = currentSelected.GetComponent<AbsorbableObject>();
-					Element element = GetComponent<UseSkill>().ElementalSkills.Find(x => x.Type == selected.Type);
+					selected = currentSelected.GetComponent<AbsorbableObject>();
+					Element element = GetComponent<UseSkill>().ElementalSkills.Find(x => x.Type == ((AbsorbableObject)selected).Type);
 					selected.InteractWith();
 					element.AddEnergy(selected.AbsorbRate);
 					break;

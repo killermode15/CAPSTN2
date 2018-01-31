@@ -21,4 +21,4 @@ MonoBehaviour:
   IsOnCooldown: 0
   IsModifier: 0
   MaxUseableEnergy: 100
-  JumpIncrease: 5
+  JumpIncrease: 15
