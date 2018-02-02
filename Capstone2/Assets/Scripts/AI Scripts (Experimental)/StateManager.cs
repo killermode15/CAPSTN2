@@ -61,6 +61,7 @@ public class StateManager : MonoBehaviour {
 					Debug.Log ("out of range!");
 					ChangeState (GetState ("Idle"));
 				} else if (playerDistance <= attackRange) {
+					Debug.Log ("in range for attack!");
 					ChangeState (GetState ("Attack"));
 				}
 			}

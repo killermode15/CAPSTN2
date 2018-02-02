@@ -34,7 +34,7 @@ public class RangeStateManager : StateManager {
 		}
 	}
 
-	public virtual void CheckIfPlayerInRange(){
+	public override void CheckIfPlayerInRange(){
 		playerDistance = Vector3.Distance (Player.transform.position, transform.position);
 		if (playerDistance <= DetectionRange) {
 			if(!CompareToCurrentState(typeof(RangeAttack)))

@@ -25,7 +25,6 @@ public class Chase : State {
 
 	public override void OnDisable()
 	{
-		Debug.Log (enabled);
 		base.OnDisable();
 	}
 }

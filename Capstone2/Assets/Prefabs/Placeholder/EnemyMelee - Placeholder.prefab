@@ -41,8 +41,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1624134789736600}
   m_LocalRotation: {x: -0, y: -0.729257, z: -0, w: 0.6842399}
-  m_LocalPosition: {x: 10.87, y: -1.06, z: 2.73}
-  m_LocalScale: {x: 13.802723, y: 13.802734, z: 13.802734}
+  m_LocalPosition: {x: 11.39196, y: 1.5410056, z: 0.76582813}
+  m_LocalScale: {x: 128.449, y: 128.44907, z: 128.44907}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -87,7 +87,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1624134789736600}
-  m_Mesh: {fileID: 4300000, guid: 742b5364596e8cb478c6f60371af2b7f, type: 3}
+  m_Mesh: {fileID: 4300004, guid: b78cce444d306734a8b811526e4669d2, type: 3}
 --- !u!114 &114104374936168982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 0}
-  RangeManager: {fileID: 0}
 --- !u!114 &114196062481418690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,8 +114,8 @@ MonoBehaviour:
   Player: {fileID: 0}
   PossibleStates: []
   CurrentState: {fileID: 0}
-  attackRange: 2
-  DetectionRange: 10
+  attackRange: 5.72
+  DetectionRange: 10.76
   playerDistance: 0
 --- !u!114 &114461940905088104
 MonoBehaviour:
@@ -130,7 +129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 0}
-  RangeManager: {fileID: 0}
   IsIdling: 0
   idleTime: 3
 --- !u!114 &114534605079558600
@@ -145,7 +143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 0}
-  RangeManager: {fileID: 0}
   moveSpeed: 3
 --- !u!114 &114743158603620062
 MonoBehaviour:
@@ -159,7 +156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 0}
-  RangeManager: {fileID: 0}
   PatrolPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -178,4 +174,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 0}
-  RangeManager: {fileID: 0}

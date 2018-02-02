@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if (Input.touchCount > 0)
 			Debug.Log(Input.GetTouch(0));
-		Debug.Log(Input.GetAxisRaw("TouchPad"));
+		//Debug.Log(Input.GetAxisRaw("TouchPad"));
 		Move();
 		Jump();
 
