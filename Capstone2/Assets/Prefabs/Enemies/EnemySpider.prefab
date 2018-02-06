@@ -36,10 +36,11 @@ GameObject:
   - component: {fileID: 4676124460033986}
   - component: {fileID: 33353630026973118}
   - component: {fileID: 23875453928455482}
-  - component: {fileID: 114415979026183160}
+  - component: {fileID: 114686830092927918}
   - component: {fileID: 114144153914205460}
+  - component: {fileID: 114877171567806586}
   m_Layer: 0
-  m_Name: EnemySpider - Placeholder
+  m_Name: EnemySpider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,14 +65,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1610953765498878}
-  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 14.82, y: 2.3, z: 6.02}
   m_LocalScale: {x: 11.37867, y: 11.378682, z: 11.378682}
   m_Children:
   - {fileID: 4183900652884214}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: -90}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!23 &23875453928455482
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -126,10 +127,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Manager: {fileID: 0}
   projectile: {fileID: 1254543246502554, guid: 1d0e88093e47834468c327a17f467098, type: 2}
-  attackSpeed: 3
+  attackSpeed: 10
   isRight: 0
-  damping: 1
---- !u!114 &114415979026183160
+--- !u!114 &114686830092927918
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -137,12 +137,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1610953765498878}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d5feb30a39749f4787964ef2e67dfbd, type: 3}
+  m_Script: {fileID: 11500000, guid: c144b6cd13b437e48a6480458c073c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   PossibleStates: []
   CurrentState: {fileID: 0}
   attackRange: 0
-  DetectionRange: 17.67
+  DetectionRange: 20
   playerDistance: 0
+  damping: 4
+--- !u!114 &114877171567806586
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1610953765498878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19491dd48cad1e242be7924dcad8e096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Manager: {fileID: 0}
+  IsIdling: 0
+  idleTime: 0

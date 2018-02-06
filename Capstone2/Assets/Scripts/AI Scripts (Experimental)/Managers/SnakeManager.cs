@@ -3,14 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class StateManager : MonoBehaviour {
-
-	public GameObject Player;
-	public List<State> PossibleStates;
-	public State CurrentState;
-	public float attackRange;
-	public float DetectionRange;
-	public float playerDistance;
+public class SnakeManager : StateManager {
 
 	private void OnDrawGizmosSelected()
 	{
@@ -22,10 +15,10 @@ public class StateManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		PossibleStates = GetComponents<State>().ToList();
+		base.Start ();
 		ChangeState(GetState("Idle"));
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		CheckIfPlayerInRange ();
@@ -35,28 +28,20 @@ public class StateManager : MonoBehaviour {
 	public virtual void StateTransition()
 	{
 		//Compare the current state to check if the current state is idle
-		if (CompareToCurrentState(typeof(Idle)))
-		{
+		if (CompareToCurrentState (typeof(Idle))) {
 			//If the current state is not updating
-			if(!CurrentState.OnUpdate())
-			{
+			if (!CurrentState.OnUpdate ()) {
 				//Transition to Patrol
-				ChangeState(GetState("Patrol"));
+				ChangeState (GetState ("Patrol"));
 			}
-		}
-		else if(CompareToCurrentState(typeof(Patrol)))
-		{
+		} else if (CompareToCurrentState (typeof(Patrol))) {
 			//If the current state is not updating
-			if (!CurrentState.OnUpdate())
-			{
+			if (!CurrentState.OnUpdate ()) {
 				//Transition to Idle
-				ChangeState(GetState("Idle"));
+				ChangeState (GetState ("Idle"));
 			}
-		}
-		else if(CompareToCurrentState(typeof(Chase)))
-		{
-			if (!CurrentState.OnUpdate())
-			{
+		} else if (CompareToCurrentState (typeof(Chase))) {
+			if (!CurrentState.OnUpdate ()) {
 				if (playerDistance >= DetectionRange) {
 					Debug.Log ("out of range!");
 					ChangeState (GetState ("Idle"));
@@ -65,7 +50,15 @@ public class StateManager : MonoBehaviour {
 					ChangeState (GetState ("Attack"));
 				}
 			}
+		} else if (CompareToCurrentState (typeof(Attack))) {
+			if (!CurrentState.OnUpdate ()) {
+				if (playerDistance >= attackRange) {
+					ChangeState (GetState ("Chase"));
+				}
+			}
 		}
+		else
+			CurrentState.OnUpdate ();
 	}
 
 	public void ChangeState(State newState)
@@ -94,7 +87,7 @@ public class StateManager : MonoBehaviour {
 	public virtual void CheckIfPlayerInRange(){
 		playerDistance = Vector3.Distance (Player.transform.position, transform.position);
 		if (playerDistance <= DetectionRange) {
-			if(!CompareToCurrentState(typeof(Chase)))
+			if(!CompareToCurrentState(typeof(Chase)) && !CompareToCurrentState(typeof(Attack)))
 				ChangeState (GetState("Chase"));
 		}
 	}

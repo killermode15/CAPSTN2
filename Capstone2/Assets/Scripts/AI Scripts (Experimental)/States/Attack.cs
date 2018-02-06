@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class Attack : State {
 
+	public AnimationCurve chargeCurve;
+	public float chargeDuration;
+	public float chargeSpeed;
+	public float chargeValue;
+	private float initialChargeSpeed;
+
 	public override void OnEnable()
 	{
 		Debug.Log("starting attack:");
+		initialChargeSpeed = chargeDuration;
+		chargeValue = chargeDuration;
 		base.OnEnable();
 	}
 
 	public override bool OnUpdate()
 	{
+		Debug.Log("attacking:");
 		Charge ();
-
 		float distance = Vector3.Distance (transform.position, Manager.Player.transform.position);
 		if (distance >= Manager.attackRange) {
 			return false;
@@ -22,11 +30,9 @@ public class Attack : State {
 	}
 
 	void Charge(){
-		//pause for a while
-		Debug.Log("pasuing:");
-		//swiftly move at player
-
-		//....?
+		chargeValue -= Time.deltaTime;
+		float dash = (initialChargeSpeed == 0) ? 0 : chargeValue / initialChargeSpeed;
+		transform.position = Vector3.MoveTowards(transform.position, Manager.Player.transform.position, chargeCurve.Evaluate(dash));
 	}
 
 	IEnumerator Wait()

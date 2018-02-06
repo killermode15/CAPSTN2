@@ -22,10 +22,10 @@ GameObject:
   - component: {fileID: 33545527806503946}
   - component: {fileID: 23924124221106616}
   - component: {fileID: 114580921627989450}
-  - component: {fileID: 114791213645086560}
-  - component: {fileID: 114125774600296990}
+  - component: {fileID: 114677937444009328}
+  - component: {fileID: 114553181457358846}
   m_Layer: 0
-  m_Name: EnemyRange - Placeholder
+  m_Name: EnemyPeashooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1558461848430048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.23, y: -0.82, z: 3.73}
+  m_LocalPosition: {x: 11.32, y: 10.92, z: 2.85}
   m_LocalScale: {x: 22.458183, y: 26.535807, z: 22.458158}
   m_Children:
   - {fileID: 4985149304090824}
@@ -114,20 +114,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1558461848430048}
   m_Mesh: {fileID: 4300000, guid: 97f7b5887d6e66b42854615cf0f02a56, type: 3}
---- !u!114 &114125774600296990
+--- !u!114 &114553181457358846
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1558461848430048}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42174ec698471a6418c53e2a8f7acc99, type: 3}
+  m_Script: {fileID: 11500000, guid: 6792f74e9d04d7640bc2234b33a4bd84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Manager: {fileID: 0}
   projectile: {fileID: 1254543246502554, guid: 1d0e88093e47834468c327a17f467098, type: 2}
-  attackSpeed: 3
+  attackSpeed: 2
   isRight: 0
 --- !u!114 &114580921627989450
 MonoBehaviour:
@@ -146,7 +145,7 @@ MonoBehaviour:
   attackRange: 0
   DetectionRange: 10
   playerDistance: 0
---- !u!114 &114791213645086560
+--- !u!114 &114677937444009328
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -154,9 +153,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1558461848430048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19491dd48cad1e242be7924dcad8e096, type: 3}
+  m_Script: {fileID: 11500000, guid: 448a028f32f7c3c44ad2e4af34d4185b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 0}
-  IsIdling: 0
-  idleTime: 0
+  PatrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  CurrentPatrolPoint: 0
+  GoalDistanceCompensation: 0
+  moveSpeed: 5
