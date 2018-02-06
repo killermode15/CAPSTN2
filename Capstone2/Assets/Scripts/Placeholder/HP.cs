@@ -53,7 +53,7 @@ public class HP : MonoBehaviour
 		Health += val;
 		if (Health > MaxHealth)
 			Health = MaxHealth;
-		currentLerpTime = 0;
+		//currentLerpTime = 0;
 	}
 
 	// Update is called once per frame
@@ -62,6 +62,6 @@ public class HP : MonoBehaviour
 		Health -= val;
 		if (Health < 0)
 			Health = 0;
-		currentLerpTime = 0;
+		//currentLerpTime = 0;
 	}
 }

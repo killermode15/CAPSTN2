@@ -62,9 +62,9 @@ public class PlayerDefendSkill : MonoBehaviour, IPlayerAction
 		//throw new NotImplementedException();
 		///Gameobject Shield
 		/// NOTE: I made a Shield script (for the collision of the gameobject) "Shield.cs"
-		if (InputManager.Instance.GetKey(ControllerInput.Defend) && Capacity > 0 && isUseable)
+		if (InputManager.Instance.GetKey(ControllerInput.Defend) && Capacity > 0 && isUseable && GetComponent<PlayerController>().CanMove)
 		{
-			if(InputManager.Instance.GetKey(ControllerInput.ModifyMove))
+			if(InputManager.Instance.GetKey(ControllerInput.ModifyMove) )
 			{
 				UseActionWithElementModifier(ElementModifier);
 			}

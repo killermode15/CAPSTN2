@@ -13,7 +13,7 @@ public class ParticleFollowPath : MonoBehaviour
 	// Use this for initialization
 	public void Activate()
 	{
-		iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath(PathName), "easetype", EaseType, "time", TimeToFinish, "looptype", LoopType));
+		iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath(PathName), "easetype", EaseType, "time", TimeToFinish));//, "looptype", LoopType));
 	}
 
 	public void StopParticleFollow()

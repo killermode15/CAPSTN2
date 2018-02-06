@@ -21,6 +21,7 @@ public class Absorb : MonoBehaviour
 	private GameObject currentSelected;
 	private int selectedIndex;
 	private bool recentlySwitched;
+	private bool isAbsorbingCorruption;
 
 	// Use this for initialization
 	void Start()
@@ -32,50 +33,65 @@ public class Absorb : MonoBehaviour
 	void Update()
 	{
 		GetAllAbsorbable();
-		if(IsSelecting())
+		if (IsSelecting())
 		{
 			SwitchMode();
 			SwitchObject();
 			SelectAbsorbable();
-			if(currentSelected)
+			if (currentSelected)
 			{
 				AbsorbObject();
 			}
 		}
-		if(!IsSelecting() && currentSelected)
+		if (!IsSelecting() && currentSelected)
 		{
 			Debug.Log("An object is still selected and the player is not selecting");
 			Absorbable selected = currentSelected.GetComponent<Absorbable>();
 			selected.IsSelected = false;
 			currentSelected = null;
+			GetComponent<PlayerController>().CanMove = true;
+
 		}
 	}
 
 	public void AbsorbObject()
 	{
-		if(InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy))
+
+
+		Absorbable selected;
+		switch (CurrentMode)
 		{
-			Absorbable selected;
-			switch (CurrentMode)
-			{
-				case AbsorbMode.Corruption:
-					selected = currentSelected.GetComponent<AbsorbableCorruption>();
-					selected.InteractWith();
-					Corruption += (selected.AbsorbRate);
-					break;
-				case AbsorbMode.Element:
+			case AbsorbMode.Corruption:
+				selected = currentSelected.GetComponent<AbsorbableCorruption>();
+				if (selected)
+				{
+					Debug.Log("Is Selected");
+					if (!selected.IsBeingAbsorbed && InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy) && selected.CanBeAbsorbed())
+					{
+						Debug.Log("Is Absorbing");
+						selected.IsBeingAbsorbed = true;
+						isAbsorbingCorruption = true;
+						GetComponent<PlayerController>().CanMove = false;
+					}
+				}
+
+				break;
+			case AbsorbMode.Element:
+				if (InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy))
+				{
 					selected = currentSelected.GetComponent<AbsorbableObject>();
 					Element element = GetComponent<UseSkill>().ElementalSkills.Find(x => x.Type == ((AbsorbableObject)selected).Type);
 					selected.InteractWith();
 					element.AddEnergy(selected.AbsorbRate);
-					break;
-			}
+				}
+				break;
 		}
+
 	}
 
 	public void GetAllAbsorbable()
 	{
-		if(allAbsorbable == null)
+		if (allAbsorbable == null)
 		{
 			allAbsorbable = GameObject.FindObjectsOfType<Absorbable>().ToList();
 		}
@@ -111,7 +127,7 @@ public class Absorb : MonoBehaviour
 
 		for (int i = 0; i < Absorbables.Count; i++)
 		{
-			if(Absorbables[i].HasEnergyLeft())
+			if (Absorbables[i].HasEnergyLeft())
 			{
 				if (Absorbables[i].gameObject == nearest)
 					continue;
@@ -135,12 +151,12 @@ public class Absorb : MonoBehaviour
 
 	public void SelectAbsorbable()
 	{
-		if(!currentSelected)
+		if (!currentSelected)
 		{
 			currentSelected = GetNearestAbsorbable().gameObject;
 		}
 
-		if(currentSelected)
+		if (currentSelected)
 		{
 			Absorbable selected = currentSelected.GetComponent<Absorbable>();
 			if (selected.HasEnergyLeft())
@@ -148,7 +164,7 @@ public class Absorb : MonoBehaviour
 				Absorbable currSelected = selected;
 				currentSelected = Absorbables[selectedIndex].gameObject;
 
-				if(currSelected != currentSelected)
+				if (currSelected != currentSelected)
 				{
 					Debug.Log("There is a new selected object");
 					currSelected.IsSelected = false;
@@ -165,10 +181,10 @@ public class Absorb : MonoBehaviour
 
 	public void UpdateCurrentSelected()
 	{
-		if(currentSelected)
+		if (currentSelected)
 		{
 			Absorbable selected = currentSelected.GetComponent<Absorbable>();
-			if(!selected.HasEnergyLeft())
+			if (!selected.HasEnergyLeft())
 			{
 				Debug.Log("Object has no more energy left");
 				selectedIndex = 0;
@@ -180,7 +196,7 @@ public class Absorb : MonoBehaviour
 
 	public void SwitchMode()
 	{
-		if (InputManager.Instance.GetKey(ControllerInput.SwitchAbsorbMode))
+		if (InputManager.Instance.GetKeyDown(ControllerInput.SwitchAbsorbMode) && !isAbsorbingCorruption)
 		{
 			if (CurrentMode == AbsorbMode.Element)
 				CurrentMode = AbsorbMode.Corruption;

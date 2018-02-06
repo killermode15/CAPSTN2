@@ -42,8 +42,8 @@ public class PlayerMoveSkill : MonoBehaviour, IPlayerAction
 
 	public void UseAction()
 	{
-		if (InputManager.Instance.GetKeyDown(ControllerInput.Move))
-			controllerScriptRef.AddForwardVelocity(DashSpeed);
+		if (InputManager.Instance.GetKeyDown(ControllerInput.Move) && controllerScriptRef.CanMove)
+			controllerScriptRef.AddForwardVelocity(DashDuration);
 			//StartCoroutine(Dash());
 	}
 

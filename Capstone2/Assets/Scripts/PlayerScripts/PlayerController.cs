@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+	public bool CanMove = true;
+	public float DashSpeed;
 	public float MoveSpeed = 6.0f;
 	public float JumpHeight;
 	public float TurnSmoothTime = 0.02f;
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
 	private bool canJump = true;
 	private float dashValue;
+	private float initialDashVal;
 	private float turnSmoothVel;
 	private float origZPos;
 	private float currentRotateTo;
@@ -33,16 +35,19 @@ public class PlayerController : MonoBehaviour
 	}
 	void Update()
 	{
-		if (Input.touchCount > 0)
-			Debug.Log(Input.GetTouch(0));
-		//Debug.Log(Input.GetAxisRaw("TouchPad"));
+		transform.position = new Vector3(transform.position.x, transform.position.y, origZPos);
+		
 		Move();
 		Jump();
-
-		if (dashValue > 0.5f || dashValue < -0.5f)
-			dashValue = Mathf.Lerp(dashValue, 0, Mathf.Sin(dashValue * Mathf.PI * 0.5f * Time.deltaTime));
-		else if (dashValue > -1f || dashValue < 1f)
+		if (dashValue > 0.15f || dashValue < -0.15f)
+		{
+			dashValue -= Time.deltaTime;
+		}
+		else
+		{
 			dashValue = 0;
+			initialDashVal = 0;
+		}
 	}
 
 	private void LateUpdate()
@@ -133,8 +138,6 @@ public class PlayerController : MonoBehaviour
 	//Launches the player when pressing the jump button
 	void Jump()
 	{
-		if (InputManager.Instance.GetKey(ControllerInput.TriggerElementWheel))
-			Debug.Log("TEST");
 		//If the player presses X while not pressing LeftTrigger and can jump
 		//if (Input.GetButtonDown("Cross") && !Input.GetButton("LeftTrigger") && canJump)
 		if (InputManager.Instance.GetKeyDown(ControllerInput.Jump) && !InputManager.Instance.GetKey(ControllerInput.TriggerElementWheel)
@@ -155,7 +158,7 @@ public class PlayerController : MonoBehaviour
 		//Get the current y velocity of the movement direction
 		float currY = moveDirection.y;
 		//Then get the movement input from the player
-		if (!InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy))
+		if (CanMove)
 			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
 		else
 			moveDirection = Vector3.zero;
@@ -165,8 +168,10 @@ public class PlayerController : MonoBehaviour
 
 		//Multiply it to the movespeed
 		moveDirection *= MoveSpeed;
-		//Add dash if turned on
-		moveDirection.x += dashValue;
+		//Add dash if turned onx
+		float dash = (initialDashVal == 0) ? 0 : dashValue / initialDashVal;
+		moveDirection.x += DashCurve.Evaluate(dash) * DashSpeed ;
+		Debug.Log(DashCurve.Evaluate(dash));
 		//Then set the y velocity back
 		moveDirection.y = currY;
 
@@ -208,12 +213,12 @@ public class PlayerController : MonoBehaviour
 		moveDirection.y += val;
 	}
 
-	public void AddForwardVelocity(float val)
+	public void AddForwardVelocity(float duration)
 	{
 		if (dashValue <= 0)
 		{
-			dashValue = val * Input.GetAxisRaw("Horizontal");
-			Debug.Log(val * Input.GetAxisRaw("Horizontal"));
+			initialDashVal = duration;
+			dashValue = duration * Input.GetAxisRaw("Horizontal");
 		}
 	}
 
@@ -222,5 +227,10 @@ public class PlayerController : MonoBehaviour
 	{
 		return controller.isGrounded;
 
+	}
+
+	public void SetCanMove(bool val)
+	{
+		CanMove = val;
 	}
 }

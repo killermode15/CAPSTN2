@@ -655,7 +655,6 @@ GameObject:
   - component: {fileID: 114974117951321144}
   - component: {fileID: 114306857153244546}
   - component: {fileID: 114196544164091020}
-  - component: {fileID: 114451951324044748}
   - component: {fileID: 114639703755484506}
   - component: {fileID: 114256737843574192}
   - component: {fileID: 143790905069117466}
@@ -1434,7 +1433,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831603703517158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: -0.57, z: 2.58}
+  m_LocalPosition: {x: -1.07, y: 1.28, z: 0}
   m_LocalScale: {x: 1.233404, y: 1.2334039, z: 1.2334039}
   m_Children:
   - {fileID: 4452132794037542}
@@ -1743,14 +1742,14 @@ MonoBehaviour:
   pathName: HealFX_Path
   pathColor: {r: 0, g: 1, b: 1, a: 1}
   nodes:
-  - {x: 0.6735997, y: -1.6607568, z: 2.6229217}
-  - {x: 0.0107474215, y: -1.2091236, z: 2.0599098}
-  - {x: -0.6344112, y: -0.8969374, z: 2.5456698}
-  - {x: -0.40745097, y: -0.615855, z: 3.402824}
-  - {x: 0.42846203, y: -0.20884275, z: 3.2878664}
-  - {x: 0.5473368, y: 0.28818864, z: 2.4371889}
-  - {x: 0.07198797, y: 0.5254251, z: 2.0923579}
-  - {x: -0.6167144, y: 0.3973667, z: 2.3208618}
+  - {x: -0.39640033, y: 0.61924314, z: 2.6229217}
+  - {x: -1.0592526, y: 1.0708764, z: 2.0599098}
+  - {x: -1.7044113, y: 1.3830626, z: 2.5456698}
+  - {x: -1.4774511, y: 1.664145, z: 3.402824}
+  - {x: -0.641538, y: 2.0711572, z: 3.2878664}
+  - {x: -0.52266324, y: 2.5681887, z: 2.4371889}
+  - {x: -0.99801207, y: 2.8054252, z: 2.0923579}
+  - {x: -1.6867144, y: 2.6773667, z: 2.3208618}
   nodeCount: 8
   initialized: 1
   initialName: New Path 2
@@ -1825,20 +1824,6 @@ MonoBehaviour:
   Health: 100
   MaxHealth: 100
   HealthBar: {fileID: 0}
---- !u!114 &114451951324044748
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1831603703517158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6169fead84d4624e8561a8567d7f20e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentEnergy: 100
-  MaxEnergy: 100
-  EnergyBar: {fileID: 0}
 --- !u!114 &114499983254245204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1862,8 +1847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d07d1306bcae5f499971cb4a2e2ae53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AbsorbableObjects: []
-  IsSelectingObject: 0
 --- !u!114 &114765325599527964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12237,7 +12220,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1848113766
+  randomSeed: -1104439635
   InitialModule:
     serializedVersion: 3
     enabled: 1

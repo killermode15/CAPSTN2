@@ -34,7 +34,7 @@ public class UseSkill : MonoBehaviour {
 		//if(Input.GetButtonDown("RightTrigger"))
 		if(InputManager.Instance.GetKey(ControllerInput.UseCurrentElement))
 		{
-			if (!ActiveElement.IsElementUnlocked || ActiveElement.IsOnCooldown ||GetComponent<Energy>().CurrentEnergy < ActiveElement.EnergyCost)
+			if (!ActiveElement.IsElementUnlocked || ActiveElement.IsOnCooldown || ActiveElement.CurrentUseableEnergy < ActiveElement.EnergyCost)
 				return;
 			UseActiveElement();
 		}
