@@ -9,10 +9,13 @@ public class Attack : State {
 	public float chargeSpeed;
 	public float chargeValue;
 	private float initialChargeSpeed;
+	private Vector3 playerGroundPosition;
 
 	public override void OnEnable()
 	{
 		Debug.Log("starting attack:");
+		if(Manager != null)
+			playerGroundPosition = new Vector3 (Manager.Player.transform.position.x, transform.position.y, Manager.Player.transform.position.z);
 		initialChargeSpeed = chargeDuration;
 		chargeValue = chargeDuration;
 		base.OnEnable();
@@ -22,17 +25,21 @@ public class Attack : State {
 	{
 		Debug.Log("attacking:");
 		Charge ();
-		float distance = Vector3.Distance (transform.position, Manager.Player.transform.position);
-		if (distance >= Manager.attackRange) {
-			return false;
+		if (Manager != null) {
+			float distance = Vector3.Distance (transform.position, Manager.Player.transform.position);
+			if (distance >= Manager.attackRange) {
+				return false;
+			}
 		}
+
 		return true;
 	}
 
 	void Charge(){
 		chargeValue -= Time.deltaTime;
 		float dash = (initialChargeSpeed == 0) ? 0 : chargeValue / initialChargeSpeed;
-		transform.position = Vector3.MoveTowards(transform.position, Manager.Player.transform.position, chargeCurve.Evaluate(dash));
+		Vector3 direction = playerGroundPosition - transform.position;
+		transform.position = Vector3.MoveTowards(transform.position, direction * chargeSpeed, chargeCurve.Evaluate(dash));
 	}
 
 	IEnumerator Wait()

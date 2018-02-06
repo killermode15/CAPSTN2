@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour {
 
+	public float collisionDamage;
 	public GameObject Player;
 	public List<State> PossibleStates;
 	public State CurrentState;

@@ -16,9 +16,9 @@ MonoBehaviour:
   EnergyCost: 0
   CurrentUseableEnergy: 0
   ModifierEnergyCost: 0
-  CooldownDuration: 1
+  CooldownDuration: 2
   IsElementUnlocked: 1
   IsOnCooldown: 0
   IsModifier: 0
   MaxUseableEnergy: 100
-  JumpIncrease: 15
+  JumpIncrease: 20

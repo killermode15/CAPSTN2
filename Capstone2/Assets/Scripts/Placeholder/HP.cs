@@ -26,6 +26,10 @@ public class HP : MonoBehaviour
 
 	public void Update()
 	{
+		if (Health <= 0) {
+			Health = 0;
+			GetComponent<Respawn> ().respawn ();
+		}
 		//HP Display
 		hpPercent = Health / MaxHealth;
 		if (HealthBar.value != hpPercent)
@@ -40,11 +44,6 @@ public class HP : MonoBehaviour
 		}
 		else
 			currentLerpTime = 0;
-
-		//Damage debugger
-		if (Input.GetKeyDown(KeyCode.Space))
-			RemoveHealth(50);
-
 	}
 
 	// Use this for initialization
@@ -60,8 +59,23 @@ public class HP : MonoBehaviour
 	public void RemoveHealth(float val)
 	{
 		Health -= val;
-		if (Health < 0)
-			Health = 0;
 		//currentLerpTime = 0;
+	}
+
+	void OnTriggerEnter(Collider other){
+		if (other.gameObject.CompareTag ("DeathFall")) {
+			RemoveHealth (Health);
+		} else if (other.gameObject.CompareTag ("Projectile")) {
+			RemoveHealth (other.gameObject.GetComponent<Projectile> ().damage);
+		}
+		if (other.gameObject.CompareTag ("Enemy")) {
+			RemoveHealth (other.gameObject.GetComponent<StateManager>().collisionDamage);
+		}
+	}
+
+	void OnControllerColliderHit(ControllerColliderHit collision){
+		if (collision.gameObject.CompareTag ("Spike")) {
+			RemoveHealth (collision.gameObject.GetComponent<Spike> ().damage);
+		}  
 	}
 }

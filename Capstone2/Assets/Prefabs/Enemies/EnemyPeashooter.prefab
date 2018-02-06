@@ -24,9 +24,10 @@ GameObject:
   - component: {fileID: 114580921627989450}
   - component: {fileID: 114677937444009328}
   - component: {fileID: 114553181457358846}
+  - component: {fileID: 135035304999438718}
   m_Layer: 0
   m_Name: EnemyPeashooter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,14 +53,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1558461848430048}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.32, y: 10.92, z: 2.85}
-  m_LocalScale: {x: 22.458183, y: 26.535807, z: 22.458158}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 1.8512049, y: 9.45, z: -10.9724245}
+  m_LocalScale: {x: 22.458206, y: 26.535809, z: 22.458178}
   m_Children:
   - {fileID: 4985149304090824}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!4 &4985149304090824
 Transform:
   m_ObjectHideFlags: 1
@@ -67,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1628531433172116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0.0147, z: 0.0619}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4298047741817444}
@@ -113,7 +114,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1558461848430048}
-  m_Mesh: {fileID: 4300000, guid: 97f7b5887d6e66b42854615cf0f02a56, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 8ab24024686f52445b1cc670d2394d2f, type: 3}
 --- !u!114 &114553181457358846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -139,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d5feb30a39749f4787964ef2e67dfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionDamage: 10
   Player: {fileID: 0}
   PossibleStates: []
   CurrentState: {fileID: 0}
@@ -162,4 +164,16 @@ MonoBehaviour:
   - {fileID: 0}
   CurrentPatrolPoint: 0
   GoalDistanceCompensation: 0
-  moveSpeed: 5
+  moveSpeed: 4
+--- !u!135 &135035304999438718
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1558461848430048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.04
+  m_Center: {x: 0.000023443257, y: 0, z: -0.00094538194}

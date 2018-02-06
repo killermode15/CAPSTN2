@@ -655,12 +655,13 @@ GameObject:
   - component: {fileID: 114974117951321144}
   - component: {fileID: 114306857153244546}
   - component: {fileID: 114196544164091020}
-  - component: {fileID: 114639703755484506}
   - component: {fileID: 114256737843574192}
   - component: {fileID: 143790905069117466}
   - component: {fileID: 114765325599527964}
   - component: {fileID: 114847953613052846}
   - component: {fileID: 114499983254245204}
+  - component: {fileID: 114523422177273494}
+  - component: {fileID: 114718294390905918}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1433,7 +1434,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831603703517158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.07, y: 1.28, z: 0}
+  m_LocalPosition: {x: -1, y: -0.2, z: 2.58}
   m_LocalScale: {x: 1.233404, y: 1.2334039, z: 1.2334039}
   m_Children:
   - {fileID: 4452132794037542}
@@ -1742,14 +1743,14 @@ MonoBehaviour:
   pathName: HealFX_Path
   pathColor: {r: 0, g: 1, b: 1, a: 1}
   nodes:
-  - {x: -0.39640033, y: 0.61924314, z: 2.6229217}
-  - {x: -1.0592526, y: 1.0708764, z: 2.0599098}
-  - {x: -1.7044113, y: 1.3830626, z: 2.5456698}
-  - {x: -1.4774511, y: 1.664145, z: 3.402824}
-  - {x: -0.641538, y: 2.0711572, z: 3.2878664}
-  - {x: -0.52266324, y: 2.5681887, z: 2.4371889}
-  - {x: -0.99801207, y: 2.8054252, z: 2.0923579}
-  - {x: -1.6867144, y: 2.6773667, z: 2.3208618}
+  - {x: 0.5893793, y: 9.459245, z: 2.6229217}
+  - {x: -0.07347298, y: 9.910877, z: 2.0599098}
+  - {x: -0.7186315, y: 10.223063, z: 2.5456698}
+  - {x: -0.49167132, y: 10.504146, z: 3.402824}
+  - {x: 0.34424162, y: 10.911159, z: 3.2878664}
+  - {x: 0.46311665, y: 11.40819, z: 2.4371889}
+  - {x: -0.012232304, y: 11.645426, z: 2.0923579}
+  - {x: -0.70093465, y: 11.517368, z: 2.3208618}
   nodeCount: 8
   initialized: 1
   initialName: New Path 2
@@ -1777,8 +1778,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3ae9c2716471b42a81c34cb65b70e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanMove: 1
+  DashSpeed: 0
   MoveSpeed: 6
-  JumpHeight: 10
+  JumpHeight: 13
   TurnSmoothTime: 0.2
   DashCurve:
     serializedVersion: 2
@@ -1836,7 +1839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerAnimator: {fileID: 95165657509123972}
---- !u!114 &114639703755484506
+--- !u!114 &114523422177273494
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1844,9 +1847,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1831603703517158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d07d1306bcae5f499971cb4a2e2ae53, type: 3}
+  m_Script: {fileID: 11500000, guid: ed68abda93688e747a3e3bd1dbdb16aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Absorbables: []
+  CurrentMode: 0
+  Corruption: 0
+--- !u!114 &114718294390905918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1831603703517158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f4c1abe08ec92e48ad1706302df1c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnLocation: {fileID: 0}
 --- !u!114 &114765325599527964
 MonoBehaviour:
   m_ObjectHideFlags: 1
