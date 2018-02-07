@@ -7,6 +7,8 @@ public class Projectile : MonoBehaviour {
 	float bulletSpeed;
 	public Vector3 direction;
 	public bool isTargeted;
+	public float ProjectileLife;
+	public float damage;
 
 	// Use this for initialization
 	void Start () {
@@ -16,13 +18,14 @@ public class Projectile : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Shoot ();
-		Destroy (this.gameObject, 5.0f);
+		Destroy (this.gameObject, ProjectileLife);
 	}
 
 	void Shoot(){
 		if (!isTargeted)
 			transform.Translate (direction * bulletSpeed * Time.deltaTime);
 		else if (isTargeted)
-			transform.position = Vector3.MoveTowards (transform.position, transform.right * 20 + direction, Time.deltaTime * bulletSpeed);
+			transform.position = Vector3.MoveTowards (transform.position, transform.right * 50
+				+ direction, Time.deltaTime * bulletSpeed);
 	}
 }

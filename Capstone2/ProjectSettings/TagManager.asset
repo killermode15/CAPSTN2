@@ -8,6 +8,10 @@ TagManager:
   - HPBar
   - EnergyBar
   - SkillUI
+  - Spike
+  - DeathFall
+  - Altar
+  - Projectile
   layers:
   - Default
   - TransparentFX

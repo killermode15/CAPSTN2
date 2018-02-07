@@ -14,9 +14,9 @@ public class Chase : State {
 
 	public override bool OnUpdate()
 	{
-		Vector3 chaseTargetPos = new Vector3 (Manager.Player.transform.position.x, 0, Manager.Player.transform.position.z);
+		Vector3 chaseTargetPos = new Vector3 (Manager.Player.transform.position.x, transform.position.y, Manager.Player.transform.position.z);
 		transform.position = Vector3.MoveTowards(transform.position, chaseTargetPos, moveSpeed * Time.deltaTime);
-		float distance = Vector3.Distance (transform.position, Manager.Player.transform.position);
+		float distance = Vector3.Distance (transform.localPosition, Manager.Player.transform.localPosition);
 		if (distance <= Manager.attackRange || distance >= Manager.DetectionRange) {
 			return false;
 		}

@@ -48,6 +48,9 @@ public class PlayerController : MonoBehaviour
 			dashValue = 0;
 			initialDashVal = 0;
 		}
+
+		if (controller.collisionFlags == CollisionFlags.Above)
+			moveDirection.y = 0;
 	}
 
 	private void LateUpdate()
@@ -232,4 +235,10 @@ public class PlayerController : MonoBehaviour
 	{
 		CanMove = val;
 	}
+
+	public void StopMovement()
+	{
+		moveDirection = Vector3.zero;
+	}
+
 }

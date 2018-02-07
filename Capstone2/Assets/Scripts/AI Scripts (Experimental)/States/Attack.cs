@@ -9,30 +9,55 @@ public class Attack : State {
 	public float chargeSpeed;
 	public float chargeValue;
 	private float initialChargeSpeed;
+	private Vector3 playerGroundPosition;
+	private float dash;
+	private bool isDoneCharging;
 
 	public override void OnEnable()
 	{
-		Debug.Log("starting attack:");
+		isDoneCharging = false;
+		if (Manager != null)
+			playerGroundPosition = new Vector3 (Manager.Player.transform.position.x, 0, 0);//transform.position.y, Manager.Player.transform.position.z);
 		initialChargeSpeed = chargeDuration;
 		chargeValue = chargeDuration;
+		isDoneCharging = false;
 		base.OnEnable();
 	}
 
 	public override bool OnUpdate()
 	{
-		Debug.Log("attacking:");
-		Charge ();
-		float distance = Vector3.Distance (transform.position, Manager.Player.transform.position);
-		if (distance >= Manager.attackRange) {
-			return false;
+		if(!isDoneCharging)
+			Charge ();
+		if (Manager != null) {
+
+			float distance = (playerGroundPosition - new Vector3 (transform.position.x, 0, 0)).magnitude;//Vector3.Distance (transform.position, Manager.Player.transform.position);
+			if (isDoneCharging) {
+				Debug.Log ("its da true");
+				//Vector3 moveAway = transform.position - Manager.Player.transform.position;
+				//moveAway.Normalize ();
+				//transform.position = Vector3.MoveTowards (transform.position, moveAway * 10, 3 * Time.deltaTime);
+				//return false;
+			}
+
+			if (distance >= Manager.attackRange) {
+				return false;
+			}
 		}
 		return true;
 	}
 
 	void Charge(){
+		Debug.Log ("charging");
 		chargeValue -= Time.deltaTime;
-		float dash = (initialChargeSpeed == 0) ? 0 : chargeValue / initialChargeSpeed;
-		transform.position = Vector3.MoveTowards(transform.position, Manager.Player.transform.position, chargeCurve.Evaluate(dash));
+		dash = (initialChargeSpeed == 0) ? 0 : chargeValue / initialChargeSpeed;
+		Vector3 direction = playerGroundPosition - new Vector3 (transform.position.x, 0, 0);// transform.position.z);
+		direction.Normalize ();
+		transform.position = Vector3.MoveTowards(transform.position, direction * chargeSpeed, chargeCurve.Evaluate(dash));
+		if (dash <= 0) {
+			//transform.position.x = Manager.Player.transform.position.x - Manager.DetectionRange;
+			dash = 1;
+			isDoneCharging = true;
+		}
 	}
 
 	IEnumerator Wait()
