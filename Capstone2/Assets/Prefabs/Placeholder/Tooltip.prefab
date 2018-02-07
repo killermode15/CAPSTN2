@@ -118,9 +118,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1027658699041282}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 10.15, y: -2.2423825, z: 4.77}
-  m_LocalScale: {x: 0.55971146, y: 0.5597114, z: 0.5597114}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 37.16, y: 3.5, z: 4.8}
+  m_LocalScale: {x: 0.5597102, y: 0.55970997, z: 0.5597102}
   m_Children:
   - {fileID: 4198792836755882}
   - {fileID: 224783813667018974}
@@ -179,8 +179,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 1.5, z: 3}
-  m_Center: {x: 3.5, y: 1, z: 0}
+  m_Size: {x: 4.0000005, y: 1.4999999, z: 6.3150373}
+  m_Center: {x: 3.4999998, y: 1, z: 0.07732169}
 --- !u!95 &95196254155699632
 Animator:
   serializedVersion: 3
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 473ccf332d517584baf6aca93ccae915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tooltip: Press "L2" to select and "X" to absorb.
+  Tooltip: Approach the altar and release all your absorbed corruption!
   TooltipGameObject: {fileID: 1963492272426464}
   TooltipTextUI: {fileID: 114833226749104852}
 --- !u!114 &114668720270635678

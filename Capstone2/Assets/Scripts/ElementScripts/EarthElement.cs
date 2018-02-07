@@ -7,6 +7,10 @@ public class EarthElement : Element {
 
 	public float ShieldDuration;
 	public GameObject EarthShield;
+	public GameObject EarthTerrain;
+	public GameObject EarthTrap;
+	Vector3 location;
+	public float spawnDistance;
 
 	public override void Use()
 	{
@@ -20,7 +24,29 @@ public class EarthElement : Element {
 			//Debug.Log("Not yet implemented");
 
 			//TEMPORARY
-			Destroy(Instantiate(EarthShield, player), ShieldDuration);
+			//Destroy(Instantiate(EarthShield, player), ShieldDuration);
+
+
+			///Terrain Effect
+			/*if (player.transform.eulerAngles.y >= 0 && player.transform.eulerAngles.y <= 180) {
+				//right
+				location = new Vector3(player.transform.position.x + spawnDistance, player.transform.position.y, player.transform.position.z);
+			} else {
+				location = new Vector3(player.transform.position.x - spawnDistance, player.transform.position.y, player.transform.position.z);
+			}
+			GameObject Terrain = Instantiate (EarthTerrain, location, Quaternion.identity);
+			Destroy (Terrain, 5.0f);*/
+
+
+			///Trap Effect
+			if (player.transform.eulerAngles.y >= 0 && player.transform.eulerAngles.y <= 180) {
+				//right
+				location = new Vector3(player.transform.position.x + spawnDistance, player.transform.position.y, player.transform.position.z);
+			} else {
+				location = new Vector3(player.transform.position.x - spawnDistance, player.transform.position.y, player.transform.position.z);
+			}
+			GameObject Terrain = Instantiate (EarthTrap, location, Quaternion.identity);
+			Destroy (Terrain, 5.0f);
 		}
 	}
 

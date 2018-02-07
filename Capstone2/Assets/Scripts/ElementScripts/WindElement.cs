@@ -6,6 +6,7 @@ using UnityEngine;
 public class WindElement : Element {
 
 	public float JumpIncrease;
+	public GameObject WindPush;
 
 	public override void Use()
 	{
@@ -21,8 +22,16 @@ public class WindElement : Element {
 
 			//TEMPORARY
 			//player.position += new Vector3(0, 1.0f, 0);
-			player.GetComponent<PlayerController>().AddJumpVelocity(JumpIncrease);
-		}
+			//player.GetComponent<PlayerController>().AddJumpVelocity(JumpIncrease);
 
+			///For the Wind Push L1
+			//Debug.Log(player.transform.eulerAngles);
+			if (player.transform.eulerAngles.y >= 0 && player.transform.eulerAngles.y <= 180) {
+				WindPush.GetComponent<Mover> ().isRight = true;
+			} else { //if (player.transform.eulerAngles.y <= 0)
+				WindPush.GetComponent<Mover> ().isRight = false;
+			}
+			GameObject Push = Instantiate (WindPush, player.position, Quaternion.identity);
+		}
 	}
 }

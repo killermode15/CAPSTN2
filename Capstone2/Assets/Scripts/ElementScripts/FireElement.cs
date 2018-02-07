@@ -20,9 +20,13 @@ public class FireElement : Element
 			//Debug.Log("Not yet implemented");
 
 			//TEMPORARY
+			if (player.transform.eulerAngles.y >= 0 && player.transform.eulerAngles.y <= 180) {
+				Sphere.GetComponent<Mover> ().isRight = true;
+			} else { //if (player.transform.eulerAngles.y <= 0)
+				Sphere.GetComponent<Mover> ().isRight = false;
+			}
 			GameObject ball = Instantiate(Sphere, player.position, Quaternion.identity);
 			ball.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-			ball.AddComponent<Mover>();
 		}
 	}
 }
