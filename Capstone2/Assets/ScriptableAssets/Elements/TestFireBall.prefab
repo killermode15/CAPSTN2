@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33918394210543264}
   - component: {fileID: 135621929407646350}
   - component: {fileID: 23215450948429986}
+  - component: {fileID: 114534155322292972}
   m_Layer: 0
   m_Name: TestFireBall
   m_TagString: Untagged
@@ -83,6 +84,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1917020989527246}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114534155322292972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1917020989527246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c20f334e52629845b3cce15fa8a828a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isRight: 0
 --- !u!135 &135621929407646350
 SphereCollider:
   m_ObjectHideFlags: 1

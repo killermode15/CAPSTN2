@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour {
 
+	public bool isRight;
 	// Use this for initialization
 	void Start () {
 		Destroy(gameObject, 3);
@@ -11,6 +12,9 @@ public class Mover : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position += Vector3.right * 10 * Time.deltaTime;
+		if(isRight)
+			transform.position += Vector3.right * 10 * Time.deltaTime;
+		else if (!isRight)
+			transform.position -= Vector3.right * 10 * Time.deltaTime;
 	}
 }

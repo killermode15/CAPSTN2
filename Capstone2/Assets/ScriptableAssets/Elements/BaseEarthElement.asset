@@ -14,7 +14,7 @@ MonoBehaviour:
   Type: 0
   ElementIcon: {fileID: 21300000, guid: 24b8f40cb34e32b409729f3206336bea, type: 3}
   EnergyCost: 0
-  CurrentUseableEnergy: 100
+  CurrentUseableEnergy: 0
   ModifierEnergyCost: 0
   CooldownDuration: 4
   IsElementUnlocked: 1
@@ -24,3 +24,7 @@ MonoBehaviour:
   ShieldDuration: 5
   EarthShield: {fileID: 1118050904625272, guid: 58e333e101af7d04d8f9e86ea641ca00,
     type: 2}
+  EarthTerrain: {fileID: 1652551577583684, guid: a4747a59dc810974b96bad1549ac9185,
+    type: 2}
+  EarthTrap: {fileID: 1499975906222632, guid: 5e69ab71fe0db5d4daff953592c18fb8, type: 2}
+  spawnDistance: 5

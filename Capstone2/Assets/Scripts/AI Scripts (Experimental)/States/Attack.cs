@@ -15,6 +15,7 @@ public class Attack : State {
 
 	public override void OnEnable()
 	{
+		GetComponent<BoxCollider> ().isTrigger = false;
 		isDoneCharging = false;
 		if (Manager != null)
 			playerGroundPosition = new Vector3 (Manager.Player.transform.position.x, 0, 0);//transform.position.y, Manager.Player.transform.position.z);
@@ -67,6 +68,7 @@ public class Attack : State {
 
 	public override void OnDisable()
 	{
+		GetComponent<BoxCollider> ().isTrigger = true;
 		base.OnDisable();
 	}
 }

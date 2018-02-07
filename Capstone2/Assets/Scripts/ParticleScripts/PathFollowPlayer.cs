@@ -24,7 +24,7 @@ public class PathFollowPlayer : MonoBehaviour
 		{
 
 			int index = path.nodeCount - (SmoothCount - i);
-			Debug.Log(index);
+			//Debug.Log(index);
 			if (i != 0)
 			{
 				float count = SmoothCount;
