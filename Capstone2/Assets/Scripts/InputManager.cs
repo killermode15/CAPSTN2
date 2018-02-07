@@ -21,6 +21,7 @@ public enum ControllerInput
 	Move = (int)KeyCode.Joystick1Button2, 
 	Defend = (int)KeyCode.Joystick1Button3,
 
+	ActivateAltar = (int)KeyCode.Joystick1Button13,
 	TriggerElementWheel = (int)KeyCode.Joystick1Button4,
 	ModifyMove = (int)KeyCode.Joystick1Button5,
 	StartAbsorb = (int)KeyCode.Joystick1Button6,
@@ -69,6 +70,7 @@ public class InputManager : MonoBehaviour
 			case ControllerInput.Move:
 			case ControllerInput.TriggerElementWheel:
 			case ControllerInput.UseCurrentElement:
+			case ControllerInput.ActivateAltar:
 			case ControllerInput.StartAbsorb:
 			case ControllerInput.ModifyMove:
 				if (ReturnAsGetKey(input))
@@ -107,6 +109,7 @@ public class InputManager : MonoBehaviour
 			case ControllerInput.Move:
 			case ControllerInput.TriggerElementWheel:
 			case ControllerInput.UseCurrentElement:
+			case ControllerInput.ActivateAltar:
 			case ControllerInput.StartAbsorb:
 			case ControllerInput.ModifyMove:
 				if (ReturnAsGetKeyDown(input))
@@ -145,6 +148,7 @@ public class InputManager : MonoBehaviour
 			case ControllerInput.Move:
 			case ControllerInput.TriggerElementWheel:
 			case ControllerInput.UseCurrentElement:
+			case ControllerInput.ActivateAltar:
 			case ControllerInput.StartAbsorb:
 			case ControllerInput.ModifyMove:
 				if (ReturnAsGetKeyUp(input))

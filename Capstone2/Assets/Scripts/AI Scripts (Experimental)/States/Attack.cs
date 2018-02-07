@@ -4,60 +4,56 @@ using UnityEngine;
 
 public class Attack : State {
 
-	public AnimationCurve chargeCurve;
-	public float chargeDuration;
-	public float chargeSpeed;
-	public float chargeValue;
-	private float initialChargeSpeed;
-	private Vector3 playerGroundPosition;
-	private float dash;
-	private bool isDoneCharging;
+	public float MoveAwaySpeed;
+	public float ChargeSpeed;
+	public float ChargeDuration;
+	public AnimationCurve ChargeCurve;
+
+	private float chargeValue;
+	private float initialChargeValue ;
+	private bool doneCharging;
+	private Vector3 chargeDir;
+	
 
 	public override void OnEnable()
 	{
-		isDoneCharging = false;
-		if (Manager != null)
-			playerGroundPosition = new Vector3 (Manager.Player.transform.position.x, 0, 0);//transform.position.y, Manager.Player.transform.position.z);
-		initialChargeSpeed = chargeDuration;
-		chargeValue = chargeDuration;
-		isDoneCharging = false;
 		base.OnEnable();
+		if (ChargeDuration <= 0)
+			ChargeDuration = 1;
+		chargeValue = ChargeDuration;
+		initialChargeValue = ChargeDuration;
+		doneCharging = false;
+
+		chargeDir = (new Vector3(Manager.Player.transform.position.x, 0, 0) - new Vector3(transform.position.x, 0, 0)).normalized;
+
 	}
 
 	public override bool OnUpdate()
 	{
-		if(!isDoneCharging)
-			Charge ();
-		if (Manager != null) {
-
-			float distance = (playerGroundPosition - new Vector3 (transform.position.x, 0, 0)).magnitude;//Vector3.Distance (transform.position, Manager.Player.transform.position);
-			if (isDoneCharging) {
-				Debug.Log ("its da true");
-				//Vector3 moveAway = transform.position - Manager.Player.transform.position;
-				//moveAway.Normalize ();
-				//transform.position = Vector3.MoveTowards (transform.position, moveAway * 10, 3 * Time.deltaTime);
-				//return false;
-			}
-
-			if (distance >= Manager.attackRange) {
+		if (!doneCharging)
+		{
+			Charge();
+		}
+		else
+		{
+			transform.position += chargeDir * MoveAwaySpeed * Time.deltaTime;
+			if(Vector3.Distance(transform.position, Manager.Player.transform.position) > Manager.attackRange)
+			{
 				return false;
 			}
 		}
+
 		return true;
 	}
 
 	void Charge(){
-		Debug.Log ("charging");
 		chargeValue -= Time.deltaTime;
-		dash = (initialChargeSpeed == 0) ? 0 : chargeValue / initialChargeSpeed;
-		Vector3 direction = playerGroundPosition - new Vector3 (transform.position.x, 0, 0);// transform.position.z);
-		direction.Normalize ();
-		transform.position = Vector3.MoveTowards(transform.position, direction * chargeSpeed, chargeCurve.Evaluate(dash));
-		if (dash <= 0) {
-			//transform.position.x = Manager.Player.transform.position.x - Manager.DetectionRange;
-			dash = 1;
-			isDoneCharging = true;
-		}
+		float currentDashValue = chargeValue / initialChargeValue;
+		//transform.position = Vector3.Lerp(transform.position, dir * (ChargeCurve.Evaluate(currentDashValue) * ChargeSpeed), currentDashValue);
+		transform.position += chargeDir * (ChargeCurve.Evaluate(currentDashValue) * ChargeSpeed);
+
+		if (currentDashValue <= 0)
+			doneCharging = true;
 	}
 
 	IEnumerator Wait()
@@ -68,5 +64,7 @@ public class Attack : State {
 	public override void OnDisable()
 	{
 		base.OnDisable();
+		chargeDir = Vector3.zero;
+		doneCharging = false;
 	}
 }
