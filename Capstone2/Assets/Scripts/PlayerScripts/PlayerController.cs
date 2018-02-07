@@ -171,7 +171,6 @@ public class PlayerController : MonoBehaviour
 		//Add dash if turned onx
 		float dash = (initialDashVal == 0) ? 0 : dashValue / initialDashVal;
 		moveDirection.x += DashCurve.Evaluate(dash) * DashSpeed ;
-		Debug.Log(DashCurve.Evaluate(dash));
 		//Then set the y velocity back
 		moveDirection.y = currY;
 

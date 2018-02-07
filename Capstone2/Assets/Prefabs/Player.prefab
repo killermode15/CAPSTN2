@@ -655,12 +655,13 @@ GameObject:
   - component: {fileID: 114974117951321144}
   - component: {fileID: 114306857153244546}
   - component: {fileID: 114196544164091020}
-  - component: {fileID: 114639703755484506}
   - component: {fileID: 114256737843574192}
   - component: {fileID: 143790905069117466}
   - component: {fileID: 114765325599527964}
   - component: {fileID: 114847953613052846}
   - component: {fileID: 114499983254245204}
+  - component: {fileID: 114261987797192834}
+  - component: {fileID: 114406980947326942}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1433,7 +1434,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831603703517158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.07, y: 1.28, z: 0}
+  m_LocalPosition: {x: -3.29, y: -0.57, z: 2.58}
   m_LocalScale: {x: 1.233404, y: 1.2334039, z: 1.2334039}
   m_Children:
   - {fileID: 4452132794037542}
@@ -1742,14 +1743,14 @@ MonoBehaviour:
   pathName: HealFX_Path
   pathColor: {r: 0, g: 1, b: 1, a: 1}
   nodes:
-  - {x: -0.39640033, y: 0.61924314, z: 2.6229217}
-  - {x: -1.0592526, y: 1.0708764, z: 2.0599098}
-  - {x: -1.7044113, y: 1.3830626, z: 2.5456698}
-  - {x: -1.4774511, y: 1.664145, z: 3.402824}
-  - {x: -0.641538, y: 2.0711572, z: 3.2878664}
-  - {x: -0.52266324, y: 2.5681887, z: 2.4371889}
-  - {x: -0.99801207, y: 2.8054252, z: 2.0923579}
-  - {x: -1.6867144, y: 2.6773667, z: 2.3208618}
+  - {x: -20.54537, y: -5.6707563, z: 2.2229216}
+  - {x: -21.329254, y: -5.219123, z: 1.6599097}
+  - {x: -21.974415, y: -4.9069366, z: 2.1456697}
+  - {x: -21.747452, y: -4.6258545, z: 3.0028238}
+  - {x: -20.911537, y: -4.2188435, z: 2.8878663}
+  - {x: -20.792664, y: -3.7218118, z: 2.0371888}
+  - {x: -21.268013, y: -3.484575, z: 1.6923578}
+  - {x: -21.956715, y: -3.6126342, z: 1.9208617}
   nodeCount: 8
   initialized: 1
   initialName: New Path 2
@@ -1777,8 +1778,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3ae9c2716471b42a81c34cb65b70e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CanMove: 1
+  DashSpeed: 0
   MoveSpeed: 6
-  JumpHeight: 10
+  JumpHeight: 13
   TurnSmoothTime: 0.2
   DashCurve:
     serializedVersion: 2
@@ -1810,6 +1813,20 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114261987797192834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1831603703517158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed68abda93688e747a3e3bd1dbdb16aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Absorbables: []
+  CurrentMode: 0
+  Corruption: 0
 --- !u!114 &114306857153244546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1824,6 +1841,24 @@ MonoBehaviour:
   Health: 100
   MaxHealth: 100
   HealthBar: {fileID: 0}
+--- !u!114 &114406980947326942
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1831603703517158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5826388b8a5810943a29876466573654, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentCorruption: 0
+  MaxCorruption: 0
+  DecayRateMultiplier: 0
+  TimeTillDecayAmplify: 1
+  HealthDecayRate: 0
+  PercentTillDecay: 0
+  CorruptionEffect: {fileID: 0}
 --- !u!114 &114499983254245204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1836,17 +1871,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerAnimator: {fileID: 95165657509123972}
---- !u!114 &114639703755484506
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1831603703517158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d07d1306bcae5f499971cb4a2e2ae53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114765325599527964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1888,8 +1912,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 501ac8426a3d1fd46b04ac888e75c98c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PathOffset: {x: 0, y: 1, z: 0}
+  PathOffset: {x: -14.72, y: -3.5, z: -0.2}
+  EnableMove: 1
   UseLocalPosition: 0
+  CanChangeNodePositions: 0
+  path: {fileID: 114118962793290442}
+  pathNodes:
+  - {x: -2.5353699, y: -1.6007566, z: 2.4229217}
+  - {x: -3.3192549, y: -1.1491232, z: 1.8599098}
+  - {x: -3.9644156, y: -0.83693695, z: 2.3456697}
+  - {x: -3.7374525, y: -0.5558548, z: 3.2028239}
+  - {x: -2.901538, y: -0.14884329, z: 3.0878663}
+  - {x: -2.7826643, y: 0.34818816, z: 2.2371888}
+  - {x: -3.2580137, y: 0.5854249, z: 1.8923578}
+  - {x: -3.9467154, y: 0.45736575, z: 2.1208618}
+  originalNodes:
+  - {x: -2.5353699, y: -1.6007566, z: 2.4229217}
+  - {x: -3.3192549, y: -1.1491232, z: 1.8599098}
+  - {x: -3.9644156, y: -0.83693695, z: 2.3456697}
+  - {x: -3.7374525, y: -0.5558548, z: 3.2028239}
+  - {x: -2.901538, y: -0.14884329, z: 3.0878663}
+  - {x: -2.7826643, y: 0.34818816, z: 2.2371888}
+  - {x: -3.2580137, y: 0.5854249, z: 1.8923578}
+  - {x: -3.9467154, y: 0.45736575, z: 2.1208618}
 --- !u!114 &114847953613052846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12220,7 +12265,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1104439635
+  randomSeed: 1694027491
   InitialModule:
     serializedVersion: 3
     enabled: 1

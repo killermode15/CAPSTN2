@@ -194,7 +194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PathName: tree1PathAbsorb_vfx
   TimeToFinish: 0.75
-  EaseType: 1
+  EaseType: 2
   LoopType: 0
 --- !u!198 &198028796911125922
 ParticleSystem:

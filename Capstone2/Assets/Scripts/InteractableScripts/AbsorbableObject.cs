@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class AbsorbableObject : Absorbable
 {
 	public ElementType Type;
-
+	public VFXPlayer playingvfx;
 	public List<VFXPlayer> VFX;
 	public List<PathVFX> PathVFX;
 
@@ -37,6 +37,7 @@ public class AbsorbableObject : Absorbable
 		}
 		else
 		{
+			IsBeingAbsorbed = false;
 			//VFXFromString("selection").Stop();
 			//VFXFromString("aura ring selection").Stop();
 		}
@@ -46,11 +47,13 @@ public class AbsorbableObject : Absorbable
 	{
 		if (CanBeAbsorbed())
 		{
-			if (IsAbsorbing())
+			if (IsBeingAbsorbed)
 			{
-				//VFX.Find(x => x.VFXName.ToLower() == "absorb").Play();
+
 				//Play Absorb VFX here
 				//Absorb enemy
+				VFXFromString("AbsorbVFX").Play();
+				IsBeingAbsorbed = true;
 				Energy -= AbsorbRate;
 			}
 		}
@@ -65,9 +68,25 @@ public class AbsorbableObject : Absorbable
 
 	public VFXPlayer VFXFromString(string vfxName)
 	{
-		VFXPlayer vfx = (VFX.Find(x => x.VFXName.ToLower() == vfxName)) == null ?
-			PathVFX.Find(x => x.VFXName.ToLower() == vfxName) : (VFX.Find(x => x.VFXName.ToLower() == vfxName));
+		VFXPlayer vfx = null;
 
+		//= (VFX.Find(x => x.VFXName.ToLower() == vfxName)) == null ?
+		//	(VFX.Find(x => x.VFXName.ToLower() == vfxName)) : (VFX.Find(x => x.VFXName.ToLower() == vfxName));
+
+		if (VFX.Exists(x => x.VFXName ==vfxName))
+		{
+			vfx = VFX.Find(x => x.VFXName == vfxName);
+		}
+		else if(PathVFX.Exists(x => x.VFXName == vfxName))
+		{
+			vfx = PathVFX.Find(x => x.VFXName == vfxName);
+		}
+
+		if (vfx == null)
+		{
+			Debug.Break();
+			throw new System.NullReferenceException("VFX [" + vfxName + "] does not exist");
+		}
 		return vfx;
 	}
 }

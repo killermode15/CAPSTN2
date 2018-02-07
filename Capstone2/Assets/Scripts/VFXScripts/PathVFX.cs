@@ -6,6 +6,7 @@ using UnityEngine;
 public class PathVFX : VFXPlayer
 {
 	public bool IsInstanced;
+	public Transform InstanceTransform;
 	public bool Loop;
 
 
@@ -15,7 +16,7 @@ public class PathVFX : VFXPlayer
 		{
 			if (IsInstanced)
 			{
-				GameObject newVFX = MonoBehaviour.Instantiate(VFX, VFX.transform.parent);
+				GameObject newVFX = MonoBehaviour.Instantiate(VFX, InstanceTransform.position, Quaternion.identity);
 				//newVFX.transform.parent = (VFX.transform.parent);//, true);
 				//newVFX.transform.localPosition = VFX.transform.localPosition;
 				newVFX.GetComponent<ParticleFollowPath>().Activate();

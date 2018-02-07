@@ -32,6 +32,9 @@ public class Absorb : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		if (selectedIndex > Absorbables.Count)
+			selectedIndex = 0;
+
 		GetAllAbsorbable();
 		if (IsSelecting())
 		{
@@ -82,6 +85,7 @@ public class Absorb : MonoBehaviour
 					selected = currentSelected.GetComponent<AbsorbableObject>();
 					Element element = GetComponent<UseSkill>().ElementalSkills.Find(x => x.Type == ((AbsorbableObject)selected).Type);
 					selected.InteractWith();
+					selected.IsBeingAbsorbed = true;
 					element.AddEnergy(selected.AbsorbRate);
 				}
 				break;
@@ -215,10 +219,10 @@ public class Absorb : MonoBehaviour
 			{
 				recentlySwitched = true;
 				selectedIndex += inputSelection;
-				if (selectedIndex > Absorbables.Count - 1)
+				if (selectedIndex > Absorbables.Count)
 					selectedIndex = 0;
 				else if (selectedIndex < 0)
-					selectedIndex = Absorbables.Count - 1;
+					selectedIndex = Absorbables.Count-1;
 			}
 
 		}

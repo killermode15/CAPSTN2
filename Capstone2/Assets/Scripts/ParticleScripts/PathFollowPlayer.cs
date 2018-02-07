@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PathFollowPlayer : MonoBehaviour {
+public class PathFollowPlayer : MonoBehaviour
+{
 
 	public Transform Player;
+	public Transform PathFollowReference;
+	public int SmoothCount;
 
 	private iTweenPath path;
 
@@ -15,9 +18,25 @@ public class PathFollowPlayer : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update()
+	{
+		for (int i = 0; i < SmoothCount; i++)
+		{
 
-		path.nodes[path.nodeCount - 2] = Vector3.Lerp(transform.position, Player.position, 0.5f) ;
-		path.nodes[path.nodeCount - 1] = Player.position;
+			int index = path.nodeCount - (SmoothCount - i);
+			Debug.Log(index);
+			if (i != 0)
+			{
+				float count = SmoothCount;
+				float perc = (float)i / count;
+				//Debug.Log(((SmoothCount - 1) - (i + 1));// "Iteration Index: " + i + " / Perc : " + perc);
+				path.nodes[index] = Vector3.Lerp(PathFollowReference.position, Player.position, perc);
+			}
+			else
+				path.nodes[path.nodeCount - 1] = Vector3.Lerp(PathFollowReference.position, Player.position, 1);
+		}
+		//path.nodes[path.nodeCount - 3] = Vector3.Lerp(transform.position, Player.position, 0.33f);
+		//path.nodes[path.nodeCount - 2] = Vector3.Lerp(transform.position, Player.position, 0.66f) ;
+		//path.nodes[path.nodeCount - 1] = Player.position;
 	}
 }

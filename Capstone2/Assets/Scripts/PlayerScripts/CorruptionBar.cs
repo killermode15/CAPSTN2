@@ -41,6 +41,8 @@ public class CorruptionBar : MonoBehaviour {
 		VignetteEffect();
 
 		float corruptionPerc = CurrentCorruption / MaxCorruption;
+		if (CurrentCorruption > MaxCorruption)
+			CurrentCorruption = MaxCorruption;
 
 		if(corruptionPerc >= PercentTillDecay)
 		{
