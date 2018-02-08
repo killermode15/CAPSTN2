@@ -63,6 +63,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1181438302013766
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4693467333692524}
+  m_Layer: 0
+  m_Name: ReferenceTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 6926474624037801865, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1396285040904632
 GameObject:
   m_ObjectHideFlags: 1
@@ -127,6 +142,7 @@ GameObject:
   - component: {fileID: 4038767637936954}
   - component: {fileID: 114117352973117564}
   - component: {fileID: 114833369680973344}
+  - component: {fileID: 114952035502149720}
   m_Layer: 0
   m_Name: AbsorbPath
   m_TagString: Untagged
@@ -143,9 +159,10 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4693467333692524}
   m_Father: {fileID: 4055263167167728}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4055263167167728
 Transform:
@@ -154,15 +171,28 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1642878378655524}
   m_LocalRotation: {x: -0, y: -0.70698655, z: -0, w: 0.7072271}
-  m_LocalPosition: {x: 12, y: -1.43, z: 2.8789258}
+  m_LocalPosition: {x: 13.21, y: -1.63, z: 2.89}
   m_LocalScale: {x: 7.8152456, y: 7.815245, z: 7.815245}
   m_Children:
   - {fileID: 224425236133221250}
-  - {fileID: 4878566715176334}
   - {fileID: 4038767637936954}
+  - {fileID: 4878566715176334}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -89.98, z: 0}
+--- !u!4 &4693467333692524
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1181438302013766}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0105, z: 0.057}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4038767637936954}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4878566715176334
 Transform:
   m_ObjectHideFlags: 1
@@ -170,11 +200,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1060275316851114}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.017, y: -0.004, z: 0.1}
+  m_LocalPosition: {x: -0.017, y: -0.0039999983, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4055263167167728}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23605286232772560
 MeshRenderer:
@@ -252,11 +282,12 @@ MonoBehaviour:
   pathName: absorbPath_vfx2
   pathColor: {r: 0, g: 1, b: 1, a: 1}
   nodes:
-  - {x: 6.2599993, y: -1.25, z: 2.8300002}
-  - {x: 6.285909, y: 0.313344, z: 2.8300002}
-  - {x: 4.5298743, y: 1.5006781, z: 0}
-  - {x: 3.0194943, y: 0.03024888, z: 0}
-  nodeCount: 4
+  - {x: 12.709999, y: -1.7400002, z: 2.8300002}
+  - {x: 12.7359085, y: -0.17665577, z: 2.8300002}
+  - {x: 10.979874, y: 1.0106783, z: 2.83}
+  - {x: 9.469494, y: -0.45975113, z: 2.83}
+  - {x: 0, y: 0, z: 0}
+  nodeCount: 5
   initialized: 1
   initialName: New Path 2
   pathVisible: 1
@@ -281,6 +312,7 @@ MonoBehaviour:
   - VFXName: vfx_CorruptionAbsorb
     VFX: {fileID: 1060275316851114}
     IsInstanced: 1
+    InstanceTransform: {fileID: 4693467333692524}
     Loop: 0
   ButtonTimer: 1.5
   ButtonImages:
@@ -437,6 +469,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  PathFollowReference: {fileID: 4693467333692524}
+  SmoothCount: 3
+--- !u!114 &114952035502149720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1887473051809610}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 501ac8426a3d1fd46b04ac888e75c98c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PathOffset: {x: -30.48, y: 4.4, z: 0}
+  EnableMove: 1
+  UseLocalPosition: 0
+  CanChangeNodePositions: 0
+  path: {fileID: 114117352973117564}
+  pathNodes:
+  - {x: 12.709999, y: -1.7400002, z: 2.8300002}
+  - {x: 12.7359085, y: -0.17665577, z: 2.8300002}
+  - {x: 10.979874, y: 1.0106783, z: 2.83}
+  - {x: 9.469494, y: -0.45975113, z: 2.83}
+  - {x: 0, y: 0, z: 0}
+  originalNodes: []
 --- !u!198 &198338647410568736
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -496,8 +553,8 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 1
-  randomSeed: 130719163
+  scalingMode: 0
+  randomSeed: 1486501128
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -649,7 +706,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.15
       minScalar: 1
       maxCurve:
         serializedVersion: 2

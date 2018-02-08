@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2314,7 +2314,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1845847399
+  randomSeed: 2083477977
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6559,7 +6559,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1748642936
+  randomSeed: 248027778
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10234,7 +10234,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 897506223
+  randomSeed: 1158975360
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13952,7 +13952,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -958394109
+  randomSeed: 1140062058
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -19010,7 +19010,7 @@ GameObject:
   m_PrefabParentObject: {fileID: 1174294958235450, guid: 9925ffc7fd7c0ed45ab978debc7706e3,
     type: 2}
   m_PrefabInternal: {fileID: 1709185963}
---- !u!114 &1814734115
+--- !u!114 &1814734114
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -19018,19 +19018,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 1814734113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72892658d19f87d4a9e8fbe6ed33fbb9, type: 3}
+  m_Script: {fileID: 11500000, guid: 15ecd64810b1d8249bd63cd3df5291db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnergyType: 1
-  Energy: 100
-  AbsorptionRate: 20
+  EnergyType: 0
+  Energy: 0
+  AbsorptionRate: 0
   IsSelected: 0
   IsBeingAbsorbed: 0
+  Type: 0
+  playingvfx:
+    VFXName: 
+    VFX: {fileID: 0}
   VFX: []
-  PathVFX: []
-  ButtonTimer: 0
-  ButtonImages: []
-  Buttons: []
+  PathVFX:
+  - VFXName: selection
+    VFX: {fileID: 1720377351}
+    IsInstanced: 0
+    InstanceTransform: {fileID: 0}
+    Loop: 0
 --- !u!1 &1821393825
 GameObject:
   m_ObjectHideFlags: 0
@@ -19196,7 +19202,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -413247314
+  randomSeed: -433114771
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -22668,7 +22674,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -2083065620
+  randomSeed: 128371367
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -26501,7 +26507,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 617021809
+  randomSeed: -617470562
   InitialModule:
     serializedVersion: 3
     enabled: 1

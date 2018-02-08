@@ -22,7 +22,7 @@ public class ElementEnergyUI : MonoBehaviour {
 	void Update () {
 
 		energyPercent = useSkillRef.ActiveElement.CurrentUseableEnergy / useSkillRef.ActiveElement.MaxUseableEnergy;
-
+		EnergyBar.GetComponent<Image>().color = useSkillRef.ActiveElement.EnergyColor;
 		if (EnergyBar.fillAmount != energyPercent)
 		{
 			currentLerpTime += Time.deltaTime;

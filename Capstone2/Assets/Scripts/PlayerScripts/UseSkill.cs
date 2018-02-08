@@ -36,9 +36,15 @@ public class UseSkill : MonoBehaviour {
 		{
 			if (!ActiveElement.IsElementUnlocked || ActiveElement.IsOnCooldown || ActiveElement.CurrentUseableEnergy < ActiveElement.EnergyCost)
 				return;
-			UseActiveElement();
+			UsePrimaryActiveElement();
 		}
- 
+		else if (InputManager.Instance.GetKey(ControllerInput.UseSecondaryCurrentElement))
+		{
+			if (!ActiveElement.IsElementUnlocked || ActiveElement.IsOnCooldown || ActiveElement.CurrentUseableEnergy < ActiveElement.EnergyCost)
+				return;
+			UseSecondaryActiveElement();
+		}
+
 	}
 
 	public void SelectNextElement()
@@ -50,8 +56,8 @@ public class UseSkill : MonoBehaviour {
 		}
 		ActiveElement = ElementalSkills[currentActiveElementIndex];
 	}
-	
-	public void UseActiveElement()
+
+	public void UsePrimaryActiveElement()
 	{
 		if (!ActiveElement.IsOnCooldown)
 		{
@@ -61,6 +67,17 @@ public class UseSkill : MonoBehaviour {
 			currentCooldowns.Add(ActiveElement.CooldownDuration);
 		}
 	}
+	public void UseSecondaryActiveElement()
+	{
+		if (!ActiveElement.IsOnCooldown)
+		{
+			ActiveElement.SecondaryUse();
+			ActiveElement.IsOnCooldown = true;
+			elementsOnCooldown.Add(ActiveElement);
+			currentCooldowns.Add(ActiveElement.CooldownDuration);
+		}
+	}
+
 
 	public void UpdateElementCooldowns()
 	{

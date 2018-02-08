@@ -14,7 +14,6 @@ public class Absorb : MonoBehaviour
 
 	public List<Absorbable> Absorbables;
 	public AbsorbMode CurrentMode;
-	public float Corruption;
 
 
 	private List<Absorbable> allAbsorbable;
@@ -76,6 +75,16 @@ public class Absorb : MonoBehaviour
 						isAbsorbingCorruption = true;
 						GetComponent<PlayerController>().CanMove = false;
 					}
+					else if(!selected.IsBeingAbsorbed)
+					{
+						isAbsorbingCorruption = false;
+						GetComponent<PlayerController>().CanMove = true;
+					}
+				}
+				else if(selected == null)
+				{
+					isAbsorbingCorruption = false;
+					GetComponent<PlayerController>().CanMove = true;
 				}
 
 				break;
@@ -104,6 +113,8 @@ public class Absorb : MonoBehaviour
 
 		foreach (Absorbable obj in allAbsorbable)
 		{
+			if (!obj)
+				continue;
 			Vector3 screenPoint = Camera.main.WorldToViewportPoint(obj.transform.position);
 			bool onScreen = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
 

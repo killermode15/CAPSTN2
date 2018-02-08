@@ -27,6 +27,7 @@ public enum ControllerInput
 	StartAbsorb = (int)KeyCode.Joystick1Button6,
 	AbsorbEnergy = (int)KeyCode.Joystick1Button6 & Attack,
 	UseCurrentElement = (int)KeyCode.Joystick1Button7,
+	UseSecondaryCurrentElement = (int)KeyCode.Joystick1Button5,
 	SelectElement = TriggerElementWheel & (int)KeyCode.Joystick1Button1,
 	SwitchAbsorbMode = (int)KeyCode.Joystick1Button0,
 }

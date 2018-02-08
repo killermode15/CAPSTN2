@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	public bool CanMove = true;
-	public float DashSpeed;
+	//public float DashSpeed;
 	public float MoveSpeed = 6.0f;
 	public float JumpHeight;
 	public float TurnSmoothTime = 0.02f;
@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
 	private bool canJump = true;
 	private float dashValue;
+	private float dashSpeed;
 	private float initialDashVal;
 	private float turnSmoothVel;
 	private float origZPos;
@@ -36,9 +37,11 @@ public class PlayerController : MonoBehaviour
 	void Update()
 	{
 		transform.position = new Vector3(transform.position.x, transform.position.y, origZPos);
-		
-		Move();
+
+		CalculateGravity();
+		RotateCharacter();
 		Jump();
+		Move();
 		if (dashValue > 0.15f || dashValue < -0.15f)
 		{
 			dashValue -= Time.deltaTime;
@@ -56,8 +59,6 @@ public class PlayerController : MonoBehaviour
 	private void LateUpdate()
 	{
 
-		CalculateGravity();
-		RotateCharacter();
 	}
 
 	//Calculates the y velocity depending on whether the player is jumping
@@ -90,26 +91,47 @@ public class PlayerController : MonoBehaviour
 
 		//}
 		#endregion
+		if (IsGrounded())
+		{
+			canJump = true;
+			moveDirection.y = (Physics.gravity.y * Time.deltaTime);
+		}
+		else
+		{
+			if (!IsGrounded())
+				canJump = false;
+			if (!canJump || moveDirection.y > 0)
+			{
+				if (!IsGrounded())
+					moveDirection.y += (Physics.gravity.y * Time.deltaTime) * 2;
+			}
 
+			if (!canJump && moveDirection.y < 0)
+			{
+				if (!IsGrounded())
+					moveDirection.y += Physics.gravity.y * Time.deltaTime;
+			}
+		}
+
+		/*
 		canJump = IsGrounded();
-
-		if (!canJump || moveDirection.y > 0)
-		{
-			moveDirection.y += (Physics.gravity.y * Time.deltaTime) * 2;
-		}
-
-		if(moveDirection.y < 0)
-		{
-			moveDirection.y += Physics.gravity.y * Time.deltaTime;
-		}
-
-		else if (canJump)
+		if (canJump)
 		{
 			//If the player is grounded
 			if (IsGrounded())
 				//Set the y velocity to 0
 				moveDirection.y = 0;
 		}
+		else if (!canJump || moveDirection.y > 0)
+		{
+			moveDirection.y += (Physics.gravity.y * Time.deltaTime) * 2;
+		}
+
+		if(canJump && moveDirection.y < 0)
+		{
+			moveDirection.y += Physics.gravity.y * Time.deltaTime;
+		}
+		*/
 
 		#region old code
 		////If the player is currently jumping or is not grounded
@@ -173,7 +195,7 @@ public class PlayerController : MonoBehaviour
 		moveDirection *= MoveSpeed;
 		//Add dash if turned onx
 		float dash = (initialDashVal == 0) ? 0 : dashValue / initialDashVal;
-		moveDirection.x += DashCurve.Evaluate(dash) * DashSpeed ;
+		moveDirection.x += DashCurve.Evaluate(dash) * dashSpeed;
 		//Then set the y velocity back
 		moveDirection.y = currY;
 
@@ -213,14 +235,16 @@ public class PlayerController : MonoBehaviour
 	{
 		moveDirection.y = 0;
 		moveDirection.y += val;
+		canJump = false;
 	}
 
-	public void AddForwardVelocity(float duration)
+	public void AddForwardVelocity(float duration, float speed)
 	{
-		if (dashValue <= 0)
+		if (dashValue <= 0 || dashValue > 0)
 		{
 			initialDashVal = duration;
-			dashValue = duration * Input.GetAxisRaw("Horizontal");
+			dashValue = duration;
+			dashSpeed = speed * Input.GetAxisRaw("Horizontal");
 		}
 	}
 

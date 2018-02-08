@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attack : State {
+public class Attack : State
+{
 
 	public float MoveAwaySpeed;
 	public float ChargeSpeed;
@@ -10,13 +11,14 @@ public class Attack : State {
 	public AnimationCurve ChargeCurve;
 
 	private float chargeValue;
-	private float initialChargeValue ;
+	private float initialChargeValue;
 	private bool doneCharging;
 	private Vector3 chargeDir;
-	
+
 
 	public override void OnEnable()
 	{
+		GetComponent<Collider>().isTrigger = true;
 		base.OnEnable();
 		if (ChargeDuration <= 0)
 			ChargeDuration = 1;
@@ -37,7 +39,8 @@ public class Attack : State {
 		else
 		{
 			transform.position += chargeDir * MoveAwaySpeed * Time.deltaTime;
-			if(Vector3.Distance(transform.position, Manager.Player.transform.position) > Manager.attackRange)
+			GetComponent<Collider>().isTrigger = false;
+			if (Vector3.Distance(transform.position, Manager.Player.transform.position) > Manager.attackRange)
 			{
 				return false;
 			}
@@ -46,7 +49,8 @@ public class Attack : State {
 		return true;
 	}
 
-	void Charge(){
+	void Charge()
+	{
 		chargeValue -= Time.deltaTime;
 		float currentDashValue = chargeValue / initialChargeValue;
 		//transform.position = Vector3.Lerp(transform.position, dir * (ChargeCurve.Evaluate(currentDashValue) * ChargeSpeed), currentDashValue);
@@ -64,6 +68,7 @@ public class Attack : State {
 	public override void OnDisable()
 	{
 		base.OnDisable();
+		GetComponent<Collider>().isTrigger = false;
 		chargeDir = Vector3.zero;
 		doneCharging = false;
 	}

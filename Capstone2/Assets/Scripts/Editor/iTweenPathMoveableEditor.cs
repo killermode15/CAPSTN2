@@ -29,6 +29,7 @@ public class iTweenPathMoveableEditor : Editor
 			ToggleButtonStyleToggled.normal.background = ToggleButtonStyleToggled.active.background;
 		}
 
+		script.DisableOnStart = EditorGUILayout.Toggle("Disable On Start", script.DisableOnStart);
 		script.PathOffset = EditorGUILayout.Vector3Field("Offset", script.PathOffset);
 		script.EnableMove = EditorGUILayout.Toggle("Enable Movement", script.EnableMove);
 

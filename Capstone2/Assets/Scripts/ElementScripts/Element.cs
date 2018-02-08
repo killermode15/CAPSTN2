@@ -15,9 +15,10 @@ public class Element : ScriptableObject {
 
 	public ElementType Type;
 	public Sprite ElementIcon;
+	public Color EnergyColor;
 	public float EnergyCost;
 	public float CurrentUseableEnergy;
-	public float ModifierEnergyCost;
+	public float SecondaryUseEnergyCost;
 	public float CooldownDuration;
 	public bool IsElementUnlocked;
 	public bool IsOnCooldown;
@@ -55,7 +56,7 @@ public class Element : ScriptableObject {
 		//throw new System.NullReferenceException("This is the base class");
 	}
 
-	public virtual void ModifyMove()
+	public virtual void SecondaryUse()
 	{
 		if (!player)
 		{
@@ -70,6 +71,6 @@ public class Element : ScriptableObject {
 
 	public bool IsModifierUseable()
 	{
-		return CurrentUseableEnergy >= ModifierEnergyCost && !IsOnCooldown && IsModifier;
+		return CurrentUseableEnergy >= SecondaryUseEnergyCost && !IsOnCooldown && IsModifier;
 	}
 }

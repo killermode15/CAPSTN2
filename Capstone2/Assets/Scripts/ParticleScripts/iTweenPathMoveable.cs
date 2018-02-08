@@ -11,6 +11,7 @@ public class iTweenPathMoveable : MonoBehaviour
 	public bool EnableMove;
 	public bool UseLocalPosition;
 	public bool CanChangeNodePositions;
+	public bool DisableOnStart;
 
 	public iTweenPath path;
 
@@ -20,7 +21,8 @@ public class iTweenPathMoveable : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		enabled = false;
+		if (DisableOnStart)
+			enabled = false;
 		GetNodes();
 	}
 

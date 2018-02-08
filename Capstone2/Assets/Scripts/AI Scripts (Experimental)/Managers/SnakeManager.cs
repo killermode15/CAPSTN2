@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(AbsorbableCorruption))]
 public class SnakeManager : StateManager {
 
 	private void OnDrawGizmosSelected()
@@ -27,6 +28,12 @@ public class SnakeManager : StateManager {
 
 	public virtual void StateTransition()
 	{
+		if(!GetComponent<AbsorbableCorruption>().HasEnergyLeft())
+		{
+			ChangeState(GetState("Dead"));
+			CurrentState.OnUpdate();
+		}
+
 		//Compare the current state to check if the current state is idle
 		if (CompareToCurrentState (typeof(Idle))) {
 			//If the current state is not updating

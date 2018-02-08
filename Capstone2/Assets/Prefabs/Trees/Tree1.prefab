@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4835081665318354}
-  - component: {fileID: 114056661175376646}
+  - component: {fileID: 114602542070290420}
   m_Layer: 0
   m_Name: Tree1
   m_TagString: Untagged
@@ -94,6 +94,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1352139707461544
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4276684109743610}
+  m_Layer: 0
+  m_Name: ReferencePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: -5765324120231101433, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1370608827578762
 GameObject:
   m_ObjectHideFlags: 1
@@ -104,6 +119,7 @@ GameObject:
   - component: {fileID: 4552639300140326}
   - component: {fileID: 114176692501680970}
   - component: {fileID: 114525661822597358}
+  - component: {fileID: 114465358784638030}
   m_Layer: 0
   m_Name: AbsorbPath
   m_TagString: Untagged
@@ -147,6 +163,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1504475070705298
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4606465088687166}
+  m_Layer: 0
+  m_Name: SpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1564974178558346
 GameObject:
   m_ObjectHideFlags: 1
@@ -155,8 +186,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4625631602611518}
-  - component: {fileID: 114540314673052922}
   - component: {fileID: 114627367213804286}
+  - component: {fileID: 114006133357234064}
   m_Layer: 0
   m_Name: SelectPath
   m_TagString: Untagged
@@ -363,6 +394,19 @@ Transform:
   m_Father: {fileID: 4051848526432196}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!4 &4276684109743610
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1352139707461544}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.046, y: 0, z: 0.602}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4552639300140326}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4286387238602760
 Transform:
   m_ObjectHideFlags: 1
@@ -416,9 +460,24 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.08599994, y: -0.0020999885, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4606465088687166}
+  - {fileID: 4276684109743610}
   m_Father: {fileID: 4105168780522324}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4606465088687166
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1504475070705298}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.036000006, y: -0.06999998, z: -0.2100001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4552639300140326}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4625631602611518
 Transform:
@@ -660,27 +719,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114056661175376646
+--- !u!114 &114006133357234064
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1174294958235450}
+  m_GameObject: {fileID: 1564974178558346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15ecd64810b1d8249bd63cd3df5291db, type: 3}
+  m_Script: {fileID: 11500000, guid: 01bffa8aa898b437183cd5617f7b5303, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Energy: 100
-  IsSelected: 0
-  IsAbsorbing: 0
-  CanBeAbsorbed: 1
-  SelectedVFX: {fileID: 1956122107268594}
-  OtherVFX:
-  - {fileID: 1773274835281342}
-  - {fileID: 1240671960788282}
-  AbsorbVFXPath: {fileID: 114176692501680970}
-  AbsorbVFX: {fileID: 1308556518057214, guid: e8f18f07024a5cc45ad934642844a1bd, type: 2}
+  pathName: tree1Path_vfx
+  pathColor: {r: 0, g: 1, b: 1, a: 1}
+  nodes:
+  - {x: 14.675852, y: 1.02, z: 6.686397}
+  - {x: 16.574144, y: 1.02, z: 6.8470306}
+  - {x: 17.389952, y: 1.02, z: 8.45339}
+  - {x: 16.340033, y: 1.02, z: 9.868011}
+  - {x: 14.372755, y: 1.02, z: 10.097239}
+  - {x: 13.294785, y: 1.02, z: 8.895968}
+  - {x: 13.50296, y: 1.02, z: 7.4161606}
+  - {x: 14.675852, y: 1.02, z: 6.686397}
+  nodeCount: 8
+  initialized: 1
+  initialName: New Path 1
+  pathVisible: 1
 --- !u!114 &114176692501680970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -719,10 +783,27 @@ MonoBehaviour:
   - {x: 14.556136, y: 6.435007, z: 8.225367}
   - {x: 13.716089, y: 5.656598, z: 5.6862984}
   - {x: 10.630253, y: 3.3067303, z: 0}
-  nodeCount: 24
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  nodeCount: 27
   initialized: 1
   initialName: New Path 1
   pathVisible: 1
+--- !u!114 &114465358784638030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1370608827578762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0df1e8acdbc57e44927dc4a8bcde072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  PathFollowReference: {fileID: 4276684109743610}
+  SmoothCount: 6
 --- !u!114 &114508019316355928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -737,7 +818,7 @@ MonoBehaviour:
   PathName: tree1Path_vfx
   TimeToFinish: 0.5
   EaseType: 21
-  LoopType: 0
+  LoopType: 1
 --- !u!114 &114525661822597358
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -750,33 +831,67 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PathOffset: {x: -16.2, y: 0, z: 0}
+  EnableMove: 0
   UseLocalPosition: 0
---- !u!114 &114540314673052922
+  CanChangeNodePositions: 0
+  path: {fileID: 114176692501680970}
+  pathNodes:
+  - {x: 15.25552, y: -2.0511873, z: 7.9226394}
+  - {x: 16.016724, y: -1.1422286, z: 8.403313}
+  - {x: 15.820393, y: -0.56488717, z: 9.445118}
+  - {x: 15.156716, y: -0.14167118, z: 9.759779}
+  - {x: 13.646834, y: 0.46431255, z: 9.224347}
+  - {x: 13.4500065, y: 0.98818564, z: 8.343891}
+  - {x: 13.735424, y: 1.4447618, z: 7.3263383}
+  - {x: 14.319421, y: 1.9362607, z: 6.7419677}
+  - {x: 15.071742, y: 2.2920754, z: 6.591567}
+  - {x: 15.798727, y: 2.5692058, z: 6.651068}
+  - {x: 16.581705, y: 2.8027756, z: 7.11129}
+  - {x: 17.293442, y: 3.0558345, z: 8.098202}
+  - {x: 17.042965, y: 3.1845345, z: 9.377937}
+  - {x: 16.259747, y: 3.402657, z: 10.075681}
+  - {x: 14.804695, y: 3.6810334, z: 10.080908}
+  - {x: 13.875329, y: 4.136698, z: 9.363965}
+  - {x: 13.618279, y: 4.3956094, z: 8.192998}
+  - {x: 14.450049, y: 4.798029, z: 6.9128866}
+  - {x: 15.830604, y: 5.370576, z: 6.6423264}
+  - {x: 16.490685, y: 6.210156, z: 7.811715}
+  - {x: 15.803861, y: 7.139168, z: 8.706029}
+  - {x: 14.556136, y: 6.435007, z: 8.225367}
+  - {x: 13.716089, y: 5.656598, z: 5.6862984}
+  - {x: 10.630253, y: 3.3067303, z: 0}
+  originalNodes: []
+--- !u!114 &114602542070290420
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1564974178558346}
+  m_GameObject: {fileID: 1174294958235450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01bffa8aa898b437183cd5617f7b5303, type: 3}
+  m_Script: {fileID: 11500000, guid: 15ecd64810b1d8249bd63cd3df5291db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathName: tree1Path_vfx
-  pathColor: {r: 0, g: 1, b: 1, a: 1}
-  nodes:
-  - {x: 14.675852, y: 1.02, z: 6.686397}
-  - {x: 16.574144, y: 1.02, z: 6.8470306}
-  - {x: 17.389952, y: 1.02, z: 8.45339}
-  - {x: 16.340033, y: 1.02, z: 9.868011}
-  - {x: 14.372755, y: 1.02, z: 10.097239}
-  - {x: 13.294785, y: 1.02, z: 8.895968}
-  - {x: 13.50296, y: 1.02, z: 7.4161606}
-  - {x: 14.675852, y: 1.02, z: 6.686397}
-  nodeCount: 8
-  initialized: 1
-  initialName: New Path 1
-  pathVisible: 1
+  EnergyType: 0
+  Energy: 100
+  AbsorptionRate: 5
+  IsSelected: 0
+  IsBeingAbsorbed: 0
+  Type: 0
+  playingvfx:
+    VFXName: 
+    VFX: {fileID: 0}
+  VFX:
+  - VFXName: AuraSelection
+    VFX: {fileID: 1773274835281342}
+  - VFXName: vfx_Select
+    VFX: {fileID: 1956122107268594}
+  PathVFX:
+  - VFXName: AbsorbVFX
+    VFX: {fileID: 1308556518057214, guid: e8f18f07024a5cc45ad934642844a1bd, type: 2}
+    IsInstanced: 1
+    InstanceTransform: {fileID: 4606465088687166}
+    Loop: 0
 --- !u!114 &114627367213804286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -789,7 +904,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PathOffset: {x: -16.22, y: -0.7, z: 0}
+  EnableMove: 0
   UseLocalPosition: 0
+  CanChangeNodePositions: 0
+  path: {fileID: 0}
+  pathNodes: []
+  originalNodes: []
 --- !u!198 &198005485126137590
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -850,7 +970,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1650846836
+  randomSeed: 1763702949
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4211,7 +4331,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -804979589
+  randomSeed: 1871741420
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7572,7 +7692,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -2029149688
+  randomSeed: 225019701
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10933,7 +11053,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1323923625
+  randomSeed: -1277220791
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -14294,7 +14414,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1632939038
+  randomSeed: 507020363
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -17661,7 +17781,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1553396144
+  randomSeed: -275377395
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -21022,7 +21142,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -731559776
+  randomSeed: -1522404394
   InitialModule:
     serializedVersion: 3
     enabled: 1

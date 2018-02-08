@@ -28,17 +28,18 @@ public class EarthElement : Element {
 
 
 			///Terrain Effect
-			/*if (player.transform.eulerAngles.y >= 0 && player.transform.eulerAngles.y <= 180) {
+			if (player.transform.eulerAngles.y >= 0 && player.transform.eulerAngles.y <= 180) {
 				//right
 				location = new Vector3(player.transform.position.x + spawnDistance, player.transform.position.y, player.transform.position.z);
 			} else {
 				location = new Vector3(player.transform.position.x - spawnDistance, player.transform.position.y, player.transform.position.z);
 			}
 			GameObject Terrain = Instantiate (EarthTerrain, location, Quaternion.identity);
-			Destroy (Terrain, 5.0f);*/
+			Destroy (Terrain, 5.0f);
 
 
 			///Trap Effect
+			/*
 			if (player.transform.eulerAngles.y >= 0 && player.transform.eulerAngles.y <= 180) {
 				//right
 				location = new Vector3(player.transform.position.x + spawnDistance, player.transform.position.y, player.transform.position.z);
@@ -46,14 +47,31 @@ public class EarthElement : Element {
 				location = new Vector3(player.transform.position.x - spawnDistance, player.transform.position.y, player.transform.position.z);
 			}
 			GameObject Terrain = Instantiate (EarthTrap, location, Quaternion.identity);
-			Destroy (Terrain, 5.0f);
+			Destroy (Terrain, 5.0f);*/
 		}
 	}
 
-	public override void ModifyMove()
+	public override void SecondaryUse()
 	{
 		base.Use();
 
+		if (IsBaseUseable())
+		{
+			RemoveEnergy(SecondaryUseEnergyCost);
+
+			if (player.transform.eulerAngles.y >= 0 && player.transform.eulerAngles.y <= 180)
+			{
+				//right
+				location = new Vector3(player.transform.position.x + spawnDistance, player.transform.position.y, player.transform.position.z);
+			}
+			else
+			{
+				location = new Vector3(player.transform.position.x - spawnDistance, player.transform.position.y, player.transform.position.z);
+			}
+			GameObject Terrain = Instantiate(EarthTrap, location, Quaternion.identity);
+			Destroy(Terrain, 5.0f);
+		}
+		/*
 		if (IsModifierUseable())
 		{
 			player.GetComponent<UseSkill>().SetElementOnCooldown(this);
@@ -65,6 +83,6 @@ public class EarthElement : Element {
 			//shield.transform.localPosition += new Vector3(0, 0, 0.55f);
 
 			Destroy(shield, ShieldDuration);
-		}
+		}*/
 	}
 }

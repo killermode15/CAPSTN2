@@ -25,7 +25,7 @@ public class PathFollowPlayer : MonoBehaviour
 
 			int index = path.nodeCount - (SmoothCount - i);
 			//Debug.Log(index);
-			if (i != 0)
+			if (i != SmoothCount-1)
 			{
 				float count = SmoothCount;
 				float perc = (float)i / count;
@@ -33,7 +33,7 @@ public class PathFollowPlayer : MonoBehaviour
 				path.nodes[index] = Vector3.Lerp(PathFollowReference.position, Player.position, perc);
 			}
 			else
-				path.nodes[path.nodeCount - 1] = Vector3.Lerp(PathFollowReference.position, Player.position, 1);
+				path.nodes[path.nodeCount - 1] = Player.position;
 		}
 		//path.nodes[path.nodeCount - 3] = Vector3.Lerp(transform.position, Player.position, 0.33f);
 		//path.nodes[path.nodeCount - 2] = Vector3.Lerp(transform.position, Player.position, 0.66f) ;

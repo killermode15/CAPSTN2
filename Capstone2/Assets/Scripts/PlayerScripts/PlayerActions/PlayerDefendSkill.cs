@@ -93,7 +93,7 @@ public class PlayerDefendSkill : MonoBehaviour, IPlayerAction
 		Debug.Log(element);
 		if(!element.IsOnCooldown)
 		{
-			element.ModifyMove();
+			element.SecondaryUse();
 		}
 	}
 }

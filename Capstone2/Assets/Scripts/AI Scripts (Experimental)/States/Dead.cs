@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dead : State {
+public class Dead : State
+{
+
+	public GameObject ObjectCounterpart;
 
 	public override void OnEnable()
 	{
@@ -11,7 +14,11 @@ public class Dead : State {
 
 	public override bool OnUpdate()
 	{
-		return base.OnUpdate();
+		Instantiate(ObjectCounterpart, transform.position, transform.rotation);
+		if (!Manager.Player.GetComponent<PlayerController>().CanMove)
+			Manager.Player.GetComponent<PlayerController>().CanMove = true;
+		Destroy(gameObject);
+		return true;
 	}
 
 	public override void OnDisable()

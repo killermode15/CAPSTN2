@@ -651,17 +651,19 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4816640547367954}
-  - component: {fileID: 114786573945731634}
-  - component: {fileID: 114974117951321144}
-  - component: {fileID: 114306857153244546}
-  - component: {fileID: 114196544164091020}
-  - component: {fileID: 114256737843574192}
+  - component: {fileID: 136748792517998264}
   - component: {fileID: 143790905069117466}
+  - component: {fileID: 114256737843574192}
+  - component: {fileID: 114499983254245204}
   - component: {fileID: 114765325599527964}
   - component: {fileID: 114847953613052846}
-  - component: {fileID: 114499983254245204}
+  - component: {fileID: 114306857153244546}
   - component: {fileID: 114261987797192834}
+  - component: {fileID: 114178210771659466}
   - component: {fileID: 114406980947326942}
+  - component: {fileID: 114196544164091020}
+  - component: {fileID: 114786573945731634}
+  - component: {fileID: 114974117951321144}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1434,7 +1436,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831603703517158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.29, y: -0.57, z: 2.58}
+  m_LocalPosition: {x: 5.26, y: -0.57, z: 2.58}
   m_LocalScale: {x: 1.233404, y: 1.2334039, z: 1.2334039}
   m_Children:
   - {fileID: 4452132794037542}
@@ -1755,6 +1757,18 @@ MonoBehaviour:
   initialized: 1
   initialName: New Path 2
   pathVisible: 1
+--- !u!114 &114178210771659466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1831603703517158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d252766e615a594fa7b93cf332c86e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CorruptionBar: {fileID: 0}
 --- !u!114 &114196544164091020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1779,7 +1793,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanMove: 1
-  DashSpeed: 0
   MoveSpeed: 6
   JumpHeight: 13
   TurnSmoothTime: 0.2
@@ -1787,22 +1800,28 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 2
-      time: 0.0027434842
-      value: 0.9937622
-      inSlope: -0.876374
-      outSlope: -0.876374
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.7407444
-      value: 0.09748709
-      inSlope: -1.8030142
-      outSlope: -1.8030142
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.87655586
+      time: 0
       value: 0
-      inSlope: -0.11216849
-      outSlope: -0.11216849
+      inSlope: 7.528018
+      outSlope: 7.528018
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.14237274
+      value: 1.2136503
+      inSlope: -0.07347819
+      outSlope: -0.07347819
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.82839924
+      value: 1.1867521
+      inSlope: -0.12519419
+      outSlope: -0.12519419
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.95327705
+      value: 1.1378403
+      inSlope: -1.8874233
+      outSlope: -1.8874233
       tangentMode: 0
     - serializedVersion: 2
       time: 1
@@ -1826,7 +1845,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Absorbables: []
   CurrentMode: 0
-  Corruption: 0
 --- !u!114 &114306857153244546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1852,12 +1870,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5826388b8a5810943a29876466573654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentCorruption: 0
-  MaxCorruption: 0
-  DecayRateMultiplier: 0
+  CurrentCorruption: 100
+  MaxCorruption: 100
+  DecayRateMultiplier: 1
+  CorruptionReleaseRate: 15
   TimeTillDecayAmplify: 1
-  HealthDecayRate: 0
-  PercentTillDecay: 0
+  HealthDecayRate: 0.1
+  PercentTillDecay: 0.8
   CorruptionEffect: {fileID: 0}
 --- !u!114 &114499983254245204
 MonoBehaviour:
@@ -1882,8 +1901,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac820b5616f07f408e74d229846870d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DashSpeed: 10
-  DashDuration: 0.5
+  DashSpeed: 15
+  DashDuration: 0.25
 --- !u!114 &114786573945731634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1907,7 +1926,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1157474199710458}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 501ac8426a3d1fd46b04ac888e75c98c, type: 3}
   m_Name: 
@@ -1918,14 +1937,14 @@ MonoBehaviour:
   CanChangeNodePositions: 0
   path: {fileID: 114118962793290442}
   pathNodes:
-  - {x: -2.5353699, y: -1.6007566, z: 2.4229217}
-  - {x: -3.3192549, y: -1.1491232, z: 1.8599098}
-  - {x: -3.9644156, y: -0.83693695, z: 2.3456697}
-  - {x: -3.7374525, y: -0.5558548, z: 3.2028239}
-  - {x: -2.901538, y: -0.14884329, z: 3.0878663}
-  - {x: -2.7826643, y: 0.34818816, z: 2.2371888}
-  - {x: -3.2580137, y: 0.5854249, z: 1.8923578}
-  - {x: -3.9467154, y: 0.45736575, z: 2.1208618}
+  - {x: -20.54537, y: -5.6707563, z: 2.2229216}
+  - {x: -21.329254, y: -5.219123, z: 1.6599097}
+  - {x: -21.974415, y: -4.9069366, z: 2.1456697}
+  - {x: -21.747452, y: -4.6258545, z: 3.0028238}
+  - {x: -20.911537, y: -4.2188435, z: 2.8878663}
+  - {x: -20.792664, y: -3.7218118, z: 2.0371888}
+  - {x: -21.268013, y: -3.484575, z: 1.6923578}
+  - {x: -21.956715, y: -3.6126342, z: 1.9208617}
   originalNodes:
   - {x: -2.5353699, y: -1.6007566, z: 2.4229217}
   - {x: -3.3192549, y: -1.1491232, z: 1.8599098}
@@ -1986,6 +2005,19 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.05
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &136748792517998264
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1831603703517158}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.7
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137937249820806426
 SkinnedMeshRenderer:
@@ -12265,7 +12297,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1694027491
+  randomSeed: 398610844
   InitialModule:
     serializedVersion: 3
     enabled: 1
