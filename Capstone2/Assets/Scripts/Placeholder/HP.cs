@@ -67,6 +67,7 @@ public class HP : MonoBehaviour
 			RemoveHealth (Health);
 		} else if (other.gameObject.CompareTag ("Projectile")) {
 			RemoveHealth (other.gameObject.GetComponent<Projectile> ().damage);
+			Destroy (other.gameObject);
 		}
 		if (other.gameObject.CompareTag ("Enemy")) {
 			RemoveHealth (other.gameObject.GetComponent<StateManager>().collisionDamage);

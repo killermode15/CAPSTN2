@@ -12,6 +12,7 @@ TagManager:
   - DeathFall
   - Altar
   - Projectile
+  - Ground
   layers:
   - Default
   - TransparentFX

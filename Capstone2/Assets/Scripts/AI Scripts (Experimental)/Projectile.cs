@@ -5,8 +5,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour {
 
 	float bulletSpeed;
-	public Vector3 direction;
-	public bool isTargeted;
+	[HideInInspector] public Vector3 direction;
+	[HideInInspector] public bool isTargeted;
 	public float ProjectileLife;
 	public float damage;
 
@@ -28,4 +28,11 @@ public class Projectile : MonoBehaviour {
 			transform.position = Vector3.MoveTowards (transform.position, transform.right * 50
 				+ direction, Time.deltaTime * bulletSpeed);
 	}
+
+	void OnTriggerEnter(Collider other){
+		if (other.CompareTag ("Ground")) {
+			Destroy (this.gameObject);
+		}
+	}
+
 }
