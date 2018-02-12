@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Earth Element", menuName = "Element/New Earth Element")]
-public class EarthElement : Element {
+public class EarthElement : Element
+{
 
 	public float ShieldDuration;
 	public GameObject EarthShield;
@@ -25,17 +26,7 @@ public class EarthElement : Element {
 
 			//TEMPORARY
 			//Destroy(Instantiate(EarthShield, player), ShieldDuration);
-
-
-			///Terrain Effect
-			if (player.transform.eulerAngles.y >= 0 && player.transform.eulerAngles.y <= 180) {
-				//right
-				location = new Vector3(player.transform.position.x + spawnDistance, player.transform.position.y, player.transform.position.z);
-			} else {
-				location = new Vector3(player.transform.position.x - spawnDistance, player.transform.position.y, player.transform.position.z);
-			}
-			GameObject Terrain = Instantiate (EarthTerrain, location, Quaternion.identity);
-			Destroy (Terrain, 5.0f);
+			player.GetComponent<PlayerController>().anim.SetTriggerAnimParam("CastEarth");
 
 
 			///Trap Effect
@@ -50,6 +41,7 @@ public class EarthElement : Element {
 			Destroy (Terrain, 5.0f);*/
 		}
 	}
+
 
 	public override void SecondaryUse()
 	{

@@ -14,7 +14,8 @@ public enum PlayerAnimationState
 	Absorb
 }
 
-public class PlayerAnimation : MonoBehaviour {
+public class PlayerAnimation : MonoBehaviour
+{
 
 	public Animator PlayerAnimator;
 
@@ -23,18 +24,43 @@ public class PlayerAnimation : MonoBehaviour {
 	private bool isWalking;
 
 	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-	public void PlayAnimation(PlayerAnimationState state)
+	void Start()
 	{
 
+	}
+
+	// Update is called once per frame
+	void Update()
+	{
+		PlayerAnimator.SetFloat("WalkSpeed", Mathf.Abs(Input.GetAxis("Horizontal")) + 1);
+
+		if (InputManager.Instance.GetKeyDown(ControllerInput.Jump))
+			PlayerAnimator.SetTrigger("Jump");
+
+		if (InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy))
+		{
+			if (!PlayerAnimator.GetBool("IsAbsorbing"))
+			{
+				PlayerAnimator.SetBool("IsAbsorbing", true);
+			}
+		}
+		else
+		{
+			if (PlayerAnimator.GetBool("IsAbsorbing"))
+			{
+				PlayerAnimator.SetBool("IsAbsorbing", false);
+			}
+		}
+	}
+
+	public void SetBoolAnimParam(string paramName, bool val)
+	{
+		PlayerAnimator.SetBool(paramName, val);
+	}
+
+	public void SetTriggerAnimParam(string paramName)
+	{
+		PlayerAnimator.SetTrigger(paramName);
 	}
 
 	public float GetCurrentAnimationLength()

@@ -63,8 +63,7 @@ public class UseSkill : MonoBehaviour {
 		{
 			ActiveElement.Use();
 			ActiveElement.IsOnCooldown = true;
-			elementsOnCooldown.Add(ActiveElement);
-			currentCooldowns.Add(ActiveElement.CooldownDuration);
+			SetElementOnCooldown(ActiveElement);
 		}
 	}
 	public void UseSecondaryActiveElement()

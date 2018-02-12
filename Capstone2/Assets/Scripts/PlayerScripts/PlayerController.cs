@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 	public AnimationCurve DashCurve;
 	//public float FallMultiplier;
 	//public float LowJumpMultiplier;
+	[HideInInspector]
+	public PlayerAnimation anim;
 
 	private bool canJump = true;
 	private float dashValue;
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
 	{
 		//Get reference to character controller
 		controller = GetComponent<CharacterController>();
+		anim = GetComponent<PlayerAnimation>();
 		//Set controller to detect collisions
 		controller.detectCollisions = true;
 
@@ -112,7 +115,7 @@ public class PlayerController : MonoBehaviour
 					moveDirection.y += Physics.gravity.y * Time.deltaTime;
 			}
 		}
-
+		anim.SetBoolAnimParam("HasLanded", IsGrounded());
 		/*
 		canJump = IsGrounded();
 		if (canJump)

@@ -17,7 +17,7 @@ MonoBehaviour:
   EnergyCost: 0
   CurrentUseableEnergy: 0
   SecondaryUseEnergyCost: 0
-  CooldownDuration: 0.5
+  CooldownDuration: 2.5
   IsElementUnlocked: 1
   IsOnCooldown: 0
   IsModifier: 0
