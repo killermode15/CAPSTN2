@@ -725,7 +725,6 @@ GameObject:
   - component: {fileID: 114196544164091020}
   - component: {fileID: 114786573945731634}
   - component: {fileID: 114974117951321144}
-  - component: {fileID: 114306834187539248}
   - component: {fileID: 114625262800119206}
   m_Layer: 0
   m_Name: Player
@@ -1838,18 +1837,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Absorbables: []
   CurrentMode: 0
---- !u!114 &114306834187539248
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1831603703517158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f4c1abe08ec92e48ad1706302df1c1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnLocation: {fileID: 0}
 --- !u!114 &114306857153244546
 MonoBehaviour:
   m_ObjectHideFlags: 1
