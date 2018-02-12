@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 114754038278233374}
   m_Layer: 0
   m_Name: EnemySnake
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 571167235653111936, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -219,7 +219,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1624134789736600}
   m_LocalRotation: {x: -0, y: -0.729257, z: -0, w: 0.6842399}
-  m_LocalPosition: {x: 12.61, y: 7.12, z: -10.86}
+  m_LocalPosition: {x: -51.4, y: 13.14, z: -1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4454436524955464}
@@ -300,8 +300,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.21883166, z: 3.9914238}
-  m_Center: {x: 9.804721e-10, y: -0.9077447, z: -0.4158684}
+  m_Size: {x: 1, y: 1.2407638, z: 3.8351665}
+  m_Center: {x: 0.000000002279633, y: -0.39677864, z: -0.33773968}
 --- !u!95 &95033022971702106
 Animator:
   serializedVersion: 3
@@ -398,11 +398,11 @@ MonoBehaviour:
   pathName: absorbPath_Snake1
   pathColor: {r: 0, g: 1, b: 1, a: 1}
   nodes:
-  - {x: -22.52262, y: 16.37586, z: 3.6300004}
-  - {x: -22.49671, y: 17.939205, z: 3.6300004}
-  - {x: -24.252745, y: 19.126537, z: 3.63}
-  - {x: -25.763123, y: 17.656109, z: 3.63}
-  - {x: -35.23262, y: 18.11586, z: 0.8}
+  - {x: 23.477379, y: 30.54586, z: 3.8300004}
+  - {x: 23.503288, y: 32.109207, z: 3.8300004}
+  - {x: 21.747253, y: 33.29654, z: 3.8300002}
+  - {x: 20.236874, y: 31.82611, z: 3.8300002}
+  - {x: 10.767376, y: 32.285862, z: 1}
   nodeCount: 5
   initialized: 1
   initialName: New Path 2
@@ -530,11 +530,11 @@ MonoBehaviour:
   DisableOnStart: 0
   path: {fileID: 114127512269256910}
   pathNodes:
-  - {x: -29.55631, y: 1.5529304, z: 3.4300003}
-  - {x: -29.530401, y: 3.1162748, z: 3.4300003}
-  - {x: -31.286436, y: 4.303609, z: 3.43}
-  - {x: -32.796814, y: 2.8331795, z: 3.43}
-  - {x: -42.26631, y: 3.2929306, z: 0.6}
+  - {x: -22.52262, y: 16.37586, z: 3.6300004}
+  - {x: -22.49671, y: 17.939205, z: 3.6300004}
+  - {x: -24.252745, y: 19.126537, z: 3.63}
+  - {x: -25.763123, y: 17.656109, z: 3.63}
+  - {x: -35.23262, y: 18.11586, z: 0.8}
   originalNodes:
   - {x: 15.999999, y: -1.1700003, z: 3.0300002}
   - {x: 16.02591, y: 0.39334428, z: 3.0300002}
