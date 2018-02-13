@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 114557532728903362}
   - component: {fileID: 65136318187234260}
   - component: {fileID: 114754038278233374}
+  - component: {fileID: 114758691633698720}
   m_Layer: 0
   m_Name: EnemySnake
   m_TagString: Enemy
@@ -219,7 +220,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1624134789736600}
   m_LocalRotation: {x: -0, y: -0.729257, z: -0, w: 0.6842399}
-  m_LocalPosition: {x: -51.4, y: 13.14, z: -1.2}
+  m_LocalPosition: {x: -6.33, y: 0.03, z: 2.63}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4454436524955464}
@@ -325,14 +326,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1624134789736600}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e3b67d0026caa84b90d00645fa2eb4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 0}
-  ObjectCounterpart: {fileID: 1678486323489200, guid: 2a5a4366392fe194488e6aac620a3c18,
-    type: 2}
+  ObjectCounterpart: {fileID: 0}
 --- !u!114 &114104374936168982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -398,11 +398,11 @@ MonoBehaviour:
   pathName: absorbPath_Snake1
   pathColor: {r: 0, g: 1, b: 1, a: 1}
   nodes:
-  - {x: 23.477379, y: 30.54586, z: 3.8300004}
-  - {x: 23.503288, y: 32.109207, z: 3.8300004}
-  - {x: 21.747253, y: 33.29654, z: 3.8300002}
-  - {x: 20.236874, y: 31.82611, z: 3.8300002}
-  - {x: 10.767376, y: 32.285862, z: 1}
+  - {x: -140.04263, y: 52.30586, z: 4.8299994}
+  - {x: -140.01672, y: 53.869205, z: 4.8299994}
+  - {x: -141.77277, y: 55.056538, z: 4.8299994}
+  - {x: -143.28314, y: 53.58611, z: 4.8299994}
+  - {x: -152.75262, y: 54.04586, z: 2.0000002}
   nodeCount: 5
   initialized: 1
   initialName: New Path 2
@@ -530,11 +530,11 @@ MonoBehaviour:
   DisableOnStart: 0
   path: {fileID: 114127512269256910}
   pathNodes:
-  - {x: -22.52262, y: 16.37586, z: 3.6300004}
-  - {x: -22.49671, y: 17.939205, z: 3.6300004}
-  - {x: -24.252745, y: 19.126537, z: 3.63}
-  - {x: -25.763123, y: 17.656109, z: 3.63}
-  - {x: -35.23262, y: 18.11586, z: 0.8}
+  - {x: -116.35263, y: 50.57586, z: 4.6299996}
+  - {x: -116.32672, y: 52.139206, z: 4.6299996}
+  - {x: -118.082756, y: 53.326538, z: 4.6299996}
+  - {x: -119.59313, y: 51.85611, z: 4.6299996}
+  - {x: -129.06262, y: 52.31586, z: 1.8000002}
   originalNodes:
   - {x: 15.999999, y: -1.1700003, z: 3.0300002}
   - {x: 16.02591, y: 0.39334428, z: 3.0300002}
@@ -664,6 +664,19 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 23c64f23fe7c4604f9e0d9bb800e5438, type: 3}
   - {fileID: 21300000, guid: a4935f6b1c647b24790b7060c16a53c2, type: 3}
   - {fileID: 21300000, guid: 947b0eb2b9d159f4da3d91d92576dda3, type: 3}
+--- !u!114 &114758691633698720
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1624134789736600}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e00b81680761344bb9810123162833d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Manager: {fileID: 0}
+  stunnedDuration: 0
 --- !u!114 &114823889069955038
 MonoBehaviour:
   m_ObjectHideFlags: 1

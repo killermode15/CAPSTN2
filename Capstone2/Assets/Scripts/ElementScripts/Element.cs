@@ -56,14 +56,6 @@ public class Element : ScriptableObject {
 		//throw new System.NullReferenceException("This is the base class");
 	}
 
-	public virtual void SecondaryUse()
-	{
-		if (!player)
-		{
-			player = GameObject.FindGameObjectWithTag("Player").transform;
-		}
-	}
-
 	public bool IsBaseUseable()
 	{
 		return CurrentUseableEnergy >= EnergyCost && !IsOnCooldown && !IsModifier;

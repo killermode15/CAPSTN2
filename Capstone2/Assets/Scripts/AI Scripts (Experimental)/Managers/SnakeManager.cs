@@ -28,6 +28,7 @@ public class SnakeManager : StateManager {
 
 	public virtual void StateTransition()
 	{
+		base.StateTransition ();
 		if(!GetComponent<AbsorbableCorruption>().HasEnergyLeft())
 		{
 			ChangeState(GetState("Dead"));

@@ -17,9 +17,10 @@ MonoBehaviour:
   EnergyCost: 0
   CurrentUseableEnergy: 0
   SecondaryUseEnergyCost: 0
-  CooldownDuration: 4
+  CooldownDuration: 1
   IsElementUnlocked: 1
-  IsOnCooldown: 0
+  IsOnCooldown: 1
   IsModifier: 0
   MaxUseableEnergy: 100
   Sphere: {fileID: 1759001367942186, guid: 308dcab42c313034d930a783f620ca44, type: 2}
+  StunPrefab: {fileID: 1885663182599468, guid: 6332936eb5e01024684a2000102b36d4, type: 2}
