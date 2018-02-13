@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 114677937444009328}
   - component: {fileID: 114553181457358846}
   - component: {fileID: 135035304999438718}
+  - component: {fileID: 114068480398745134}
+  - component: {fileID: 114457200382507864}
   m_Layer: 0
   m_Name: EnemyPeashooter
   m_TagString: Enemy
@@ -54,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1558461848430048}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.8512049, y: 9.45, z: -10.9724245}
+  m_LocalPosition: {x: -15.178875, y: -0.8350898, z: 2.72}
   m_LocalScale: {x: 22.458206, y: 26.535809, z: 22.458178}
   m_Children:
   - {fileID: 4985149304090824}
@@ -115,6 +117,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1558461848430048}
   m_Mesh: {fileID: 4300000, guid: 8ab24024686f52445b1cc670d2394d2f, type: 3}
+--- !u!114 &114068480398745134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1558461848430048}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e00b81680761344bb9810123162833d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Manager: {fileID: 0}
+  stunnedDuration: 3
+--- !u!114 &114457200382507864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1558461848430048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e3b67d0026caa84b90d00645fa2eb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Manager: {fileID: 0}
+  ObjectCounterpart: {fileID: 0}
 --- !u!114 &114553181457358846
 MonoBehaviour:
   m_ObjectHideFlags: 1

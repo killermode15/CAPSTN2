@@ -21,6 +21,7 @@ public class SpiderManager : StateManager {
 	}
 
 	public override void StateTransition(){
+		base.StateTransition ();
 		if (CompareToCurrentState (typeof(RangeAttack))) {
 			//if the current state is not updating
 			if (!CurrentState.OnUpdate ()) {
@@ -30,11 +31,14 @@ public class SpiderManager : StateManager {
 	}
 
 	public override void CheckIfPlayerInRange(){
-		playerDistance = Vector3.Distance (Player.transform.position, transform.position);
-		if (playerDistance <= DetectionRange) {
-			if (!CompareToCurrentState (typeof(RangeAttack))) {
-				ChangeState (GetState ("RangeAttack"));
+		if(!CompareToCurrentState(typeof(StunnedState))){
+			playerDistance = Vector3.Distance (Player.transform.position, transform.position);
+			if (playerDistance <= DetectionRange) {
+				if (!CompareToCurrentState (typeof(RangeAttack))) {
+					ChangeState (GetState ("RangeAttack"));
+				}
 			}
 		}
+
 	}
 }

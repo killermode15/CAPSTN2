@@ -64,12 +64,8 @@ public class PlayerDefendSkill : MonoBehaviour, IPlayerAction
 		/// NOTE: I made a Shield script (for the collision of the gameobject) "Shield.cs"
 		if (InputManager.Instance.GetKey(ControllerInput.Defend) && Capacity > 0 && isUseable && GetComponent<PlayerController>().CanMove)
 		{
-			if(InputManager.Instance.GetKey(ControllerInput.ModifyMove) )
-			{
-				UseActionWithElementModifier(ElementModifier);
-			}
 			//Activate shield
-			else if (!isDefendActive)
+			if (!isDefendActive)
 			{
 				isDefendActive = true;
 				Shield.SetActive(true);
@@ -84,16 +80,6 @@ public class PlayerDefendSkill : MonoBehaviour, IPlayerAction
 				Shield.GetComponent<ParticleSystem>().Stop();
 				Shield.SetActive(false);
 			}
-		}
-	}
-
-	public void UseActionWithElementModifier(Element element)
-	{
-		Debug.Log("Element On Cooldown?: " + element.IsOnCooldown);
-		Debug.Log(element);
-		if(!element.IsOnCooldown)
-		{
-			element.SecondaryUse();
 		}
 	}
 }

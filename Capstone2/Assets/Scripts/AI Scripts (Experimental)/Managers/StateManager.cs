@@ -12,15 +12,24 @@ public class StateManager : MonoBehaviour {
 	public float attackRange;
 	public float DetectionRange;
 	public float playerDistance;
+	private State stateBeforeStun;
 
 	// Use this for initialization
 	public virtual void Start () {
 		PossibleStates = GetComponents<State>().ToList();
 	}
 
+	void Update(){
+		StateTransition ();
+	}
+
 	public virtual void StateTransition()
 	{
-		
+		if (CompareToCurrentState (typeof(StunnedState))) {
+			if (!CurrentState.OnUpdate ()) {
+				ChangeState (stateBeforeStun);
+			}
+		}
 	}
 
 	public void ChangeState(State newState)
@@ -29,6 +38,7 @@ public class StateManager : MonoBehaviour {
 		{
 			CurrentState.enabled = false;
 		}
+		stateBeforeStun = CurrentState;
 		CurrentState = newState;
 		newState.enabled = true;
 	}

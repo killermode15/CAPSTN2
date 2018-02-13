@@ -7,6 +7,7 @@ public class FireElement : Element
 {
 
 	public GameObject Sphere;
+	public GameObject StunPrefab;
 
 	public override void Use()
 	{
@@ -20,13 +21,22 @@ public class FireElement : Element
 			//Debug.Log("Not yet implemented");
 
 			//TEMPORARY
-			if (player.transform.eulerAngles.y >= 0 && player.transform.eulerAngles.y <= 180) {
+			/*if (player.transform.eulerAngles.y >= 0 && player.transform.eulerAngles.y <= 180) {
 				Sphere.GetComponent<Mover> ().isRight = true;
 			} else { //if (player.transform.eulerAngles.y <= 0)
 				Sphere.GetComponent<Mover> ().isRight = false;
 			}
 			GameObject ball = Instantiate(Sphere, player.position, Quaternion.identity);
-			ball.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+			ball.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);*/
+
+
+			///STUN TEST
+			if (player.transform.eulerAngles.y >= 0 && player.transform.eulerAngles.y <= 180) 
+				StunPrefab.GetComponent<Mover>().isRight = true;
+			else 
+				StunPrefab.GetComponent<Mover>().isRight = false;
+
+			GameObject Push = Instantiate(StunPrefab, player.transform.position, Quaternion.identity);
 		}
 	}
 }

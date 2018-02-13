@@ -10,9 +10,5 @@ public enum ActionType
 }
 
 public interface IPlayerAction {
-	
-
 	void UseAction();
-
-	void UseActionWithElementModifier(Element element);
 }
