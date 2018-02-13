@@ -29,22 +29,4 @@ public class WindElement : Element {
 			//Debug.Log(player.transform.eulerAngles);
 		}
 	}
-
-	public override void SecondaryUse()
-	{
-		if (IsBaseUseable())
-		{
-			RemoveEnergy(SecondaryUseEnergyCost);
-
-			if (player.transform.eulerAngles.y >= 0 && player.transform.eulerAngles.y <= 180)
-			{
-				WindPush.GetComponent<Mover>().isRight = true;
-			}
-			else
-			{ //if (player.transform.eulerAngles.y <= 0)
-				WindPush.GetComponent<Mover>().isRight = false;
-			}
-			GameObject Push = Instantiate(WindPush, player.position, Quaternion.identity);
-		}
-	}
 }

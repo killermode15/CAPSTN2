@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+	public GameObject JumpVFX;
 	public bool CanMove = true;
 	//public float DashSpeed;
 	public float MoveSpeed = 6.0f;
@@ -116,51 +117,6 @@ public class PlayerController : MonoBehaviour
 			}
 		}
 		anim.SetBoolAnimParam("HasLanded", IsGrounded());
-		/*
-		canJump = IsGrounded();
-		if (canJump)
-		{
-			//If the player is grounded
-			if (IsGrounded())
-				//Set the y velocity to 0
-				moveDirection.y = 0;
-		}
-		else if (!canJump || moveDirection.y > 0)
-		{
-			moveDirection.y += (Physics.gravity.y * Time.deltaTime) * 2;
-		}
-
-		if(canJump && moveDirection.y < 0)
-		{
-			moveDirection.y += Physics.gravity.y * Time.deltaTime;
-		}
-		*/
-
-		#region old code
-		////If the player is currently jumping or is not grounded
-		//if (!IsGrounded())
-		//{
-		//	if (!canJump)
-		//		moveDirection.y += Physics.gravity.y * Time.deltaTime;
-		//	else
-		//	{
-		//		canJump = true;
-		//		moveDirection.y = 0;
-		//	}//if (moveDirection.y < 0 || moveDirection.y > 0)
-		//	//{
-		//	//	//Subtract gravity (per frame) from the y velocity
-		//	//}
-		//}
-		////If the player is grounded
-		//else if (IsGrounded())
-		//{
-		//	//Set the y velocity to 0
-		//	moveDirection.y = 0;
-		//	canJump = true;
-		//}
-		//if (!IsGrounded())
-		//	canJump = false;
-		#endregion
 	}
 
 	//Launches the player when pressing the jump button
@@ -171,6 +127,7 @@ public class PlayerController : MonoBehaviour
 		if (InputManager.Instance.GetKeyDown(ControllerInput.Jump) && !InputManager.Instance.GetKey(ControllerInput.TriggerElementWheel)
 			&& !InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy) && canJump)
 		{
+			anim.SetTriggerAnimParam("Jump");
 			//Set the y velocity to the specified jump height
 			moveDirection.y = JumpHeight;
 			//And set canJump to false
@@ -236,6 +193,7 @@ public class PlayerController : MonoBehaviour
 	//Adds a value to the y velocity of the movement vector
 	public void AddJumpVelocity(float val)
 	{
+		JumpVFX.GetComponent<ParticleSystem>().Play();
 		moveDirection.y = 0;
 		moveDirection.y += val;
 		canJump = false;

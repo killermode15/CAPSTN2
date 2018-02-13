@@ -34,8 +34,6 @@ public class PlayerAnimation : MonoBehaviour
 	{
 		PlayerAnimator.SetFloat("WalkSpeed", Mathf.Abs(Input.GetAxis("Horizontal")) + 1);
 
-		if (InputManager.Instance.GetKeyDown(ControllerInput.Jump))
-			PlayerAnimator.SetTrigger("Jump");
 
 		if (InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy))
 		{

@@ -18,11 +18,9 @@ public class Element : ScriptableObject {
 	public Color EnergyColor;
 	public float EnergyCost;
 	public float CurrentUseableEnergy;
-	public float SecondaryUseEnergyCost;
 	public float CooldownDuration;
 	public bool IsElementUnlocked;
 	public bool IsOnCooldown;
-	public bool IsModifier;
 	public float MaxUseableEnergy;
 	
 	protected Transform player;
@@ -51,6 +49,7 @@ public class Element : ScriptableObject {
 		{
 			player = GameObject.FindGameObjectWithTag("Player").transform;
 		}
+		player.GetComponent<PlayerController>().anim.SetBoolAnimParam("CastingElement", true);
 
 
 		//throw new System.NullReferenceException("This is the base class");
@@ -66,11 +65,6 @@ public class Element : ScriptableObject {
 
 	public bool IsBaseUseable()
 	{
-		return CurrentUseableEnergy >= EnergyCost && !IsOnCooldown && !IsModifier;
-	}
-
-	public bool IsModifierUseable()
-	{
-		return CurrentUseableEnergy >= SecondaryUseEnergyCost && !IsOnCooldown && IsModifier;
+		return CurrentUseableEnergy >= EnergyCost && !IsOnCooldown;
 	}
 }

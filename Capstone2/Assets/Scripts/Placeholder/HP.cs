@@ -28,7 +28,7 @@ public class HP : MonoBehaviour
 	{
 		if (Health <= 0) {
 			Health = 0;
-			GetComponent<Respawn> ().respawn ();
+			GetComponent<PlayerController>().anim.SetBoolAnimParam("IsDead", true);
 		}
 		//HP Display
 		hpPercent = Health / MaxHealth;

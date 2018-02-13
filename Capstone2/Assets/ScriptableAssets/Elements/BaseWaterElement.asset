@@ -15,11 +15,10 @@ MonoBehaviour:
   ElementIcon: {fileID: 21300000, guid: c0b0a16551d0d004ca0866bbdfd2584a, type: 3}
   EnergyColor: {r: 0.017241238, g: 0, b: 0.5, a: 1}
   EnergyCost: 0
-  CurrentUseableEnergy: 0
-  SecondaryUseEnergyCost: 0
-  CooldownDuration: 4
+  CurrentUseableEnergy: 60
+  CooldownDuration: 0
   IsElementUnlocked: 1
   IsOnCooldown: 0
-  IsModifier: 0
   MaxUseableEnergy: 100
+  HealValue: 50
   VFX: {fileID: 1921419411014616, guid: 4bd26132bbec47b4bbdba986f1f70b87, type: 2}

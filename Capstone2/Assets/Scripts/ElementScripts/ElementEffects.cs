@@ -9,7 +9,12 @@ public class ElementEffects : MonoBehaviour
 	public GameObject TerrainPrefab;
 	public float SpawnDistance;
 
-	public void SummonTerrain()
+	[Space]
+	[Header("Water Element Variables")]
+	public GameObject WaterVFX;
+
+
+	public void SummonTerrain(EarthElement earthElement)
 	{
 		Vector3 location;
 		///Terrain Effect
@@ -24,5 +29,18 @@ public class ElementEffects : MonoBehaviour
 		}
 		GameObject Terrain = Instantiate(TerrainPrefab, location, Quaternion.identity);
 		Destroy(Terrain, 5.0f);
+	}
+
+	public void CastHeal(WaterElement waterElement)
+	{
+		GetComponentInParent<HP>().AddHealth(waterElement.HealValue);
+		GameObject spawnedVFX = Instantiate(waterElement.VFX, transform.parent.transform.position, Quaternion.identity);
+		spawnedVFX.GetComponent<ParticleFollowPath>().Activate();
+		Destroy(spawnedVFX, spawnedVFX.GetComponent<ParticleFollowPath>().TimeToFinish + 0.5f);
+	}
+
+	public void StopCast()
+	{
+		GetComponentInParent<PlayerController>().anim.SetBoolAnimParam("CastingElement", false);
 	}
 }
