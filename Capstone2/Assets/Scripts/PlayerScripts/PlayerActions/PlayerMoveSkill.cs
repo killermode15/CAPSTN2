@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class PlayerMoveSkill : MonoBehaviour, IPlayerAction
 {
-
+	public float dashCD;
 	public float DashSpeed;
 	public float DashDuration;
 	private float currentLerpTime;
 	private PlayerController controllerScriptRef;
+	private bool canDash;
 
 	// Use this for initialization
 	void Start()
 	{
+		canDash = true;
 		controllerScriptRef = GetComponent<PlayerController>();
 		DashDuration = controllerScriptRef.anim.GetCurrentAnimationLength();
 	}
@@ -33,19 +35,9 @@ public class PlayerMoveSkill : MonoBehaviour, IPlayerAction
 
 	IEnumerator Dash()
 	{
-		float lerpPerc = 0;
-		currentLerpTime = 0;
-		do
-		{
-			currentLerpTime += Time.deltaTime;
-			if (currentLerpTime > DashDuration)
-				currentLerpTime = DashDuration;
-
-			lerpPerc = currentLerpTime / DashDuration;
-			//transform.position += Vector3.right * Input.GetAxisRaw("LeftStickX") * 
-			transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x + (DashSpeed * Input.GetAxis("Horizontal")), transform.position.y, transform.position.z), lerpPerc);
-			yield return new WaitForEndOfFrame();
-		} while (lerpPerc < 1);
+		canDash = false;
+		yield return new WaitForSeconds(dashCD);
+		canDash = true;
 	}
 
 	public void UseAction()
@@ -56,6 +48,10 @@ public class PlayerMoveSkill : MonoBehaviour, IPlayerAction
 			controllerScriptRef.anim.SetBoolAnimParam("IsRolling", true);
 			controllerScriptRef.AddForwardVelocity(DashDuration, DashSpeed);
 			//StartCoroutine(Dash());
+			if (canDash) {
+				controllerScriptRef.AddForwardVelocity (DashDuration, DashSpeed);
+				StartCoroutine (Dash ());
+			}
 		}
 	}
 
