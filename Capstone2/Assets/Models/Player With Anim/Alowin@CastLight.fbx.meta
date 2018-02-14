@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 556fa70c1711ec847b0e11d4833b0684
-timeCreated: 1518376675
+timeCreated: 1518523731
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -175,7 +175,7 @@ ModelImporter:
     tangentImportMode: 3
     normalCalculationMode: 4
   importAnimation: 1
-  copyAvatar: 0
+  copyAvatar: 1
   humanDescription:
     serializedVersion: 2
     human: []
@@ -187,12 +187,13 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: mixamorig:Spine
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 401cd349ae478384280367f55e6c3f84,
+    type: 3}
   animationType: 2
   humanoidOversampling: 1
   additionalBone: 0

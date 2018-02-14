@@ -61,9 +61,19 @@ public class PlayerAnimation : MonoBehaviour
 		PlayerAnimator.SetTrigger(paramName);
 	}
 
+	public bool GetBoolAnimParam(string paramName)
+	{
+		return PlayerAnimator.GetBool(paramName);
+	}
+
 	public float GetCurrentAnimationLength()
 	{
 		return PlayerAnimator.GetCurrentAnimatorStateInfo(0).length;
+	}
+
+	public AnimatorStateInfo GetStateInfo()
+	{
+		return PlayerAnimator.GetCurrentAnimatorStateInfo(0);
 	}
 
 	public bool IsStatePlaying(PlayerAnimationState state)

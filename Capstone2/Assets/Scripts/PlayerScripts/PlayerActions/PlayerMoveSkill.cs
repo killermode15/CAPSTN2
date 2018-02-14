@@ -15,12 +15,20 @@ public class PlayerMoveSkill : MonoBehaviour, IPlayerAction
 	void Start()
 	{
 		controllerScriptRef = GetComponent<PlayerController>();
+		DashDuration = controllerScriptRef.anim.GetCurrentAnimationLength();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		UseAction();
+		if (controllerScriptRef.anim.GetBoolAnimParam("IsRolling"))
+		{
+			if (controllerScriptRef.anim.GetStateInfo().normalizedTime >= 1f)
+			{
+				controllerScriptRef.anim.SetBoolAnimParam("IsRolling", false);
+			}
+		}
 	}
 
 	IEnumerator Dash()
@@ -45,6 +53,7 @@ public class PlayerMoveSkill : MonoBehaviour, IPlayerAction
 		if (InputManager.Instance.GetKeyDown(ControllerInput.Move) && controllerScriptRef.CanMove)
 		{
 			Debug.Log("DAsh");
+			controllerScriptRef.anim.SetBoolAnimParam("IsRolling", true);
 			controllerScriptRef.AddForwardVelocity(DashDuration, DashSpeed);
 			//StartCoroutine(Dash());
 		}

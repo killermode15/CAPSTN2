@@ -51,6 +51,7 @@ ModelImporter:
     100086: polySurface11
     100088: try1:blendShape1Set
     100090: try1:boy_ALL
+    100092: group1
     400000: //RootNode
     400002: default
     400004: mixamorig:Head
@@ -97,7 +98,9 @@ ModelImporter:
     400086: polySurface11
     400088: try1:blendShape1Set
     400090: try1:boy_ALL
+    400092: group1
     2100000: No Name
+    2100002: lambert1
     2300000: default
     2300002: try1:blendShape1Set
     3300000: default
@@ -129,7 +132,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -178,10 +181,10 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: mixamorig:Spine
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
