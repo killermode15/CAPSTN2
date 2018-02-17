@@ -18,7 +18,7 @@ public class PlayerAnimation : MonoBehaviour
 {
 
 	public Animator PlayerAnimator;
-
+	public bool canAnimate;
 	private bool isAttacking;
 	private bool isJumping;
 	private bool isWalking;
@@ -26,26 +26,30 @@ public class PlayerAnimation : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-
+		canAnimate = true;
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		PlayerAnimator.SetFloat("WalkSpeed", Mathf.Abs(Input.GetAxis("Horizontal")) + 1);
-
+		if (canAnimate)
+			PlayerAnimator.SetFloat ("WalkSpeed", Mathf.Abs (Input.GetAxis ("Horizontal")) + 1);
+		else
+			PlayerAnimator.SetFloat ("WalkSpeed", 0);
 
 		
 	}
 
 	public void SetBoolAnimParam(string paramName, bool val)
 	{
-		PlayerAnimator.SetBool(paramName, val);
+		if(canAnimate)
+			PlayerAnimator.SetBool(paramName, val);
 	}
 
 	public void SetTriggerAnimParam(string paramName)
 	{
-		PlayerAnimator.SetTrigger(paramName);
+		if(canAnimate)
+			PlayerAnimator.SetTrigger(paramName);
 	}
 
 	public bool GetBoolAnimParam(string paramName)

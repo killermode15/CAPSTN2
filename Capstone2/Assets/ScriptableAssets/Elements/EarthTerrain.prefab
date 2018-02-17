@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23353658468952482}
   m_Layer: 0
   m_Name: EarthTerrain
-  m_TagString: Untagged
+  m_TagString: EarthTerrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

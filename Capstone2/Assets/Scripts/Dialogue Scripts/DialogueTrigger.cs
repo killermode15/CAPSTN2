@@ -13,6 +13,7 @@ public class DialogueTrigger : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if (other.gameObject.CompareTag ("Player")) {
+			triggered = true;
 			TriggerDialogue ();
 			triggered = true;
 			this.gameObject.GetComponent<BoxCollider> ().enabled = false;
