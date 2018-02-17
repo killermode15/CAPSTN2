@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IPausable
 {
 	public GameObject JumpVFX;
 	public bool CanMove = true;
@@ -35,12 +35,17 @@ public class PlayerController : MonoBehaviour
 		controller.detectCollisions = true;
 
 		canJump = true;
-
-		origZPos = transform.position.z;
+		PauseManager.Instance.addPausable (this);
+		//origZPos = transform.position.z;
 	}
+
+	void OnDisable(){
+		PauseManager.Instance.removePausable (this);
+	}
+
 	void Update()
 	{
-		transform.position = new Vector3(transform.position.x, transform.position.y, origZPos);
+		transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
 		CalculateGravity();
 		RotateCharacter();
@@ -143,21 +148,25 @@ public class PlayerController : MonoBehaviour
 		//Get the current y velocity of the movement direction
 		float currY = moveDirection.y;
 		//Then get the movement input from the player
-		if (CanMove)
-			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+		if (CanMove) {
+			moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, 0);
+
+			//Multiply it to the movespeed
+			moveDirection *= MoveSpeed;
+			//Add dash if turned onx
+			float dash = (initialDashVal == 0) ? 0 : dashValue / initialDashVal;
+			moveDirection.x += DashCurve.Evaluate(dash) * dashSpeed;
+			//Then set the y velocity back
+			moveDirection.y = currY;
+
+		}
 		else
 			moveDirection = Vector3.zero;
 		//Currently commented out because movement
 		//is based on where the character is facing
 		//moveDirection = transform.TransformDirection(moveDirection);
 
-		//Multiply it to the movespeed
-		moveDirection *= MoveSpeed;
-		//Add dash if turned onx
-		float dash = (initialDashVal == 0) ? 0 : dashValue / initialDashVal;
-		moveDirection.x += DashCurve.Evaluate(dash) * dashSpeed;
-		//Then set the y velocity back
-		moveDirection.y = currY;
+
 
 		controller.Move(moveDirection * Time.deltaTime);
 
@@ -213,7 +222,6 @@ public class PlayerController : MonoBehaviour
 	public bool IsGrounded()
 	{
 		return controller.isGrounded;
-
 	}
 
 	public void SetCanMove(bool val)
@@ -226,4 +234,13 @@ public class PlayerController : MonoBehaviour
 		moveDirection = Vector3.zero;
 	}
 
+	public void Pause(){
+		CanMove = false;
+		GetComponent<PlayerAnimation> ().canAnimate = false;
+	}
+
+	public void UnPause(){
+		CanMove = true;
+		GetComponent<PlayerAnimation> ().canAnimate = true;
+	}
 }

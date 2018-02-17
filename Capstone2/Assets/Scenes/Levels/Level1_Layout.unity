@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -2203,15 +2203,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4676124460033986, guid: d69a384fc9456fa4f93c6ac7ac8e2f5e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -16.84369
+      value: -16.949
       objectReference: {fileID: 0}
     - target: {fileID: 4676124460033986, guid: d69a384fc9456fa4f93c6ac7ac8e2f5e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.03
+      value: -0.96456
       objectReference: {fileID: 0}
     - target: {fileID: 4676124460033986, guid: d69a384fc9456fa4f93c6ac7ac8e2f5e, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -12.45
+      value: -12.409
       objectReference: {fileID: 0}
     - target: {fileID: 4676124460033986, guid: d69a384fc9456fa4f93c6ac7ac8e2f5e, type: 2}
       propertyPath: m_LocalRotation.x
@@ -10274,6 +10274,11 @@ Prefab:
       propertyPath: CorruptionEffect
       value: 
       objectReference: {fileID: 703271033}
+    - target: {fileID: 114625262800119206, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+        type: 2}
+      propertyPath: respawnLocation
+      value: 
+      objectReference: {fileID: 777117899}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
   m_IsPrefabParent: 0

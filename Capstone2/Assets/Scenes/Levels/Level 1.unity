@@ -1240,6 +1240,11 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0.066
       objectReference: {fileID: 0}
+    - target: {fileID: 114270392333039362, guid: d69a384fc9456fa4f93c6ac7ac8e2f5e,
+        type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1473274961}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d69a384fc9456fa4f93c6ac7ac8e2f5e, type: 2}
   m_IsPrefabParent: 0
@@ -3166,6 +3171,11 @@ Prefab:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1473274960}
+    - target: {fileID: 114684681025626176, guid: 0babec27043f4bd4997719185c197608,
+        type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1473274961}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0babec27043f4bd4997719185c197608, type: 2}
   m_IsPrefabParent: 0
@@ -6026,6 +6036,11 @@ Prefab:
       propertyPath: m_Name
       value: EnemySpider (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114270392333039362, guid: d69a384fc9456fa4f93c6ac7ac8e2f5e,
+        type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1473274961}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d69a384fc9456fa4f93c6ac7ac8e2f5e, type: 2}
   m_IsPrefabParent: 0
@@ -8475,6 +8490,11 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0.066
       objectReference: {fileID: 0}
+    - target: {fileID: 114270392333039362, guid: d69a384fc9456fa4f93c6ac7ac8e2f5e,
+        type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1473274961}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d69a384fc9456fa4f93c6ac7ac8e2f5e, type: 2}
   m_IsPrefabParent: 0
@@ -13296,6 +13316,90 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 943440808}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &947164287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 947164288}
+  - component: {fileID: 947164291}
+  - component: {fileID: 947164290}
+  - component: {fileID: 947164289}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &947164288
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 947164287}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1519530110}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &947164289
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 947164287}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!65 &947164290
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 947164287}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &947164291
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 947164287}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &947174788
 Prefab:
   m_ObjectHideFlags: 0
@@ -16449,6 +16553,11 @@ Prefab:
       propertyPath: m_Name
       value: EnemyPeashooter (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114629344882139500, guid: b02a26691a5395f479b5d1236f364966,
+        type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1473274961}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b02a26691a5395f479b5d1236f364966, type: 2}
   m_IsPrefabParent: 0
@@ -19558,11 +19667,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4816640547367954, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -37.19999
+      value: -39
       objectReference: {fileID: 0}
     - target: {fileID: 4816640547367954, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.26000106
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4816640547367954, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
       propertyPath: m_LocalPosition.z
@@ -20137,7 +20246,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 947164288}
   m_Father: {fileID: 556622152}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20895,6 +21005,11 @@ Prefab:
       propertyPath: m_LocalPosition.z
       value: 0.066
       objectReference: {fileID: 0}
+    - target: {fileID: 114270392333039362, guid: d69a384fc9456fa4f93c6ac7ac8e2f5e,
+        type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1473274961}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d69a384fc9456fa4f93c6ac7ac8e2f5e, type: 2}
   m_IsPrefabParent: 0
@@ -21608,6 +21723,11 @@ Prefab:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1473274960}
+    - target: {fileID: 114629344882139500, guid: b02a26691a5395f479b5d1236f364966,
+        type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1473274961}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b02a26691a5395f479b5d1236f364966, type: 2}
   m_IsPrefabParent: 0
@@ -22936,7 +23056,7 @@ Transform:
   m_GameObject: {fileID: 1718882532}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.36271977, y: 38.351, z: -0.16281909}
-  m_LocalScale: {x: 0.0533958, y: 58.16394, z: 0.20825161}
+  m_LocalScale: {x: 0.0533958, y: 58.16394, z: 0.24745733}
   m_Children: []
   m_Father: {fileID: 715800288}
   m_RootOrder: 0
@@ -25095,6 +25215,11 @@ Prefab:
       propertyPath: m_Name
       value: EnemyPeashooter (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114629344882139500, guid: b02a26691a5395f479b5d1236f364966,
+        type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1473274961}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b02a26691a5395f479b5d1236f364966, type: 2}
   m_IsPrefabParent: 0

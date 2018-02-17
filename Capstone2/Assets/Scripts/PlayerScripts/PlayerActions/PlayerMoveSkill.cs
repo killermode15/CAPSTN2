@@ -17,7 +17,6 @@ public class PlayerMoveSkill : MonoBehaviour, IPlayerAction
 	{
 		canDash = true;
 		controllerScriptRef = GetComponent<PlayerController>();
-		DashDuration = controllerScriptRef.anim.GetCurrentAnimationLength();
 	}
 
 	// Update is called once per frame
