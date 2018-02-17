@@ -35,58 +35,111 @@ public class AbsorbableCorruption : Absorbable
 	public override void Update()
 	{
 		base.Update();
-		if (IsSelected)
+		//Play Selection VFX here
+		//VFXFromString("selection").Play();
+		//VFXFromString("aura ring selection").Play();
+
+		if(!Input.GetButton("LeftTrigger"))
 		{
-			//Play Selection VFX here
-			//VFXFromString("selection").Play();
-			//VFXFromString("aura ring selection").Play();
-
-
-			if (IsBeingAbsorbed)
+			ToggleButton(false);
+			IsBeingAbsorbed = false;
+			IsSelected = false;
+			buttonsHasStarted = false;
+			player.SendMessage("SetCanMove", true);
+			StopCoroutine(ChangeButton());
+			PlayerAnimation anim = player.GetComponent<PlayerAnimation>();
+			if (anim.GetBoolAnimParam("IsAbsorbing"))
 			{
-				if (!buttonsHasStarted)
+				anim.SetBoolAnimParam("IsAbsorbing", false);
+			}
+		}
+		else if(IsBeingAbsorbed)
+		{
+			if (!buttonsHasStarted)
+			{
+				ToggleButton(true);
+				StartCoroutine(ChangeButton());
+				buttonsHasStarted = true;
+				PlayerAnimation anim = player.GetComponent<PlayerAnimation>();
+				if (!anim.GetBoolAnimParam("IsAbsorbing"))
 				{
-					ToggleButton(true);
-					StartCoroutine(ChangeButton());
-					buttonsHasStarted = true;
+					anim.SetBoolAnimParam("IsAbsorbing", true);
 				}
-
-				if (!HasEnergyLeft())
-				{
-					IsBeingAbsorbed = false;
-					IsSelected = false;
-				}
-
-				string currButtonName = (currentButtonIndex < ButtonImages.Count) ? ButtonImages[currentButtonIndex].sprite.name : " ";
-				if (currButtonName != " ")
-				{
-					if (Input.GetButtonDown(currButtonName))
-					{
-						if (currentButtonIndex < ButtonImages.Count)
-						{
-							currentButtonIndex++;
-						}
-						Image buttonSprite = ButtonImages[currentButtonIndex - 1];
-						ButtonImages[currentButtonIndex - 1].color = new Color(buttonSprite.color.r, buttonSprite.color.g, buttonSprite.color.b, 0.4f);
-					}
-				}
-				else
-				{
-					PathVFX.Find(x => x.VFXName == "vfx_CorruptionAbsorb").Play();
-					GameObject.FindGameObjectWithTag("Player").GetComponent<CorruptionBar>().CurrentCorruption += (AbsorptionRate);
-					Energy -= AbsorptionRate;
-					currentButtonIndex = 0;
-					StopAllCoroutines();
-					StartCoroutine(ChangeButton());
-					return;
-				}
-				//if()
 			}
 
+			if (!HasEnergyLeft())
+			{
+				IsBeingAbsorbed = false;
+				IsSelected = false;
+			}
 
-
+			string currButtonName = (currentButtonIndex < ButtonImages.Count) ? ButtonImages[currentButtonIndex].sprite.name : " ";
+			if (currButtonName != " ")
+			{
+				if (Input.GetButtonDown(currButtonName))
+				{
+					if (currentButtonIndex < ButtonImages.Count)
+					{
+						currentButtonIndex++;
+					}
+					Image buttonSprite = ButtonImages[currentButtonIndex - 1];
+					ButtonImages[currentButtonIndex - 1].color = new Color(buttonSprite.color.r, buttonSprite.color.g, buttonSprite.color.b, 0.4f);
+				}
+			}
+			else
+			{
+				PathVFX.Find(x => x.VFXName == "vfx_CorruptionAbsorb").Play();
+				GameObject.FindGameObjectWithTag("Player").GetComponent<CorruptionBar>().CurrentCorruption += (AbsorptionRate);
+				Energy -= AbsorptionRate;
+				currentButtonIndex = 0;
+				StopAllCoroutines();
+				StartCoroutine(ChangeButton());
+				return;
+			}
 		}
-		else
+
+		/*
+		if (IsBeingAbsorbed)
+		{
+			if (!buttonsHasStarted)
+			{
+				ToggleButton(true);
+				StartCoroutine(ChangeButton());
+				buttonsHasStarted = true;
+			}
+
+			if (!HasEnergyLeft())
+			{
+				IsBeingAbsorbed = false;
+				IsSelected = false;
+			}
+
+			string currButtonName = (currentButtonIndex < ButtonImages.Count) ? ButtonImages[currentButtonIndex].sprite.name : " ";
+			if (currButtonName != " ")
+			{
+				if (Input.GetButtonDown(currButtonName))
+				{
+					if (currentButtonIndex < ButtonImages.Count)
+					{
+						currentButtonIndex++;
+					}
+					Image buttonSprite = ButtonImages[currentButtonIndex - 1];
+					ButtonImages[currentButtonIndex - 1].color = new Color(buttonSprite.color.r, buttonSprite.color.g, buttonSprite.color.b, 0.4f);
+				}
+			}
+			else
+			{
+				PathVFX.Find(x => x.VFXName == "vfx_CorruptionAbsorb").Play();
+				GameObject.FindGameObjectWithTag("Player").GetComponent<CorruptionBar>().CurrentCorruption += (AbsorptionRate);
+				Energy -= AbsorptionRate;
+				currentButtonIndex = 0;
+				StopAllCoroutines();
+				StartCoroutine(ChangeButton());
+				return;
+			}
+			//if()
+		}
+		if(!IsSelected && !IsBeingAbsorbed)
 		{
 			ToggleButton(false);
 			IsBeingAbsorbed = false;
@@ -97,6 +150,7 @@ public class AbsorbableCorruption : Absorbable
 			//VFXFromString("selection").Stop();
 			//VFXFromString("aura ring selection").Stop();
 		}
+		*/
 	}
 
 	IEnumerator ChangeButton()

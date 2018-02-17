@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
 		origZPos = transform.position.z;
 	}
+	
 	void Update()
 	{
 		transform.position = new Vector3(transform.position.x, transform.position.y, origZPos);
@@ -174,12 +176,6 @@ public class PlayerController : MonoBehaviour
 		//Get the normalized movement direction
 		Vector3 moveDir = moveDirection.normalized;
 
-		//if (moveDir.x != 0)
-		//{
-		//	float targetRotation = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
-		//	transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref turnSmoothVel, TurnSmoothTime);
-		//}
-
 		if (moveDir.x != 0)
 		{
 			currentRotateTo = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
@@ -221,9 +217,13 @@ public class PlayerController : MonoBehaviour
 		CanMove = val;
 	}
 
+	public void SetCanMove(int val)
+	{
+		CanMove = (val == 0) ? false : true;
+	}
+
 	public void StopMovement()
 	{
 		moveDirection = Vector3.zero;
 	}
-
 }

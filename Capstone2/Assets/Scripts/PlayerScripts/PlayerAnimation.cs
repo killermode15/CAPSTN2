@@ -35,20 +35,7 @@ public class PlayerAnimation : MonoBehaviour
 		PlayerAnimator.SetFloat("WalkSpeed", Mathf.Abs(Input.GetAxis("Horizontal")) + 1);
 
 
-		if (InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy))
-		{
-			if (!PlayerAnimator.GetBool("IsAbsorbing"))
-			{
-				PlayerAnimator.SetBool("IsAbsorbing", true);
-			}
-		}
-		else
-		{
-			if (PlayerAnimator.GetBool("IsAbsorbing"))
-			{
-				PlayerAnimator.SetBool("IsAbsorbing", false);
-			}
-		}
+		
 	}
 
 	public void SetBoolAnimParam(string paramName, bool val)

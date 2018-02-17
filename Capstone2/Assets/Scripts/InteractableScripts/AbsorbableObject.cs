@@ -29,17 +29,26 @@ public class AbsorbableObject : Absorbable
 	public override void Update()
 	{
 		base.Update();
-		if (IsSelected)
+		if (!Input.GetButton("LeftTrigger"))
 		{
+			IsBeingAbsorbed = false;
+			player.SendMessage("SetCanMove", true);
+			PlayerAnimation anim = player.GetComponent<PlayerAnimation>();
+			if (anim.GetBoolAnimParam("IsAbsorbing"))
+			{
+				anim.SetBoolAnimParam("IsAbsorbing", false);
+			}
+		}
+		if (IsSelected || IsBeingAbsorbed)
+		{
+			PlayerAnimation anim = player.GetComponent<PlayerAnimation>();
+			if (!anim.GetBoolAnimParam("IsAbsorbing"))
+			{
+				anim.SetBoolAnimParam("IsAbsorbing", true);
+			}
 			//Play Selection VFX here
 			//VFXFromString("selection").Play();
 			//VFXFromString("aura ring selection").Play();
-		}
-		else
-		{
-			IsBeingAbsorbed = false;
-			//VFXFromString("selection").Stop();
-			//VFXFromString("aura ring selection").Stop();
 		}
 	}
 
@@ -52,7 +61,7 @@ public class AbsorbableObject : Absorbable
 
 				//Play Absorb VFX here
 				//Absorb enemy
-				VFXFromString("AbsorbVFX").Play();
+				//VFXFromString("AbsorbVFX").Play();
 				IsBeingAbsorbed = true;
 				Energy -= AbsorbRate;
 			}
@@ -73,11 +82,11 @@ public class AbsorbableObject : Absorbable
 		//= (VFX.Find(x => x.VFXName.ToLower() == vfxName)) == null ?
 		//	(VFX.Find(x => x.VFXName.ToLower() == vfxName)) : (VFX.Find(x => x.VFXName.ToLower() == vfxName));
 
-		if (VFX.Exists(x => x.VFXName ==vfxName))
+		if (VFX.Exists(x => x.VFXName == vfxName))
 		{
 			vfx = VFX.Find(x => x.VFXName == vfxName);
 		}
-		else if(PathVFX.Exists(x => x.VFXName == vfxName))
+		else if (PathVFX.Exists(x => x.VFXName == vfxName))
 		{
 			vfx = PathVFX.Find(x => x.VFXName == vfxName);
 		}

@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class TutorialLevelManager : MonoBehaviour {
 
+	private Transform FirstSetDialogue;
 	private Transform SecondSetDialogue;
 	bool enable;
 
 	// Use this for initialization
 	void Start () {
+		FirstSetDialogue = this.gameObject.transform.GetChild(0);
 		SecondSetDialogue = this.gameObject.transform.GetChild (1);
 
 		enable = false;
@@ -20,6 +22,10 @@ public class TutorialLevelManager : MonoBehaviour {
 		/*if (/*when player traps snake successfully) {
 			enable = true;
 		}*/
-		SecondSetDialogue.gameObject.SetActive (enable);
+		if (FirstSetDialogue.GetComponent<DialogueTrigger>().triggered)
+		{
+			FirstSetDialogue.GetComponent<DialogueTrigger>().triggered = false;
+			SecondSetDialogue.gameObject.SetActive(enable);
+		}
 	}
 }
