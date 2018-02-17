@@ -49,7 +49,7 @@ public class PlayerMoveSkill : MonoBehaviour, IPlayerAction
 			controllerScriptRef.AddForwardVelocity(DashDuration, DashSpeed);
 			//StartCoroutine(Dash());
 			if (canDash) {
-				controllerScriptRef.AddForwardVelocity (DashDuration, DashSpeed);
+				controllerScriptRef.AddForwardVelocity(controllerScriptRef.anim.GetCurrentAnimationLength(), DashSpeed);
 				StartCoroutine (Dash ());
 			}
 		}
