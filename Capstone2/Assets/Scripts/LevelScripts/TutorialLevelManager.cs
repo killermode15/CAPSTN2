@@ -8,6 +8,7 @@ public class TutorialLevelManager : MonoBehaviour {
 	private Transform SecondSetDialogue;
 	//private Transform ThirdSetDialogue;
 	public GameObject Pause;
+	bool shit = false;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +22,7 @@ public class TutorialLevelManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (/*when player walls out the snake successfully*/ Input.GetButton("Jump")) {
+		if (/*when player walls out the snake successfully*/ shit) {
 			SecondSetDialogue.gameObject.SetActive (true);
 			PauseManager.Instance.Pause ();
 		}

@@ -107,11 +107,12 @@ GameObject:
   - component: {fileID: 114104374936168982}
   - component: {fileID: 114534605079558600}
   - component: {fileID: 114073921798907418}
-  - component: {fileID: 114743158603620062}
   - component: {fileID: 114557532728903362}
   - component: {fileID: 65136318187234260}
   - component: {fileID: 114754038278233374}
   - component: {fileID: 114758691633698720}
+  - component: {fileID: 114234568213374216}
+  - component: {fileID: 195279206470158442}
   m_Layer: 0
   m_Name: EnemySnake
   m_TagString: Enemy
@@ -207,7 +208,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1991050358977854}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0020881053, y: -0.3526355, z: -0.21843673}
+  m_LocalPosition: {x: 0.0020881053, y: 0.97, z: -0.21843673}
   m_LocalScale: {x: 19.52859, y: 19.528584, z: 17.581076}
   m_Children: []
   m_Father: {fileID: 4741650579860880}
@@ -220,7 +221,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1624134789736600}
   m_LocalRotation: {x: -0, y: -0.729257, z: -0, w: 0.6842399}
-  m_LocalPosition: {x: -6.33, y: 0.03, z: 2.63}
+  m_LocalPosition: {x: -45.82, y: 12.58, z: 1.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4454436524955464}
@@ -332,7 +333,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 0}
-  ObjectCounterpart: {fileID: 0}
+  ObjectCounterpart: {fileID: 1061118211528452, guid: f8a6d5df15b38934fbfeb11cdca34dda,
+    type: 2}
 --- !u!114 &114104374936168982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -346,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Manager: {fileID: 0}
   MoveAwaySpeed: 5
-  ChargeSpeed: 0.5
+  ChargeSpeed: 0.8
   ChargeDuration: 0.3
   ChargeCurve:
     serializedVersion: 2
@@ -398,11 +400,11 @@ MonoBehaviour:
   pathName: absorbPathSnake1
   pathColor: {r: 0, g: 1, b: 1, a: 1}
   nodes:
-  - {x: -163.73264, y: 54.03586, z: 5.0299993}
-  - {x: -163.70673, y: 55.599205, z: 5.0299993}
-  - {x: -165.46277, y: 56.786537, z: 5.0299993}
-  - {x: -166.97314, y: 55.31611, z: 5.0299993}
-  - {x: -176.44263, y: 55.77586, z: 2.2000003}
+  - {x: -60.57263, y: 81.25586, z: 5.429999}
+  - {x: -60.546722, y: 82.8192, z: 5.429999}
+  - {x: -62.302765, y: 84.00653, z: 5.429999}
+  - {x: -63.81314, y: 82.5361, z: 5.429999}
+  - {x: -73.28262, y: 82.99585, z: 2.6000004}
   nodeCount: 5
   initialized: 1
   initialName: New Path 2
@@ -450,6 +452,23 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114234568213374216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1624134789736600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faca0ca4bec287543982ae73c029e517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Manager: {fileID: 0}
+  PatrolPoints:
+  - {fileID: 0}
+  CurrentPatrolPoint: 0
+  GoalDistanceCompensation: 0
+  moveSpeed: 0
 --- !u!114 &114303291412116876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -530,11 +549,11 @@ MonoBehaviour:
   DisableOnStart: 0
   path: {fileID: 114127512269256910}
   pathNodes:
-  - {x: -140.04263, y: 52.30586, z: 4.8299994}
-  - {x: -140.01672, y: 53.869205, z: 4.8299994}
-  - {x: -141.77277, y: 55.056538, z: 4.8299994}
-  - {x: -143.28314, y: 53.58611, z: 4.8299994}
-  - {x: -152.75262, y: 54.04586, z: 2.0000002}
+  - {x: -112.15263, y: 67.64586, z: 5.229999}
+  - {x: -112.126724, y: 69.2092, z: 5.229999}
+  - {x: -113.88277, y: 70.39653, z: 5.229999}
+  - {x: -115.39314, y: 68.9261, z: 5.229999}
+  - {x: -124.862625, y: 69.38586, z: 2.4000003}
   originalNodes:
   - {x: 15.999999, y: -1.1700003, z: 3.0300002}
   - {x: 16.02591, y: 0.39334428, z: 3.0300002}
@@ -570,7 +589,7 @@ MonoBehaviour:
   PossibleStates: []
   CurrentState: {fileID: 0}
   attackRange: 4
-  DetectionRange: 7.97
+  DetectionRange: 9.73
   playerDistance: 0
 --- !u!114 &114600104808224934
 MonoBehaviour:
@@ -613,24 +632,6 @@ MonoBehaviour:
   Player: {fileID: 0}
   PathFollowReference: {fileID: 4452447168080218}
   SmoothCount: 3
---- !u!114 &114743158603620062
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1624134789736600}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 448a028f32f7c3c44ad2e4af34d4185b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Manager: {fileID: 0}
-  PatrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  CurrentPatrolPoint: 0
-  GoalDistanceCompensation: 1
-  moveSpeed: 3
 --- !u!114 &114754038278233374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -692,6 +693,27 @@ MonoBehaviour:
   TimeToFinish: 1
   EaseType: 25
   LoopType: 0
+--- !u!195 &195279206470158442
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1624134789736600}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!198 &198478620040342870
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -40,9 +40,9 @@ public class SnakeManager : StateManager {
 			//If the current state is not updating
 			if (!CurrentState.OnUpdate ()) {
 				//Transition to Patrol
-				ChangeState (GetState ("Patrol"));
+				ChangeState (GetState ("GroundedPatrol"));
 			}
-		} else if (CompareToCurrentState (typeof(Patrol))) {
+		} else if (CompareToCurrentState (typeof(GroundedPatrol))) {
 			//If the current state is not updating
 			if (!CurrentState.OnUpdate ()) {
 				//Transition to Idle
