@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -7658,7 +7658,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 143251980
+  randomSeed: 189171347
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -12548,6 +12548,8 @@ MonoBehaviour:
   playingvfx:
     VFXName: 
     VFX: {fileID: 0}
+    isPlaying: 0
+    isPaused: 0
   VFX: []
   PathVFX: []
 --- !u!1001 &1003925473
@@ -12860,7 +12862,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -2.5099945, y: 0}
   m_SizeDelta: {x: 4.99, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -13563,7 +13565,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1938199488
+  randomSeed: 1050717925
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -17738,7 +17740,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1358557731
+  randomSeed: 1729777861
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -21689,7 +21691,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1804100671
+  randomSeed: 142440493
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -28977,7 +28979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1717047574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29913,10 +29915,14 @@ MonoBehaviour:
   playingvfx:
     VFXName: 
     VFX: {fileID: 0}
+    isPlaying: 0
+    isPaused: 0
   VFX: []
   PathVFX:
   - VFXName: selection
     VFX: {fileID: 1720377351}
+    isPlaying: 0
+    isPaused: 0
     IsInstanced: 0
     InstanceTransform: {fileID: 0}
     Loop: 0
@@ -30209,7 +30215,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 764906232
+  randomSeed: 89511504
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -33763,7 +33769,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1791493145
+  randomSeed: -435525972
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -37728,7 +37734,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -180386696
+  randomSeed: 1549290196
   InitialModule:
     serializedVersion: 3
     enabled: 1

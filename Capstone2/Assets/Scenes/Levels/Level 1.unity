@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0138786305, g: 0.0067141345, b: 0.00527743, a: 1}
+  m_IndirectSpecularColor: {r: 0.013879598, g: 0.0067133196, b: 0.005277895, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -10398,7 +10398,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4724536538799640, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.0853
+      value: -0.2513
       objectReference: {fileID: 0}
     - target: {fileID: 4724536538799640, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
       propertyPath: m_LocalPosition.y
@@ -10458,6 +10458,14 @@ Prefab:
     - target: {fileID: 1956106074876066, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
       propertyPath: m_Name
       value: Pine2 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479574505486100, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608107522525102, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
@@ -15774,7 +15782,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4169589691908184, guid: 514e380d610115143835b31cc3ef403d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.0883
+      value: -0.2308
       objectReference: {fileID: 0}
     - target: {fileID: 4169589691908184, guid: 514e380d610115143835b31cc3ef403d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -15826,6 +15834,14 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 070d14658d336d249a3ad773910b2285, type: 2}
+    - target: {fileID: 4329717208556652, guid: 514e380d610115143835b31cc3ef403d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290473706807852, guid: 514e380d610115143835b31cc3ef403d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 514e380d610115143835b31cc3ef403d, type: 2}
   m_IsPrefabParent: 0
@@ -17573,7 +17589,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4724536538799640, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.2756
+      value: 0.1074
       objectReference: {fileID: 0}
     - target: {fileID: 4724536538799640, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
       propertyPath: m_LocalPosition.y
@@ -17633,6 +17649,18 @@ Prefab:
     - target: {fileID: 1956106074876066, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
       propertyPath: m_Name
       value: Pine2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583637791353960, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4608107522525102, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479574505486100, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
@@ -18825,11 +18853,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4169589691908184, guid: 514e380d610115143835b31cc3ef403d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.0601
+      value: -0.0794
       objectReference: {fileID: 0}
     - target: {fileID: 4169589691908184, guid: 514e380d610115143835b31cc3ef403d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 63.64
+      value: 63.98
       objectReference: {fileID: 0}
     - target: {fileID: 4169589691908184, guid: 514e380d610115143835b31cc3ef403d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -18880,6 +18908,14 @@ Prefab:
     - target: {fileID: 1055692869144604, guid: 514e380d610115143835b31cc3ef403d, type: 2}
       propertyPath: m_Name
       value: Pine1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4290473706807852, guid: 514e380d610115143835b31cc3ef403d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4329717208556652, guid: 514e380d610115143835b31cc3ef403d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 514e380d610115143835b31cc3ef403d, type: 2}
