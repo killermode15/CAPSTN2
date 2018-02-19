@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class StunnedState : State {
 
@@ -9,6 +10,9 @@ public class StunnedState : State {
 
 	public override void OnEnable()
 	{
+		if(GetComponent<NavMeshAgent> () != null)
+			GetComponent<NavMeshAgent> ().isStopped = true;
+		
 		isStunned = true;
 		StartCoroutine(Wait());
 		base.OnEnable();
@@ -16,7 +20,7 @@ public class StunnedState : State {
 
 	public override bool OnUpdate()
 	{
-		Debug.Log ("AAUUGGHHFFSFS");
+		Debug.Log ("OnUpdate Stunned State");
 		if (this.gameObject.GetComponent<PeaShooting> () != null) {
 			if (isStunned)
 				this.gameObject.GetComponent<PeaShooting> ().enabled = false;
@@ -32,6 +36,8 @@ public class StunnedState : State {
 
 	public override void OnDisable()
 	{
+		if(GetComponent<NavMeshAgent> () != null)
+			GetComponent<NavMeshAgent> ().isStopped = false;
 		base.OnDisable();
 	}
 

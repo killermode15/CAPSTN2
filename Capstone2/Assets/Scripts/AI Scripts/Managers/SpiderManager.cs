@@ -13,11 +13,19 @@ public class SpiderManager : StateManager {
 	void Start(){
 		base.Start ();
 		ChangeState (GetState ("Idle"));
+		PauseManager.Instance.addPausable (this);
 	}
 
-	void Update(){
-		CheckIfPlayerInRange ();
-		StateTransition ();
+	void OnDisable(){
+		PauseManager.Instance.removePausable (this);
+	}
+
+	// Update is called once per frame
+	void Update () {
+		if (!isPaused) {
+			CheckIfPlayerInRange ();
+			StateTransition ();
+		}
 	}
 
 	public override void StateTransition(){
@@ -39,6 +47,13 @@ public class SpiderManager : StateManager {
 				}
 			}
 		}
+	}
 
+	public override void Pause(){
+		isPaused = true;
+	}
+
+	public override void UnPause(){
+		isPaused = false;
 	}
 }

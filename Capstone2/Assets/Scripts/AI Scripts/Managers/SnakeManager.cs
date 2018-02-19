@@ -17,13 +17,20 @@ public class SnakeManager : StateManager {
 	// Use this for initialization
 	void Start () {
 		base.Start ();
-		ChangeState(GetState("Idle"));
+		ChangeState(GetState("GroundedPatrol"));
+		PauseManager.Instance.addPausable (this);
+	}
+
+	void OnDisable(){
+		PauseManager.Instance.removePausable (this);
 	}
 
 	// Update is called once per frame
 	void Update () {
-		CheckIfPlayerInRange ();
-		StateTransition();
+		if (!isPaused) {
+			CheckIfPlayerInRange ();
+			StateTransition ();
+		}
 	}
 
 	public virtual void StateTransition()
@@ -51,10 +58,10 @@ public class SnakeManager : StateManager {
 		} else if (CompareToCurrentState (typeof(Chase))) {
 			if (!CurrentState.OnUpdate ()) {
 				if (playerDistance >= DetectionRange) {
-					Debug.Log ("out of range!");
+					//Debug.Log ("out of range!");
 					ChangeState (GetState ("Idle"));
 				} else if (playerDistance <= attackRange) {
-					Debug.Log ("in range for attack!");
+					//Debug.Log ("in range for attack!");
 					ChangeState (GetState ("Attack"));
 				}
 			}
@@ -71,12 +78,13 @@ public class SnakeManager : StateManager {
 
 	public void ChangeState(State newState)
 	{
-		if (CurrentState)
-		{
-			CurrentState.enabled = false;
+		if (CurrentState != newState) {
+			if (CurrentState) {
+				CurrentState.enabled = false;
+			}
+			CurrentState = newState;
+			newState.enabled = true;
 		}
-		CurrentState = newState;
-		newState.enabled = true;
 	}
 
 	public State GetState(string name)
@@ -95,8 +103,16 @@ public class SnakeManager : StateManager {
 	public virtual void CheckIfPlayerInRange(){
 		playerDistance = Vector3.Distance (Player.transform.position, transform.position);
 		if (playerDistance <= DetectionRange) {
-			if(!CompareToCurrentState(typeof(Chase)) && !CompareToCurrentState(typeof(Attack)))
+			if(!CompareToCurrentState(typeof(Chase)) && !CompareToCurrentState(typeof(Attack))&& !CompareToCurrentState(typeof(StunnedState)))
 				ChangeState (GetState("Chase"));
 		}
+	}
+
+	public override void Pause(){
+		isPaused = true;
+	}
+
+	public override void UnPause(){
+		isPaused = false;
 	}
 }

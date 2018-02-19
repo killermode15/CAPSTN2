@@ -8,7 +8,7 @@ public class TutorialLevelManager : MonoBehaviour {
 	private Transform SecondSetDialogue;
 	//private Transform ThirdSetDialogue;
 	public GameObject Pause;
-	bool shit = false;
+	public bool shit = false;
 
 	// Use this for initialization
 	void Start () {
@@ -22,8 +22,9 @@ public class TutorialLevelManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (/*when player walls out the snake successfully*/ shit) {
+		if (GetComponent<CheckForTerrainSkill>().earthSkillUsed && !SecondSetDialogue.GetComponent<DialogueTrigger> ().triggered) {
 			SecondSetDialogue.gameObject.SetActive (true);
+			SecondSetDialogue.GetComponent<DialogueTrigger> ().triggered = true;
 			PauseManager.Instance.Pause ();
 		}
 

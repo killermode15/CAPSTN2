@@ -78,6 +78,6 @@ public class HP : MonoBehaviour
 	void OnControllerColliderHit(ControllerColliderHit collision){
 		if (collision.gameObject.CompareTag ("Spike")) {
 			RemoveHealth (collision.gameObject.GetComponent<Spike> ().damage);
-		}  
+		}
 	}
 }
