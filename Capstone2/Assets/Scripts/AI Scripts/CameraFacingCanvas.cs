@@ -5,10 +5,15 @@ using UnityEngine;
 public class CameraFacingCanvas : MonoBehaviour {
 
 	public Camera m_Camera;
- 
+
+	void Start()
+	{
+		m_Camera = Camera.main;
+	}
+
     void Update()
     {
-        transform.LookAt(transform.position + m_Camera.transform.rotation * Vector3.forward,
+		transform.LookAt(transform.position + m_Camera.transform.rotation * Vector3.forward ,
             m_Camera.transform.rotation * Vector3.up);
     }
 }

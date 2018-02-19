@@ -93,4 +93,9 @@ public class UseSkill : MonoBehaviour {
 		elementsOnCooldown.Add(element);
 		currentCooldowns.Add(element.CooldownDuration);
 	}
+
+	public Element GetElement(System.Type elementType)
+	{
+		return ElementalSkills.Find (x => x.GetType() == elementType);
+	}
 }

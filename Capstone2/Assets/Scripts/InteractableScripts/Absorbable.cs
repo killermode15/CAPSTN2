@@ -50,7 +50,7 @@ public class Absorbable : MonoBehaviour, IInteractable {
 
 	public bool HasEnergyLeft()
 	{
-		return Energy >= 0;
+		return Energy > 0;
 	}
 
 	public bool CanBeAbsorbed()

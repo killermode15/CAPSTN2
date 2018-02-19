@@ -33,6 +33,11 @@ public class PeaShooterManager : StateManager {
 	public override void StateTransition()
 	{
 		base.StateTransition ();
+		if(!GetComponent<AbsorbableCorruption>().HasEnergyLeft())
+		{
+			ChangeState(GetState("Dead"));
+			CurrentState.OnUpdate();
+		}
 		if (CompareToCurrentState (typeof(Patrol))) {
 			//If the current state is not updating
 			if (!CurrentState.OnUpdate ()) {
