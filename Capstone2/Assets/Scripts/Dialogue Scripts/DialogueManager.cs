@@ -59,6 +59,7 @@ public class DialogueManager : MonoBehaviour {
 	}
 
 	void EndDialogue(){
+		Debug.Log ("ending dialogue");
 		PauseManager.Instance.UnPause ();
 		animator.SetBool ("IsOpen", false);
 	}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class StateManager : MonoBehaviour {
+public class StateManager : MonoBehaviour, IPausable {
 
 	public float collisionDamage;
 	public GameObject Player;
@@ -13,10 +13,13 @@ public class StateManager : MonoBehaviour {
 	public float DetectionRange;
 	public float playerDistance;
 	private State stateBeforeStun;
+	public bool isPaused;
 
 	// Use this for initialization
 	public virtual void Start () {
 		PossibleStates = GetComponents<State>().ToList();
+		PauseManager.Instance.addPausable (this);
+		isPaused = false;
 	}
 
 	void Update(){
@@ -58,5 +61,13 @@ public class StateManager : MonoBehaviour {
 
 	public virtual void CheckIfPlayerInRange(){
 		
+	}
+
+	public virtual void Pause(){
+		isPaused = true;
+	}
+
+	public virtual void UnPause(){
+		isPaused = false;
 	}
 }

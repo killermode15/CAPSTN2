@@ -7,6 +7,7 @@ public class PauseManager : MonoBehaviour {
 
 	public static PauseManager Instance;
 
+	public bool IsPaused;
 	public delegate void OnPause ();
 	public delegate void OnUnPause();
 	public OnPause onPause;
@@ -29,15 +30,15 @@ public class PauseManager : MonoBehaviour {
 	}
 
 	public void Pause(){
+		//IsPaused = true;
 		if (onPause != null) {
-			Debug.Log ("pause");
 			onPause.Invoke ();
 		}
 	}
 
 	public void UnPause(){
+		//IsPaused = false;
 		if (onUnPause != null) {
-			Debug.Log ("unpaused");
 			onUnPause.Invoke ();
 		}
 	}

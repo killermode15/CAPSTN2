@@ -12,8 +12,14 @@ public class ElementEffects : MonoBehaviour
 	[Space]
 	[Header("Water Element Variables")]
 	public GameObject WaterVFX;
+
+	[Space]
 	[Header("Light Element Variables")]
 	public GameObject StunPrefab;
+
+	void Update(){
+
+	}
 
 	public void SummonTerrain()
 	{
@@ -29,7 +35,22 @@ public class ElementEffects : MonoBehaviour
 			location = new Vector3(transform.position.x - SpawnDistance, transform.position.y, transform.position.z);
 		}
 		GameObject Terrain = Instantiate(TerrainPrefab, location, Quaternion.identity);
-		Destroy(Terrain, 5.0f);
+		StartCoroutine(DestroyObject(Terrain, 5.0f));
+	}
+
+	IEnumerator DestroyObject(GameObject obj, float delay)
+	{
+		float timer = delay;
+
+		while (timer > 0) {
+
+			if (!PauseManager.Instance.IsPaused) {
+				timer -= Time.deltaTime;
+			}
+
+			yield return new WaitForEndOfFrame ();
+		}
+		Destroy (obj);
 	}
 
 	public void CastHeal(WaterElement waterElement)

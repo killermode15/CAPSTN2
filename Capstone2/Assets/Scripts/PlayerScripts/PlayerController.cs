@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, IPausable
 {
 	public GameObject JumpVFX;
-	public bool CanMove = true;
+	public bool CanMove;
 	//public float DashSpeed;
 	public float MoveSpeed = 6.0f;
 	public float JumpHeight;
@@ -35,9 +35,10 @@ public class PlayerController : MonoBehaviour, IPausable
 		//Set controller to detect collisions
 		controller.detectCollisions = true;
 
+		CanMove = true;
 		canJump = true;
 		PauseManager.Instance.addPausable (this);
-		//origZPos = transform.position.z;
+		origZPos = transform.position.z;
 	}
 
 	void OnDisable(){
@@ -46,7 +47,7 @@ public class PlayerController : MonoBehaviour, IPausable
 	
 	void Update()
 	{
-		transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+		transform.position = new Vector3(transform.position.x, transform.position.y, origZPos);
 
 		CalculateGravity();
 		RotateCharacter();
@@ -156,13 +157,13 @@ public class PlayerController : MonoBehaviour, IPausable
 			moveDirection *= MoveSpeed;
 			//Add dash if turned onx
 			float dash = (initialDashVal == 0) ? 0 : dashValue / initialDashVal;
-			moveDirection.x += DashCurve.Evaluate(dash) * dashSpeed;
+			moveDirection.x += DashCurve.Evaluate (dash) * dashSpeed;
 			//Then set the y velocity back
 			moveDirection.y = currY;
 
-		}
-		else
+		} else {
 			moveDirection = Vector3.zero;
+		}
 		//Currently commented out because movement
 		//is based on where the character is facing
 		//moveDirection = transform.TransformDirection(moveDirection);

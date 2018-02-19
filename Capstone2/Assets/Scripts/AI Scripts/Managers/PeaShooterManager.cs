@@ -15,11 +15,19 @@ public class PeaShooterManager : StateManager {
 	void Start () {
 		base.Start ();
 		ChangeState(GetState("Patrol"));
+		PauseManager.Instance.addPausable (this);
+	}
+
+	void OnDisable(){
+		PauseManager.Instance.removePausable (this);
 	}
 
 	// Update is called once per frame
 	void Update () {
-		StateTransition();
+		if (!isPaused) {
+			CheckIfPlayerInRange ();
+			StateTransition ();
+		}
 	}
 
 	public override void StateTransition()
@@ -33,4 +41,11 @@ public class PeaShooterManager : StateManager {
 		}
 	}
 
+	public override void Pause(){
+		isPaused = true;
+	}
+
+	public override void UnPause(){
+		isPaused = false;
+	}
 }

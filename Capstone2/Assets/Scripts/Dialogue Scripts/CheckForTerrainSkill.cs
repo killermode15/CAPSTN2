@@ -15,12 +15,10 @@ public class CheckForTerrainSkill : MonoBehaviour {
 
 	public void CheckIfTerrainIsUsed(Element element)
 	{
-		Debug.Log(earthSkillUsed);
 		if(element.GetType() == typeof(EarthElement))
 		{
 			//check if skill used
 			earthSkillUsed = true;
-			Debug.Log(earthSkillUsed);
 		}
 	}
 

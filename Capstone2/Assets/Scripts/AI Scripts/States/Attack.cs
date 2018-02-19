@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Attack : State
 {
-
 	public float MoveAwaySpeed;
 	public float ChargeSpeed;
 	public float ChargeDuration;
