@@ -9,8 +9,8 @@ public class VFXPlayer
 	public string VFXName;
 	public GameObject VFX;
 
-	protected bool isPlaying;
-	protected bool isPaused;
+	[HideInInspector] public bool isPlaying;
+	[HideInInspector] public bool isPaused;
 
 	public virtual void Play()
 	{

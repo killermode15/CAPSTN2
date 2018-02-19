@@ -33,11 +33,21 @@ public class Absorb : MonoBehaviour
 
 	private void Update()
 	{
+		if (anim.GetBoolAnimParam("IsAbsorbing"))
+		{
+			if (CurrentMode == AbsorbMode.Element && !IsAbsorbing())
+				anim.SetBoolAnimParam("IsAbsorbing", false);
+			else if (CurrentMode == AbsorbMode.Corruption && !isAbsorbingCorruption)
+				anim.SetBoolAnimParam("IsAbsorbing", false);
+		}
 
-		AbsorbAnimation();
 		SelectObject();
 		if (IsAbsorbing())
 			AbsorbObject();
+		else if(CurrentMode == AbsorbMode.Corruption && isAbsorbingCorruption && !Input.GetButton("LeftTrigger"))
+		{
+			isAbsorbingCorruption = false;
+		}
 		GetCurrentAbsorbableMode();
 		SwitchAbsorbable(currentSelectedIndex);
 		SwitchAbsorbMode();
@@ -128,64 +138,25 @@ public class Absorb : MonoBehaviour
 	}
 	private void SwitchAbsorbMode()
 	{
-
-		if (InputManager.Instance.GetKeyDown(ControllerInput.SwitchAbsorbMode) && Input.GetButton("LeftTrigger") && !recentlyChangedMode)
+		if (!isAbsorbingCorruption)
 		{
-			recentlyChangedMode = true;
-			if (CurrentMode == AbsorbMode.Corruption)
+			if (InputManager.Instance.GetKeyDown(ControllerInput.SwitchAbsorbMode) && Input.GetButton("LeftTrigger") && !recentlyChangedMode)
 			{
-				CurrentMode = AbsorbMode.Element;
-				Debug.Log("Current Selected Mode: " + CurrentMode);
-			}
-			else if (CurrentMode == AbsorbMode.Element)
-			{
-				CurrentMode = AbsorbMode.Corruption;
-				Debug.Log("Current Selected Mode: " + CurrentMode);
-			}
-		}
-		else
-			recentlyChangedMode = false;
-	}
-	private void AbsorbAnimation()
-	{
-		/*
-		PlayerAnimation anim = GetComponent<PlayerController>().anim;
-		if (CurrentMode == AbsorbMode.Corruption)
-		{
-			AbsorbableCorruption current = (AbsorbableCorruption)CurrentAbsorbable;
-			if (IsSelecting())
-			{
-				if (current)
+				recentlyChangedMode = true;
+				if (CurrentMode == AbsorbMode.Corruption)
 				{
-					if (current.IsBeingAbsorbed)
-						anim.SetBoolAnimParam("IsAbsorbing", true);
-					else
-						anim.SetBoolAnimParam("IsAbsorbing", false);
+					CurrentMode = AbsorbMode.Element;
+					Debug.Log("Current Selected Mode: " + CurrentMode);
 				}
-				else
-					anim.SetBoolAnimParam("IsAbsorbing", false);
-			}
-			else
-				anim.SetBoolAnimParam("IsAbsorbing", false);
-		}
-		else if (CurrentMode == AbsorbMode.Element)
-		{
-
-			if (IsAbsorbing())
-			{
-				if (!anim.GetBoolAnimParam("IsAbsorbing"))
+				else if (CurrentMode == AbsorbMode.Element)
 				{
-					anim.SetBoolAnimParam("IsAbsorbing", true);
+					CurrentMode = AbsorbMode.Corruption;
+					Debug.Log("Current Selected Mode: " + CurrentMode);
 				}
 			}
 			else
-			{
-				if (anim.GetBoolAnimParam("IsAbsorbing"))
-				{
-					anim.SetBoolAnimParam("IsAbsorbing", false);
-				}
-			}
-		}*/
+				recentlyChangedMode = false;
+		}
 	}
 	private void SelectObject()
 	{
@@ -213,11 +184,9 @@ public class Absorb : MonoBehaviour
 					if (!Input.GetButton("LeftTrigger"))
 					{
 						obj.IsBeingAbsorbed = false;
-
 						//SendMessage("SetCanMove", true);
 						GetComponent<PlayerController>().CanMove = true;
-						Debug.Log("Can Move: " + GetComponent<PlayerController>().CanMove);
-						//anim.SetBoolAnimParam("IsAbsorbing", false);
+						////anim.SetBoolAnimParam("IsAbsorbing", false);
 					}
 					else if (obj.CanBeAbsorbed())
 					{
@@ -225,9 +194,8 @@ public class Absorb : MonoBehaviour
 						obj.InteractWith();
 						obj.IsBeingAbsorbed = true;
 						element.AddEnergy(obj.AbsorbRate);
-						//GetComponent<PlayerController>().CanMove = false;
 						SendMessage("SetCanMove", false);
-						//anim.SetBoolAnimParam("IsAbsorbing", true);
+						////anim.SetBoolAnimParam("IsAbsorbing", true);
 					}
 				}
 			}
@@ -239,19 +207,18 @@ public class Absorb : MonoBehaviour
 
 					if (obj.CanBeAbsorbed() && !obj.IsBeingAbsorbed)
 					{
+						isAbsorbingCorruption = true;
 						obj.IsBeingAbsorbed = true;
-						//anim.SetBoolAnimParam("IsAbsorbing", true);	
+						anim.SetBoolAnimParam("IsAbsorbing", true);
 						//SendMessage("SetCanMove", false);
 						GetComponent<PlayerController>().CanMove = false;
 					}
 					else if (!Input.GetButton("LeftTrigger")) // && !obj.IsSelected)
 					{
-
 						//SendMessage("SetCanMove", true);
 						GetComponent<PlayerController>().CanMove = true;
 						Debug.Log("Can Move: " + GetComponent<PlayerController>().CanMove);
-						//anim.SetBoolAnimParam("IsAbsorbing", false);
-
+						anim.SetBoolAnimParam("IsAbsorbing", false);
 					}
 				}
 			}

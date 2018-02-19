@@ -38,14 +38,14 @@ public class AbsorbableCorruption : Absorbable
 		//Play Selection VFX here
 		//VFXFromString("selection").Play();
 		//VFXFromString("aura ring selection").Play();
-
-		if(!Input.GetButton("LeftTrigger"))
+		UpdateVFX();
+		if (!Input.GetButton("LeftTrigger"))
 		{
 			ToggleButton(false);
 			IsBeingAbsorbed = false;
 			IsSelected = false;
 			buttonsHasStarted = false;
-			player.SendMessage("SetCanMove", true);
+			//player.SendMessage("SetCanMove", true);
 			StopCoroutine(ChangeButton());
 			PlayerAnimation anim = player.GetComponent<PlayerAnimation>();
 			if (anim.GetBoolAnimParam("IsAbsorbing"))
@@ -53,7 +53,7 @@ public class AbsorbableCorruption : Absorbable
 				anim.SetBoolAnimParam("IsAbsorbing", false);
 			}
 		}
-		else if(IsBeingAbsorbed)
+		else if (IsBeingAbsorbed)
 		{
 			if (!buttonsHasStarted)
 			{
@@ -97,60 +97,21 @@ public class AbsorbableCorruption : Absorbable
 				return;
 			}
 		}
+	}
 
-		/*
-		if (IsBeingAbsorbed)
+	void UpdateVFX()
+	{
+		VFXPlayer selectionVFX = VFX.Find(x => x.VFXName == "Selection_vfx");
+		if (IsSelected && selectionVFX != null)
 		{
-			if (!buttonsHasStarted)
-			{
-				ToggleButton(true);
-				StartCoroutine(ChangeButton());
-				buttonsHasStarted = true;
-			}
-
-			if (!HasEnergyLeft())
-			{
-				IsBeingAbsorbed = false;
-				IsSelected = false;
-			}
-
-			string currButtonName = (currentButtonIndex < ButtonImages.Count) ? ButtonImages[currentButtonIndex].sprite.name : " ";
-			if (currButtonName != " ")
-			{
-				if (Input.GetButtonDown(currButtonName))
-				{
-					if (currentButtonIndex < ButtonImages.Count)
-					{
-						currentButtonIndex++;
-					}
-					Image buttonSprite = ButtonImages[currentButtonIndex - 1];
-					ButtonImages[currentButtonIndex - 1].color = new Color(buttonSprite.color.r, buttonSprite.color.g, buttonSprite.color.b, 0.4f);
-				}
-			}
-			else
-			{
-				PathVFX.Find(x => x.VFXName == "vfx_CorruptionAbsorb").Play();
-				GameObject.FindGameObjectWithTag("Player").GetComponent<CorruptionBar>().CurrentCorruption += (AbsorptionRate);
-				Energy -= AbsorptionRate;
-				currentButtonIndex = 0;
-				StopAllCoroutines();
-				StartCoroutine(ChangeButton());
-				return;
-			}
-			//if()
+			if (!selectionVFX.isPlaying)
+				selectionVFX.Play();
 		}
-		if(!IsSelected && !IsBeingAbsorbed)
+		else if (!IsSelected && selectionVFX != null)
 		{
-			ToggleButton(false);
-			IsBeingAbsorbed = false;
-			IsSelected = false;
-			buttonsHasStarted = false;
-			StopCoroutine(ChangeButton());
-
-			//VFXFromString("selection").Stop();
-			//VFXFromString("aura ring selection").Stop();
+			if (selectionVFX.isPlaying)
+				selectionVFX.Stop();
 		}
-		*/
 	}
 
 	IEnumerator ChangeButton()
@@ -218,9 +179,21 @@ public class AbsorbableCorruption : Absorbable
 
 	public VFXPlayer VFXFromString(string vfxName)
 	{
-		VFXPlayer vfx = (VFX.Find(x => x.VFXName.ToLower() == vfxName)) == null ?
-			PathVFX.Find(x => x.VFXName.ToLower() == vfxName) : (VFX.Find(x => x.VFXName.ToLower() == vfxName));
+		VFXPlayer vfx = null;
+		if (VFX.Exists(x => x.VFXName == vfxName))
+		{
+			vfx = VFX.Find(x => x.VFXName == vfxName);
+		}
+		else if (PathVFX.Exists(x => x.VFXName == vfxName))
+		{
+			vfx = PathVFX.Find(x => x.VFXName == vfxName);
+		}
 
+		if (vfx == null)
+		{
+			Debug.Break();
+			throw new System.NullReferenceException("VFX [" + vfxName + "] does not exist");
+		}
 		return vfx;
 	}
 

@@ -5,7 +5,23 @@ using System.Linq;
 
 public class PauseManager : MonoBehaviour {
 
-	public static PauseManager Instance;
+	private static PauseManager instance;
+	public static PauseManager Instance
+	{
+		get
+		{
+			if(!instance)
+			{
+				instance = GameObject.FindObjectOfType<PauseManager>();
+				if(!instance)
+				{
+					GameObject newInstance = new GameObject("Pause Manager");
+					instance = newInstance.AddComponent<PauseManager>();
+				}
+			}
+			return instance;
+		}
+	}
 
 	public delegate void OnPause ();
 	public delegate void OnUnPause();
@@ -14,7 +30,6 @@ public class PauseManager : MonoBehaviour {
 
 	void Awake(){
 		DontDestroyOnLoad (gameObject);
-		Instance = this;
 	}
 
 

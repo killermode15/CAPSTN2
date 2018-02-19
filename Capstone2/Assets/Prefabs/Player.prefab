@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 4973366069580928}
   - component: {fileID: 95011739106735302}
   - component: {fileID: 114699384714637142}
+  - component: {fileID: 114647107407419336}
   m_Layer: 0
   m_Name: Alowin
   m_TagString: Untagged
@@ -1449,7 +1450,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831603703517158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.19999, y: -0.26000106, z: 0}
+  m_LocalPosition: {x: 83.1, y: 25.2, z: 2.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4973366069580928}
@@ -1845,7 +1846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3ae9c2716471b42a81c34cb65b70e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpVFX: {fileID: 0}
+  JumpVFX: {fileID: 1185262910871434}
   CanMove: 1
   MoveSpeed: 6
   JumpHeight: 13
@@ -1898,8 +1899,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed68abda93688e747a3e3bd1dbdb16aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Absorbables: []
   CurrentMode: 0
+  Absorbables: []
+  CurrentAbsorbable: {fileID: 0}
 --- !u!114 &114306857153244546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1925,7 +1927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5826388b8a5810943a29876466573654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentCorruption: 100
+  CurrentCorruption: 0
   MaxCorruption: 100
   DecayRateMultiplier: 1
   CorruptionReleaseRate: 15
@@ -1945,6 +1947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerAnimator: {fileID: 95011739106735302}
+  canAnimate: 0
 --- !u!114 &114625262800119206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1957,6 +1960,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnLocation: {fileID: 0}
+--- !u!114 &114647107407419336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1209471537690408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e270f69fef5814d855c6b57c04d469, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114699384714637142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1972,7 +1986,7 @@ MonoBehaviour:
     type: 2}
   SpawnDistance: 5
   WaterVFX: {fileID: 0}
-  StunPrefab: {fileID: 0}
+  StunPrefab: {fileID: 1885663182599468, guid: 6332936eb5e01024684a2000102b36d4, type: 2}
 --- !u!114 &114765325599527964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1984,6 +1998,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac820b5616f07f408e74d229846870d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashCD: 0
   DashSpeed: 15
   DashDuration: 0.25
 --- !u!114 &114786573945731634
@@ -9115,7 +9130,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 56143475
+  randomSeed: -2061724106
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -19244,7 +19259,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 397079688
+  randomSeed: 511063762
   InitialModule:
     serializedVersion: 3
     enabled: 1

@@ -103,16 +103,16 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4741650579860880}
+  - component: {fileID: 65136318187234260}
+  - component: {fileID: 195279206470158442}
+  - component: {fileID: 114557532728903362}
   - component: {fileID: 114461940905088104}
   - component: {fileID: 114104374936168982}
   - component: {fileID: 114534605079558600}
   - component: {fileID: 114073921798907418}
-  - component: {fileID: 114557532728903362}
-  - component: {fileID: 65136318187234260}
-  - component: {fileID: 114754038278233374}
   - component: {fileID: 114758691633698720}
   - component: {fileID: 114234568213374216}
-  - component: {fileID: 195279206470158442}
+  - component: {fileID: 114754038278233374}
   m_Layer: 0
   m_Name: EnemySnake
   m_TagString: Enemy
@@ -400,11 +400,11 @@ MonoBehaviour:
   pathName: absorbPathSnake1
   pathColor: {r: 0, g: 1, b: 1, a: 1}
   nodes:
-  - {x: -60.57263, y: 81.25586, z: 5.429999}
-  - {x: -60.546722, y: 82.8192, z: 5.429999}
-  - {x: -62.302765, y: 84.00653, z: 5.429999}
-  - {x: -63.81314, y: 82.5361, z: 5.429999}
-  - {x: -73.28262, y: 82.99585, z: 2.6000004}
+  - {x: -8.99263, y: 94.86586, z: 5.6299987}
+  - {x: -8.966721, y: 96.4292, z: 5.6299987}
+  - {x: -10.722763, y: 97.61653, z: 5.6299987}
+  - {x: -12.233139, y: 96.1461, z: 5.6299987}
+  - {x: -21.702621, y: 96.60585, z: 2.8000004}
   nodeCount: 5
   initialized: 1
   initialName: New Path 2
@@ -549,11 +549,11 @@ MonoBehaviour:
   DisableOnStart: 0
   path: {fileID: 114127512269256910}
   pathNodes:
-  - {x: -112.15263, y: 67.64586, z: 5.229999}
-  - {x: -112.126724, y: 69.2092, z: 5.229999}
-  - {x: -113.88277, y: 70.39653, z: 5.229999}
-  - {x: -115.39314, y: 68.9261, z: 5.229999}
-  - {x: -124.862625, y: 69.38586, z: 2.4000003}
+  - {x: -60.57263, y: 81.25586, z: 5.429999}
+  - {x: -60.546722, y: 82.8192, z: 5.429999}
+  - {x: -62.302765, y: 84.00653, z: 5.429999}
+  - {x: -63.81314, y: 82.5361, z: 5.429999}
+  - {x: -73.28262, y: 82.99585, z: 2.6000004}
   originalNodes:
   - {x: 15.999999, y: -1.1700003, z: 3.0300002}
   - {x: 16.02591, y: 0.39334428, z: 3.0300002}
@@ -774,7 +774,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 1026054756
+  randomSeed: -1461500308
   InitialModule:
     serializedVersion: 3
     enabled: 1

@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour, IPausable
 
 		canJump = true;
 		PauseManager.Instance.addPausable (this);
-		//origZPos = transform.position.z;
+		origZPos = transform.position.z;
 	}
 
 	void OnDisable(){
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour, IPausable
 	
 	void Update()
 	{
-		transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+		transform.position = new Vector3(transform.position.x, transform.position.y, origZPos);
 
 		CalculateGravity();
 		RotateCharacter();

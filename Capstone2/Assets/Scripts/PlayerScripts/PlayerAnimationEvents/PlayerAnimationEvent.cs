@@ -10,4 +10,9 @@ public class PlayerAnimationEvent : MonoBehaviour {
 		GetComponentInParent<Respawn>().respawn();
 		GetComponentInParent<PlayerController>().anim.SetBoolAnimParam("IsDead", false);
 	}
+
+	public void SetCanMove(int val)
+	{
+		GetComponentInParent<PlayerController>().SetCanMove(val);
+	}
 }
