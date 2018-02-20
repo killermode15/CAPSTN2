@@ -32,7 +32,7 @@ public class AbsorbableObject : Absorbable
 		if (!Input.GetButton("LeftTrigger"))
 		{
 			IsBeingAbsorbed = false;
-			player.SendMessage("SetCanMove", true);
+			//player.SendMessage("SetCanMove", true);
 			PlayerAnimation anim = player.GetComponent<PlayerAnimation>();
 			if (anim.GetBoolAnimParam("IsAbsorbing"))
 			{

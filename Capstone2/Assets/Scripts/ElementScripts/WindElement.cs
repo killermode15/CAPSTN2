@@ -16,7 +16,6 @@ public class WindElement : Element {
 
 		if(IsBaseUseable())
 		{
-
 			//TEMPORARY
 			RemoveEnergy(EnergyCost);
 

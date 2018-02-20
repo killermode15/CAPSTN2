@@ -29,6 +29,12 @@ public class SpiderManager : StateManager {
 	}
 
 	public override void StateTransition(){
+		if(!GetComponent<AbsorbableCorruption>().HasEnergyLeft())
+		{
+			Debug.Log ("isdead");
+			ChangeState(GetState("Dead"));
+			CurrentState.OnUpdate();
+		}
 		base.StateTransition ();
 		if (CompareToCurrentState (typeof(RangeAttack))) {
 			//if the current state is not updating

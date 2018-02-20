@@ -45,14 +45,14 @@ public class PauseManager : MonoBehaviour {
 	}
 
 	public void Pause(){
-		//IsPaused = true;
+		IsPaused = true;
 		if (onPause != null) {
 			onPause.Invoke ();
 		}
 	}
 
 	public void UnPause(){
-		//IsPaused = false;
+		IsPaused = false;
 		if (onUnPause != null) {
 			onUnPause.Invoke ();
 		}

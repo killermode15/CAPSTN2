@@ -16,7 +16,7 @@ public class PeaShooting : MonoBehaviour {
 	void Update()
 	{
 		//shoot
-		if (GetComponent<PeaShooterManager> ().isPaused) {
+		if (!GetComponent<PeaShooterManager> ().isPaused) {
 			Timer -= Time.deltaTime;
 			if (Timer <= 0) {
 				projectile.GetComponent<Projectile> ().isTargeted = false;
