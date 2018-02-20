@@ -19385,7 +19385,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4724536538799640, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.051
+      value: -0.108
       objectReference: {fileID: 0}
     - target: {fileID: 4724536538799640, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
       propertyPath: m_LocalPosition.y
@@ -19442,6 +19442,18 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 070d14658d336d249a3ad773910b2285, type: 2}
+    - target: {fileID: 4608107522525102, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4479574505486100, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583637791353960, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd6294f03656d7d4e90577bd18187297, type: 2}
   m_IsPrefabParent: 0
@@ -28094,6 +28106,35 @@ Transform:
   m_Father: {fileID: 556622152}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2054996580 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1956106074876066, guid: fd6294f03656d7d4e90577bd18187297,
+    type: 2}
+  m_PrefabInternal: {fileID: 1431443595}
+--- !u!114 &2054996581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2054996580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ecd64810b1d8249bd63cd3df5291db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnergyType: 0
+  Energy: 0
+  AbsorptionRate: 0
+  IsSelected: 0
+  IsBeingAbsorbed: 0
+  Type: 0
+  playingvfx:
+    VFXName: 
+    VFX: {fileID: 0}
+    isPlaying: 0
+    isPaused: 0
+  VFX: []
+  PathVFX: []
 --- !u!1001 &2056759908
 Prefab:
   m_ObjectHideFlags: 0
