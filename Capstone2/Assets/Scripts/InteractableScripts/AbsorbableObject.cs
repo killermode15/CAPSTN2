@@ -98,7 +98,7 @@ public class AbsorbableObject : Absorbable
 
 		if (vfx == null)
 		{
-			Debug.Break();
+			//Debug.Break();
 			throw new System.NullReferenceException("VFX [" + vfxName + "] does not exist");
 		}
 		return vfx;

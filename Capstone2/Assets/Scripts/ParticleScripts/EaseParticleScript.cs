@@ -85,7 +85,7 @@ public class EaseParticleScript : MonoBehaviour
 
 		//Debug.Log("Current Duration: " + currDuration);
 		//Debug.Log("Eased Duration  : " + UseEaseType(EaseType, currDuration / Duration));
-		Debug.Log("Normalized Duration: " + UseEaseType(EaseType, currDuration / Duration));
+		//Debug.Log("Normalized Duration: " + UseEaseType(EaseType, currDuration / Duration));
 	}
 
 	IEnumerator Move()

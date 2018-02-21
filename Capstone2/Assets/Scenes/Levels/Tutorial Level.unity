@@ -4027,6 +4027,22 @@ Transform:
   m_Father: {fileID: 984882406}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &399235669 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: c211d67a81971d648af3ef1ceb254a1e, type: 3}
+  m_PrefabInternal: {fileID: 1494470148}
+--- !u!65 &399235670
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 399235669}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.99999994, y: 0.936036, z: 1.0000002}
+  m_Center: {x: 0.00000023841858, y: -0.00000047683716, z: 0.00000011920929}
 --- !u!1 &407090661
 GameObject:
   m_ObjectHideFlags: 0
@@ -21289,6 +21305,7 @@ GameObject:
   - component: {fileID: 1205486051}
   - component: {fileID: 1205486050}
   - component: {fileID: 1205486049}
+  - component: {fileID: 1205486052}
   m_Layer: 0
   m_Name: Start (2)
   m_TagString: Untagged
@@ -21375,8 +21392,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1860619, y: 0.6135734, z: 1}
-  m_Center: {x: 0.093030386, y: -0.19321361, z: -7.941984e-16}
+  m_Size: {x: 1.0520262, y: 1.2915937, z: 1}
+  m_Center: {x: 1.0543578, y: -0.54876393, z: 1.5505154e-13}
 --- !u!33 &1205486051
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -21384,6 +21401,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1205486047}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &1205486052
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1205486047}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8575396, y: 1.3182176, z: 0.99999994}
+  m_Center: {x: 3.0315611, y: -0.54624784, z: 3.593485e-13}
 --- !u!1001 &1217738169
 Prefab:
   m_ObjectHideFlags: 0
@@ -37749,6 +37778,7 @@ MonoBehaviour:
   CameraFollowSpeed: 10
   Bounds: {x: 1, y: 1.5}
   Offset: {x: 0, y: 1.75}
+  CameraNudgeValue: 0
 --- !u!4 &1905585162 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: c211d67a81971d648af3ef1ceb254a1e, type: 3}

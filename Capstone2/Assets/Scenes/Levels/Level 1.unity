@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.013879598, g: 0.0067133196, b: 0.005277895, a: 1}
+  m_IndirectSpecularColor: {r: 0.0138786305, g: 0.0067141345, b: 0.00527743, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -24813,6 +24813,16 @@ Prefab:
       propertyPath: PatrolPoints.Array.data[1]
       value: 
       objectReference: {fileID: 620614549}
+    - target: {fileID: 114104374936168982, guid: 0babec27043f4bd4997719185c197608,
+        type: 2}
+      propertyPath: ChargeDuration
+      value: 0.325
+      objectReference: {fileID: 0}
+    - target: {fileID: 114104374936168982, guid: 0babec27043f4bd4997719185c197608,
+        type: 2}
+      propertyPath: ChargeSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0babec27043f4bd4997719185c197608, type: 2}
   m_IsPrefabParent: 0
@@ -25328,7 +25338,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4762215398891312, guid: 4bd26132bbec47b4bbdba986f1f70b87, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4bd26132bbec47b4bbdba986f1f70b87, type: 2}
@@ -30419,11 +30429,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4816640547367954, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.4
+      value: 27.5
       objectReference: {fileID: 0}
     - target: {fileID: 4816640547367954, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9.6
+      value: 13.8
       objectReference: {fileID: 0}
     - target: {fileID: 4816640547367954, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
       propertyPath: m_LocalPosition.z
@@ -30491,7 +30501,7 @@ Prefab:
     - target: {fileID: 114765325599527964, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
         type: 2}
       propertyPath: dashCD
-      value: 3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4001331180235580, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
       propertyPath: m_LocalPosition.x
@@ -30964,11 +30974,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1503584528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5999985, y: 10.839999, z: -19}
+  m_LocalPosition: {x: 29.5, y: 15.040001, z: -19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1506913624
 GameObject:
@@ -36023,7 +36033,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1558461848430048, guid: b02a26691a5395f479b5d1236f364966, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b02a26691a5395f479b5d1236f364966, type: 2}
@@ -40033,7 +40043,7 @@ Prefab:
       objectReference: {fileID: 1473274961}
     - target: {fileID: 1558461848430048, guid: b02a26691a5395f479b5d1236f364966, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b02a26691a5395f479b5d1236f364966, type: 2}
@@ -40795,7 +40805,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1923592420
 Transform:
   m_ObjectHideFlags: 0
@@ -43316,7 +43326,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2081249648}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2442, y: 65.079, z: -0.255}
+  m_LocalPosition: {x: 0.2442, y: 65.079, z: -0.251}
   m_LocalScale: {x: 0.11015804, y: 27.833582, z: 0.027024621}
   m_Children: []
   m_Father: {fileID: 715800288}
