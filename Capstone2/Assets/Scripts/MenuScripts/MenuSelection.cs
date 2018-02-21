@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuSelection : MonoBehaviour {
 
@@ -34,6 +35,10 @@ public class MenuSelection : MonoBehaviour {
 #else
 		Application.Quit();
 #endif
+	}
+
+	public void StartGame(){
+		SceneManager.LoadScene ("Tutorial Level");
 	}
 
 }

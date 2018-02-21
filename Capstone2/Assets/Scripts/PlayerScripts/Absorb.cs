@@ -135,7 +135,11 @@ public class Absorb : MonoBehaviour
 
 		if (CurrentAbsorbable && (IsAbsorbing() || isAbsorbingCorruption))
 		{
-			currentSelectedIndex = visibleAbsorbableObjects.FindIndex(x => CurrentAbsorbable);
+			if (visibleAbsorbableObjects [currentSelectedIndex]) {
+				if (CurrentAbsorbable != visibleAbsorbableObjects [currentSelectedIndex]) {
+					currentSelectedIndex = visibleAbsorbableObjects.FindIndex(x => CurrentAbsorbable);
+				}
+			}
 		}
 
 		Absorbables = visibleAbsorbableObjects;

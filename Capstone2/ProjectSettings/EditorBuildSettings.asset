@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/NewTutorialLevel_Layout.unity
     guid: e960db2b168cac84281d6532cfdd9b2a
   - enabled: 1
+    path: Assets/Scenes/Menu/MainMenu.unity
+    guid: 3001ee90e3d85014ca847b04dfcd0594
+  - enabled: 1
     path: Assets/Scenes/Levels/Tutorial Level.unity
     guid: d0ee711cd7fd26d4c802596321e9f49e
   - enabled: 1

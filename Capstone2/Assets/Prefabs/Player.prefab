@@ -1450,7 +1450,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831603703517158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.5, y: 76.2, z: 0}
+  m_LocalPosition: {x: -13, y: 0.049999237, z: 2.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4973366069580928}
@@ -1902,7 +1902,6 @@ MonoBehaviour:
   CurrentMode: 0
   Absorbables: []
   CurrentAbsorbable: {fileID: 0}
-  AbsorbRange: 13.31
 --- !u!114 &114306857153244546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1930,11 +1929,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentCorruption: 0
   MaxCorruption: 100
-  DecayRateMultiplier: 1
+  DecayRateMultiplier: 2
   CorruptionReleaseRate: 15
   TimeTillDecayAmplify: 1
   HealthDecayRate: 0.1
-  PercentTillDecay: 0.8
+  PercentTillDecay: 0.5
   CorruptionEffect: {fileID: 0}
 --- !u!114 &114499983254245204
 MonoBehaviour:

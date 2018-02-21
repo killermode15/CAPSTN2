@@ -613,18 +613,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4231030731331744, guid: edd2816e2094b1a4f94f7faa7d00d0b0, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 9.592838
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231030731331744, guid: edd2816e2094b1a4f94f7faa7d00d0b0, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 8.422059
-      objectReference: {fileID: 0}
-    - target: {fileID: 4231030731331744, guid: edd2816e2094b1a4f94f7faa7d00d0b0, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.5271293
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: edd2816e2094b1a4f94f7faa7d00d0b0, type: 2}
   m_IsPrefabParent: 0
@@ -901,7 +889,8 @@ MonoBehaviour:
     sentences:
     - You need to collect corruption to activate Altars. This is to cleanse the land
       of its disease.
-    - So don't forget to absorb enemy corruption and release it to the Altars!
+    - It also removes the corruption you've absorbed. So don't forget to absorb enemy
+      corruption and release it to the Altars!
   triggered: 0
 --- !u!65 &111111905
 BoxCollider:
@@ -2374,6 +2363,16 @@ Prefab:
       propertyPath: PatrolPoints.Array.data[1]
       value: 
       objectReference: {fileID: 1998940170}
+    - target: {fileID: 114104374936168982, guid: 0babec27043f4bd4997719185c197608,
+        type: 2}
+      propertyPath: ChargeSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114104374936168982, guid: 0babec27043f4bd4997719185c197608,
+        type: 2}
+      propertyPath: ChargeDuration
+      value: 0.325
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0babec27043f4bd4997719185c197608, type: 2}
   m_IsPrefabParent: 0
@@ -8474,11 +8473,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: c211d67a81971d648af3ef1ceb254a1e, type: 3}
   m_PrefabInternal: {fileID: 912971963}
---- !u!1 &919770509 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1185262910871434, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1008623525}
 --- !u!1001 &921562551
 Prefab:
   m_ObjectHideFlags: 0
@@ -8982,7 +8976,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4816640547367954, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -14.400002
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 4816640547367954, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
       propertyPath: m_LocalPosition.y
@@ -9012,51 +9006,45 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114974117951321144, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
-        type: 2}
-      propertyPath: SelectedElementImage
-      value: 
-      objectReference: {fileID: 1094156935}
-    - target: {fileID: 114625262800119206, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
-        type: 2}
-      propertyPath: respawnLocation
-      value: 
-      objectReference: {fileID: 851925775}
-    - target: {fileID: 114406980947326942, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
-        type: 2}
-      propertyPath: CorruptionEffect
-      value: 
-      objectReference: {fileID: 136796776}
-    - target: {fileID: 114306857153244546, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
-        type: 2}
-      propertyPath: HealthBar
-      value: 
-      objectReference: {fileID: 1658281629}
-    - target: {fileID: 114196544164091020, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
-        type: 2}
-      propertyPath: EnergyBar
-      value: 
-      objectReference: {fileID: 439955272}
     - target: {fileID: 114178210771659466, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
         type: 2}
       propertyPath: CorruptionBar
       value: 
       objectReference: {fileID: 358023124}
-    - target: {fileID: 114699384714637142, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+    - target: {fileID: 114196544164091020, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
         type: 2}
-      propertyPath: StunPrefab
+      propertyPath: EnergyBar
       value: 
-      objectReference: {fileID: 1885663182599468, guid: 6332936eb5e01024684a2000102b36d4,
+      objectReference: {fileID: 439955272}
+    - target: {fileID: 114306857153244546, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
         type: 2}
-    - target: {fileID: 114256737843574192, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
-        type: 2}
-      propertyPath: JumpVFX
+      propertyPath: HealthBar
       value: 
-      objectReference: {fileID: 919770509}
-    - target: {fileID: 114765325599527964, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+      objectReference: {fileID: 1658281629}
+    - target: {fileID: 114406980947326942, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
         type: 2}
-      propertyPath: dashCD
-      value: 2.5
+      propertyPath: CorruptionEffect
+      value: 
+      objectReference: {fileID: 136796776}
+    - target: {fileID: 114625262800119206, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+        type: 2}
+      propertyPath: respawnLocation
+      value: 
+      objectReference: {fileID: 851925775}
+    - target: {fileID: 114974117951321144, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+        type: 2}
+      propertyPath: SelectedElementImage
+      value: 
+      objectReference: {fileID: 1094156935}
+    - target: {fileID: 114406980947326942, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+        type: 2}
+      propertyPath: PercentTillDecay
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114406980947326942, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+        type: 2}
+      propertyPath: TimeTillDecayAmplify
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
@@ -16292,7 +16280,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1891308652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.400002, y: 3.2999992, z: -15.09}
+  m_LocalPosition: {x: -12, y: 3.2999992, z: -15.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -18329,7 +18317,7 @@ Prefab:
     - target: {fileID: 114861491945823236, guid: 572a8673a24cf0a4694889c02c05f584,
         type: 2}
       propertyPath: Energy
-      value: 15
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 572a8673a24cf0a4694889c02c05f584, type: 2}
