@@ -15,7 +15,7 @@ public class Absorb : MonoBehaviour
 	public AbsorbMode CurrentMode;
 	public List<Absorbable> Absorbables;
 	public Absorbable CurrentAbsorbable;
-	public float AbsorbRange;
+	//public float AbsorbRange;
 
 	private PlayerAnimation anim;
 	private List<Absorbable> allAbsorbables;
@@ -26,7 +26,7 @@ public class Absorb : MonoBehaviour
 
 	private void OnDrawGizmosSelected()
 	{
-		Gizmos.DrawWireSphere(transform.position, AbsorbRange);
+		//Gizmos.DrawWireSphere(transform.position, AbsorbRange);
 	}
 
 	private void Start()
@@ -40,7 +40,7 @@ public class Absorb : MonoBehaviour
 	private void Update()
 	{
 
-		if(!GetComponent<PlayerController>().CanMove && !Input.GetButton("LeftTrigger") && !anim.GetBoolAnimParam("IsAbsorbing"))
+		if (!GetComponent<PlayerController>().CanMove && !Input.GetButton("LeftTrigger") && !anim.GetBoolAnimParam("IsAbsorbing") && !PauseManager.Instance.IsPaused)
 		{
 			GetComponent<PlayerController>().CanMove = true;
 		}
@@ -56,7 +56,7 @@ public class Absorb : MonoBehaviour
 		SelectObject();
 		if (IsAbsorbing())
 			AbsorbObject();
-		else if(CurrentMode == AbsorbMode.Corruption && isAbsorbingCorruption && !Input.GetButton("LeftTrigger"))
+		else if (isAbsorbingCorruption && !Input.GetButton("LeftTrigger"))
 		{
 			isAbsorbingCorruption = false;
 		}
@@ -68,7 +68,7 @@ public class Absorb : MonoBehaviour
 
 	private bool IsSelecting()
 	{
-		if( Input.GetButton("LeftTrigger") && Absorbables.Count > 0)//&& !IsAbsorbing())
+		if (Input.GetButton("LeftTrigger") && Absorbables.Count > 0)//&& !IsAbsorbing())
 		{
 			anim.SetBoolAnimParam("IsAbsorbing", true);
 			return true;
@@ -81,7 +81,7 @@ public class Absorb : MonoBehaviour
 	{
 		if (!CurrentAbsorbable)
 			return false;
-		return (InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy) && Absorbables.Count > 0 && CurrentAbsorbable.HasEnergyLeft());
+		return ((InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy) && Absorbables.Count > 0 && CurrentAbsorbable.HasEnergyLeft()));
 	}
 	private void ChangeIndex()
 	{
@@ -120,29 +120,25 @@ public class Absorb : MonoBehaviour
 	}
 	private void GetCurrentAbsorbableMode()
 	{
-		Absorbables.Clear();
-		allAbsorbables.RemoveAll(x => x == null);
-		if (CurrentMode == AbsorbMode.Corruption)
+		List<Absorbable> absorbableObjects = GameObject.FindObjectsOfType<Absorbable>().ToList();
+		List<Absorbable> visibleAbsorbableObjects = new List<Absorbable>();
+		foreach (Absorbable absorbable in absorbableObjects)
 		{
-			foreach (Absorbable obj in allAbsorbables)
+			Vector3 screenPoint = Camera.main.WorldToViewportPoint(absorbable.transform.position);
+			bool onScreen = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
+			Debug.Log("Absorbable [" + absorbable.name + "] Location [" + screenPoint + "] Is On Screen [" + onScreen + "]");
+			if (onScreen && absorbable.CanBeAbsorbed() && (int)absorbable.EnergyType == (int)CurrentMode)
 			{
-				if (obj.GetType() == typeof(AbsorbableCorruption))
-				{
-					if (Vector3.Distance(transform.position, obj.transform.position) <= AbsorbRange)
-						Absorbables.Add(obj);
-				}
+				visibleAbsorbableObjects.Add(absorbable);
 			}
 		}
-		else if (CurrentMode == AbsorbMode.Element)
+
+		if (CurrentAbsorbable && (IsAbsorbing() || isAbsorbingCorruption))
 		{
-			foreach (Absorbable obj in allAbsorbables)
-			{
-				if (obj.GetType() == typeof(AbsorbableObject))
-				{
-					Absorbables.Add(obj);
-				}
-			}
+			currentSelectedIndex = visibleAbsorbableObjects.FindIndex(x => CurrentAbsorbable);
 		}
+
+		Absorbables = visibleAbsorbableObjects;
 	}
 	private void SwitchAbsorbable(int index)
 	{
@@ -172,7 +168,7 @@ public class Absorb : MonoBehaviour
 		{
 			if (InputManager.Instance.GetKeyDown(ControllerInput.SwitchAbsorbMode) && Input.GetButton("LeftTrigger") && !recentlyChangedMode)
 			{
-				if(CurrentAbsorbable)
+				if (CurrentAbsorbable)
 				{
 					CurrentAbsorbable.IsSelected = false;
 					CurrentAbsorbable.IsBeingAbsorbed = false;

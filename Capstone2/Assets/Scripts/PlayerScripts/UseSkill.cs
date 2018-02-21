@@ -39,22 +39,12 @@ public class UseSkill : MonoBehaviour {
 		{
 			if (!ActiveElement.IsElementUnlocked || ActiveElement.IsOnCooldown || ActiveElement.CurrentUseableEnergy < ActiveElement.EnergyCost)
 				return;
-			UsePrimaryActiveElement();
+			UseElement();
 		}
 
 	}
 
-	public void SelectNextElement()
-	{
-		currentActiveElementIndex++;
-		if(currentActiveElementIndex >= ElementalSkills.Count)
-		{
-			currentActiveElementIndex = 0;
-		}
-		ActiveElement = ElementalSkills[currentActiveElementIndex];
-	}
-
-	public void UsePrimaryActiveElement()
+	public void UseElement()
 	{
 		if (!ActiveElement.IsOnCooldown)
 		{

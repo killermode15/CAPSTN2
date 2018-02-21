@@ -86,6 +86,13 @@ public class AbsorbableCorruption : Absorbable
 				return;
 			}
 		}
+		else// if(!IsSelected && IsBeingAbsorbed)
+		{
+			ToggleButton(false);
+			IsBeingAbsorbed = false;
+			buttonsHasStarted = false;
+			StopCoroutine(ChangeButton());
+		}
 	}
 
 	void UpdateVFX()

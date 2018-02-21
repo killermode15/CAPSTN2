@@ -51,6 +51,10 @@ public class Element : ScriptableObject {
 		}
 		player.GetComponent<PlayerController>().anim.SetBoolAnimParam("CastingElement", true);
 
+		if(IsBaseUseable())
+		{
+			CurrentUseableEnergy -= EnergyCost;
+		}
 
 		//throw new System.NullReferenceException("This is the base class");
 	}
