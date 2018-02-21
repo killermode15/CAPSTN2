@@ -16,7 +16,7 @@ MonoBehaviour:
   EnergyColor: {r: 0.625, g: 0.8137932, b: 1, a: 1}
   EnergyCost: 0
   CurrentUseableEnergy: 0
-  CooldownDuration: 2.2
+  CooldownDuration: 2.5
   IsElementUnlocked: 1
   IsOnCooldown: 0
   MaxUseableEnergy: 100
