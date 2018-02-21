@@ -15,4 +15,17 @@ public class PlayerAnimationEvent : MonoBehaviour {
 	{
 		GetComponentInParent<PlayerController>().SetCanMove(val);
 	}
+
+	public void TurnOnOrb(string tag)
+	{
+		Debug.Log("On");
+		GameObject.FindGameObjectWithTag(tag).GetComponent<ParticleSystem>().Play();
+		//GetComponentInParent<Absorb>().TurnOnOrb();
+	}
+
+	public void TurnOffOrb()
+	{
+		Debug.Log("Off");
+		//GetComponentInParent<Absorb>().TurnOffOrb();
+	}
 }

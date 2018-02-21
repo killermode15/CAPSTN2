@@ -67,7 +67,8 @@ public class EaseParticleScript : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-
+		if (!Target)
+			Target = GameObject.FindGameObjectWithTag("AbsorbOrb");
 	}
 
 	// Update is called once per frame
@@ -92,13 +93,13 @@ public class EaseParticleScript : MonoBehaviour
 
 		if (IsDoneEasing)
 		{
-			ParticleSystem ps = GetComponent<ParticleSystem>();
-			if (!ps)
-			{
-				throw new System.NullReferenceException("Script is not attached to a particle system object.");
-			}
+			//ParticleSystem ps = GetComponent<ParticleSystem>();
+			//if (!ps)
+			//{
+			//	throw new System.NullReferenceException("Script is not attached to a particle system object.");
+			//}
 
-			//Destroy(gameObject);
+			Destroy(gameObject);
 
 		}
 		else

@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 223239327880138870}
   - component: {fileID: 114423610841041746}
   - component: {fileID: 114267967060916324}
+  - component: {fileID: 114749153666637870}
   m_Layer: 0
   m_Name: Canvas (1)
   m_TagString: Untagged
@@ -143,7 +144,6 @@ GameObject:
   - component: {fileID: 4913368068055212}
   - component: {fileID: 198037935732966914}
   - component: {fileID: 199655415306024338}
-  - component: {fileID: 114405646189659712}
   m_Layer: 0
   m_Name: vfx_Corruption (1)
   m_TagString: Untagged
@@ -193,7 +193,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1379421124512476}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.132, y: -0.032, z: 0.104}
+  m_LocalPosition: {x: 0.132, y: -0.032, z: 0.066}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4676124460033986}
@@ -206,7 +206,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1610953765498878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 68.6, y: 27.63, z: 4.53}
+  m_LocalPosition: {x: -2.064929, y: 24.8, z: -10.94}
   m_LocalScale: {x: 5.338397, y: 5.338406, z: 5.338406}
   m_Children:
   - {fileID: 4183900652884214}
@@ -405,21 +405,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114405646189659712
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1771774675176630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 029d93674c99dc54e946db9c8612b895, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PathName: absorbPathSpider1
-  TimeToFinish: 1
-  EaseType: 25
-  LoopType: 0
 --- !u!114 &114423610841041746
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -486,11 +471,11 @@ MonoBehaviour:
   DisableOnStart: 0
   path: {fileID: 114857698392456578}
   pathNodes:
-  - {x: -188.47797, y: 7.1242275, z: 3.1299992}
-  - {x: -188.45206, y: 8.687575, z: 3.1299992}
-  - {x: -190.2081, y: 9.874908, z: 3.1299992}
-  - {x: -191.71848, y: 8.404479, z: 3.1299992}
-  - {x: -201.18796, y: 8.864231, z: 0.3000003}
+  - {x: -182.82675, y: 142.79303, z: 3.1299992}
+  - {x: -182.80084, y: 144.35637, z: 3.1299992}
+  - {x: -184.55688, y: 145.5437, z: 3.1299992}
+  - {x: -186.06726, y: 144.07327, z: 3.1299992}
+  - {x: -195.53674, y: 144.53302, z: 0.3000003}
   originalNodes:
   - {x: 15.999999, y: -1.1700003, z: 3.0300002}
   - {x: 16.02591, y: 0.39334428, z: 3.0300002}
@@ -509,7 +494,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 0}
-  ObjectCounterpart: {fileID: 0}
+  ObjectCounterpart: {fileID: 1980495399745334, guid: 26616f59de95bcc4582e2f2bde1e5c44,
+    type: 2}
 --- !u!114 &114686830092927918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -526,9 +512,21 @@ MonoBehaviour:
   PossibleStates: []
   CurrentState: {fileID: 0}
   attackRange: 0
-  DetectionRange: 9.07
+  DetectionRange: 13.05
   playerDistance: 0
   isPaused: 0
+--- !u!114 &114749153666637870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1228389322951480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c79807c7e585adb4080c023e26aff35b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Camera: {fileID: 0}
 --- !u!114 &114806808492683162
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -556,11 +554,11 @@ MonoBehaviour:
   pathName: absorbPathSpider1
   pathColor: {r: 0, g: 1, b: 1, a: 1}
   nodes:
-  - {x: -119.87797, y: 34.754227, z: 3.1299992}
-  - {x: -119.85206, y: 36.317574, z: 3.1299992}
-  - {x: -121.6081, y: 37.504906, z: 3.1299992}
-  - {x: -123.11848, y: 36.034477, z: 3.1299992}
-  - {x: -132.58795, y: 36.494232, z: 0.3000003}
+  - {x: -173.10799, y: 173.59596, z: 3.1299992}
+  - {x: -173.08208, y: 175.1593, z: 3.1299992}
+  - {x: -174.83812, y: 176.34663, z: 3.1299992}
+  - {x: -176.3485, y: 174.8762, z: 3.1299992}
+  - {x: -185.81798, y: 175.33595, z: 0.3000003}
   nodeCount: 5
   initialized: 1
   initialName: New Path 2
@@ -584,9 +582,11 @@ MonoBehaviour:
   VFX: []
   PathVFX:
   - VFXName: vfx_CorruptionAbsorb
-    VFX: {fileID: 1771774675176630}
+    VFX: {fileID: 1369802260589054, guid: e9fe15d9390e4cf4e8311cefcce18615, type: 2}
+    isPlaying: 0
+    isPaused: 0
     IsInstanced: 1
-    InstanceTransform: {fileID: 0}
+    InstanceTransform: {fileID: 4913368068055212}
     Loop: 0
   ButtonTimer: 1.5
   ButtonImages:
@@ -711,7 +711,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: 1845010888
+  randomSeed: -763555604
   InitialModule:
     serializedVersion: 3
     enabled: 1

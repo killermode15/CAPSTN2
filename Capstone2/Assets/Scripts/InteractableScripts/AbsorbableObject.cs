@@ -31,24 +31,29 @@ public class AbsorbableObject : Absorbable
 		base.Update();
 		if (!Input.GetButton("LeftTrigger"))
 		{
-			IsBeingAbsorbed = false;
+			//IsBeingAbsorbed = false;
 			//player.SendMessage("SetCanMove", true);
-			PlayerAnimation anim = player.GetComponent<PlayerAnimation>();
-			if (anim.GetBoolAnimParam("IsAbsorbing"))
-			{
-				anim.SetBoolAnimParam("IsAbsorbing", false);
-			}
+			//PlayerAnimation anim = player.GetComponent<PlayerAnimation>();
+			//if (anim.GetBoolAnimParam("IsAbsorbing"))
+			//{
+			//	anim.SetBoolAnimParam("IsAbsorbing", false);
+			//}
 		}
-		if (IsSelected || IsBeingAbsorbed)
+		if (IsSelected)
 		{
-			PlayerAnimation anim = player.GetComponent<PlayerAnimation>();
-			if (!anim.GetBoolAnimParam("IsAbsorbing"))
-			{
-				anim.SetBoolAnimParam("IsAbsorbing", true);
-			}
+			//PlayerAnimation anim = player.GetComponent<PlayerAnimation>();
+			//if (!anim.GetBoolAnimParam("IsAbsorbing"))
+			//{
+			//	anim.SetBoolAnimParam("IsAbsorbing", true);
+			//}
 			//Play Selection VFX here
-			//VFXFromString("selection").Play();
+			VFXFromString("Selection_vfx").Play();
 			//VFXFromString("aura ring selection").Play();
+		}
+		else if (!IsSelected)
+		{
+			IsBeingAbsorbed = false;
+			VFXFromString("Selection_vfx").Stop();
 		}
 	}
 
@@ -61,7 +66,7 @@ public class AbsorbableObject : Absorbable
 
 				//Play Absorb VFX here
 				//Absorb enemy
-				//VFXFromString("AbsorbVFX").Play();
+				VFXFromString("Absorb_vfx").Play();
 				IsBeingAbsorbed = true;
 				Energy -= AbsorbRate;
 			}

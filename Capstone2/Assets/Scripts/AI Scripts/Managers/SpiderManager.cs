@@ -10,7 +10,7 @@ public class SpiderManager : StateManager {
 		Gizmos.DrawWireSphere (transform.position, DetectionRange);
 	}
 
-	void Start(){
+	public override void Start(){
 		base.Start ();
 		ChangeState (GetState ("Idle"));
 		PauseManager.Instance.addPausable (this);

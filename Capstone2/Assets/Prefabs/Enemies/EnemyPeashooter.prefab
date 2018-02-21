@@ -176,9 +176,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1558461848430048}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 60.349, y: 27.003, z: 5.3019}
-  m_LocalScale: {x: 30.312927, y: 35.816666, z: 30.31289}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -25.10624, y: 29.89, z: -10.992425}
+  m_LocalScale: {x: 22.458218, y: 35.816666, z: 22.458187}
   m_Children:
   - {fileID: 4385927880229826}
   - {fileID: 4502256938288826}
@@ -460,11 +460,11 @@ MonoBehaviour:
   pathName: absorbPathPeaShooter1
   pathColor: {r: 0, g: 1, b: 1, a: 1}
   nodes:
-  - {x: -473.96375, y: 88.79323, z: 6.6299977}
-  - {x: -473.9378, y: 90.356575, z: 6.6299977}
-  - {x: -475.69385, y: 91.54391, z: 6.6299977}
-  - {x: -477.20422, y: 90.07348, z: 6.6299977}
-  - {x: -486.67365, y: 90.533226, z: 3.8000007}
+  - {x: -504.6463, y: 126.386154, z: 6.8299975}
+  - {x: -504.62036, y: 127.9495, z: 6.8299975}
+  - {x: -506.3764, y: 129.13684, z: 6.8299975}
+  - {x: -507.88678, y: 127.666405, z: 6.8299975}
+  - {x: -517.3562, y: 128.12616, z: 4.0000005}
   nodeCount: 5
   initialized: 1
   initialName: New Path 2
@@ -499,12 +499,18 @@ MonoBehaviour:
   AbsorptionRate: 5
   IsSelected: 0
   IsBeingAbsorbed: 0
-  VFX: []
+  VFX:
+  - VFXName: Selection_vfx
+    VFX: {fileID: 1750368524714648}
+    isPlaying: 0
+    isPaused: 0
   PathVFX:
   - VFXName: vfx_CorruptionAbsorb
-    VFX: {fileID: 1750368524714648}
+    VFX: {fileID: 1369802260589054, guid: e9fe15d9390e4cf4e8311cefcce18615, type: 2}
+    isPlaying: 0
+    isPaused: 0
     IsInstanced: 1
-    InstanceTransform: {fileID: 0}
+    InstanceTransform: {fileID: 4385927880229826}
     Loop: 0
   ButtonTimer: 1.5
   ButtonImages:
@@ -579,11 +585,11 @@ MonoBehaviour:
   DisableOnStart: 0
   path: {fileID: 114584816740782910}
   pathNodes:
-  - {x: -516.95276, y: 60.09023, z: 6.429998}
-  - {x: -516.9268, y: 61.653576, z: 6.429998}
-  - {x: -518.68286, y: 62.840908, z: 6.429998}
-  - {x: -520.19324, y: 61.37048, z: 6.429998}
-  - {x: -529.66266, y: 61.83023, z: 3.6000006}
+  - {x: -473.96375, y: 88.79323, z: 6.6299977}
+  - {x: -473.9378, y: 90.356575, z: 6.6299977}
+  - {x: -475.69385, y: 91.54391, z: 6.6299977}
+  - {x: -477.20422, y: 90.07348, z: 6.6299977}
+  - {x: -486.67365, y: 90.533226, z: 3.8000007}
   originalNodes:
   - {x: 15.999999, y: -1.1700003, z: 3.0300002}
   - {x: 16.02591, y: 0.39334428, z: 3.0300002}
@@ -662,7 +668,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -525049346
+  randomSeed: 482949319
   InitialModule:
     serializedVersion: 3
     enabled: 1

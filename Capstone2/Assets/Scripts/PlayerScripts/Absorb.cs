@@ -15,6 +15,7 @@ public class Absorb : MonoBehaviour
 	public AbsorbMode CurrentMode;
 	public List<Absorbable> Absorbables;
 	public Absorbable CurrentAbsorbable;
+	public float AbsorbRange;
 
 	private PlayerAnimation anim;
 	private List<Absorbable> allAbsorbables;
@@ -22,6 +23,11 @@ public class Absorb : MonoBehaviour
 	private bool recentlyChangedMode;
 	private bool recentlyChangedIndex;
 	private bool isAbsorbingCorruption;
+
+	private void OnDrawGizmosSelected()
+	{
+		Gizmos.DrawWireSphere(transform.position, AbsorbRange);
+	}
 
 	private void Start()
 	{
@@ -33,6 +39,12 @@ public class Absorb : MonoBehaviour
 
 	private void Update()
 	{
+
+		if(!GetComponent<PlayerController>().CanMove && !Input.GetButton("LeftTrigger") && !anim.GetBoolAnimParam("IsAbsorbing"))
+		{
+			GetComponent<PlayerController>().CanMove = true;
+		}
+
 		if (anim.GetBoolAnimParam("IsAbsorbing"))
 		{
 			if (CurrentMode == AbsorbMode.Element && !IsAbsorbing())
@@ -56,11 +68,20 @@ public class Absorb : MonoBehaviour
 
 	private bool IsSelecting()
 	{
-		return Input.GetButton("LeftTrigger") && Absorbables.Count > 0 && !IsAbsorbing();
+		if( Input.GetButton("LeftTrigger") && Absorbables.Count > 0)//&& !IsAbsorbing())
+		{
+			anim.SetBoolAnimParam("IsAbsorbing", true);
+			return true;
+		}
+
+		anim.SetBoolAnimParam("IsAbsorbing", false);
+		return false;
 	}
 	private bool IsAbsorbing()
 	{
-		return InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy) && Absorbables.Count > 0 && CurrentAbsorbable.HasEnergyLeft();
+		if (!CurrentAbsorbable)
+			return false;
+		return (InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy) && Absorbables.Count > 0 && CurrentAbsorbable.HasEnergyLeft());
 	}
 	private void ChangeIndex()
 	{
@@ -73,26 +94,24 @@ public class Absorb : MonoBehaviour
 
 				if (Input.GetAxisRaw("DPadX") > 0)
 				{
-					currentSelectedIndex++;
-					if (currentSelectedIndex > Absorbables.Count - 1)
-					{
-						currentSelectedIndex = 0;
-						Debug.Log("Select Index: " + currentSelectedIndex);
-					}
-				}
-				else if (Input.GetAxisRaw("DPadX") < 0)
-				{
 					currentSelectedIndex--;
 					if (currentSelectedIndex < 0)
 					{
 						currentSelectedIndex = Absorbables.Count - 1;
-						Debug.Log("Select Index: " + currentSelectedIndex);
+					}
+				}
+				else if (Input.GetAxisRaw("DPadX") < 0)
+				{
+					currentSelectedIndex++;
+					if (currentSelectedIndex > Absorbables.Count - 1)
+					{
+						currentSelectedIndex = 0;
 					}
 				}
 			}
 			else if (recentlyChangedIndex)
 			{
-				if (Input.GetAxisRaw("RightStickX") == 0)
+				if (Input.GetAxisRaw("DPadX") == 0)
 				{
 					recentlyChangedIndex = false;
 				}
@@ -109,7 +128,7 @@ public class Absorb : MonoBehaviour
 			{
 				if (obj.GetType() == typeof(AbsorbableCorruption))
 				{
-					if (Vector3.Distance(transform.position, obj.transform.position) <= 20)
+					if (Vector3.Distance(transform.position, obj.transform.position) <= AbsorbRange)
 						Absorbables.Add(obj);
 				}
 			}
@@ -127,12 +146,23 @@ public class Absorb : MonoBehaviour
 	}
 	private void SwitchAbsorbable(int index)
 	{
-		if (Absorbables.Count > 0 && (index >= 0 && index < Absorbables.Count))
+		if (Absorbables.Count > 0 && (index >= 0 && index < Absorbables.Count) && (IsAbsorbing() || IsSelecting()))
 		{
+			if (CurrentAbsorbable)
+			{
+				CurrentAbsorbable.IsSelected = false;
+				//CurrentAbsorbable.IsBeingAbsorbed = false;
+			}
 			CurrentAbsorbable = Absorbables[index];
+			CurrentAbsorbable.IsSelected = true;
 		}
 		else
 		{
+			if (CurrentAbsorbable)
+			{
+				CurrentAbsorbable.IsSelected = false;
+				CurrentAbsorbable.IsBeingAbsorbed = false;
+			}
 			CurrentAbsorbable = null;
 		}
 	}
@@ -142,6 +172,11 @@ public class Absorb : MonoBehaviour
 		{
 			if (InputManager.Instance.GetKeyDown(ControllerInput.SwitchAbsorbMode) && Input.GetButton("LeftTrigger") && !recentlyChangedMode)
 			{
+				if(CurrentAbsorbable)
+				{
+					CurrentAbsorbable.IsSelected = false;
+					CurrentAbsorbable.IsBeingAbsorbed = false;
+				}
 				recentlyChangedMode = true;
 				if (CurrentMode == AbsorbMode.Corruption)
 				{
@@ -162,13 +197,14 @@ public class Absorb : MonoBehaviour
 	{
 		if (CurrentAbsorbable)
 		{
-			if (IsSelecting())
+			if (IsSelecting() || IsAbsorbing())
 			{
 				CurrentAbsorbable.IsSelected = true;
 			}
 			else
 			{
 				CurrentAbsorbable.IsSelected = false;
+				CurrentAbsorbable = null;
 			}
 		}
 	}
@@ -183,7 +219,7 @@ public class Absorb : MonoBehaviour
 				{
 					if (!Input.GetButton("LeftTrigger"))
 					{
-						obj.IsBeingAbsorbed = false;
+						//obj.IsBeingAbsorbed = false;
 						//SendMessage("SetCanMove", true);
 						GetComponent<PlayerController>().CanMove = true;
 						////anim.SetBoolAnimParam("IsAbsorbing", false);
@@ -193,8 +229,10 @@ public class Absorb : MonoBehaviour
 						Element element = GetComponent<UseSkill>().ElementalSkills.Find(x => x.Type == obj.Type);
 						obj.InteractWith();
 						obj.IsBeingAbsorbed = true;
+						Debug.Log("Is being absorbed " + obj.IsBeingAbsorbed);
 						element.AddEnergy(obj.AbsorbRate);
 						SendMessage("SetCanMove", false);
+						Debug.Log("Absorbing " + obj.name);
 						////anim.SetBoolAnimParam("IsAbsorbing", true);
 					}
 				}

@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour, IPausable
 	void OnDisable(){
 		PauseManager.Instance.removePausable (this);
 	}
-	
+
 	void Update()
 	{
 		transform.position = new Vector3(transform.position.x, transform.position.y, origZPos);
@@ -64,7 +64,10 @@ public class PlayerController : MonoBehaviour, IPausable
 		}
 
 		if (controller.collisionFlags == CollisionFlags.Above)
+		{
+			Debug.Log("I hit my head");
 			moveDirection.y = 0;
+		}
 	}
 
 	private void LateUpdate()
@@ -158,8 +161,6 @@ public class PlayerController : MonoBehaviour, IPausable
 			//Add dash if turned onx
 			float dash = (initialDashVal == 0) ? 0 : dashValue / initialDashVal;
 			moveDirection.x += DashCurve.Evaluate (dash) * dashSpeed;
-			//Then set the y velocity back
-			moveDirection.y = currY;
 
 		} else {
 			moveDirection = Vector3.zero;
@@ -168,6 +169,8 @@ public class PlayerController : MonoBehaviour, IPausable
 		//is based on where the character is facing
 		//moveDirection = transform.TransformDirection(moveDirection);
 
+		//Then set the y velocity back
+		moveDirection.y = currY;
 
 
 		controller.Move(moveDirection * Time.deltaTime);

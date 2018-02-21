@@ -19,12 +19,13 @@ public class PathVFX : VFXPlayer
 				GameObject newVFX = MonoBehaviour.Instantiate(VFX, InstanceTransform.position, Quaternion.identity);
 				//newVFX.transform.parent = (VFX.transform.parent);//, true);
 				//newVFX.transform.localPosition = VFX.transform.localPosition;
-				newVFX.GetComponent<ParticleFollowPath>().Activate();
-				MonoBehaviour.Destroy(newVFX, newVFX.GetComponent<ParticleFollowPath>().TimeToFinish + 0.5f);
+				//newVFX.GetComponent<ParticleFollowPath>().Activate();
+				//MonoBehaviour.Destroy(newVFX, newVFX.GetComponent<ParticleFollowPath>().TimeToFinish + 0.5f);
+				newVFX.GetComponent<EaseParticleScript>().Target = GameObject.FindGameObjectWithTag("AbsorbOrb"); 
 			}
 			else
 			{
-				VFX.GetComponent<ParticleFollowPath>().Activate();
+				//VFX.GetComponent<ParticleFollowPath>().Activate();
 				isPlaying = true;
 				isPaused = false;
 			}
@@ -40,7 +41,7 @@ public class PathVFX : VFXPlayer
 	{
 		if (isPlaying || isPaused)
 		{
-			VFX.GetComponent<ParticleFollowPath>().StopParticleFollow();
+			//VFX.GetComponent<ParticleFollowPath>().StopParticleFollow();
 			isPlaying = false;
 			isPaused = false;
 		}

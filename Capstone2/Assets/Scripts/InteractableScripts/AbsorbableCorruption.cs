@@ -45,26 +45,15 @@ public class AbsorbableCorruption : Absorbable
 			IsBeingAbsorbed = false;
 			IsSelected = false;
 			buttonsHasStarted = false;
-			//player.SendMessage("SetCanMove", true);
 			StopCoroutine(ChangeButton());
-			PlayerAnimation anim = player.GetComponent<PlayerAnimation>();
-			if (anim.GetBoolAnimParam("IsAbsorbing"))
-			{
-				anim.SetBoolAnimParam("IsAbsorbing", false);
-			}
 		}
-		else if (IsBeingAbsorbed)
+		else if (IsBeingAbsorbed && IsSelected)
 		{
 			if (!buttonsHasStarted)
 			{
 				ToggleButton(true);
 				StartCoroutine(ChangeButton());
 				buttonsHasStarted = true;
-				PlayerAnimation anim = player.GetComponent<PlayerAnimation>();
-				if (!anim.GetBoolAnimParam("IsAbsorbing"))
-				{
-					anim.SetBoolAnimParam("IsAbsorbing", true);
-				}
 			}
 
 			if (!HasEnergyLeft())

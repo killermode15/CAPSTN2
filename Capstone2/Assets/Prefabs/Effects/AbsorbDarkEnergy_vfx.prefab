@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4263827605212330}
-  - component: {fileID: 114355797576925472}
+  - component: {fileID: 114744727717402184}
   m_Layer: 0
   m_Name: AbsorbDarkEnergy_vfx
   m_TagString: Untagged
@@ -181,7 +181,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114355797576925472
+--- !u!114 &114744727717402184
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -189,13 +189,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1369802260589054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 029d93674c99dc54e946db9c8612b895, type: 3}
+  m_Script: {fileID: 11500000, guid: d4e0a27e406d22445aeb251458e05ca2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PathName: tree1PathAbsorb_vfx
-  TimeToFinish: 0.75
-  EaseType: 1
-  LoopType: 0
+  Target: {fileID: 0}
+  EaseType: 3
+  Duration: 1
+  EaseCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!198 &198060059891132362
 ParticleSystem:
   m_ObjectHideFlags: 1

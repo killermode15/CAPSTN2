@@ -38,7 +38,7 @@ public class Absorbable : MonoBehaviour, IInteractable {
 	public virtual void Update () {
 		if(!CanBeAbsorbed())
 		{
-			IsBeingAbsorbed = false;
+			//IsBeingAbsorbed = false;
 			IsSelected = false;
 		}
 	}

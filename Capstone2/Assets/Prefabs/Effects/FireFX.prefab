@@ -74,6 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4371682872254002}
   - component: {fileID: 114450433577049954}
+  - component: {fileID: 114671586901895094}
   m_Layer: 0
   m_Name: FireFX
   m_TagString: Untagged
@@ -196,6 +197,38 @@ MonoBehaviour:
   TimeToFinish: 0.5
   EaseType: 14
   LoopType: 0
+--- !u!114 &114671586901895094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1826202147743550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e0a27e406d22445aeb251458e05ca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  EaseType: 3
+  Duration: 2.5
+  EaseCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!198 &198212924713922872
 ParticleSystem:
   m_ObjectHideFlags: 1
