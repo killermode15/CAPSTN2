@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class AbsorbableObject : Absorbable
 {
 	public ElementType Type;
-	public VFXPlayer playingvfx;
 	public List<VFXPlayer> VFX;
 	public List<PathVFX> PathVFX;
 

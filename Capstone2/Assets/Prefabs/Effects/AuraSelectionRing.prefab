@@ -53,7 +53,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -101,7 +101,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -2032707336
+  randomSeed: -88461403
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -1201,7 +1201,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1.59
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -1242,7 +1242,7 @@ ParticleSystem:
     z:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.59
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2

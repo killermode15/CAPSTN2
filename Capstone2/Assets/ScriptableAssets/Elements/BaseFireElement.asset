@@ -16,8 +16,8 @@ MonoBehaviour:
   EnergyColor: {r: 1, g: 0, b: 0, a: 1}
   EnergyCost: 0
   CurrentUseableEnergy: 0
-  CooldownDuration: 2
-  IsElementUnlocked: 1
+  CooldownDuration: 4.5
+  IsElementUnlocked: 0
   IsOnCooldown: 0
   MaxUseableEnergy: 100
   Sphere: {fileID: 1759001367942186, guid: 308dcab42c313034d930a783f620ca44, type: 2}
