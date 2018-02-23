@@ -67,6 +67,7 @@ public class ElementSelectionUI : MonoBehaviour
 	{
 		if (isSelecting)
 		{
+			Time.timeScale = 0.25f;
 			Vector2 input = new Vector2((int)Input.GetAxisRaw("RightStickX") * -1, (int)Input.GetAxisRaw("RightStickY"));
 			input.Normalize();
 			if (input.magnitude > 0)
@@ -74,10 +75,11 @@ public class ElementSelectionUI : MonoBehaviour
 				currentRotateTo = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg;
 			}
 			if ((transform.eulerAngles.z != currentRotateTo))
-				transform.eulerAngles = Vector3.forward * Mathf.SmoothDampAngle(transform.eulerAngles.z, currentRotateTo, ref smoothDampVel, SmoothDampTime);
+				transform.eulerAngles = Vector3.forward * Mathf.SmoothDampAngle(transform.eulerAngles.z, currentRotateTo, ref smoothDampVel, SmoothDampTime * Time.unscaledDeltaTime);
 		}
 		else
 		{
+			Time.timeScale = 1f;
 			switch ((int)currentRotateTo)
 			{
 				case 0:

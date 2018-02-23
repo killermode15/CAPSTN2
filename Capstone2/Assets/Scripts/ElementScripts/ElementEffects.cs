@@ -7,7 +7,11 @@ public class ElementEffects : MonoBehaviour
 
 	[Header("Earth Element Variables")]
 	public GameObject TerrainPrefab;
+	public int TerrainHeight;
+	public float BlockOffset;
 	public float SpawnDistance;
+
+	private List<GameObject> spawnedTerrain;
 
 	[Space]
 	[Header("Water Element Variables")]
@@ -34,8 +38,23 @@ public class ElementEffects : MonoBehaviour
 		{
 			location = new Vector3(transform.position.x - SpawnDistance, transform.position.y, transform.position.z);
 		}
-		GameObject Terrain = Instantiate(TerrainPrefab, location, Quaternion.identity);
-		StartCoroutine(DestroyObject(Terrain, 5.0f));
+		StartCoroutine(SpawnTerrainChunks(location));
+		//GameObject Terrain = Instantiate(TerrainPrefab, location, Quaternion.identity);
+		//StartCoroutine(DestroyObject(Terrain, 5.0f));
+	}
+
+	IEnumerator SpawnTerrainChunks(Vector3 location)
+	{
+		spawnedTerrain = new List<GameObject>();
+		int index = 0;
+		while(spawnedTerrain.Count < TerrainHeight)
+		{
+			GameObject Terrain = Instantiate(TerrainPrefab, location + new Vector3(0, BlockOffset * index), Quaternion.identity);
+			index++;
+			StartCoroutine(DestroyObject(Terrain, 5.0f));
+			spawnedTerrain.Add(Terrain);
+			yield return new WaitForSeconds(0.15f);
+		}
 	}
 
 	IEnumerator DestroyObject(GameObject obj, float delay)
