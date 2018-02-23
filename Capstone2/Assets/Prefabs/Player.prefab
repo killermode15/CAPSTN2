@@ -761,6 +761,7 @@ GameObject:
   - component: {fileID: 114786573945731634}
   - component: {fileID: 114974117951321144}
   - component: {fileID: 114625262800119206}
+  - component: {fileID: 114410588859308006}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1450,7 +1451,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831603703517158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13, y: 0.049999237, z: 2.58}
+  m_LocalPosition: {x: -14.6, y: -1.78, z: 2.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4973366069580928}
@@ -1848,7 +1849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JumpVFX: {fileID: 1185262910871434}
   CanMove: 1
-  MoveSpeed: 6
+  MoveSpeed: 8.75
   JumpHeight: 13
   TurnSmoothTime: 0.2
   DashCurve:
@@ -1857,18 +1858,12 @@ MonoBehaviour:
     - serializedVersion: 2
       time: 0
       value: 0
-      inSlope: 7.528018
-      outSlope: 7.528018
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
-      time: 0.14237274
-      value: 1.2136503
-      inSlope: -0.07347819
-      outSlope: -0.07347819
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 0.82839924
-      value: 1.1867521
+      time: 0.63242686
+      value: 0.1173383
       inSlope: -0.12519419
       outSlope: -0.12519419
       tangentMode: 0
@@ -1887,7 +1882,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  anim: {fileID: 0}
+  anim: {fileID: 114499983254245204}
+  inDialogue: 0
+  canJump: 1
 --- !u!114 &114261987797192834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1931,10 +1928,23 @@ MonoBehaviour:
   MaxCorruption: 100
   DecayRateMultiplier: 2
   CorruptionReleaseRate: 15
-  TimeTillDecayAmplify: 1
+  TimeTillDecayAmplify: 5
   HealthDecayRate: 0.1
-  PercentTillDecay: 0.5
+  PercentTillDecay: 0.7
   CorruptionEffect: {fileID: 0}
+--- !u!114 &114410588859308006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1831603703517158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c00cf34ebdfeb94a8ab29d147c21190, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Element: {fileID: 0}
+  Enemy: {fileID: 0}
 --- !u!114 &114499983254245204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2000,7 +2010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashCD: 2.5
   DashSpeed: 15
-  DashDuration: 0.25
+  DashDuration: 0.1
 --- !u!114 &114786573945731634
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -85,7 +85,7 @@ public class Absorb : MonoBehaviour
 	}
 	private void ChangeIndex()
 	{
-		Debug.Log(Input.GetAxisRaw("DPadX"));
+		//Debug.Log(Input.GetAxisRaw("DPadX"));
 		if (IsSelecting())
 		{
 			if (!recentlyChangedIndex)
@@ -126,6 +126,7 @@ public class Absorb : MonoBehaviour
 		{
 			Vector3 screenPoint = Camera.main.WorldToViewportPoint(absorbable.transform.position);
 			bool onScreen = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
+			//Debug.Log("Absorbable [" + absorbable.name + "] Location [" + screenPoint + "] Is On Screen [" + onScreen + "]");
 			if (onScreen && absorbable.CanBeAbsorbed() && (int)absorbable.EnergyType == (int)CurrentMode)
 			{
 				visibleAbsorbableObjects.Add(absorbable);

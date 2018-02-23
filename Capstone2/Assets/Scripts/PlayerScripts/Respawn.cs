@@ -22,6 +22,7 @@ public class Respawn : MonoBehaviour {
 		transform.position = respawnLocation.transform.position;
 		GetComponent<HP> ().AddHealth (GetComponent<HP> ().MaxHealth);
 		GetComponent<PlayerController> ().CanMove = true;
+		GetComponent<PlayerController> ().enabled = true;
 
 		if (onRespawn != null)
 			onRespawn.Invoke ();

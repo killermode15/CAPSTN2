@@ -45,7 +45,7 @@ public class PlayerMoveSkill : MonoBehaviour, IPlayerAction
 		if (InputManager.Instance.GetKeyDown(ControllerInput.Move) && controllerScriptRef.CanMove)
 		{
 			if (canDash) {
-				Debug.Log("DAsh");
+				//Debug.Log("DAsh");
 				controllerScriptRef.anim.SetBoolAnimParam("IsRolling", true);
 				controllerScriptRef.AddForwardVelocity(DashDuration, DashSpeed);
 				controllerScriptRef.AddForwardVelocity(controllerScriptRef.anim.GetCurrentAnimationLength(), DashSpeed);

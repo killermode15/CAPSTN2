@@ -16,8 +16,9 @@ public class PlayerController : MonoBehaviour, IPausable
 	//public float LowJumpMultiplier;
 	[HideInInspector]
 	public PlayerAnimation anim;
+	public bool inDialogue;
 
-	private bool canJump = true;
+	public bool canJump = true;
 	private float dashValue;
 	private float dashSpeed;
 	private float initialDashVal;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour, IPausable
 	private float currentRotateTo;
 	private Vector3 moveDirection;
 	private CharacterController controller;
+
 
 	void Start()
 	{
@@ -39,6 +41,8 @@ public class PlayerController : MonoBehaviour, IPausable
 		canJump = true;
 		PauseManager.Instance.addPausable (this);
 		origZPos = transform.position.z;
+
+		inDialogue = false;
 	}
 
 	void OnDisable(){
@@ -47,6 +51,8 @@ public class PlayerController : MonoBehaviour, IPausable
 
 	void Update()
 	{
+		//Debug.Log ("CanMove: " + CanMove);
+		//Debug.Log ("canJump: " + canJump);
 		transform.position = new Vector3(transform.position.x, transform.position.y, origZPos);
 
 		CalculateGravity();
@@ -73,39 +79,15 @@ public class PlayerController : MonoBehaviour, IPausable
 	private void LateUpdate()
 	{
 
+		//Debug.Log ("Late CanMove: " + CanMove);
+		//Debug.Log ("Late canJump: " + canJump);
 	}
 
 	//Calculates the y velocity depending on whether the player is jumping
 	//or is falling
 	void CalculateGravity()
 	{
-		#region old code
-		//transform.position = new Vector3(transform.position.x, transform.position.y, origZPos);
-
-		//if (IsGrounded())
-		//{
-		//	canJump = true;
-		//	//Set the y velocity to 0
-		//	moveDirection.y = 0;
-		//	Debug.Log("grounded");
-
-		//}
-		//else
-		//{
-		//	Debug.Log("not grounded");
-		//	if (moveDirection.y < 0)
-		//	{
-		//		moveDirection.y += Physics.gravity.y * FallMultiplier * Time.deltaTime;
-		//	}
-		//	else if (moveDirection.y > 0 && !Input.GetButton("Cross"))
-		//	{
-		//		moveDirection.y += Physics.gravity.y * LowJumpMultiplier * Time.deltaTime;
-		//	}
-		//	moveDirection.y += Physics.gravity.y * Time.deltaTime;
-
-		//}
-		#endregion
-		if (IsGrounded())
+		if (IsGrounded() && !inDialogue)
 		{
 			canJump = true;
 			moveDirection.y = (Physics.gravity.y * Time.deltaTime);
@@ -175,7 +157,7 @@ public class PlayerController : MonoBehaviour, IPausable
 
 		controller.Move(moveDirection * Time.deltaTime);
 
-		if (IsGrounded())
+		if (IsGrounded() && !inDialogue)
 		{
 			moveDirection.y = 0;
 			canJump = true;
@@ -240,11 +222,13 @@ public class PlayerController : MonoBehaviour, IPausable
 
 	public void Pause(){
 		CanMove = false;
+		canJump = false;
 		GetComponent<PlayerAnimation> ().canAnimate = false;
 	}
 
 	public void UnPause(){
 		CanMove = true;
+		canJump = true;
 		GetComponent<PlayerAnimation> ().canAnimate = true;
 	}
 }
