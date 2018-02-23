@@ -13,4 +13,10 @@ public class CheckPoints : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	void OnTriggerEnter(Collider other){
+		if(other.gameObject.CompareTag("Player")){
+			other.gameObject.GetComponent<Respawn> ().respawnLocation = this.transform;
+		}
+	}
 }

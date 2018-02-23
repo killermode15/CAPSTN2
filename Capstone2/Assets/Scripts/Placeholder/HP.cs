@@ -30,7 +30,10 @@ public class HP : MonoBehaviour
 			Health = 0;
 			GetComponent<PlayerController>().anim.SetBoolAnimParam("IsDead", true);
 			GetComponent<PlayerController> ().CanMove = false;
+			GetComponent<PlayerController> ().canJump = false;
+			GetComponent<PlayerController> ().enabled = false;
 		}
+
 		//HP Display
 		hpPercent = Health / MaxHealth;
 		if (HealthBar.value != hpPercent)

@@ -6,10 +6,13 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour {
 
+	private bool inDialogue;
 	public TextMeshProUGUI nameText;
 	public TextMeshProUGUI dialogueText;
 
 	public Animator animator;
+
+	public GameObject Player;
 
 	private Queue<string> sentences;
 
@@ -18,11 +21,20 @@ public class DialogueManager : MonoBehaviour {
 	}
 
 	void Update(){
-		if (Input.GetButtonDown ("Cross"))
-			DisplayNextSentence ();
+		//Debug.Log ("canJump " + Player.GetComponent<PlayerController> ().canJump);
+		//Debug.Log ("inDialogue: " + inDialogue);
+		Player.GetComponent<PlayerController> ().inDialogue = inDialogue;
+		if (inDialogue) {
+			Player.GetComponent<PlayerController> ().canJump = false;
+			if (Input.GetButtonDown ("Cross"))
+				DisplayNextSentence ();
+		}
 	}
 
 	public void StartDialogue(Dialogue dialogue){
+		inDialogue = true;
+
+		Debug.Log ("dialogue startnow");
 
 		animator.SetBool ("IsOpen", true);
 
@@ -59,6 +71,8 @@ public class DialogueManager : MonoBehaviour {
 	}
 
 	void EndDialogue(){
+		Player.GetComponent<PlayerController> ().canJump = false;
+		inDialogue = false;
 		Debug.Log ("ending dialogue");
 		PauseManager.Instance.UnPause ();
 		animator.SetBool ("IsOpen", false);
