@@ -5,13 +5,14 @@ using UnityEngine;
 public class AltarObject : MonoBehaviour
 {
 
+	public bool isActivated;
 	public GameObject VFX;
 	private GameObject player;
 
 	// Use this for initialization
 	void Start()
 	{
-
+		isActivated = false;
 	}
 
 	// Update is called once per frame
@@ -21,6 +22,7 @@ public class AltarObject : MonoBehaviour
 		{
 			if (player)
 			{
+				isActivated = true;
 				CorruptionBar corruption = player.GetComponent<CorruptionBar>();
 				ParticleSystem ps = VFX.GetComponent<ParticleSystem>();
 				corruption.ReleaseCorruption();
