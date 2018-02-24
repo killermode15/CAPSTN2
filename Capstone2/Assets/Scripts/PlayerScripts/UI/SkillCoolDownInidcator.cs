@@ -21,7 +21,7 @@ public class SkillCoolDownInidcator : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		Debug.Log ("cool down duration: " + useSkillRef.ActiveElement.CooldownDuration);
+		//Debug.Log ("cool down duration: " + useSkillRef.ActiveElement.CooldownDuration);
 
 		Element activeElement = useSkillRef.ActiveElement;
 		int elementCooldownIndex = useSkillRef.elementsOnCooldown.FindIndex (x => x == activeElement);
@@ -30,7 +30,7 @@ public class SkillCoolDownInidcator : MonoBehaviour {
 
 		maxCoolDown = currentCooldown / useSkillRef.ActiveElement.CooldownDuration;
 
-		Debug.Log (maxCoolDown);
+		//Debug.Log (maxCoolDown);
 		//if(isElementOnCooldown)
 			//CoolDownBar.fillAmount = Mathf.Lerp(CoolDownBar.fillAmount, 0, currentCooldown / useSkillRef.ActiveElement.CooldownDuration);
 		CoolDownBar.fillAmount = maxCoolDown;

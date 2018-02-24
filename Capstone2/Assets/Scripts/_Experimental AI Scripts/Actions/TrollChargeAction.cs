@@ -15,5 +15,6 @@ public class TrollChargeAction : Action {
 	{
 		//Do charge here
 		Debug.Log("I am charging");
+		controller.attackScript.Charge (controller);
 	}
 }

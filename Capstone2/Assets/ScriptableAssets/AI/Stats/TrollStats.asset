@@ -11,5 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30dc093f8b43396408e420321baca52b, type: 3}
   m_Name: TrollStats
   m_EditorClassIdentifier: 
-  WaitDuration: 5
-  MoveSpeed: 0
+  WaitDuration: 4
+  MoveSpeed: 10
+  ChargeSpeed: 50

@@ -10,6 +10,11 @@ public class StateController : MonoBehaviour
 	public BaseState CurrentState;
 	public BaseState RemainState;
 
+	public delegate void OnStateTransition();
+	public OnStateTransition onStateTransition;
+
+	[HideInInspector] public TrollAttack attackScript;
+	[HideInInspector] public Animator animator;
 	[HideInInspector] public NavMeshAgent navMeshAgent;
 	/*[HideInInspector]*/ public List<Transform> patrolPoints;
 	[HideInInspector] public int nextPatrolPoint;
@@ -20,6 +25,8 @@ public class StateController : MonoBehaviour
 	void Start()
 	{
 		navMeshAgent = GetComponent<NavMeshAgent>();
+		animator = GetComponentInChildren<Animator> ();
+		attackScript = GetComponent<TrollAttack> ();
 	}
 
 	public virtual void SetupAI()
@@ -50,6 +57,8 @@ public class StateController : MonoBehaviour
 		{
 			Debug.Log(newState);
 			CurrentState = newState;
+			if (onStateTransition != null)
+				onStateTransition.Invoke ();
 
 		}
 	}

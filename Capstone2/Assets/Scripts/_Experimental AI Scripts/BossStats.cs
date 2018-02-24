@@ -7,4 +7,5 @@ public class BossStats : ScriptableObject {
 
 	public float WaitDuration;
 	public float MoveSpeed;
+	public float ChargeSpeed;
 }
