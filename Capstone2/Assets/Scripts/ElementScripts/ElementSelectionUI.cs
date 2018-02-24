@@ -9,7 +9,8 @@ public class ElementSelectionUI : MonoBehaviour
 	public float SmoothDampTime = 0.02f;
 	public UseSkill UseSkillScriptRef;
 
-	private bool isSelecting;
+	[HideInInspector]
+	public static bool isSelecting { get; set; }
 	private bool isDoneSwitching;
 	private float smoothDampVel;
 	private float currentRotateTo;

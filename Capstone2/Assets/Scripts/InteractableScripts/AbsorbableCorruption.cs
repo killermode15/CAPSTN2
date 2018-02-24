@@ -63,16 +63,32 @@ public class AbsorbableCorruption : Absorbable
 			}
 
 			string currButtonName = (currentButtonIndex < ButtonImages.Count) ? ButtonImages[currentButtonIndex].sprite.name : " ";
+			string pressedButton = " ";
+
 			if (currButtonName != " ")
 			{
-				if (Input.GetButtonDown(currButtonName))
+				if (!ElementSelectionUI.isSelecting)
 				{
-					if (currentButtonIndex < ButtonImages.Count)
+					if (Input.GetButtonDown("Circle")) pressedButton = "Circle";
+					else if (Input.GetButtonDown("Square")) pressedButton = "Square";
+					else if (Input.GetButtonDown("Cross")) pressedButton = "Cross";
+					else if (Input.GetButtonDown("Triangle")) pressedButton = "Triangle";
+					else pressedButton = " ";
+
+					if (pressedButton == currButtonName)
 					{
-						currentButtonIndex++;
+						if (currentButtonIndex < ButtonImages.Count)
+						{
+							currentButtonIndex++;
+						}
+						Image buttonSprite = ButtonImages[currentButtonIndex - 1];
+						ButtonImages[currentButtonIndex - 1].color = new Color(buttonSprite.color.r, buttonSprite.color.g, buttonSprite.color.b, 0.4f);
 					}
-					Image buttonSprite = ButtonImages[currentButtonIndex - 1];
-					ButtonImages[currentButtonIndex - 1].color = new Color(buttonSprite.color.r, buttonSprite.color.g, buttonSprite.color.b, 0.4f);
+					else if (pressedButton != currButtonName && pressedButton != " ")
+					{
+						StopAllCoroutines();
+						StartCoroutine(ChangeButton());
+					}
 				}
 			}
 			else
