@@ -13,15 +13,14 @@ public class PatrolAction : Action
 
 	void Patrol(StateController controller)
 	{
-		Debug.Log("I am patrolling");
-		Debug.Log(controller.navMeshAgent.isStopped);
 		if (!controller.navMeshAgent.pathPending)
 		{
 			if (controller.navMeshAgent.remainingDistance <= controller.navMeshAgent.stoppingDistance)
 			{
 				if (!controller.navMeshAgent.hasPath || controller.navMeshAgent.velocity.sqrMagnitude == 0f)
 				{
-					Debug.Log("Setting new destination");
+					controller.navMeshAgent.speed = controller.Stats.MoveSpeed;
+					Debug.Log ("Debugging patrol speed: " + controller.navMeshAgent.speed);
 					controller.navMeshAgent.SetDestination(controller.patrolPoints[controller.nextPatrolPoint].position);
 					controller.navMeshAgent.Resume();
 					controller.nextPatrolPoint++;

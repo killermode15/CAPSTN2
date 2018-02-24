@@ -13,7 +13,6 @@ public class TrollJumpAction : Action {
 
 	void JumpAttack(StateController controller)
 	{
-		//This is where the troll will do the jump attack / ground pound
-		Debug.Log("I will ground pound now");
+		controller.attackScript.JumpAttack (controller);
 	}
 }

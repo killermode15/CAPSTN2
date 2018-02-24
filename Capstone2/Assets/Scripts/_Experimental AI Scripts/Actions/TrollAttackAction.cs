@@ -8,7 +8,7 @@ public class TrollAttackAction : Action {
 
 	public override void Act(StateController controller)
 	{
-		throw new NotImplementedException();
+		Attack (controller);
 	}
 
 	void Attack(StateController controller)
