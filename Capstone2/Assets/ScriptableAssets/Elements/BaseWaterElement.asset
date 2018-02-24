@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   ElementIcon: {fileID: 21300000, guid: 571e45b929809464fa460abaa2b87ea8, type: 3}
-  EnergyColor: {r: 0.986207, g: 1, b: 0, a: 1}
+  EnergyColor: {r: 0.19999981, g: 0, b: 1, a: 1}
   EnergyCost: 5
-  CurrentUseableEnergy: 0
+  CurrentUseableEnergy: 19.741879
   CooldownDuration: 10
   IsElementUnlocked: 1
   IsOnCooldown: 0

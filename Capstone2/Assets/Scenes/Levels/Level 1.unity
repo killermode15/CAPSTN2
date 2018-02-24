@@ -18185,7 +18185,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4231030731331744, guid: edd2816e2094b1a4f94f7faa7d00d0b0, type: 2}
       propertyPath: m_LocalScale.z
-      value: 0.21315694
+      value: 0.21036452
       objectReference: {fileID: 0}
     - target: {fileID: 4231030731331744, guid: edd2816e2094b1a4f94f7faa7d00d0b0, type: 2}
       propertyPath: m_LocalScale.x
@@ -18650,11 +18650,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4727153213046848, guid: 0f77434f25fb480419c21629c7f8c0d5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.1776
+      value: 0.2509
       objectReference: {fileID: 0}
     - target: {fileID: 4727153213046848, guid: 0f77434f25fb480419c21629c7f8c0d5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 75.57
+      value: 84.21
       objectReference: {fileID: 0}
     - target: {fileID: 4727153213046848, guid: 0f77434f25fb480419c21629c7f8c0d5, type: 2}
       propertyPath: m_LocalPosition.z
@@ -19322,6 +19322,11 @@ Prefab:
       propertyPath: Enemy
       value: 
       objectReference: {fileID: 2115479270}
+    - target: {fileID: 114119179576428638, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+        type: 2}
+      propertyPath: CoolDownBar
+      value: 
+      objectReference: {fileID: 1961806176}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
   m_IsPrefabParent: 0
@@ -21440,31 +21445,16 @@ Prefab:
       propertyPath: PatrolPoints.Array.data[1]
       value: 
       objectReference: {fileID: 1160922675}
-    - target: {fileID: 114580921627989450, guid: b02a26691a5395f479b5d1236f364966,
-        type: 2}
-      propertyPath: Player
-      value: 
-      objectReference: {fileID: 1473274960}
     - target: {fileID: 114629344882139500, guid: b02a26691a5395f479b5d1236f364966,
         type: 2}
       propertyPath: Player
       value: 
       objectReference: {fileID: 1473274961}
-    - target: {fileID: 114457200382507864, guid: b02a26691a5395f479b5d1236f364966,
+    - target: {fileID: 114580921627989450, guid: b02a26691a5395f479b5d1236f364966,
         type: 2}
-      propertyPath: ObjectCounterpart
+      propertyPath: Player
       value: 
-      objectReference: {fileID: 1900258081299240, guid: e1dff21bfaf34eb489a5349dc84d3643,
-        type: 2}
-    - target: {fileID: 114457200382507864, guid: b02a26691a5395f479b5d1236f364966,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1558461848430048, guid: b02a26691a5395f479b5d1236f364966, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1473274960}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b02a26691a5395f479b5d1236f364966, type: 2}
   m_IsPrefabParent: 0
@@ -26070,6 +26060,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: c211d67a81971d648af3ef1ceb254a1e, type: 3}
   m_PrefabInternal: {fileID: 1957269644}
+--- !u!114 &1961806176 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114059827441356684, guid: d981d98bb890b0649b60d4a9f06c206b,
+    type: 2}
+  m_PrefabInternal: {fileID: 921836103}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1962573421
 GameObject:
   m_ObjectHideFlags: 0

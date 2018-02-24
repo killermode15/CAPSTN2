@@ -9490,6 +9490,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114119179576428638, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+        type: 2}
+      propertyPath: CoolDownBar
+      value: 
+      objectReference: {fileID: 1766601466}
     - target: {fileID: 114974117951321144, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
         type: 2}
       propertyPath: SelectedElementImage
@@ -9500,16 +9505,6 @@ Prefab:
       propertyPath: respawnLocation
       value: 
       objectReference: {fileID: 851925775}
-    - target: {fileID: 114196544164091020, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
-        type: 2}
-      propertyPath: EnergyBar
-      value: 
-      objectReference: {fileID: 394158431}
-    - target: {fileID: 114178210771659466, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
-        type: 2}
-      propertyPath: CorruptionBar
-      value: 
-      objectReference: {fileID: 394158432}
     - target: {fileID: 114410588859308006, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
         type: 2}
       propertyPath: Element
@@ -9520,16 +9515,26 @@ Prefab:
       propertyPath: Enemy
       value: 
       objectReference: {fileID: 394158428}
-    - target: {fileID: 114306857153244546, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
-        type: 2}
-      propertyPath: HealthBar
-      value: 
-      objectReference: {fileID: 957417272}
     - target: {fileID: 114406980947326942, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
         type: 2}
       propertyPath: CorruptionEffect
       value: 
       objectReference: {fileID: 1258609185}
+    - target: {fileID: 114306857153244546, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+        type: 2}
+      propertyPath: HealthBar
+      value: 
+      objectReference: {fileID: 957417272}
+    - target: {fileID: 114196544164091020, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+        type: 2}
+      propertyPath: EnergyBar
+      value: 
+      objectReference: {fileID: 394158431}
+    - target: {fileID: 114178210771659466, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+        type: 2}
+      propertyPath: CorruptionBar
+      value: 
+      objectReference: {fileID: 394158432}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
   m_IsPrefabParent: 0
@@ -15970,6 +15975,12 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: bc3bf61158c8be8449103a6a409891b5, type: 3}
   m_PrefabInternal: {fileID: 1758592372}
+--- !u!114 &1766601466 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114059827441356684, guid: d981d98bb890b0649b60d4a9f06c206b,
+    type: 2}
+  m_PrefabInternal: {fileID: 404357591}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!114 &1775883873 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114875770417474890, guid: d981d98bb890b0649b60d4a9f06c206b,

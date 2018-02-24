@@ -762,6 +762,7 @@ GameObject:
   - component: {fileID: 114974117951321144}
   - component: {fileID: 114625262800119206}
   - component: {fileID: 114410588859308006}
+  - component: {fileID: 114119179576428638}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1812,6 +1813,18 @@ MonoBehaviour:
   initialized: 1
   initialName: New Path 2
   pathVisible: 1
+--- !u!114 &114119179576428638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1831603703517158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17508df0676243e47b11305ee33e4a7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CoolDownBar: {fileID: 0}
 --- !u!114 &114178210771659466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1994,6 +2007,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TerrainPrefab: {fileID: 1652551577583684, guid: a4747a59dc810974b96bad1549ac9185,
     type: 2}
+  TerrainHeight: 3
+  BlockOffset: 0.5
   SpawnDistance: 5
   WaterVFX: {fileID: 0}
   StunPrefab: {fileID: 1885663182599468, guid: 6332936eb5e01024684a2000102b36d4, type: 2}
@@ -2028,6 +2043,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c1eac8d3b0da8040be58ae3e0a1467a, type: 2}
   - {fileID: 11400000, guid: d1f3acefead894e43968fb552165e90e, type: 2}
   ActiveElement: {fileID: 11400000, guid: 1c1eac8d3b0da8040be58ae3e0a1467a, type: 2}
+  elementsOnCooldown: []
+  currentCooldowns: []
 --- !u!114 &114847213201159376
 MonoBehaviour:
   m_ObjectHideFlags: 1

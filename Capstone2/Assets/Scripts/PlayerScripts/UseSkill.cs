@@ -10,8 +10,8 @@ public class UseSkill : MonoBehaviour {
 	public delegate void OnSkillUse(Element element);
 	public OnSkillUse onSkillUse;
 	
-	private List<Element> elementsOnCooldown;
-	private List<float> currentCooldowns;
+	public List<Element> elementsOnCooldown;
+	public List<float> currentCooldowns;
 
 	private int currentActiveElementIndex;
 

@@ -27,11 +27,11 @@ public class AbsorbIndicatorUI : MonoBehaviour {
 		enemyColor.a = enemyAlpha;
 		Enemy.GetComponent<Image> ().color = enemyColor;
 
-		if (GetComponent<Absorb> ().CurrentMode == Absorb.AbsorbMode.Element) {
+		if (GetComponent<Absorb> ().CurrentMode == Absorb.AbsorbMode.Corruption) {
 			elementAlpha = 0.1f;
 			enemyAlpha = 1.0f;
 		} 
-		if (GetComponent<Absorb> ().CurrentMode == Absorb.AbsorbMode.Corruption) {
+		if (GetComponent<Absorb> ().CurrentMode == Absorb.AbsorbMode.Element) {
 			enemyAlpha = 0.1f;
 			elementAlpha = 1.0f;
 		}
