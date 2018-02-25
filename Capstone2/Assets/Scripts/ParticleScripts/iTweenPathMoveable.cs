@@ -3,7 +3,7 @@ using System.Collections.Generic;
 //using UnityEditor;
 using UnityEngine;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class iTweenPathMoveable : MonoBehaviour
 {
 
