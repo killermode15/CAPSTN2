@@ -11,7 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f33eadba04e3675459b93ff483de0f46, type: 3}
   m_Name: IdleState
   m_EditorClassIdentifier: 
-  Actions: []
+  Actions:
+  - {fileID: 11400000, guid: 6d89efdabd070a74fa5a8ed42fd1f32e, type: 2}
+  - {fileID: 11400000, guid: 3862da5ef2db4d54389ed649265714fb, type: 2}
   Transitions:
   - Decision: {fileID: 11400000, guid: 17a15999d197b1b42a70f6fe7db5f632, type: 2}
     TrueState: {fileID: 11400000, guid: 7bad3d3d1f256844bb647cf3339ae132, type: 2}

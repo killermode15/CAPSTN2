@@ -13,7 +13,6 @@ public class TrollAttackAction : Action {
 
 	void Attack(StateController controller)
 	{
-		//This is where the troll attacks
 		Debug.Log("I am attacking");
 	}
 }
