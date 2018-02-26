@@ -4302,6 +4302,10 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1430317480725716, guid: d981d98bb890b0649b60d4a9f06c206b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d981d98bb890b0649b60d4a9f06c206b, type: 2}
   m_IsPrefabParent: 0
@@ -4346,8 +4350,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9807ac8f77f2614ca626a1ac294eecf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemySnake: {fileID: 1617590913}
+  GroundOpening: {fileID: 0}
   Pause: {fileID: 1065796273}
-  shit: 0
   SkillElements: {fileID: 677942258}
 --- !u!4 &407090664
 Transform:
@@ -10330,7 +10335,7 @@ MonoBehaviour:
     - Everytime you absorb corruption from enemies, that dark energy piles up inside
       of you.
     - 'If you take up too much corruption, it affects your health real bad! '
-    - 'Find and altar, and release your corruption there!
+    - 'Find the altar, and release your corruption there!
 
 '
   triggered: 0
@@ -10661,7 +10666,7 @@ Prefab:
     - target: {fileID: 114592993320095684, guid: 7001d50628795024aa9061459e236067,
         type: 2}
       propertyPath: Tooltip
-      value: Unlike other elements, the Wind Elements energy regenerates overtime
+      value: Unlike the Wind Element, energy depletes whenever you use them.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7001d50628795024aa9061459e236067, type: 2}
@@ -14398,6 +14403,11 @@ Transform:
   m_Father: {fileID: 489237247}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1617590913 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1624134789736600, guid: 0babec27043f4bd4997719185c197608,
+    type: 2}
+  m_PrefabInternal: {fileID: 239749351}
 --- !u!1 &1619610292
 GameObject:
   m_ObjectHideFlags: 0
@@ -15672,8 +15682,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1733483270}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -97.2, y: 39.31, z: 5.2}
-  m_LocalScale: {x: 2.9967117, y: 57.944027, z: 8.568639}
+  m_LocalPosition: {x: -97.2, y: 44.652, z: 5.2}
+  m_LocalScale: {x: 2.9967117, y: 68.6281, z: 8.568639}
   m_Children: []
   m_Father: {fileID: 2026591481}
   m_RootOrder: 11

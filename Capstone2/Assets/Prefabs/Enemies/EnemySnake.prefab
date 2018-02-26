@@ -287,8 +287,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Manager: {fileID: 0}
   MoveAwaySpeed: 5
-  ChargeSpeed: 0.8
-  ChargeDuration: 0.3
+  ChargeSpeed: 0.5
+  ChargeDuration: 0.325
   ChargeCurve:
     serializedVersion: 2
     m_Curve:
@@ -4085,7 +4085,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.030000001, y: 3.46}
+  m_AnchoredPosition: {x: -0.030000001, y: 4.552394}
   m_SizeDelta: {x: 3, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224812231819046682

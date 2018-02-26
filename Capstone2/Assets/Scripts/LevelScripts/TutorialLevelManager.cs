@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TutorialLevelManager : MonoBehaviour {
 
+	public GameObject EnemySnake;
+	public GameObject GroundOpening;
+
 	private Transform FirstSetDialogue;
 	private Transform SecondSetDialogue;
 	private Transform WindEnable;
@@ -11,7 +14,6 @@ public class TutorialLevelManager : MonoBehaviour {
 	private Transform WaterEnable;
 	//private Transform ThirdSetDialogue;
 	public GameObject Pause;
-	public bool shit = false;
 
 	public UseSkill SkillElements;
 
@@ -34,6 +36,7 @@ public class TutorialLevelManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		
 		if (GetComponent<CheckForTerrainSkill>().earthSkillUsed && !SecondSetDialogue.GetComponent<DialogueTrigger> ().triggered) {
 			SecondSetDialogue.gameObject.SetActive (true);
 			SecondSetDialogue.GetComponent<DialogueTrigger> ().triggered = true;
