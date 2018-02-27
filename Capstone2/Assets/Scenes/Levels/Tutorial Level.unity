@@ -6736,6 +6736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d95a9cf898ec4ac4682d894fa1931ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneName: Level 1
 --- !u!1 &665313967
 GameObject:
   m_ObjectHideFlags: 0
@@ -17094,7 +17095,7 @@ MonoBehaviour:
   Player: {fileID: 1066640078}
   CameraFollowSpeed: 10
   Bounds: {x: 1, y: 1.5}
-  Offset: {x: 0, y: 1.75}
+  Offset: {x: 0, y: 1.75, z: 0}
   CameraNudgeValue: 1.75
 --- !u!1 &1897555250
 GameObject:

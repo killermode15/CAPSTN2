@@ -21,7 +21,7 @@ public class StateController : MonoBehaviour
 	/*[HideInInspector]*/ public List<Transform> patrolPoints;
 	/*[HideInInspector]*/ public int nextPatrolPoint;
 	private bool isDoneWaiting;
-	private bool isAIActive;
+	[HideInInspector] public bool isAIActive;
 
 	// Use this for initialization
 	void Start()

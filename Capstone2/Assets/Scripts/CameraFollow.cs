@@ -8,14 +8,15 @@ public class CameraFollow : MonoBehaviour {
 	public Transform Player;
 	public float CameraFollowSpeed;
 	public Vector2 Bounds = new Vector2(2.0f, 1.5f);
-	public Vector2 Offset;
+	public Vector3 Offset;
 	public float CameraNudgeValue;
+	private float origZ;
 
 
 	// Use this for initialization
 	void Start ()
 	{
-
+		origZ = transform.position.z;
 	}
 	
 	// Update is called once per frame
@@ -47,8 +48,8 @@ public class CameraFollow : MonoBehaviour {
 				delta.y = dy + Bounds.y;
 			}
 		}
-
-		transform.position = Vector3.Lerp(transform.position, transform.position + delta + new Vector3(Offset.x,Offset.y) + new Vector3(CameraNudgeValue * Input.GetAxis("Horizontal"), 0), Time.deltaTime * CameraFollowSpeed);
+		Vector3 camPos = new Vector3 (transform.position.x, transform.position.y, origZ);
+		transform.position = Vector3.Lerp(transform.position, camPos + delta + new Vector3(Offset.x,Offset.y, Offset.z) + new Vector3(CameraNudgeValue * Input.GetAxis("Horizontal"), 0), Time.deltaTime * CameraFollowSpeed);
 
 	}
 
