@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerAnimationEvent : MonoBehaviour {
 
+	public GameObject orb;
 	
 	public void Respawn()
 	{
@@ -13,13 +14,15 @@ public class PlayerAnimationEvent : MonoBehaviour {
 
 	public void SetCanMove(int val)
 	{
-		GetComponentInParent<PlayerController>().SetCanMove(val);
+		//Debug.Log((val == 0) ? false : true);
+		GetComponentInParent<PlayerController>().SetCanMove(val);//(val == 0) ? false : true);
 	}
 
 	public void TurnOnOrb(string tag)
 	{
 		Debug.Log("On");
-		GameObject.FindGameObjectWithTag(tag).GetComponent<ParticleSystem>().Play();
+		orb = GameObject.FindGameObjectWithTag(tag);
+		orb.GetComponent<ParticleSystem>().Play(); 
 		//GetComponentInParent<Absorb>().TurnOnOrb();
 	}
 

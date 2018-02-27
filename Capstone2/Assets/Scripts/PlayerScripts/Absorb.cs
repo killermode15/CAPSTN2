@@ -40,7 +40,7 @@ public class Absorb : MonoBehaviour
 	private void Update()
 	{
 
-		if (!GetComponent<PlayerController>().CanMove && !Input.GetButton("LeftTrigger") && !anim.GetBoolAnimParam("IsAbsorbing") && !PauseManager.Instance.IsPaused)
+		if (!GetComponent<PlayerController>().CanMove && !Input.GetButton("LeftTrigger") && !anim.GetBoolAnimParam("IsAbsorbing") && !PauseManager.Instance.IsPaused && !GetComponentInChildren<ElementEffects>().isCasting)
 		{
 			GetComponent<PlayerController>().CanMove = true;
 		}

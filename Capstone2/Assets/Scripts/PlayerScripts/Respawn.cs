@@ -5,8 +5,10 @@ using UnityEngine;
 public class Respawn : MonoBehaviour {
 
 	public Transform respawnLocation;
+
 	public delegate void OnRespawn ();
 	public OnRespawn onRespawn;
+
 	// Use this for initialization
 	void Start () {
 		

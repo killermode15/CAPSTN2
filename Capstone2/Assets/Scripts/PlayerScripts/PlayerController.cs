@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour, IPausable
 
 	void Update()
 	{
-		//Debug.Log ("CanMove: " + CanMove);
+		Debug.Log("CanMove: " + CanMove);
 		//Debug.Log ("canJump: " + canJump);
 		transform.position = new Vector3(transform.position.x, transform.position.y, origZPos);
 
@@ -208,11 +208,13 @@ public class PlayerController : MonoBehaviour, IPausable
 	public void SetCanMove(bool val)
 	{
 		CanMove = val;
+		Debug.Log("CanMove: " + CanMove);
 	}
 
 	public void SetCanMove(int val)
 	{
 		CanMove = (val == 0) ? false : true;
+		Debug.Log("CanMove: " + CanMove);
 	}
 
 	public void StopMovement()

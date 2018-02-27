@@ -5,6 +5,8 @@ using UnityEngine;
 public class ElementEffects : MonoBehaviour
 {
 
+	[HideInInspector] public bool isCasting;
+
 	[Header("Earth Element Variables")]
 	public GameObject TerrainPrefab;
 	public int TerrainHeight;
@@ -82,6 +84,7 @@ public class ElementEffects : MonoBehaviour
 
 	public void StopCast()
 	{
+		isCasting = false;
 		GetComponentInParent<PlayerController>().anim.SetBoolAnimParam("CastingElement", false);
 	}
 

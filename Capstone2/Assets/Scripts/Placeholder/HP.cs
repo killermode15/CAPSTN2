@@ -63,6 +63,10 @@ public class HP : MonoBehaviour
 	public void RemoveHealth(float val)
 	{
 		Health -= val;
+		if(val >= 5)
+		{
+			GetComponent<PlayerAnimation>().SetTriggerAnimParam("Hit");
+		}
 		//currentLerpTime = 0;
 	}
 

@@ -36,6 +36,7 @@ public class CorruptionBar : MonoBehaviour
 	{
 		playerHP = GetComponent<HP>();
 		currentMultiplier = 1;
+		GetComponent<Respawn>().onRespawn += ResetMultiplier;
 	}
 
 	// Update is called once per frame
@@ -72,6 +73,11 @@ public class CorruptionBar : MonoBehaviour
 		}
 	}
 
+	public void ResetMultiplier()
+	{
+		currentMultiplier = 1;
+	}
+
 	public void ReleaseCorruption()
 	{
 		if (CurrentCorruption > 0)
@@ -85,5 +91,10 @@ public class CorruptionBar : MonoBehaviour
 		Color effectColor = CorruptionEffect.color;
 		effectColor.a = CurrentCorruption / MaxCorruption;
 		CorruptionEffect.color = effectColor;
+	}
+
+	private void OnDisable()
+	{
+		GetComponent<Respawn>().onRespawn -= ResetMultiplier;
 	}
 }

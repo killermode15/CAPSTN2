@@ -2,21 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UseSkill : MonoBehaviour {
+public class UseSkill : MonoBehaviour
+{
 
 	public List<Element> ElementalSkills;
 	public Element ActiveElement;
 
 	public delegate void OnSkillUse(Element element);
 	public OnSkillUse onSkillUse;
-	
+
 	public List<Element> elementsOnCooldown;
 	public List<float> currentCooldowns;
 
 	private int currentActiveElementIndex;
 
 	// Use this for initialization
-	void Start () {
+	void Start()
+	{
 
 		foreach (Element element in ElementalSkills)
 		{
@@ -28,14 +30,15 @@ public class UseSkill : MonoBehaviour {
 		elementsOnCooldown = new List<Element>();
 		currentCooldowns = new List<float>();
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
+	void Update()
+	{
 
 		UpdateElementCooldowns();
 
 		//if(Input.GetButtonDown("RightTrigger"))
-		if(InputManager.Instance.GetKey(ControllerInput.UseCurrentElement))
+		if (InputManager.Instance.GetKey(ControllerInput.UseCurrentElement))
 		{
 			if (!ActiveElement.IsElementUnlocked || ActiveElement.IsOnCooldown || ActiveElement.CurrentUseableEnergy < ActiveElement.EnergyCost)
 				return;
@@ -48,8 +51,10 @@ public class UseSkill : MonoBehaviour {
 	{
 		if (!ActiveElement.IsOnCooldown)
 		{
+			if (ActiveElement.GetType() == typeof(WaterElement) || ActiveElement.GetType() == typeof(EarthElement))
+				GetComponentInChildren<ElementEffects>().isCasting = true;
 			if (onSkillUse != null)
-				onSkillUse.Invoke (ActiveElement);
+				onSkillUse.Invoke(ActiveElement);
 			ActiveElement.Use();
 			ActiveElement.IsOnCooldown = true;
 			SetElementOnCooldown(ActiveElement);
@@ -58,10 +63,10 @@ public class UseSkill : MonoBehaviour {
 
 	public void UpdateElementCooldowns()
 	{
-		for(int i = 0; i < currentCooldowns.Count; i++)
+		for (int i = 0; i < currentCooldowns.Count; i++)
 		{
 			currentCooldowns[i] -= Time.deltaTime;
-			if(currentCooldowns[i] <= 0)
+			if (currentCooldowns[i] <= 0)
 			{
 				currentCooldowns.RemoveAt(i);
 				elementsOnCooldown[i].IsOnCooldown = false;
@@ -86,6 +91,6 @@ public class UseSkill : MonoBehaviour {
 
 	public Element GetElement(System.Type elementType)
 	{
-		return ElementalSkills.Find (x => x.GetType() == elementType);
+		return ElementalSkills.Find(x => x.GetType() == elementType);
 	}
 }
