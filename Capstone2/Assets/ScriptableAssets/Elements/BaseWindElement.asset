@@ -16,9 +16,9 @@ MonoBehaviour:
   EnergyColor: {r: 0.625, g: 0.8137932, b: 1, a: 1}
   EnergyCost: 0
   CurrentUseableEnergy: 0
-  CooldownDuration: 2.5
+  CooldownDuration: 2.2
   IsElementUnlocked: 1
-  IsOnCooldown: 0
+  IsOnCooldown: 1
   MaxUseableEnergy: 100
   JumpIncrease: 20
   WindPush: {fileID: 1956289843543182, guid: 3242f90f9436ad54fa58d9c7d2e6c947, type: 2}
