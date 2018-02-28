@@ -51,6 +51,13 @@ public class UseSkill : MonoBehaviour
 	{
 		if (!ActiveElement.IsOnCooldown)
 		{
+			if (ActiveElement.GetType() == typeof(WindElement))
+			{
+				if (GetComponent<PlayerController>().IsGrounded())
+				{
+					return;
+				}
+			}
 			if (ActiveElement.GetType() == typeof(WaterElement) || ActiveElement.GetType() == typeof(EarthElement))
 				GetComponentInChildren<ElementEffects>().isCasting = true;
 			if (onSkillUse != null)

@@ -3441,6 +3441,21 @@ Prefab:
       propertyPath: m_Name
       value: altar_placeholder (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114569633767971284, guid: 883131eaa553fbf49abf6044404f8c49,
+        type: 2}
+      propertyPath: MaximumThreshold
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114790553923160058, guid: 883131eaa553fbf49abf6044404f8c49,
+        type: 2}
+      propertyPath: PathName
+      value: Altar2_Full
+      objectReference: {fileID: 0}
+    - target: {fileID: 114396600386288528, guid: 883131eaa553fbf49abf6044404f8c49,
+        type: 2}
+      propertyPath: pathName
+      value: Altar2_Full
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 883131eaa553fbf49abf6044404f8c49, type: 2}
   m_IsPrefabParent: 0
@@ -4606,6 +4621,21 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.16225734
       objectReference: {fileID: 0}
+    - target: {fileID: 114569633767971284, guid: 883131eaa553fbf49abf6044404f8c49,
+        type: 2}
+      propertyPath: MaximumThreshold
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114790553923160058, guid: 883131eaa553fbf49abf6044404f8c49,
+        type: 2}
+      propertyPath: PathName
+      value: Altar4_Full
+      objectReference: {fileID: 0}
+    - target: {fileID: 114396600386288528, guid: 883131eaa553fbf49abf6044404f8c49,
+        type: 2}
+      propertyPath: pathName
+      value: Altar4_Full
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 883131eaa553fbf49abf6044404f8c49, type: 2}
   m_IsPrefabParent: 0
@@ -5300,6 +5330,21 @@ Prefab:
     - target: {fileID: 4452045311665194, guid: 883131eaa553fbf49abf6044404f8c49, type: 2}
       propertyPath: m_LocalScale.z
       value: 0.16225734
+      objectReference: {fileID: 0}
+    - target: {fileID: 114569633767971284, guid: 883131eaa553fbf49abf6044404f8c49,
+        type: 2}
+      propertyPath: MaximumThreshold
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114790553923160058, guid: 883131eaa553fbf49abf6044404f8c49,
+        type: 2}
+      propertyPath: PathName
+      value: Altar5_Full
+      objectReference: {fileID: 0}
+    - target: {fileID: 114396600386288528, guid: 883131eaa553fbf49abf6044404f8c49,
+        type: 2}
+      propertyPath: pathName
+      value: Altar5_Full
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 883131eaa553fbf49abf6044404f8c49, type: 2}
@@ -9719,7 +9764,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4298047741817444, guid: b02a26691a5395f479b5d1236f364966, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114629344882139500, guid: b02a26691a5395f479b5d1236f364966,
         type: 2}
@@ -10786,6 +10831,21 @@ Prefab:
     - target: {fileID: 1174482662970728, guid: 883131eaa553fbf49abf6044404f8c49, type: 2}
       propertyPath: m_Name
       value: altar_placeholder (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114569633767971284, guid: 883131eaa553fbf49abf6044404f8c49,
+        type: 2}
+      propertyPath: MaximumThreshold
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114790553923160058, guid: 883131eaa553fbf49abf6044404f8c49,
+        type: 2}
+      propertyPath: PathName
+      value: Altar3_Full
+      objectReference: {fileID: 0}
+    - target: {fileID: 114396600386288528, guid: 883131eaa553fbf49abf6044404f8c49,
+        type: 2}
+      propertyPath: pathName
+      value: Altar3_Full
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -12548,7 +12608,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1430317480725716, guid: d981d98bb890b0649b60d4a9f06c206b, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d981d98bb890b0649b60d4a9f06c206b, type: 2}
@@ -13618,7 +13678,7 @@ MonoBehaviour:
   Troll: {fileID: 1241986727}
   camera: {fileID: 1503584532}
   exitPortal: {fileID: 1078045374}
-  yes: 0
+  startFall: 0
 --- !u!1001 &988755793
 Prefab:
   m_ObjectHideFlags: 0
@@ -19657,7 +19717,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4676124460033986, guid: d69a384fc9456fa4f93c6ac7ac8e2f5e, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114686830092927918, guid: d69a384fc9456fa4f93c6ac7ac8e2f5e,
         type: 2}
@@ -20052,7 +20112,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1503584528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 61.1, y: 31.97001, z: -19.5}
+  m_LocalPosition: {x: -17.8, y: 3.7999992, z: -19.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -24794,10 +24854,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1174482662970728, guid: 883131eaa553fbf49abf6044404f8c49, type: 2}
-      propertyPath: m_Name
-      value: altar_placeholder
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 883131eaa553fbf49abf6044404f8c49, type: 2}
   m_IsPrefabParent: 0
@@ -26423,11 +26479,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4816640547367954, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 63.1
+      value: -19.8
       objectReference: {fileID: 0}
     - target: {fileID: 4816640547367954, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 31.1
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 4816640547367954, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
       propertyPath: m_LocalPosition.z
@@ -28663,7 +28719,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -1304034044
+  randomSeed: -1327803818
   InitialModule:
     serializedVersion: 3
     enabled: 1

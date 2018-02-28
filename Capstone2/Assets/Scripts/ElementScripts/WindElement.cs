@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Water Element", menuName = "Element/New Wind Element")]
-public class WindElement : Element {
+public class WindElement : Element
+{
 
 	public float JumpIncrease;
 	public GameObject WindPush;
@@ -14,7 +15,7 @@ public class WindElement : Element {
 		//if (!IsElementUnlocked || IsOnCooldown || player.GetComponent<Energy>().CurrentEnergy < EnergyCost)
 		//	return;
 
-		if(IsBaseUseable())
+		if (IsBaseUseable())
 		{
 			//TEMPORARY
 			RemoveEnergy(EnergyCost);
