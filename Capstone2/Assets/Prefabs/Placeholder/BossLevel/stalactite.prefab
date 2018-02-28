@@ -22,9 +22,11 @@ GameObject:
   - component: {fileID: 33612443543005400}
   - component: {fileID: 23540021104225326}
   - component: {fileID: 114736469737935208}
+  - component: {fileID: 54229835137123122}
+  - component: {fileID: 136601119756131954}
   m_Layer: 0
   m_Name: stalactite
-  m_TagString: Untagged
+  m_TagString: Stalactite
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,9 +37,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1811360324288730}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 2.9478123e-15}
-  m_LocalPosition: {x: 70.89101, y: 8.6, z: 0}
-  m_LocalScale: {x: 0.6787101, y: 0.6787101, z: 0.6787101}
+  m_LocalRotation: {x: -0, y: -0, z: 1, w: 2.9478123e-15}
+  m_LocalPosition: {x: -20.838371, y: 22.035833, z: -2.3906212}
+  m_LocalScale: {x: 0.67871004, y: 0.67871004, z: 0.67871016}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -83,6 +85,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1811360324288730}
   m_Mesh: {fileID: 4300000, guid: cb7acaf140f7d1c498070e1992fc8945, type: 3}
+--- !u!54 &54229835137123122
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811360324288730}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &114736469737935208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,3 +111,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4ff8fc8801d57149b12bf9e086e158f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 0
+--- !u!136 &136601119756131954
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1811360324288730}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1.6220952
+  m_Height: 7.269437
+  m_Direction: 1
+  m_Center: {x: 0.0000076293945, y: 0.0000038146973, z: -0.000000106517234}

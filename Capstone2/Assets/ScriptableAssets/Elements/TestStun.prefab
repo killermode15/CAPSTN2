@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90972946f1027fd4ebbdeb8c817ba723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StunDuration: 4.5
+  StunDuration: 6
 --- !u!114 &114772519442353784
 MonoBehaviour:
   m_ObjectHideFlags: 1

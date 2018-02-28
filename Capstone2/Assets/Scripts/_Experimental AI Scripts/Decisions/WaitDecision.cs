@@ -9,6 +9,8 @@ public class WaitDecision : Decision {
 	public override bool Decide(StateController controller)
 	{
 		bool isWaitingDone = Wait(controller);
+		if(isWaitingDone)
+			controller.navMeshAgent.isStopped = false;
 		return isWaitingDone;
 	}
 

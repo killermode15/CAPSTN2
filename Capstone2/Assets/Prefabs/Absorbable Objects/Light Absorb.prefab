@@ -528,7 +528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnergyType: 0
   Energy: 75
-  AbsorptionRate: 5
+  AbsorptionRate: 15
   IsSelected: 0
   IsBeingAbsorbed: 0
   Type: 3

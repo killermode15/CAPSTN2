@@ -12,14 +12,16 @@ public class StateController : MonoBehaviour
 
 	public delegate void OnStateTransition();
 	public OnStateTransition onStateTransition;
+	public Transform Destination;
 
 	[HideInInspector] public TrollAttack attackScript;
 	[HideInInspector] public Animator animator;
 	[HideInInspector] public NavMeshAgent navMeshAgent;
+	[HideInInspector] public BossHealth bossHealth;
 	/*[HideInInspector]*/ public List<Transform> patrolPoints;
-	[HideInInspector] public int nextPatrolPoint;
+	/*[HideInInspector]*/ public int nextPatrolPoint;
 	private bool isDoneWaiting;
-	private bool isAIActive;
+	[HideInInspector] public bool isAIActive;
 
 	// Use this for initialization
 	void Start()
@@ -41,6 +43,8 @@ public class StateController : MonoBehaviour
 	// Update is called once per frame
 	public virtual void Update()
 	{
+		Destination = patrolPoints [nextPatrolPoint];
+		
 		if (Input.GetKeyDown(KeyCode.Space))
 			isAIActive = !isAIActive;
 
@@ -49,13 +53,13 @@ public class StateController : MonoBehaviour
 
 		CurrentState.UpdateState(this);
 
+
 	}
 
 	public void TransitionToState(BaseState newState)
 	{
 		if (newState != RemainState)
 		{
-			Debug.Log(newState);
 			CurrentState = newState;
 			if (onStateTransition != null)
 				onStateTransition.Invoke ();

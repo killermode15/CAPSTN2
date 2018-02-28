@@ -80,6 +80,9 @@ public class HP : MonoBehaviour
 		if (other.gameObject.CompareTag ("Enemy")) {
 			RemoveHealth (other.gameObject.GetComponent<StateManager>().collisionDamage);
 		}
+		if (other.gameObject.CompareTag ("Stalactite")) {
+			RemoveHealth (other.gameObject.GetComponent<Stalactite>().Damage);
+		}
 	}
 
 	void OnControllerColliderHit(ControllerColliderHit collision){

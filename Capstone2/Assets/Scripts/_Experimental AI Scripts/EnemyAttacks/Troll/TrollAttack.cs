@@ -20,42 +20,44 @@ public class TrollAttack : MonoBehaviour {
 
 	public void JumpAttack(StateController controller)
 	{
-		if (!controller.animator.GetBool ("IsSmashing") && !hasAttacked) {
-			controller.animator.SetBool ("IsSmashing", true);
-			hasAttacked = true;
-		} else {
-			if(controller.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
-				controller.animator.SetBool ("IsSmashing", false);
-		}
+		
 	}
 
 	public void Charge(StateController controller)
 	{
-		if (!hasAttacked) {
+//		Debug.Log("I am charging");
+		if (!hasAttacked && !controller.animator.GetBool ("ChargeUp")) {
 			if (!controller.navMeshAgent.pathPending) {
-				if (controller.navMeshAgent.remainingDistance <= controller.navMeshAgent.stoppingDistance) {
-					if (!controller.navMeshAgent.hasPath || controller.navMeshAgent.velocity.sqrMagnitude == 0f) {
-						Debug.Log ("Before Charge Update " + controller.navMeshAgent.speed);
-						controller.navMeshAgent.speed = controller.Stats.ChargeSpeed;
-						controller.navMeshAgent.SetDestination (controller.patrolPoints [controller.nextPatrolPoint].position);
-						controller.navMeshAgent.Resume ();
-						controller.nextPatrolPoint++;
-						hasAttacked = true;
-						if (controller.nextPatrolPoint >= controller.patrolPoints.Count)
-							controller.nextPatrolPoint = 0;
-					}
+				if (!controller.navMeshAgent.hasPath || controller.navMeshAgent.velocity.sqrMagnitude == 0f) {
+					controller.navMeshAgent.speed = controller.Stats.ChargeSpeed;
+					controller.navMeshAgent.SetDestination (controller.Destination.position);
+					controller.nextPatrolPoint++;
+					controller.navMeshAgent.isStopped = false;
+					//controller.animator.SetBool ("ChargeUp", true);	
+					hasAttacked = true;
+
+					if (controller.nextPatrolPoint >= controller.patrolPoints.Count)
+						controller.nextPatrolPoint = 0;
 				}
+			}
+		}else if(hasAttacked && controller.animator.GetBool("ChargeUp")) {
+			if (controller.animator.GetCurrentAnimatorStateInfo (0).normalizedTime > 1) {
+				//controller.animator.SetBool ("ChargeUp", false);
+				hasAttacked = false;
 			}
 		}
 	}
 
 	public void ClubSmash(StateController controller)
 	{
-		if (!hasAttacked) {
-			Debug.Log("I will club smash now");
+		if (!controller.animator.GetBool ("ClubSmash") && !hasAttacked) {
 			Vector3 location = new Vector3(transform.position.x - 5, transform.position.y, transform.position.z);
 			Instantiate(clubPrefabTest, location, Quaternion.identity);
+			//controller.animator.SetBool ("ClubSmash", true);
 			hasAttacked = true;
+		}else if(hasAttacked && controller.animator.GetBool("ClubSmash")) {
+			//if(controller.animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 1)
+				//controller.animator.SetBool ("ClubSmash", false);
 		}
 	}
 }

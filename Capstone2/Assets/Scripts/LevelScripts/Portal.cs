@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour {
 
+	public string sceneName;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,6 +18,6 @@ public class Portal : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		SceneManager.LoadScene ("Level 1");
+		SceneManager.LoadScene (sceneName);
 	}
 }
