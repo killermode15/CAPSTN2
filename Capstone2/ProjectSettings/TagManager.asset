@@ -15,6 +15,7 @@ TagManager:
   - Ground
   - EarthTerrain
   - AbsorbOrb
+  - Stalactite
   layers:
   - Default
   - TransparentFX

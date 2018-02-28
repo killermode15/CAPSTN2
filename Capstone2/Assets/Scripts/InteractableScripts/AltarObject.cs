@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AltarObject : MonoBehaviour
 {
-
 	public bool isActivated;
 	public GameObject VFX;
 	private GameObject player;

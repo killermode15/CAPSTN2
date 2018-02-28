@@ -127,6 +127,15 @@ public class PlayerController : MonoBehaviour, IPausable
 		}
 	}
 
+	//Adds a value to the y velocity of the movement vector
+	public void AddJumpVelocity(float val)
+	{
+		JumpVFX.GetComponent<ParticleSystem>().Play();
+		moveDirection.y = 0;
+		moveDirection.y += val;
+		canJump = false;
+	}
+
 	//Move the character based on the move direction
 	//Y velocity is placed in a separate variable to
 	//prevent being multiplied by the move speed
@@ -180,14 +189,6 @@ public class PlayerController : MonoBehaviour, IPausable
 		}
 	}
 
-	//Adds a value to the y velocity of the movement vector
-	public void AddJumpVelocity(float val)
-	{
-		JumpVFX.GetComponent<ParticleSystem>().Play();
-		moveDirection.y = 0;
-		moveDirection.y += val;
-		canJump = false;
-	}
 
 	public void AddForwardVelocity(float duration, float speed)
 	{

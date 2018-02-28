@@ -5,15 +5,17 @@ using UnityEngine;
 public class Level1BossManager : MonoBehaviour {
 
 	public GameObject EnterTrigger;
-	public GameObject Stalactites;
+	public GameObject Closing;
 	public GameObject TrollAITrigger;
+	public GameObject Stalactites;
 	public GameObject Troll;
 	public Camera camera;
 	public GameObject exitPortal;
+	public bool startFall;
 
 	// Use this for initialization
 	void Start () {
-		Stalactites.SetActive (false);
+		Closing.SetActive (false);
 		exitPortal.SetActive (false);
 		Troll.GetComponent<StateController> ().isAIActive = false;
 	}
@@ -27,7 +29,7 @@ public class Level1BossManager : MonoBehaviour {
 
 	void TriggerChecks(){
 		if (EnterTrigger.GetComponent<TriggerCheck> ().isTriggered) 
-			Stalactites.SetActive (true);
+			Closing.SetActive (true);
 		if (TrollAITrigger.GetComponent<TriggerCheck> ().isTriggered) {
 			Troll.GetComponent<StateController> ().isAIActive = true;
 			camera.GetComponent<CameraFollow> ().Offset.z = -4.5f;
