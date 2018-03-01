@@ -31,21 +31,21 @@ public class Level1Manager : MonoBehaviour {
 	}
 
 	public void FirstAltarActivate() {
-		if (Altars [0].GetComponent<AltarObject> ().isActivated) {
+		if (Altars [0].GetComponent<AltarObject> ().IsFull) {
 			CorruptedLevel [0].SetActive (false);
 			CleanLevel [0].SetActive (true);
 		}
 	}
 
 	public void SecondAltarActivate() {
-		if (Altars [1].GetComponent<AltarObject> ().isActivated) {
+		if (Altars [1].GetComponent<AltarObject> ().IsFull) {
 			CorruptedLevel [1].SetActive (false);
 			CleanLevel [1].SetActive (true);
 		}
 	}
 
 	public void ThirdAltarActivate() {
-		if (Altars [2].GetComponent<AltarObject> ().isActivated) {
+		if (Altars [2].GetComponent<AltarObject> ().IsFull) {
 			CorruptedLevel [2].SetActive (false);
 			CleanLevel [2].SetActive (true);
 		}

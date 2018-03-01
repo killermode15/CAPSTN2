@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d611f7efbe96a9041984303c9a49bac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaximumThreshold: 100
+  currentThreshold: 25
   isActivated: 0
   VFX: {fileID: 1597614186316186}
   VFXForFull: {fileID: 1425677023582464}

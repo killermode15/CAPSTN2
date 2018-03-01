@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class AltarObject : MonoBehaviour
 {
-	public float MaximumThreshold;
+	public float currentThreshold;
 	public bool isActivated;
 	public GameObject VFX;
 	public GameObject VFXForFull;
 
 	public bool IsFull
 	{
-		get { return currentAmount >= MaximumThreshold;  }
+		get { return currentAmount >= currentThreshold;  }
 	}
 
 	private GameObject player;

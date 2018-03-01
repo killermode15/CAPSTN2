@@ -5,7 +5,8 @@ using UnityEngine;
 public class TutorialLevelManager : MonoBehaviour {
 
 	public GameObject EnemySnake;
-	public GameObject GroundOpening;
+	public GameObject Altar;
+	public GameObject Portal;
 
 	private Transform FirstSetDialogue;
 	private Transform SecondSetDialogue;
@@ -19,6 +20,7 @@ public class TutorialLevelManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		Portal.SetActive (false);
 		FirstSetDialogue = this.gameObject.transform.GetChild (0);
 		SecondSetDialogue = this.gameObject.transform.GetChild (1);
 		//ThirdSetDialogue = this.gameObject.transform.GetChild (2);
@@ -36,13 +38,21 @@ public class TutorialLevelManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		DialogueTriggers ();
+		AltarCheck();
 		if (GetComponent<CheckForTerrainSkill>().earthSkillUsed && !SecondSetDialogue.GetComponent<DialogueTrigger> ().triggered) {
 			SecondSetDialogue.gameObject.SetActive (true);
 			SecondSetDialogue.GetComponent<DialogueTrigger> ().triggered = true;
 			PauseManager.Instance.Pause ();
 		}
+	}
 
+	void AltarCheck(){
+		if (Altar.GetComponent<AltarObject> ().IsFull)
+			Portal.SetActive (true);
+	}
+
+	void DialogueTriggers(){
 		if (FirstSetDialogue.gameObject.GetComponent<DialogueTrigger> ().triggered) {
 			PauseManager.Instance.Pause ();
 			FirstSetDialogue.gameObject.GetComponent<DialogueTrigger> ().triggered = false;
