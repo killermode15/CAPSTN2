@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(AbsorbableCorruption))]
-public class SnakeManager : StateManager {
+public class AIManager : StateManager {
 
 	private void OnDrawGizmosSelected()
 	{
