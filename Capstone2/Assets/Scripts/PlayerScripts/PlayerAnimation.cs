@@ -33,9 +33,13 @@ public class PlayerAnimation : MonoBehaviour
 	void Update()
 	{
 		if (canAnimate)
-			PlayerAnimator.SetFloat ("WalkSpeed", Mathf.Abs (Input.GetAxis ("Horizontal")) + 1);
+		{
+			float moveSpeed = Mathf.Abs(Input.GetAxis("Horizontal")) + Mathf.Abs(Input.GetAxis("Vertical"));
+			moveSpeed /= 2;
+			PlayerAnimator.SetFloat("WalkSpeed", moveSpeed + 1);
+		}
 		else
-			PlayerAnimator.SetFloat ("WalkSpeed", 0);
+			PlayerAnimator.SetFloat("WalkSpeed", 0);
 
 		
 	}

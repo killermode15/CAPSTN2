@@ -39,21 +39,19 @@ public class PlayerController : MonoBehaviour, IPausable
 
 		CanMove = true;
 		canJump = true;
-		PauseManager.Instance.addPausable (this);
+		PauseManager.Instance.addPausable(this);
 		origZPos = transform.position.z;
 
 		inDialogue = false;
 	}
 
-	void OnDisable(){
-		PauseManager.Instance.removePausable (this);
+	void OnDisable()
+	{
+		PauseManager.Instance.removePausable(this);
 	}
 
 	void Update()
 	{
-		Debug.Log("CanMove: " + CanMove);
-		//Debug.Log ("canJump: " + canJump);
-		transform.position = new Vector3(transform.position.x, transform.position.y, origZPos);
 
 		CalculateGravity();
 		RotateCharacter();
@@ -144,16 +142,19 @@ public class PlayerController : MonoBehaviour, IPausable
 		//Get the current y velocity of the movement direction
 		float currY = moveDirection.y;
 		//Then get the movement input from the player
-		if (CanMove) {
-			moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, 0);
+		if (CanMove)
+		{
+			moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
 			//Multiply it to the movespeed
 			moveDirection *= MoveSpeed;
 			//Add dash if turned onx
 			float dash = (initialDashVal == 0) ? 0 : dashValue / initialDashVal;
-			moveDirection.x += DashCurve.Evaluate (dash) * dashSpeed;
+			moveDirection.x += DashCurve.Evaluate(dash) * dashSpeed;
 
-		} else {
+		}
+		else
+		{
 			moveDirection = Vector3.zero;
 		}
 		//Currently commented out because movement
@@ -179,12 +180,12 @@ public class PlayerController : MonoBehaviour, IPausable
 		//Get the normalized movement direction
 		Vector3 moveDir = moveDirection.normalized;
 
-		if (moveDir.x != 0)
+		if (moveDir.magnitude != 0)
 		{
 			currentRotateTo = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
-		}
-		if (transform.eulerAngles.y != currentRotateTo)
-		{
+
+			//if (transform.eulerAngles.y != currentRotateTo)
+			//{
 			transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, currentRotateTo, ref turnSmoothVel, TurnSmoothTime);
 		}
 	}
@@ -223,15 +224,17 @@ public class PlayerController : MonoBehaviour, IPausable
 		moveDirection = Vector3.zero;
 	}
 
-	public void Pause(){
+	public void Pause()
+	{
 		CanMove = false;
 		canJump = false;
-		GetComponent<PlayerAnimation> ().canAnimate = false;
+		GetComponent<PlayerAnimation>().canAnimate = false;
 	}
 
-	public void UnPause(){
+	public void UnPause()
+	{
 		CanMove = true;
 		canJump = true;
-		GetComponent<PlayerAnimation> ().canAnimate = true;
+		GetComponent<PlayerAnimation>().canAnimate = true;
 	}
 }

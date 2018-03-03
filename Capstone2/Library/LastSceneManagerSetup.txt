@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Post-Defense/MainGame.unity
+- path: Assets/Scenes/Post-Defense/Test Scenes/3D Movement Test.unity
   isLoaded: 1
   isActive: 1
