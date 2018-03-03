@@ -51,7 +51,6 @@ public class PlayerController : MonoBehaviour, IPausable
 
 	void Update()
 	{
-		Debug.Log("CanMove: " + CanMove);
 		//Debug.Log ("canJump: " + canJump);
 		transform.position = new Vector3(transform.position.x, transform.position.y, origZPos);
 

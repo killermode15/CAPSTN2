@@ -743,6 +743,7 @@ GameObject:
   - component: {fileID: 114625262800119206}
   - component: {fileID: 114410588859308006}
   - component: {fileID: 114119179576428638}
+  - component: {fileID: 114931800528264002}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1432,7 +1433,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831603703517158}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.89, y: 0.64, z: 0}
+  m_LocalPosition: {x: -15, y: 0, z: 2.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4973366069580928}
@@ -1949,6 +1950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e270f69fef5814d855c6b57c04d469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  orb: {fileID: 0}
 --- !u!114 &114699384714637142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1960,6 +1962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d0835fc2e40be4cbd1c6df5f1d2dca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCasting: 0
   TerrainPrefab: {fileID: 1652551577583684, guid: a4747a59dc810974b96bad1549ac9185,
     type: 2}
   TerrainHeight: 3
@@ -2035,6 +2038,19 @@ MonoBehaviour:
   - {x: -2.7826643, y: 0.34818816, z: 2.2371888}
   - {x: -3.2580137, y: 0.5854249, z: 1.8923578}
   - {x: -3.9467154, y: 0.45736575, z: 2.1208618}
+--- !u!114 &114931800528264002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1831603703517158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cdeed37acd96b349b64072899b03543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Crosshair: {fileID: 0}
+  currentTarget: {fileID: 0}
 --- !u!114 &114974117951321144
 MonoBehaviour:
   m_ObjectHideFlags: 1

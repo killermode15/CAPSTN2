@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class State : MonoBehaviour {
+	
 	[HideInInspector] public StateManager Manager;
 	// Use this for initialization
 	public virtual void OnEnable()
