@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -569,36 +569,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114178210771659466, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
-        type: 2}
-      propertyPath: CorruptionBar
-      value: 
-      objectReference: {fileID: 479574188}
-    - target: {fileID: 114306857153244546, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
-        type: 2}
-      propertyPath: HealthBar
-      value: 
-      objectReference: {fileID: 1914680645}
-    - target: {fileID: 114406980947326942, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
-        type: 2}
-      propertyPath: CorruptionEffect
-      value: 
-      objectReference: {fileID: 479574188}
-    - target: {fileID: 114196544164091020, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
-        type: 2}
-      propertyPath: EnergyBar
-      value: 
-      objectReference: {fileID: 479281631}
     - target: {fileID: 114974117951321144, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
         type: 2}
       propertyPath: SelectedElementImage
       value: 
       objectReference: {fileID: 204826260}
-    - target: {fileID: 114119179576428638, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
-        type: 2}
-      propertyPath: CoolDownBar
-      value: 
-      objectReference: {fileID: 3919500}
     - target: {fileID: 114410588859308006, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
         type: 2}
       propertyPath: Element
@@ -609,6 +584,31 @@ Prefab:
       propertyPath: Enemy
       value: 
       objectReference: {fileID: 382819429}
+    - target: {fileID: 114406980947326942, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+        type: 2}
+      propertyPath: CorruptionEffect
+      value: 
+      objectReference: {fileID: 479574188}
+    - target: {fileID: 114306857153244546, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+        type: 2}
+      propertyPath: HealthBar
+      value: 
+      objectReference: {fileID: 1914680645}
+    - target: {fileID: 114196544164091020, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+        type: 2}
+      propertyPath: EnergyBar
+      value: 
+      objectReference: {fileID: 479281631}
+    - target: {fileID: 114178210771659466, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+        type: 2}
+      propertyPath: CorruptionBar
+      value: 
+      objectReference: {fileID: 479574188}
+    - target: {fileID: 114119179576428638, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5,
+        type: 2}
+      propertyPath: CoolDownBar
+      value: 
+      objectReference: {fileID: 3919500}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4043e2b5ccb1ce84aa10e5c63c0786e5, type: 2}
   m_IsPrefabParent: 0
