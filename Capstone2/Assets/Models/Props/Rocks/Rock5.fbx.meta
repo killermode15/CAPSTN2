@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 8c65b44ae0cbb154cb24cc86867b70c9
-timeCreated: 1517899175
+guid: b996a958a05bd214a8be6aca844e175a
+timeCreated: 1517899176
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -10,7 +10,7 @@ ModelImporter:
     2100000: GrayBlue
     2300000: //RootNode
     3300000: //RootNode
-    4300000: pCube4
+    4300000: pCube6
     9500000: //RootNode
   externalObjects: {}
   materials:

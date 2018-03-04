@@ -9,7 +9,6 @@ public class LockOn : MonoBehaviour {
 	public GameObject currentTarget;
 	[HideInInspector] public List<GameObject> allEnemies = new List<GameObject> ();
 	[HideInInspector] public List<GameObject> visibleEnemies = new List<GameObject> ();
-	Camera camera;
 
 	// Use this for initialization
 	void Start () {

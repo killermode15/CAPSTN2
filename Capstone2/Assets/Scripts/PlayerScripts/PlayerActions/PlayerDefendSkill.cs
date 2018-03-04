@@ -18,7 +18,6 @@ public class PlayerDefendSkill : MonoBehaviour, IPlayerAction
 	private float maxCapacity;
 	private bool isDefendActive;
 	private bool isUseable;
-	private Shield shieldScript;
 
 	// Use this for initialization
 	void Start()
