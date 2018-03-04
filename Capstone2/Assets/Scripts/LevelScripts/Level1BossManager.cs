@@ -32,7 +32,7 @@ public class Level1BossManager : MonoBehaviour {
 			Closing.SetActive (true);
 		if (TrollAITrigger.GetComponent<TriggerCheck> ().isTriggered) {
 			Troll.GetComponent<StateController> ().isAIActive = true;
-			camera.GetComponent<CameraFollow> ().Offset.z = -4.5f;
+			//camera.GetComponent<CameraFollow> ().Offset.z = -4.5f;
 		}
 	}
 }
