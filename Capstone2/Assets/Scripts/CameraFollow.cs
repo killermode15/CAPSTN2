@@ -2,44 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour {
+public class CameraFollow : MonoBehaviour
+{
 
-    protected Transform _XForm_Camera;
-    protected Transform _XForm_Parent;
+	public float OrbitSpeed = 4f;
+	public float FollowSpeed = 4f;
+	public float RadiusOffset;
+	public Vector3 Offset;
 
-    protected Vector3 _LocalRotation;
-    protected float _CameraDistance = 10f;
+	private GameObject player;
+	private GameObject target;
+	private float currentAngle;
+	private Vector3 camOffset;
 
-    public float MouseSensitivity = 4f;
-    public float OrbitDampening = 10f;
+	private void Start()
+	{
+		player = GameObject.FindGameObjectWithTag("Player");
+		camOffset = transform.position - player.transform.position;
+	}
 
+	private void LateUpdate()
+	{
+		float orbitValue = Input.GetAxis("RightStickX");
 
-    // Use this for initialization
-    void Start()
-    {
-        this._XForm_Camera = this.transform;
-        this._XForm_Parent = this.transform.parent;
+		Quaternion camTurnAngle = Quaternion.AngleAxis(orbitValue * OrbitSpeed, Vector3.up);
+		camOffset = camTurnAngle * camOffset;
 
-    }
+		Vector3 newPos = player.transform.position + camOffset;
 
+		transform.position = Vector3.Slerp(transform.position, newPos, Time.deltaTime * FollowSpeed);
+		transform.LookAt(player.transform);
 
-    void Update()
-    {
-        //Rotation of the Camera based on Mouse Coordinates
-        //if (Input.GetAxis("RightStickX") != 0 || Input.GetAxis("RightStickY") != 0)
-        //{
-            _LocalRotation.x += Input.GetAxis("RightStickX") * MouseSensitivity;
-            _LocalRotation.x += Input.GetAxis("RightStickY") * MouseSensitivity;
+		//transform.position = player.transform.position + (transform.position - player.transform.position).normalized * RadiusOffset;
+		//transform.RotateAround(player.transform.position, Vector3.up, orbitValue * OrbitSpeed * Time.deltaTime);
+	}
 
-            //Clamp the y Rotation to horizon and not flipping over at the top
-            if (_LocalRotation.y < 0f)
-                _LocalRotation.y = 0f;
-            else if (_LocalRotation.y > 90f)
-                _LocalRotation.y = 90f;
-        //}
+	Vector3 GetDirFromAngle(float angleInDegrees)
+	{
 
-        /*//Actual Camera Rig Transformations
-        Quaternion QT = Quaternion.Euler(_LocalRotation.y, _LocalRotation.x, 0);
-        this._XForm_Parent.rotation = Quaternion.Lerp(this._XForm_Parent.rotation, QT, Time.deltaTime * OrbitDampening);*/
-    }
+		return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0, Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+	}
 }

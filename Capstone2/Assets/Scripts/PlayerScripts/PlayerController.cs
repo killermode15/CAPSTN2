@@ -238,6 +238,8 @@ public class PlayerController : MonoBehaviour, IPausable
 			moveDirection = Vector3.zero;
 		}
 
+		//moveDirection = transform.TransformDirection(moveDirection);
+
 		//Then set the y velocity back
 		moveDirection.y = currY;
 
@@ -261,9 +263,11 @@ public class PlayerController : MonoBehaviour, IPausable
 		//Get the normalized movement direction
 		Vector3 moveDir = moveDirection.normalized;
 
+		if (moveDir.x != 0 && moveDir.z != 0)
+			currentRotateTo = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
+
 		if (moveDir.magnitude != 0)
 		{
-			currentRotateTo = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
 			transform.eulerAngles = Vector3.up * Mathf.SmoothDampAngle(transform.eulerAngles.y, currentRotateTo, ref turnSmoothVel, TurnSmoothTime);
 		}
 	}
