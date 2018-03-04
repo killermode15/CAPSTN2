@@ -30,7 +30,7 @@ public class HP : MonoBehaviour
 			Health = 0;
 			GetComponent<PlayerController>().anim.SetBoolAnimParam("IsDead", true);
 			GetComponent<PlayerController> ().CanMove = false;
-			GetComponent<PlayerController> ().canJump = false;
+			GetComponent<PlayerController> ().CanJump = false;
 			GetComponent<PlayerController> ().enabled = false;
 		}
 

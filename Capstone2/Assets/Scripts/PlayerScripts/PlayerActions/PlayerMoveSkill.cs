@@ -3,59 +3,60 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMoveSkill : MonoBehaviour, IPlayerAction
+public class PlayerMoveSkill : MonoBehaviour/*, IPlayerAction*/
 {
-	public float dashCD;
-	public float DashSpeed;
-	public float DashDuration;
-	private float currentLerpTime;
-	private PlayerController controllerScriptRef;
-	private bool canDash;
+	//public float dashCD;
+	//public float DashSpeed;
+	//public float DashDuration;
 
-	// Use this for initialization
-	void Start()
-	{
-		canDash = true;
-		controllerScriptRef = GetComponent<PlayerController>();
-		//DashDuration = controllerScriptRef.anim.GetCurrentAnimationLength();
-	}
+	//private PlayerController controllerScriptRef;
+	//private bool canDash;
 
-	// Update is called once per frame
-	void Update()
-	{
-		UseAction();
-		if (controllerScriptRef.anim.GetBoolAnimParam("IsRolling"))
-		{
-			if (controllerScriptRef.anim.GetStateInfo().normalizedTime >= 1f)
-			{
-				controllerScriptRef.anim.SetBoolAnimParam("IsRolling", false);
-			}
-		}
-	}
+	//// Use this for initialization
+	//void Start()
+	//{
+	//	canDash = true;
+	//	controllerScriptRef = GetComponent<PlayerController>();
+	//	//DashDuration = controllerScriptRef.anim.GetCurrentAnimationLength();
+	//}
 
-	IEnumerator Dash()
-	{
-		canDash = false;
-		yield return new WaitForSeconds(dashCD);
-		canDash = true;
-	}
+	//// Update is called once per frame
+	//void Update()
+	//{
+	//	UseAction();
+	//	if (controllerScriptRef.anim.GetBoolAnimParam("IsRolling"))
+	//	{
+	//		if (controllerScriptRef.anim.GetStateInfo().normalizedTime >= 1f)
+	//		{
+	//			controllerScriptRef.anim.SetBoolAnimParam("IsRolling", false);
+	//		}
+	//	}
+	//}
 
-	public void UseAction()
-	{
-		if (InputManager.Instance.GetKeyDown(ControllerInput.Move) && controllerScriptRef.CanMove)
-		{
-			if (canDash) {
-				//Debug.Log("DAsh");
-				controllerScriptRef.anim.SetBoolAnimParam("IsRolling", true);
-				controllerScriptRef.AddForwardVelocity(DashDuration, DashSpeed);
-				controllerScriptRef.AddForwardVelocity(controllerScriptRef.anim.GetCurrentAnimationLength(), DashSpeed);
-				StartCoroutine (Dash ());
-			}
-		}
-	}
+	//IEnumerator Dash()
+	//{
+	//	canDash = false;
+	//	yield return new WaitForSeconds(dashCD);
+	//	canDash = true;
+	//}
 
-	public void UseActionWithElementModifier(Element element)
-	{
-		throw new NotImplementedException();
-	}
+	//public void UseAction()
+	//{
+	//	if (InputManager.Instance.GetKeyDown(ControllerInput.Move) && controllerScriptRef.CanMove)
+	//	{
+	//		if (canDash)
+	//		{
+	//			//Debug.Log("DAsh");
+	//			controllerScriptRef.anim.SetBoolAnimParam("IsRolling", true);
+	//			controllerScriptRef.Dash(DashDuration, DashSpeed);
+	//			controllerScriptRef.Dash(controllerScriptRef.anim.GetCurrentAnimationLength(), DashSpeed);
+	//			StartCoroutine(Dash());
+	//		}
+	//	}
+	//}
+
+	//public void UseActionWithElementModifier(Element element)
+	//{
+	//	throw new NotImplementedException();
+	//}
 }
