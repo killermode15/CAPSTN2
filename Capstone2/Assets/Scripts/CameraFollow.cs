@@ -7,12 +7,11 @@ public class CameraFollow : MonoBehaviour
 
 	public float OrbitSpeed = 4f;
 	public float FollowSpeed = 4f;
-	public float RadiusOffset;
 	public Vector3 Offset;
+	public Vector2 CameraYLimit = new Vector2(23, 35);
 
 	private GameObject player;
 	private GameObject target;
-	private float currentAngle;
 	private Vector3 camOffset;
 
 	private void Start()
@@ -24,17 +23,21 @@ public class CameraFollow : MonoBehaviour
 	private void LateUpdate()
 	{
 		float orbitValue = Input.GetAxis("RightStickX");
+		float panValue= Input.GetAxis("RightStickY");
 
 		Quaternion camTurnAngle = Quaternion.AngleAxis(orbitValue * OrbitSpeed, Vector3.up);
-		camOffset = camTurnAngle * camOffset;
+		Quaternion camPanAngle = Quaternion.AngleAxis(panValue * OrbitSpeed, transform.right);
 
+		camOffset = camPanAngle * camTurnAngle * camOffset;
+
+		Vector3 origPos = new Vector3(camOffset.x, camOffset.y, camOffset.z);
+		camOffset += Offset;
 		Vector3 newPos = player.transform.position + camOffset;
-
+		newPos.y = Mathf.Clamp(newPos.y, CameraYLimit.x, CameraYLimit.y);
 		transform.position = Vector3.Slerp(transform.position, newPos, Time.deltaTime * FollowSpeed);
 		transform.LookAt(player.transform);
 
-		//transform.position = player.transform.position + (transform.position - player.transform.position).normalized * RadiusOffset;
-		//transform.RotateAround(player.transform.position, Vector3.up, orbitValue * OrbitSpeed * Time.deltaTime);
+		camOffset = origPos;
 	}
 
 	Vector3 GetDirFromAngle(float angleInDegrees)
