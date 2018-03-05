@@ -306,6 +306,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4068134591993136}
+  - component: {fileID: 64709394682059796}
   m_Layer: 0
   m_Name: Tree_Green3
   m_TagString: Untagged
@@ -2666,3 +2667,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1122557739963622}
   m_Mesh: {fileID: 4300000, guid: 4900856623820d748bcdf63e9cb73c73, type: 3}
+--- !u!64 &64709394682059796
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1237345710598652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 0}

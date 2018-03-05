@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33613638058290698}
   - component: {fileID: 23646490191786016}
   - component: {fileID: 95136785655723482}
+  - component: {fileID: 64431438426306534}
   m_Layer: 0
   m_Name: Rock6
   m_TagString: Untagged
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1908067897999904}
   m_LocalRotation: {x: 0.029334456, y: 0.05141929, z: -0.49573284, w: 0.86645514}
-  m_LocalPosition: {x: -6.203546, y: -65.08, z: 56.44851}
+  m_LocalPosition: {x: -8.4, y: -65.08, z: 60.7}
   m_LocalScale: {x: 183.13214, y: 486.23392, z: 183.13217}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,6 +83,20 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1908067897999904}
+  m_Mesh: {fileID: 4300000, guid: 57042ae8c1c925a4ab04122784a71ea0, type: 3}
+--- !u!64 &64431438426306534
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1908067897999904}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 57042ae8c1c925a4ab04122784a71ea0, type: 3}
 --- !u!95 &95136785655723482
 Animator:
