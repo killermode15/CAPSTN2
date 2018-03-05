@@ -238,7 +238,7 @@ public class PlayerController : MonoBehaviour, IPausable
 			moveDirection = Vector3.zero;
 		}
 
-		//moveDirection = transform.TransformDirection(moveDirection);
+		moveDirection = Camera.main.transform.TransformDirection(moveDirection);
 
 		//Then set the y velocity back
 		moveDirection.y = currY;
