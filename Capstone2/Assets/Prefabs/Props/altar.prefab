@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4452045311665194}
   - component: {fileID: 65126478351592280}
   - component: {fileID: 114569633767971284}
-  - component: {fileID: 114298203071958884}
   m_Layer: 0
   m_Name: altar
   m_TagString: Untagged
@@ -73,6 +72,7 @@ GameObject:
   - component: {fileID: 4710720972113184}
   - component: {fileID: 33891684118905056}
   - component: {fileID: 23882677483485402}
+  - component: {fileID: 64205162024218548}
   m_Layer: 0
   m_Name: pCube4
   m_TagString: Untagged
@@ -308,7 +308,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1174482662970728}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 146.7, y: 16.8, z: 4.6}
+  m_LocalPosition: {x: 149, y: 12.33, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4235428264181860}
@@ -351,7 +351,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1454975329761366}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.11, z: 0}
+  m_LocalPosition: {x: 0, y: 1.57, z: 0}
   m_LocalScale: {x: 60.254112, y: 60.254055, z: 60.254055}
   m_Children: []
   m_Father: {fileID: 4452045311665194}
@@ -424,6 +424,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1454975329761366}
   m_Mesh: {fileID: 4300000, guid: 7ff1c1774ad9b984f98c374de2518c54, type: 3}
+--- !u!64 &64205162024218548
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1454975329761366}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 7ff1c1774ad9b984f98c374de2518c54, type: 3}
 --- !u!65 &65126478351592280
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -434,19 +448,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.018389, y: 1, z: 7.8274527}
+  m_Size: {x: 10.605061, y: 1, z: 10.608982}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114298203071958884
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1174482662970728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf7f7595f0f2ddd44b90b6e5a06cc942, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114396600386288528
 MonoBehaviour:
   m_ObjectHideFlags: 1
