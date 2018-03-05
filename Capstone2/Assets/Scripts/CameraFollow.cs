@@ -31,9 +31,9 @@ public class CameraFollow : MonoBehaviour
 		camOffset = camPanAngle * camTurnAngle * camOffset;
 
 		Vector3 origPos = new Vector3(camOffset.x, camOffset.y, camOffset.z);
-		camOffset += Offset;
+		camOffset += transform.TransformDirection(Offset);
 		Vector3 newPos = player.transform.position + camOffset;
-		newPos.y = Mathf.Clamp(newPos.y, CameraYLimit.x, CameraYLimit.y);
+
 		transform.position = Vector3.Slerp(transform.position, newPos, Time.deltaTime * FollowSpeed);
 		transform.LookAt(player.transform);
 

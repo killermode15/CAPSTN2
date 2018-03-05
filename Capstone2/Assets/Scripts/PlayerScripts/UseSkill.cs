@@ -5,6 +5,11 @@ using UnityEngine;
 public class UseSkill : MonoBehaviour
 {
 
+	private const int UP = 0;
+	private const int DOWN = 1;
+	private const int LEFT = 2;
+	private const int RIGHT = 3;
+
 	public List<Element> ElementalSkills;
 	public Element ActiveElement;
 
@@ -29,22 +34,79 @@ public class UseSkill : MonoBehaviour
 		ActiveElement = ElementalSkills[currentActiveElementIndex];
 		elementsOnCooldown = new List<Element>();
 		currentCooldowns = new List<float>();
+		StartCoroutine(ChangeElement());
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-
 		UpdateElementCooldowns();
-
-		//if(Input.GetButtonDown("RightTrigger"))
+		
 		if (InputManager.Instance.GetKey(ControllerInput.UseCurrentElement))
 		{
 			if (!ActiveElement.IsElementUnlocked || ActiveElement.IsOnCooldown || ActiveElement.CurrentUseableEnergy < ActiveElement.EnergyCost)
 				return;
 			UseElement();
 		}
+	}
 
+	IEnumerator ChangeElement()
+	{
+		bool isKeyPressed = false;
+		int input = 0;
+		while (true)
+		{
+			if (!isKeyPressed)
+			{
+				if (Input.GetAxis("DPadX") == 1)
+				{
+					input = RIGHT;
+					isKeyPressed = true;
+				}
+				else if(Input.GetAxis("DPadX") == -1)
+				{
+					input = LEFT;
+					isKeyPressed = true;
+				}
+				else if (Input.GetAxis("DPadY") == 1)
+				{
+					input = UP;
+					isKeyPressed = true;
+				}
+				else if (Input.GetAxis("DPadY") == -1)
+				{
+					input = DOWN;
+					isKeyPressed = true;
+				}
+				if (isKeyPressed)
+				{
+					switch (input)
+					{
+						case UP:
+							SwitchElement(ElementType.Earth);
+							break;
+						case DOWN:
+							SwitchElement(ElementType.Wind);
+							break;
+						case LEFT:
+							SwitchElement(ElementType.Fire);
+							break;
+						case RIGHT:
+							SwitchElement(ElementType.Water);
+							break;
+					}
+				}
+			}
+			else
+			{
+				if(Input.GetAxis("DPadX") == 0 && Input.GetAxis("DPadY") == 0)
+				{
+					isKeyPressed = false;
+				}
+			}
+
+			yield return new WaitForEndOfFrame();
+		}
 	}
 
 	public void UseElement()
