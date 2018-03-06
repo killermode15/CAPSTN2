@@ -36,18 +36,11 @@ public class AltarObject : MonoBehaviour
 
 		if (InputManager.Instance.GetKey(ControllerInput.ActivateAltar))
 		{
-			if (player)
-			{
-				isActivated = true;
-				CorruptionBar corruption = player.GetComponent<CorruptionBar>();
+			if (player && player.GetComponent<OrbAbsorb>().MaxOrbs == player.GetComponent<OrbAbsorb>().OrbCount)
+            {
+                transform.GetChild(0).GetComponent<DialogueTrigger>().TriggerDialogue();
+                isActivated = true;
 				ParticleSystem ps = VFX.GetComponent<ParticleSystem>();
-				corruption.ReleaseCorruption();
-				currentAmount += Time.deltaTime * corruption.CorruptionReleaseRate;
-				if (corruption.CurrentCorruption > 0)
-				{
-					if (!ps.isPlaying)
-						ps.Play();
-				}
 			}
 		}
 	}

@@ -14,9 +14,10 @@ public class StateManager : MonoBehaviour, IPausable {
 	public float playerDistance;
 	private State stateBeforeStun;
 	public bool isPaused;
+    public GameObject OrbPrefab;
 
-	// Use this for initialization
-	public virtual void Start () {
+    // Use this for initialization
+    public virtual void Start () {
 		PossibleStates = GetComponents<State>().ToList();
 		PauseManager.Instance.addPausable (this);
 		isPaused = false;

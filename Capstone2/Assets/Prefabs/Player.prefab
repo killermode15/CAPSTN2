@@ -748,15 +748,13 @@ GameObject:
   - component: {fileID: 114256737843574192}
   - component: {fileID: 114499983254245204}
   - component: {fileID: 114306857153244546}
-  - component: {fileID: 114261987797192834}
-  - component: {fileID: 114178210771659466}
-  - component: {fileID: 114406980947326942}
   - component: {fileID: 114196544164091020}
   - component: {fileID: 114786573945731634}
   - component: {fileID: 114974117951321144}
   - component: {fileID: 114625262800119206}
   - component: {fileID: 114119179576428638}
   - component: {fileID: 114931800528264002}
+  - component: {fileID: 114558413475519996}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1445,18 +1443,18 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1831603703517158}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.23, y: 24.57, z: 26.83}
+  m_LocalRotation: {x: -0, y: -0.100992, z: -0, w: 0.99488723}
+  m_LocalPosition: {x: 124.585724, y: 34.19, z: 208.15721}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4994627061177302}
   - {fileID: 4973366069580928}
+  - {fileID: 4994627061177302}
   - {fileID: 4499368214961910}
   - {fileID: 4938876188323490}
   - {fileID: 4221051916243010}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -11.593, z: 0}
 --- !u!4 &4853467242905256
 Transform:
   m_ObjectHideFlags: 1
@@ -1656,7 +1654,7 @@ Transform:
   - {fileID: 4363242022127682}
   - {fileID: 4705593261516400}
   m_Father: {fileID: 4816640547367954}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4994627061177302
 Transform:
@@ -1669,7 +1667,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4816640547367954}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23179937953955562
 MeshRenderer:
@@ -1808,18 +1806,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CoolDownBar: {fileID: 0}
---- !u!114 &114178210771659466
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1831603703517158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d252766e615a594fa7b93cf332c86e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CorruptionBar: {fileID: 0}
 --- !u!114 &114196544164091020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1843,10 +1829,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3ae9c2716471b42a81c34cb65b70e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 8.75
+  MoveSpeed: 10
   JumpHeight: 13
-  RollSpeed: 0
-  RollDuration: 0
+  RollSpeed: 15
+  RollDuration: 0.1
   RollCooldown: 0
   TurnSmoothTime: 0.2
   JumpVFX: {fileID: 1185262910871434}
@@ -1855,20 +1841,6 @@ MonoBehaviour:
   CanRoll: 1
   CanJump: 1
   CanMove: 1
---- !u!114 &114261987797192834
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1831603703517158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed68abda93688e747a3e3bd1dbdb16aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentMode: 0
-  Absorbables: []
-  CurrentAbsorbable: {fileID: 0}
 --- !u!114 &114306857153244546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1883,25 +1855,6 @@ MonoBehaviour:
   Health: 100
   MaxHealth: 100
   HealthBar: {fileID: 0}
---- !u!114 &114406980947326942
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1831603703517158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5826388b8a5810943a29876466573654, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentCorruption: 0
-  MaxCorruption: 100
-  DecayRateMultiplier: 3
-  CorruptionReleaseRate: 15
-  TimeTillDecayAmplify: 4.5
-  HealthDecayRate: 0.2
-  PercentTillDecay: 0.35
-  CorruptionEffect: {fileID: 0}
 --- !u!114 &114499983254245204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1915,6 +1868,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerAnimator: {fileID: 95011739106735302}
   canAnimate: 0
+--- !u!114 &114558413475519996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1831603703517158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21389e85cec690b479935f9db54746c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OrbCount: 0
+  MaxOrbs: 10
+  Counter: {fileID: 0}
 --- !u!114 &114625262800119206
 MonoBehaviour:
   m_ObjectHideFlags: 1

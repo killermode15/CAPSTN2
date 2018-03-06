@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[RequireComponent(typeof(AbsorbableCorruption))]
+//[RequireComponent(typeof(AbsorbableCorruption))]
 public class AIManager : StateManager {
 
 	private void OnDrawGizmosSelected()
@@ -31,16 +31,20 @@ public class AIManager : StateManager {
 			CheckIfPlayerInRange ();
 			StateTransition ();
 		}
+        /*if(/*is hit)
+        {
+            Instantiate(OrbPrefab, new Vector3(transform.position.x, transform.position.y + 2.0f, transform.position.z), transform.rotation);
+        }*/
 	}
 
 	public virtual void StateTransition()
 	{
 		base.StateTransition ();
-		if(!GetComponent<AbsorbableCorruption>().HasEnergyLeft())
+		/*if(!GetComponent<AbsorbableCorruption>().HasEnergyLeft())
 		{
 			ChangeState(GetState("Dead"));
 			CurrentState.OnUpdate();
-		}
+		}*/
 
 		//Compare the current state to check if the current state is idle
 		if (CompareToCurrentState (typeof(Idle))) {

@@ -174,7 +174,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1624134789736600}
   m_LocalRotation: {x: -0, y: -0.729257, z: -0, w: 0.6842399}
-  m_LocalPosition: {x: 10.83, y: 7.12, z: -10.45}
+  m_LocalPosition: {x: 87.84359, y: 44.16363, z: 178.48885}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4227936258393540}
@@ -490,6 +490,7 @@ MonoBehaviour:
   DetectionRange: 11.75
   playerDistance: 0
   isPaused: 0
+  OrbPrefab: {fileID: 1348452097898066, guid: e1f078f2c32d8e04cb1751e02fc3b40e, type: 2}
 --- !u!114 &114600104808224934
 MonoBehaviour:
   m_ObjectHideFlags: 1
