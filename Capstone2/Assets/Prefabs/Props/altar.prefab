@@ -216,6 +216,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1949473175670336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4723484455141722}
+  - component: {fileID: 114054982659553838}
+  m_Layer: 0
+  m_Name: DialogueTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4005920999758130
 Transform:
   m_ObjectHideFlags: 1
@@ -229,7 +245,7 @@ Transform:
   - {fileID: 4363596650783586}
   - {fileID: 4070083693340092}
   m_Father: {fileID: 4452045311665194}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4009326702640830
 Transform:
@@ -286,7 +302,7 @@ Transform:
   - {fileID: 4009326702640830}
   - {fileID: 4725569099652338}
   m_Father: {fileID: 4452045311665194}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4363596650783586
 Transform:
@@ -311,6 +327,7 @@ Transform:
   m_LocalPosition: {x: 149, y: 12.33, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4723484455141722}
   - {fileID: 4235428264181860}
   - {fileID: 4710720972113184}
   - {fileID: 4005920999758130}
@@ -342,7 +359,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4452045311665194}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4710720972113184
 Transform:
@@ -355,7 +372,20 @@ Transform:
   m_LocalScale: {x: 60.254112, y: 60.254055, z: 60.254055}
   m_Children: []
   m_Father: {fileID: 4452045311665194}
-  m_RootOrder: 1
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4723484455141722
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949473175670336}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4452045311665194}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4725569099652338
 Transform:
@@ -450,6 +480,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.605061, y: 1, z: 10.608982}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114054982659553838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949473175670336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdd00f90705de444e8edc847eee6c42c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: 
+    sentences:
+    - You have unlocked the Wind Element! You can now Use Double Jump!
+    - Double Tap X to Double Jump!
+  triggered: 0
 --- !u!114 &114396600386288528
 MonoBehaviour:
   m_ObjectHideFlags: 1

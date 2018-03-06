@@ -15,7 +15,7 @@ public class Dead : State
 	public override bool OnUpdate()
 	{
 		Instantiate(ObjectCounterpart, transform.position, transform.rotation);
-		if (!Manager.Player.GetComponent<PlayerController>().CanMove)
+        if (!Manager.Player.GetComponent<PlayerController>().CanMove)
 			Manager.Player.GetComponent<PlayerController>().CanMove = true;
 		Destroy(gameObject);
 		return true;
