@@ -2,15 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightElement : MonoBehaviour {
+[CreateAssetMenu(fileName = "New Element", menuName = "Elements/Light Element")]
+public class LightElement : Element
+{
+	public GameObject LightProjectilePrefab;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+	public override bool Use(GameObject player)
+	{
+		if (!base.Use(player))
+			return false;
+
+		if (IsBaseUseable())
+		{
+			GameObject target = player.GetComponent<LockOn>().currentTarget;
+
+			if (!target)
+				return false;
+
+			GameObject projectile = Instantiate(LightProjectilePrefab, player.transform.position, Quaternion.identity);
+			projectile.GetComponent<LightProjectile>().InitializeProjectile(target.transform);
+
+		}
+		return true;
 	}
 }

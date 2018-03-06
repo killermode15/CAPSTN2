@@ -85,7 +85,7 @@ public class ElementSelectionUI : MonoBehaviour
 			{
 				case 0:
 					//Fire
-					UseSkillScriptRef.SwitchElement(ElementType.Fire);
+					UseSkillScriptRef.SwitchElement(ElementType.Light);
 					break;
 				case 90:
 					UseSkillScriptRef.SwitchElement(ElementType.Wind);

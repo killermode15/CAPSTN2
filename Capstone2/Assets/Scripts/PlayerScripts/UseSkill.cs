@@ -28,7 +28,6 @@ public class UseSkill : MonoBehaviour
 		foreach (Element element in ElementalSkills)
 		{
 			element.IsOnCooldown = false;
-			element.CurrentUseableEnergy = 0;
 		}
 
 		ActiveElement = ElementalSkills[currentActiveElementIndex];
@@ -44,7 +43,7 @@ public class UseSkill : MonoBehaviour
 		
 		if (InputManager.Instance.GetKey(ControllerInput.UseCurrentElement))
 		{
-			if (!ActiveElement.IsElementUnlocked || ActiveElement.IsOnCooldown || ActiveElement.CurrentUseableEnergy < ActiveElement.EnergyCost)
+			if (!ActiveElement.IsElementUnlocked || ActiveElement.IsOnCooldown)
 				return;
 			UseElement();
 		}
@@ -89,7 +88,7 @@ public class UseSkill : MonoBehaviour
 							SwitchElement(ElementType.Wind);
 							break;
 						case LEFT:
-							SwitchElement(ElementType.Fire);
+							SwitchElement(ElementType.Light);
 							break;
 						case RIGHT:
 							SwitchElement(ElementType.Water);
@@ -113,20 +112,16 @@ public class UseSkill : MonoBehaviour
 	{
 		if (!ActiveElement.IsOnCooldown)
 		{
-			if (ActiveElement.GetType() == typeof(WindElement))
+			if (ActiveElement.Use(gameObject))
 			{
-				if (GetComponent<PlayerController>().IsGrounded())
-				{
-					return;
-				}
+				if (ActiveElement.GetType() == typeof(WaterElement) || ActiveElement.GetType() == typeof(EarthElement))
+					GetComponentInChildren<ElementEffects>().isCasting = true;
+				if (onSkillUse != null)
+					onSkillUse.Invoke(ActiveElement);
+
+				ActiveElement.IsOnCooldown = true;
+				SetElementOnCooldown(ActiveElement);
 			}
-			if (ActiveElement.GetType() == typeof(WaterElement) || ActiveElement.GetType() == typeof(EarthElement))
-				GetComponentInChildren<ElementEffects>().isCasting = true;
-			if (onSkillUse != null)
-				onSkillUse.Invoke(ActiveElement);
-			ActiveElement.Use();
-			ActiveElement.IsOnCooldown = true;
-			SetElementOnCooldown(ActiveElement);
 		}
 	}
 

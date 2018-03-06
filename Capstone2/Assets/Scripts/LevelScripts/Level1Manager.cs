@@ -21,40 +21,41 @@ public class Level1Manager : MonoBehaviour {
 			CleanLevel [i].SetActive (false);
 		}
 	}
-	
+	#region Commented out due to errors caused by old scripts
 	// Update is called once per frame
-	void Update () {
-		FirstAltarActivate ();
-		SecondAltarActivate ();
-		ThirdAltarActivate ();
-		BossAltarActivate ();
-	}
+	//void Update () {
+	//	FirstAltarActivate ();
+	//	SecondAltarActivate ();
+	//	ThirdAltarActivate ();
+	//	BossAltarActivate ();
+	//}
 
-	public void FirstAltarActivate() {
-		if (Altars [0].GetComponent<AltarObject> ().IsFull) {
-			CorruptedLevel [0].SetActive (false);
-			CleanLevel [0].SetActive (true);
-		}
-	}
+	//public void FirstAltarActivate() {
+	//	if (Altars [0].GetComponent<AltarObject> ().IsFull) {
+	//		CorruptedLevel [0].SetActive (false);
+	//		CleanLevel [0].SetActive (true);
+	//	}
+	//}
 
-	public void SecondAltarActivate() {
-		if (Altars [1].GetComponent<AltarObject> ().IsFull) {
-			CorruptedLevel [1].SetActive (false);
-			CleanLevel [1].SetActive (true);
-		}
-	}
+	//public void SecondAltarActivate() {
+	//	if (Altars [1].GetComponent<AltarObject> ().IsFull) {
+	//		CorruptedLevel [1].SetActive (false);
+	//		CleanLevel [1].SetActive (true);
+	//	}
+	//}
 
-	public void ThirdAltarActivate() {
-		if (Altars [2].GetComponent<AltarObject> ().IsFull) {
-			CorruptedLevel [2].SetActive (false);
-			CleanLevel [2].SetActive (true);
-		}
-	}
+	//public void ThirdAltarActivate() {
+	
+	//		CorruptedLevel [2].SetActive (false);
+	//		CleanLevel [2].SetActive (true);
+	//	}
+	//}
 
-	public void BossAltarActivate() {
-		if (bossLevelClean) {
-			CorruptedLevel [3].SetActive (false);
-			CleanLevel [3].SetActive (true);
-		}
-	}
+	//public void BossAltarActivate() {
+	//	if (bossLevelClean) {
+	//		CorruptedLevel [3].SetActive (false);
+	//		CleanLevel [3].SetActive (true);
+	//	}
+	//}
+	#endregion
 }

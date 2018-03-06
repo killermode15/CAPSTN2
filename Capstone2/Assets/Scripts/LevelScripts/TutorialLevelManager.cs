@@ -48,8 +48,8 @@ public class TutorialLevelManager : MonoBehaviour {
 	}
 
 	void AltarCheck(){
-		if (Altar.GetComponent<AltarObject> ().IsFull)
-			Portal.SetActive (true);
+		//if (Altar.GetComponent<AltarObject> ().IsFull)
+		//	Portal.SetActive (true);
 	}
 
 	void DialogueTriggers(){

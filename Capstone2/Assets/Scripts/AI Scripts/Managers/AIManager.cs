@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[RequireComponent(typeof(AbsorbableCorruption))]
 public class AIManager : StateManager {
 
 	private void OnDrawGizmosSelected()
@@ -15,7 +14,7 @@ public class AIManager : StateManager {
 	}
 
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
 		base.Start ();
 		ChangeState(GetState("GroundedPatrol"));
 		PauseManager.Instance.addPausable (this);
@@ -33,14 +32,14 @@ public class AIManager : StateManager {
 		}
 	}
 
-	public virtual void StateTransition()
+	public override void StateTransition()
 	{
 		base.StateTransition ();
-		if(!GetComponent<AbsorbableCorruption>().HasEnergyLeft())
-		{
-			ChangeState(GetState("Dead"));
-			CurrentState.OnUpdate();
-		}
+		//if(!GetComponent<AbsorbableCorruption>().HasEnergyLeft())
+		//{
+		//	ChangeState(GetState("Dead"));
+		//	CurrentState.OnUpdate();
+		//}
 
 		//Compare the current state to check if the current state is idle
 		if (CompareToCurrentState (typeof(Idle))) {
@@ -76,31 +75,7 @@ public class AIManager : StateManager {
 			CurrentState.OnUpdate ();
 	}
 
-	public void ChangeState(State newState)
-	{
-		if (CurrentState != newState) {
-			if (CurrentState) {
-				CurrentState.enabled = false;
-			}
-			CurrentState = newState;
-			newState.enabled = true;
-		}
-	}
-
-	public State GetState(string name)
-	{
-		return PossibleStates.Find(x => x.GetType().Name.ToLower() == name.ToLower());
-	}
-
-	public bool CompareToCurrentState(System.Type stateType)
-	{
-		if (CurrentState)
-			return CurrentState.GetType() == stateType;
-		else
-			return false;
-	}
-
-	public virtual void CheckIfPlayerInRange(){
+	public override void CheckIfPlayerInRange(){
 		playerDistance = Vector3.Distance (Player.transform.position, transform.position);
 		if (playerDistance <= DetectionRange) {
 			if(!CompareToCurrentState(typeof(Chase)) && !CompareToCurrentState(typeof(Attack))&& !CompareToCurrentState(typeof(StunnedState)))

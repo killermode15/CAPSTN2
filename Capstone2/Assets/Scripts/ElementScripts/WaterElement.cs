@@ -8,18 +8,18 @@ public class WaterElement : Element
 	public float HealValue;
 	public GameObject VFX;
 
-	public override void Use()
+	public override bool Use(GameObject player)
 	{
-		base.Use();
+		if (!base.Use(player))
+			return false;
+
 		//if (!IsElementUnlocked || IsOnCooldown || player.GetComponent<Energy>().CurrentEnergy < EnergyCost)
 		//	return;
 		if (IsBaseUseable())
 		{
 			//TEMPORARY
-			RemoveEnergy(EnergyCost);
-
-			//TEMPORARY
 			player.GetComponent<PlayerController>().anim.SetTriggerAnimParam("CastWater");
 		}
+		return true;
 	}
 }

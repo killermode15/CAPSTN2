@@ -9,26 +9,13 @@ public class FireElement : Element
 	public GameObject Sphere;
 	public GameObject StunPrefab;
 
-	public override void Use()
+	public override bool Use(GameObject player)
 	{
-		base.Use();
-		//if (!IsElementUnlocked || IsOnCooldown || player.GetComponent<Energy>().CurrentEnergy < EnergyCost)
-		//	return;
+		if (!base.Use(player))
+			return false;
+
 		if (IsBaseUseable())
 		{
-			//TEMPORARY
-			RemoveEnergy(EnergyCost);
-			//Debug.Log("Not yet implemented");
-
-			//TEMPORARY
-			/*if (player.transform.eulerAngles.y >= 0 && player.transform.eulerAngles.y <= 180) {
-				Sphere.GetComponent<Mover> ().isRight = true;
-			} else { //if (player.transform.eulerAngles.y <= 0)
-				Sphere.GetComponent<Mover> ().isRight = false;
-			}
-			GameObject ball = Instantiate(Sphere, player.position, Quaternion.identity);
-			ball.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);*/
-
 
 			///STUN TEST
 			if (player.transform.eulerAngles.y >= 0 && player.transform.eulerAngles.y <= 180) 
@@ -38,5 +25,6 @@ public class FireElement : Element
 
 			GameObject Push = Instantiate(StunPrefab, player.transform.position, Quaternion.identity);
 		}
+		return true;
 	}
 }

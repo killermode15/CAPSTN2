@@ -5,21 +5,18 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Earth Element", menuName = "Element/New Earth Element")]
 public class EarthElement : Element
 {
-	public override void Use()
+	public override bool Use(GameObject player)
 	{
-		base.Use();
-		//if (!IsElementUnlocked || IsOnCooldown || player.GetComponent<Energy>().CurrentEnergy < EnergyCost)
-		//	return;
+		if (!base.Use(player))
+			return false;
+
 		if (IsBaseUseable())
 		{
-			//TEMPORARY
-			RemoveEnergy(EnergyCost);
-			//Debug.Log("Not yet implemented");
-
 			//TEMPORARY
 			//Destroy(Instantiate(EarthShield, player), ShieldDuration);
 			player.GetComponent<PlayerController>().anim.SetTriggerAnimParam("CastEarth");
 		}
+		return true;
 	}
 
 

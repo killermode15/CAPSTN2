@@ -29,13 +29,13 @@ public class SpiderManager : StateManager {
 	}
 
 	public override void StateTransition(){
-		if(!GetComponent<AbsorbableCorruption>().HasEnergyLeft())
-		{
-			transform.eulerAngles = new Vector3 (-90.0f, 0.0f, 0.0f);
-			Debug.Log ("isdead");
-			ChangeState(GetState("Dead"));
-			CurrentState.OnUpdate();
-		}
+		//if(!GetComponent<AbsorbableCorruption>().HasEnergyLeft())
+		//{
+		//	transform.eulerAngles = new Vector3 (-90.0f, 0.0f, 0.0f);
+		//	Debug.Log ("isdead");
+		//	ChangeState(GetState("Dead"));
+		//	CurrentState.OnUpdate();
+		//}
 		base.StateTransition ();
 		if (CompareToCurrentState (typeof(RangeAttack))) {
 			//if the current state is not updating

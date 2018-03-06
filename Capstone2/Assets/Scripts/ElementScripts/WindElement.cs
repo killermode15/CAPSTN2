@@ -9,16 +9,15 @@ public class WindElement : Element
 	public float JumpIncrease;
 	public GameObject WindPush;
 
-	public override void Use()
+	public override bool Use(GameObject player)
 	{
-		base.Use();
+		if (!base.Use(player))
+			return false;
 		//if (!IsElementUnlocked || IsOnCooldown || player.GetComponent<Energy>().CurrentEnergy < EnergyCost)
 		//	return;
 
 		if (IsBaseUseable())
 		{
-			//TEMPORARY
-			RemoveEnergy(EnergyCost);
 
 			//TEMPORARY
 			//player.position += new Vector3(0, 1.0f, 0);
@@ -28,5 +27,6 @@ public class WindElement : Element
 			///For the Wind Push L1
 			//Debug.Log(player.transform.eulerAngles);
 		}
+		return true;
 	}
 }
