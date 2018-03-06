@@ -64,6 +64,22 @@ public class StateManager : MonoBehaviour, IPausable {
 		
 	}
 
+	public void GetDamage()
+	{
+		//Add damage function here
+		#region Pseudo Code for conditions
+		/// if( enemy still has orbs )
+		/// {
+		///		Spawn orb here
+		///		Reduce health / corruption orb amount
+		/// }
+		#endregion
+
+		//Temporary
+		GameObject orbSpawned = Instantiate(OrbPrefab, transform.position, Quaternion.identity);
+
+	}
+
 	public virtual void Pause(){
 		isPaused = true;
 	}
