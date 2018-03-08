@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Name: LightProjectileData
   m_EditorClassIdentifier: 
   ProjectileRange: 10
-  ProjectileSpeed: 0.5
+  ProjectileSpeed: 1.75
   ProjectileDamage: 1
   ProjectileLife: 100

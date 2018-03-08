@@ -8,9 +8,11 @@ public class MainLevelManager : MonoBehaviour {
     public List<GameObject> Altars = new List<GameObject>();
     public GameObject OrbCounter;
     public GameObject OrbCounterTrigger;
-	public GameObject Snake0;
+	//public GameObject Snake1;
 	public List<GameObject> BaseUI = new List<GameObject>();
-	public GameObject SetDialogue1;
+    public List<GameObject> SkillUI = new List<GameObject>();
+    public GameObject SetDialogue1;
+    public GameObject DoubleJumpPlatform;
 
 	// Use this for initialization
 	void Start ()
@@ -21,9 +23,12 @@ public class MainLevelManager : MonoBehaviour {
 		{
 			BaseUI[i].SetActive(false);
 		}
+        for (int i = 0; i < SkillUI.Count; i++)
+        {
+            SkillUI[i].SetActive(false);
+        }
 
-
-		Player.GetComponent<UseSkill>().GetElement(typeof(WindElement)).IsElementUnlocked = false;
+        Player.GetComponent<UseSkill>().GetElement(typeof(WindElement)).IsElementUnlocked = false;
         Player.GetComponent<UseSkill>().GetElement(typeof(WaterElement)).IsElementUnlocked = false;
         Player.GetComponent<UseSkill>().GetElement(typeof(EarthElement)).IsElementUnlocked = false;
     }
@@ -33,12 +38,17 @@ public class MainLevelManager : MonoBehaviour {
         //if first Altar activates the Wind Element
         if (Altars[0].GetComponent<AltarObject>().isActivated)
         {
+            SkillUI[1].SetActive(true);
             Player.GetComponent<UseSkill>().GetElement(typeof(WindElement)).IsElementUnlocked = true;
+            if (DoubleJumpPlatform.transform.position.y < 15.0f)
+                DoubleJumpPlatform.transform.Translate(Vector3.up * 30.0f * Time.deltaTime, Space.World);
         }
         if (Altars[1].GetComponent<AltarObject>().isActivated)
         {
+            SkillUI[2].SetActive(true);
             Player.GetComponent<UseSkill>().GetElement(typeof(WaterElement)).IsElementUnlocked = true;
         }
+        //Check if Snake is dead to spawn dialogue trigger
 		//if (Snake0.GetComponent<Dead>().isActiveAndEnabled)
 		//{
 			OrbCounterTrigger.SetActive(true);
@@ -49,7 +59,8 @@ public class MainLevelManager : MonoBehaviour {
 		//}
 		if (SetDialogue1.GetComponent<DialogueTrigger>().triggered)
 		{
-			for (int i = 0; i < BaseUI.Count; i++)
+            SkillUI[0].SetActive(true);
+            for (int i = 0; i < BaseUI.Count; i++)
 			{
 				BaseUI[i].SetActive(true);
 			}

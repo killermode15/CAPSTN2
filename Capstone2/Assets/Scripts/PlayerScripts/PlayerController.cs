@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour, IPausable
     public GameObject JumpVFX;
 
     [HideInInspector] public PlayerAnimation anim;
-    [HideInInspector] public bool InDialogue = false;
     [HideInInspector] public bool CanRoll = true;
     [HideInInspector] public bool CanJump = true;
     [HideInInspector] public bool CanMove = true;
@@ -82,7 +81,7 @@ public class PlayerController : MonoBehaviour, IPausable
     //or is falling
     void CalculateGravity()
     {
-        if (IsGrounded() && !InDialogue)
+        if (IsGrounded()/* && !InDialogue*/)
         {
             CanJump = true;
             moveDirection.y = (Physics.gravity.y * Time.deltaTime);
@@ -247,7 +246,7 @@ public class PlayerController : MonoBehaviour, IPausable
 
         controller.Move(moveDirection * Time.deltaTime);
 
-        if (IsGrounded() && !InDialogue)
+        if (IsGrounded()/* && !InDialogue*/)
         {
             moveDirection.y = 0;
             CanJump = true;

@@ -21,17 +21,21 @@ public class DialogueManager : MonoBehaviour {
 	}
 
 	void Update(){
-		//Debug.Log ("canJump " + Player.GetComponent<PlayerController> ().canJump);
-		//Debug.Log ("inDialogue: " + inDialogue);
-		Player.GetComponent<PlayerController> ().InDialogue = inDialogue;
+		//Player.GetComponent<PlayerController> ().InDialogue = inDialogue;
 		if (inDialogue) {
-			Player.GetComponent<PlayerController> ().CanJump = false;
-			if (Input.GetButtonDown ("Cross"))
-				DisplayNextSentence ();
+			//Player.GetComponent<PlayerController> ().CanJump = false;
+            //if (Input.GetButtonDown ("Cross"))
+            StartCoroutine(WaitAndDisplay(3.0f));
 		}
 	}
 
-	public void StartDialogue(Dialogue dialogue){
+    IEnumerator WaitAndDisplay(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        DisplayNextSentence();
+    }
+
+    public void StartDialogue(Dialogue dialogue){
 		inDialogue = true;
 
 		Debug.Log ("dialogue startnow");
@@ -71,7 +75,7 @@ public class DialogueManager : MonoBehaviour {
 	}
 
 	void EndDialogue(){
-		Player.GetComponent<PlayerController> ().CanJump = false;
+		//Player.GetComponent<PlayerController> ().CanJump = false;
 		inDialogue = false;
 		Debug.Log ("ending dialogue");
 		PauseManager.Instance.UnPause ();
