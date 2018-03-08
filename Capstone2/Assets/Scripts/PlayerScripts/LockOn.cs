@@ -15,6 +15,7 @@ public class LockOn : MonoBehaviour
 	bool switchButtonPressed;
 	private int selectedTarget;
 	private List<GameObject> sortedVisibleEnemies;
+	bool inCombat;
 
 	// Use this for initialization
 	void Start()
@@ -31,22 +32,30 @@ public class LockOn : MonoBehaviour
 	{
 		CheckIfInCombat();
 		SortListByDistance();
-		PickTarget();
-
+		if(inCombat)
+			PickTarget();
 	}
 
 	void CheckIfInCombat()
 	{
 		if (Input.GetButtonDown("LeftTrigger"))
+		{
+			inCombat = true;
 			firstSelecting = true;
+			Debug.Log("first in combat");
+		}
 		if (Input.GetButton("LeftTrigger"))
 		{
 			CheckForEnemiesInScreen();
+			Debug.Log("update in combat");
 			//FindAllEnemies ();
 		}
 		else if (Input.GetButtonUp("LeftTrigger"))
 		{
 			Crosshair.SetActive(false);
+			currentTarget = null;
+			inCombat = false;
+			Debug.Log("out of combat");
 		}
 	}
 
@@ -212,8 +221,6 @@ public class LockOn : MonoBehaviour
 			visibleTargets.Remove(nearestTarget);
 			sortedList.Add(nearestTarget);
 			index++;
-			if (index >= 10000)
-				UnityEditor.EditorApplication.isPlaying = false;
 		}
 		sortedVisibleEnemies = sortedList;
 	}

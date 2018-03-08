@@ -8,13 +8,22 @@ public class MainLevelManager : MonoBehaviour {
     public List<GameObject> Altars = new List<GameObject>();
     public GameObject OrbCounter;
     public GameObject OrbCounterTrigger;
+	public GameObject Snake0;
+	public List<GameObject> BaseUI = new List<GameObject>();
+	public GameObject SetDialogue1;
 
 	// Use this for initialization
 	void Start ()
     {
         OrbCounter.SetActive(false);
+		OrbCounterTrigger.SetActive(true); //dapat false
+		for (int i = 0; i < BaseUI.Count; i++)
+		{
+			BaseUI[i].SetActive(false);
+		}
 
-        Player.GetComponent<UseSkill>().GetElement(typeof(WindElement)).IsElementUnlocked = false;
+
+		Player.GetComponent<UseSkill>().GetElement(typeof(WindElement)).IsElementUnlocked = false;
         Player.GetComponent<UseSkill>().GetElement(typeof(WaterElement)).IsElementUnlocked = false;
         Player.GetComponent<UseSkill>().GetElement(typeof(EarthElement)).IsElementUnlocked = false;
     }
@@ -30,9 +39,20 @@ public class MainLevelManager : MonoBehaviour {
         {
             Player.GetComponent<UseSkill>().GetElement(typeof(WaterElement)).IsElementUnlocked = true;
         }
-        if (OrbCounterTrigger.GetComponent<DialogueTrigger>().triggered)
-        {
-            OrbCounter.SetActive(true);
-        }
+		//if (Snake0.GetComponent<Dead>().isActiveAndEnabled)
+		//{
+			OrbCounterTrigger.SetActive(true);
+			if (OrbCounterTrigger.GetComponent<DialogueTrigger>().triggered)
+			{
+				OrbCounter.SetActive(true);
+			}
+		//}
+		if (SetDialogue1.GetComponent<DialogueTrigger>().triggered)
+		{
+			for (int i = 0; i < BaseUI.Count; i++)
+			{
+				BaseUI[i].SetActive(true);
+			}
+		}
 	}
 }

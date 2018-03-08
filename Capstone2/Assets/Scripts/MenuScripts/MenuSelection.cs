@@ -38,7 +38,7 @@ public class MenuSelection : MonoBehaviour {
 	}
 
 	public void StartGame(){
-		SceneManager.LoadScene ("Tutorial Level");
+		SceneManager.LoadScene ("MainGame");
 	}
 
 }

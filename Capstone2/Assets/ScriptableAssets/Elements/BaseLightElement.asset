@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19fa8233a23542546b5905cd4ee56e8b, type: 3}
+  m_Name: BaseLightElement
+  m_EditorClassIdentifier: 
+  Type: 3
+  ElementIcon: {fileID: 21300000, guid: 3ab1d61a6adfd36498b87af6a8bee031, type: 3}
+  CooldownDuration: 4.5
+  IsElementUnlocked: 1
+  IsOnCooldown: 0
+  LightProjectilePrefab: {fileID: 1645646564628518, guid: f656dc0704a3a2a41ac9b320f161d7dc,
+    type: 2}

@@ -25,13 +25,13 @@ public class Stalactite : MonoBehaviour {
 			isFalling = true;
 		}*/
 
-		if (manager.GetComponent<Level1BossManager> ().startFall) {
+		/*if (manager.GetComponent<Level1BossManager> ().startFall) {
 			//if (isFalling) {
 			StartCoroutine ("Fall");
 			//}
 		} else if (!manager.GetComponent<Level1BossManager> ().startFall) {
 			Respawn ();
-		}
+		}*/
 	}
 
 	IEnumerator Fall()
