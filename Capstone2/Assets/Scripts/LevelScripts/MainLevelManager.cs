@@ -40,7 +40,7 @@ public class MainLevelManager : MonoBehaviour {
         {
             SkillUI[1].SetActive(true);
             Player.GetComponent<UseSkill>().GetElement(typeof(WindElement)).IsElementUnlocked = true;
-            if (DoubleJumpPlatform.transform.position.y < 15.0f)
+            if (DoubleJumpPlatform.transform.position.y < 26.04f)
                 DoubleJumpPlatform.transform.Translate(Vector3.up * 30.0f * Time.deltaTime, Space.World);
         }
         if (Altars[1].GetComponent<AltarObject>().isActivated)
