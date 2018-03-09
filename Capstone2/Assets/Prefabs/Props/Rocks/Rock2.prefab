@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 23446540845063598}
   - component: {fileID: 95150580898955732}
   - component: {fileID: 64884194722844092}
-  - component: {fileID: 64769871367340078}
   m_Layer: 0
   m_Name: Rock2
   m_TagString: Untagged
@@ -37,13 +36,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1549454061331850}
-  m_LocalRotation: {x: -0, y: 0.7926922, z: -0, w: 0.6096221}
-  m_LocalPosition: {x: 9.5, y: -67.7, z: 94.3}
-  m_LocalScale: {x: 629.0689, y: 629.068, z: 1383.055}
+  m_LocalRotation: {x: 0.24505559, y: -0.92718333, z: -0.10858258, w: 0.26170355}
+  m_LocalPosition: {x: 24.617632, y: 43.432396, z: 472.1327}
+  m_LocalScale: {x: 1210.7535, y: 1682.9462, z: 2609.924}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 267.505, y: 320.694, z: -196.135}
+  m_LocalEulerAnglesHint: {x: 184.191, y: 32.681, z: 149.161}
 --- !u!23 &23446540845063598
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -84,20 +83,6 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1549454061331850}
-  m_Mesh: {fileID: 4300000, guid: bc3bf61158c8be8449103a6a409891b5, type: 3}
---- !u!64 &64769871367340078
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1549454061331850}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: bc3bf61158c8be8449103a6a409891b5, type: 3}
 --- !u!64 &64884194722844092
 MeshCollider:

@@ -40,7 +40,7 @@ public class AltarObject : MonoBehaviour
             {
                 transform.GetChild(0).GetComponent<DialogueTrigger>().TriggerDialogue();
                 isActivated = true;
-				player.GetComponent<OrbAbsorb>().OrbCount = 0;
+				player.GetComponent<OrbAbsorb>().OrbCount -= 10;
 				ParticleSystem ps = VFX.GetComponent<ParticleSystem>();
 			}
 		}
