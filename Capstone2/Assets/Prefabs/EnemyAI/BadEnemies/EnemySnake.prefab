@@ -174,7 +174,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1624134789736600}
   m_LocalRotation: {x: -0, y: -0.729257, z: -0, w: 0.6842399}
-  m_LocalPosition: {x: 87.84359, y: 44.16363, z: 178.48885}
+  m_LocalPosition: {x: 89.25, y: 44.16363, z: 174.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4227936258393540}
@@ -482,6 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea44c6749d90e7a41940ea0b508baff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 3
   collisionDamage: 5
   Player: {fileID: 0}
   PossibleStates: []
@@ -529,34 +530,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72892658d19f87d4a9e8fbe6ed33fbb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnergyType: 1
-  Energy: 25
-  AbsorptionRate: 5
-  IsSelected: 0
-  IsBeingAbsorbed: 0
-  VFX:
-  - VFXName: Selection_vfx
-    VFX: {fileID: 1157042503207494}
-    isPlaying: 0
-    isPaused: 0
-  PathVFX:
-  - VFXName: vfx_CorruptionAbsorb
-    VFX: {fileID: 1369802260589054, guid: e9fe15d9390e4cf4e8311cefcce18615, type: 2}
-    isPlaying: 0
-    isPaused: 0
-    IsInstanced: 1
-    InstanceTransform: {fileID: 4227936258393540}
-    Loop: 0
-  ButtonTimer: 1.5
-  ButtonImages:
-  - {fileID: 114172201668909182}
-  - {fileID: 114303291412116876}
-  - {fileID: 114600104808224934}
-  Buttons:
-  - {fileID: 21300000, guid: 2928fcd62637d4f47b24e9ff43a01511, type: 3}
-  - {fileID: 21300000, guid: 23c64f23fe7c4604f9e0d9bb800e5438, type: 3}
-  - {fileID: 21300000, guid: a4935f6b1c647b24790b7060c16a53c2, type: 3}
-  - {fileID: 21300000, guid: 947b0eb2b9d159f4da3d91d92576dda3, type: 3}
 --- !u!114 &114758691633698720
 MonoBehaviour:
   m_ObjectHideFlags: 1
