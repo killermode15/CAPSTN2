@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4452045311665194}
   - component: {fileID: 65126478351592280}
-  - component: {fileID: 114569633767971284}
+  - component: {fileID: 114874797053661740}
   m_Layer: 0
   m_Name: altar
   m_TagString: Untagged
@@ -322,8 +322,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1174482662970728}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 149, y: 12.33, z: 0.1}
+  m_LocalRotation: {x: -0, y: 0.26780018, z: -0, w: 0.9634745}
+  m_LocalPosition: {x: 175.3, y: 71.1, z: 194.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4869990731821212}
@@ -333,7 +333,7 @@ Transform:
   - {fileID: 4700416537098268}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 31.067001, z: 0}
 --- !u!4 &4660708889797844
 Transform:
   m_ObjectHideFlags: 1
@@ -480,8 +480,8 @@ MonoBehaviour:
   dialogue:
     name: 
     sentences:
-    - You have unlocked the Wind Element! You can now Use Double Jump!
-    - Double Tap X to Double Jump!
+    - 'You have unlocked the Water Element! '
+    - You can now Use your Skill to create plant bridges!
   triggered: 0
 --- !u!114 &114396600386288528
 MonoBehaviour:
@@ -509,21 +509,6 @@ MonoBehaviour:
   initialized: 1
   initialName: New Path 1
   pathVisible: 1
---- !u!114 &114569633767971284
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1174482662970728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d611f7efbe96a9041984303c9a49bac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentThreshold: 25
-  isActivated: 0
-  VFX: {fileID: 1597614186316186}
-  VFXForFull: {fileID: 1425677023582464}
 --- !u!114 &114790553923160058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -539,6 +524,20 @@ MonoBehaviour:
   TimeToFinish: 1
   Loop: 1
   EaseType: 14
+--- !u!114 &114874797053661740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1174482662970728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02da809b650255f4290e0e841c0487f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActivated: 0
+  FloatingObjects: []
+  ParticleFX: []
 --- !u!198 &198005760002565430
 ParticleSystem:
   m_ObjectHideFlags: 1

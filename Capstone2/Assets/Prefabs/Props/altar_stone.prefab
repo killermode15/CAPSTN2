@@ -466,7 +466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4795909475871022}
   - component: {fileID: 65703180650732378}
-  - component: {fileID: 114425146473165976}
+  - component: {fileID: 114347997038072802}
   m_Layer: 0
   m_Name: altar_stone
   m_TagString: Untagged
@@ -2093,8 +2093,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.0422926, y: 1, z: 3.8225367}
-  m_Center: {x: 0.250675, y: 0, z: 1.9722784}
+  m_Size: {x: 9.83197, y: 1, z: 9.147018}
+  m_Center: {x: 0.25067496, y: 0, z: -0.24798489}
 --- !u!95 &95056427862220634
 Animator:
   serializedVersion: 3
@@ -2435,7 +2435,7 @@ MonoBehaviour:
   DampSpeed: 1
   BobbingSpeed: 0.6
   RotationSpeed: 3
---- !u!114 &114425146473165976
+--- !u!114 &114347997038072802
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -2443,7 +2443,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1840186980861732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d611f7efbe96a9041984303c9a49bac1, type: 3}
+  m_Script: {fileID: 11500000, guid: 02da809b650255f4290e0e841c0487f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isActivated: 0
@@ -2451,6 +2451,8 @@ MonoBehaviour:
   - {fileID: 114308041032018902}
   - {fileID: 114980564192981110}
   - {fileID: 114260072324063652}
+  ParticleFX:
+  - {fileID: 198591846328207834}
 --- !u!114 &114559159877002694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2562,7 +2564,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 74692465
+  randomSeed: 221065314
   InitialModule:
     serializedVersion: 3
     enabled: 1

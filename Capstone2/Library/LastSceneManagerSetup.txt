@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Post-Defense/Test Scenes/MainGame - Test Level Design.unity
+- path: Assets/Scenes/Post-Defense/MainGame.unity
   isLoaded: 1
   isActive: 1
