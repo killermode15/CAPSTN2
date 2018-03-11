@@ -13,12 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   ElementIcon: {fileID: 21300000, guid: 571e45b929809464fa460abaa2b87ea8, type: 3}
-  EnergyColor: {r: 0.19999981, g: 0, b: 1, a: 1}
-  EnergyCost: 5
-  CurrentUseableEnergy: 0
   CooldownDuration: 10
-  IsElementUnlocked: 1
+  IsElementUnlocked: 0
   IsOnCooldown: 0
-  MaxUseableEnergy: 100
-  HealValue: 50
+  WaterRange: 4.26
   VFX: {fileID: 1921419411014616, guid: 4bd26132bbec47b4bbdba986f1f70b87, type: 2}

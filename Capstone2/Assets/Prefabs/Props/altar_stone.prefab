@@ -466,7 +466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4795909475871022}
   - component: {fileID: 65703180650732378}
-  - component: {fileID: 114425146473165976}
+  - component: {fileID: 114720297006659496}
   m_Layer: 0
   m_Name: altar_stone
   m_TagString: Untagged
@@ -810,7 +810,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1443338875901368}
-  m_LocalRotation: {x: -0.67958134, y: 0.6982468, z: -0.1825247, w: 0.13154998}
+  m_LocalRotation: {x: -0.6795814, y: 0.69824684, z: -0.18252471, w: 0.13155}
   m_LocalPosition: {x: -1.29, y: -0.89, z: 0.15999451}
   m_LocalScale: {x: 68.017845, y: 68.01764, z: 68.01764}
   m_Children: []
@@ -2435,22 +2435,6 @@ MonoBehaviour:
   DampSpeed: 1
   BobbingSpeed: 0.6
   RotationSpeed: 3
---- !u!114 &114425146473165976
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1840186980861732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d611f7efbe96a9041984303c9a49bac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isActivated: 0
-  FloatingObjects:
-  - {fileID: 114308041032018902}
-  - {fileID: 114980564192981110}
-  - {fileID: 114260072324063652}
 --- !u!114 &114559159877002694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2468,6 +2452,24 @@ MonoBehaviour:
   DampSpeed: 2.5
   BobbingSpeed: 1
   RotationSpeed: 1
+--- !u!114 &114720297006659496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1840186980861732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98cedc6fc79283f498b58e8d6ae5505d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActivated: 0
+  FloatingObjects:
+  - {fileID: 114308041032018902}
+  - {fileID: 114980564192981110}
+  - {fileID: 114260072324063652}
+  ParticleFX:
+  - {fileID: 198591846328207834}
 --- !u!114 &114912410176070826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2562,7 +2564,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 74692465
+  randomSeed: -1429975781
   InitialModule:
     serializedVersion: 3
     enabled: 1

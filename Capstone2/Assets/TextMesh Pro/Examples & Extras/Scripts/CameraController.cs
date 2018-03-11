@@ -16,6 +16,10 @@ namespace TMPro.Examples
 		public Vector3 Offset;
 		public Vector2 ElevationLimit;
 
+		private GameObject player;
+		private Transform originalTarget;
+
+
 		[Space]
 		private Transform cameraTransform;
 		private Transform dummyTarget;
@@ -82,6 +86,11 @@ namespace TMPro.Examples
 				dummyTarget = new GameObject("Camera Target").transform;
 				CameraTarget = dummyTarget;
 			}
+			else
+			{
+				player = CameraTarget.transform.parent.gameObject;
+				originalTarget = CameraTarget;
+			}
 		}
 
 		// Update is called once per frame
@@ -104,6 +113,9 @@ namespace TMPro.Examples
 				else
 				{
 					// Free Camera implementation
+
+
+
 					OrbitalAngle += Input.GetAxisRaw("RightStickX") * OrbitSpeed * Time.deltaTime;
 					if (OrbitalAngle > 360) OrbitalAngle = 1;
 					else if (OrbitalAngle < 0) OrbitalAngle = 359;
@@ -115,6 +127,22 @@ namespace TMPro.Examples
 						ElevationAngle += Input.GetAxisRaw("RightStickY") * PanSpeed * Time.deltaTime;
 
 					ElevationAngle = Mathf.Clamp(ElevationAngle, ElevationLimit.x, ElevationLimit.y);
+
+					#region Camera Look At Target
+					//if (player.GetComponent<LockOn>().currentTarget != null)
+					//{
+					//	Vector3 targetPos = player.GetComponent<LockOn>().currentTarget.transform.position;
+					//	Vector3 playerPos = player.transform.position;
+					//	Vector3 centerPoint = (playerPos / 2) + (targetPos / 2);
+					//	desiredPosition = centerPoint + Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * new Vector3(0, 0, -FollowDistance);
+					//}
+					//else
+					//{
+					//	if (CameraTarget != originalTarget)
+					//		CameraTarget = originalTarget;
+					//	desiredPosition = CameraTarget.position + Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * new Vector3(0, 0, -FollowDistance);
+					//}
+					#endregion
 
 					desiredPosition = CameraTarget.position + Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * new Vector3(0, 0, -FollowDistance);
 					desiredPosition += transform.TransformDirection(Offset);

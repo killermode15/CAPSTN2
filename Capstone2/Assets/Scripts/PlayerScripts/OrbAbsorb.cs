@@ -19,6 +19,11 @@ public class OrbAbsorb : MonoBehaviour {
         Counter.text = ("OrbCounter: " + OrbCount + "/" + MaxOrbs);
 	}
 
+	public bool IsOrbCounterFull()
+	{
+		return OrbCount >= MaxOrbs;
+	}
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("AbsorbOrb"))

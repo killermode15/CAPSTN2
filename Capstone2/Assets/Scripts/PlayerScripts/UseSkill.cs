@@ -21,6 +21,12 @@ public class UseSkill : MonoBehaviour
 
 	private int currentActiveElementIndex;
 
+	private void OnDrawGizmos()
+	{
+		WaterElement waterElement = GetElement(typeof(WaterElement)) as WaterElement;
+		Gizmos.DrawWireSphere(transform.position, waterElement.WaterRange);
+	}
+
 	// Use this for initialization
 	void Start()
 	{
@@ -40,7 +46,7 @@ public class UseSkill : MonoBehaviour
 	void Update()
 	{
 		UpdateElementCooldowns();
-		
+
 		if (InputManager.Instance.GetKey(ControllerInput.UseCurrentElement))
 		{
 			if (!ActiveElement.IsElementUnlocked || ActiveElement.IsOnCooldown)
@@ -62,7 +68,7 @@ public class UseSkill : MonoBehaviour
 					input = RIGHT;
 					isKeyPressed = true;
 				}
-				else if(Input.GetAxis("DPadX") == -1)
+				else if (Input.GetAxis("DPadX") == -1)
 				{
 					input = LEFT;
 					isKeyPressed = true;
@@ -82,23 +88,27 @@ public class UseSkill : MonoBehaviour
 					switch (input)
 					{
 						case UP:
-							SwitchElement(ElementType.Earth);
+							if (GetElement(typeof(EarthElement)).IsElementUnlocked)
+								SwitchElement(ElementType.Earth);
 							break;
 						case DOWN:
-							SwitchElement(ElementType.Wind);
+							if (GetElement(typeof(WindElement)).IsElementUnlocked)
+								SwitchElement(ElementType.Wind);
 							break;
 						case LEFT:
-							SwitchElement(ElementType.Light);
+							if (GetElement(typeof(LightElement)).IsElementUnlocked)
+								SwitchElement(ElementType.Light);
 							break;
 						case RIGHT:
-							SwitchElement(ElementType.Water);
+							if (GetElement(typeof(WaterElement)).IsElementUnlocked)
+								SwitchElement(ElementType.Water);
 							break;
 					}
 				}
 			}
 			else
 			{
-				if(Input.GetAxis("DPadX") == 0 && Input.GetAxis("DPadY") == 0)
+				if (Input.GetAxis("DPadX") == 0 && Input.GetAxis("DPadY") == 0)
 				{
 					isKeyPressed = false;
 				}

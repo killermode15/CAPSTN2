@@ -9,7 +9,7 @@ public class AltarObject : MonoBehaviour
 	public List<ParticleSystem> ParticleFX;
 
 	private GameObject player;
-	private bool isvfxFullActive;
+	private bool hasTriggeredEffects;
 
 	// Use this for initialization
 	void Start()
@@ -20,25 +20,38 @@ public class AltarObject : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-
-		if (player)
+		if (isActivated)
 		{
-			if (player.GetComponent<OrbAbsorb>().MaxOrbs == player.GetComponent<OrbAbsorb>().OrbCount && !isActivated)
+			if (!hasTriggeredEffects)
 			{
-				if (InputManager.Instance.GetKey(ControllerInput.ActivateAltar))
-				{
-					ActivateFloatingObjects();
-					transform.GetChild(0).GetComponent<DialogueTrigger>().TriggerDialogue();
-					isActivated = true;
+				hasTriggeredEffects = true;
+				ActivateFloatingObjects();
+				ActivateParticleEffects();
+				transform.GetChild(0).GetComponent<DialogueTrigger>().TriggerDialogue();
+				if (player)
 					player.GetComponent<OrbAbsorb>().OrbCount = 0;
-				}
 			}
 		}
+
+		if (!player)
+			return;
+
+		if (player.GetComponent<OrbAbsorb>().IsOrbCounterFull() && !isActivated)
+		{
+			if (InputManager.Instance.GetKey(ControllerInput.ActivateAltar))
+			{
+				isActivated = true;
+			}
+		}
+
+
+
+
 	}
 
 	void ActivateFloatingObjects()
 	{
-		foreach(FloatingObject obj in FloatingObjects)
+		foreach (FloatingObject obj in FloatingObjects)
 		{
 			obj.ActivateFloatingObject();
 		}

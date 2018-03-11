@@ -76,7 +76,7 @@ public class ElementEffects : MonoBehaviour
 
 	public void CastHeal(WaterElement waterElement)
 	{
-		GetComponentInParent<HP>().AddHealth(waterElement.HealValue);
+		//GetComponentInParent<HP>().AddHealth(waterElement.HealValue);
 		GameObject spawnedVFX = Instantiate(waterElement.VFX, transform.parent.transform.position, Quaternion.identity);
 		spawnedVFX.GetComponent<ParticleFollowPath>().Activate();
 		Destroy(spawnedVFX, spawnedVFX.GetComponent<ParticleFollowPath>().TimeToFinish + 0.5f);

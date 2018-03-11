@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Water Element", menuName = "Element/New Water Element")]
 public class WaterElement : Element
 {
-	public float HealValue;
+	public float WaterRange;
 	public GameObject VFX;
 
 	public override bool Use(GameObject player)
@@ -19,6 +20,12 @@ public class WaterElement : Element
 		{
 			//TEMPORARY
 			player.GetComponent<PlayerController>().anim.SetTriggerAnimParam("CastWater");
+
+			List<Collider> detectedPlants = Physics.OverlapSphere(player.transform.position, WaterRange).ToList();
+			foreach(Collider plant in detectedPlants)
+			{
+				plant.GetComponent<Plant>().ActivatePlant();
+			}
 		}
 		return true;
 	}
