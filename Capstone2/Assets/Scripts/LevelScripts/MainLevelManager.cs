@@ -48,10 +48,15 @@ public class MainLevelManager : MonoBehaviour {
             SkillUI[2].SetActive(true);
             Player.GetComponent<UseSkill>().GetElement(typeof(WaterElement)).IsElementUnlocked = true;
         }
+        if (Altars[2].GetComponent<AltarObject>().isActivated)
+        {
+            SkillUI[3].SetActive(true);
+            Player.GetComponent<UseSkill>().GetElement(typeof(EarthElement)).IsElementUnlocked = true;
+        }
         //Check if Snake is dead to spawn dialogue trigger
-		//if (Snake0.GetComponent<Dead>().isActiveAndEnabled)
-		//{
-			OrbCounterTrigger.SetActive(true);
+        //if (Snake1.GetComponent<Dead>().isActiveAndEnabled)
+        //{
+        OrbCounterTrigger.SetActive(true);
 			if (OrbCounterTrigger.GetComponent<DialogueTrigger>().triggered)
 			{
 				OrbCounter.SetActive(true);

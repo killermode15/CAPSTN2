@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour, IPausable {
 
+    public int HP;
 	public float collisionDamage;
 	public GameObject Player;
 	public List<State> PossibleStates;
@@ -66,7 +67,15 @@ public class StateManager : MonoBehaviour, IPausable {
 
 	public void GetDamage()
 	{
-		//Add damage function here
+        //Add damage function here
+        if (HP > 0)
+        {
+            HP -= 1;
+        }
+        else if(HP <= 0)
+        {
+            ChangeState(GetState("Dead"));
+        }
 		#region Pseudo Code for conditions
 		/// if( enemy still has orbs )
 		/// {
