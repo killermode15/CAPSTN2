@@ -8,12 +8,9 @@ public class PlayerController : MonoBehaviour, IPausable
     [Header("Movement")]
     public float MoveSpeed = 6.0f;
     public float JumpHeight;
-    public float RollSpeed;
-    public float RollDuration;
 
     [Space]
     [Header("Movement Values")]
-    public float RollCooldown;
     public float TurnSmoothTime = 0.02f;
 
     [Space]
@@ -21,23 +18,28 @@ public class PlayerController : MonoBehaviour, IPausable
     public GameObject JumpVFX;
 
     [HideInInspector] public PlayerAnimation anim;
-    [HideInInspector] public bool CanRoll = true;
     [HideInInspector] public bool CanJump = true;
     [HideInInspector] public bool CanMove = true;
 
     private bool canDoubleJump;
-    private float rollValue;
-    private float rollSpeed;
     private float initialRollValue;
     private float turnSmoothVel;
     private float origZPos;
     private float currentRotateTo;
     private Vector3 moveDirection;
-    private Vector3 rollDirection;
     private CharacterController controller;
 
+	#region Roll Variables (Unimplemented)
+	//public float RollSpeed;
+	//public float RollDuration;
+	//public float RollCooldown;
+	//[HideInInspector] public bool CanRoll = true;
+	//private float rollValue;
+	//private float rollSpeed;
+	//private Vector3 rollDirection;
+	#endregion
 
-    void Start()
+	void Start()
     {
         PauseManager.Instance.addPausable(this);
 
@@ -62,11 +64,11 @@ public class PlayerController : MonoBehaviour, IPausable
         Jump();
         Move();
 
-        if (InputManager.Instance.GetKeyDown(ControllerInput.Move) && CanMove)
-        {
-            Roll();
-        }
-        UpdateRollAnim();
+        //if (InputManager.Instance.GetKeyDown(ControllerInput.Move) && CanMove)
+        //{
+        //    Roll();
+        //}
+        //UpdateRollAnim();
 
 
         if (controller.collisionFlags == CollisionFlags.Above)
@@ -105,61 +107,61 @@ public class PlayerController : MonoBehaviour, IPausable
         anim.SetBoolAnimParam("HasLanded", IsGrounded());
     }
 
-    #endregion
+	#endregion
 
-    #region Movement
+	#region Movement
 
-    #region Dash
-    public void Roll()
-    {
-        if (CanRoll)
-        {
+	#region Dash (Unimplemented)
+	//public void Roll()
+	//{
+	//    if (CanRoll)
+	//    {
 
-            if (rollDirection.magnitude == 0)
-            {
-                anim.SetBoolAnimParam("IsRolling", true);
-                initialRollValue = RollDuration;
-                rollValue = RollDuration;
+	//        if (rollDirection.magnitude == 0)
+	//        {
+	//            anim.SetBoolAnimParam("IsRolling", true);
+	//            initialRollValue = RollDuration;
+	//            rollValue = RollDuration;
 
-                rollDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-                rollDirection.Normalize();
-                rollDirection *= RollSpeed;
-                StartCoroutine(DoRollDuration());
-                StartCoroutine(StartRollCooldown());
-            }
-        }
-    }
+	//            rollDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+	//            rollDirection.Normalize();
+	//            rollDirection *= RollSpeed;
+	//            StartCoroutine(DoRollDuration());
+	//            StartCoroutine(StartRollCooldown());
+	//        }
+	//    }
+	//}
 
-    void UpdateRollAnim()
-    {
-        if (anim.GetBoolAnimParam("IsRolling") && anim.GetStateInfo().IsName("Roll"))
-        {
-            if (anim.GetStateInfo().normalizedTime >= 0.95f || !anim.GetStateInfo().IsName("Roll"))
-            {
-                anim.SetBoolAnimParam("IsRolling", false);
-            }
-        }
-    }
+	//void UpdateRollAnim()
+	//{
+	//    if (anim.GetBoolAnimParam("IsRolling") && anim.GetStateInfo().IsName("Roll"))
+	//    {
+	//        if (anim.GetStateInfo().normalizedTime >= 0.95f || !anim.GetStateInfo().IsName("Roll"))
+	//        {
+	//            anim.SetBoolAnimParam("IsRolling", false);
+	//        }
+	//    }
+	//}
 
-    IEnumerator DoRollDuration()
-    {
-        yield return new WaitForSeconds(RollDuration);
-        rollDirection = Vector3.zero;
-    }
+	//IEnumerator DoRollDuration()
+	//{
+	//    yield return new WaitForSeconds(RollDuration);
+	//    rollDirection = Vector3.zero;
+	//}
 
-    IEnumerator StartRollCooldown()
-    {
-        CanRoll = false;
-        yield return new WaitForSeconds(RollCooldown);
-        CanRoll = true;
-    }
+	//IEnumerator StartRollCooldown()
+	//{
+	//    CanRoll = false;
+	//    yield return new WaitForSeconds(RollCooldown);
+	//    CanRoll = true;
+	//}
 
-    #endregion
+	#endregion
 
-    #region Jump
+	#region Jump
 
-    //Adds a value to the y velocity of the movement vector
-    public void DoubleJump(float val)
+	//Adds a value to the y velocity of the movement vector
+	public void DoubleJump(float val)
     {
         JumpVFX.GetComponent<ParticleSystem>().Play();
         moveDirection.y = 0;
@@ -172,8 +174,7 @@ public class PlayerController : MonoBehaviour, IPausable
     {
         //If the player presses X while not pressing LeftTrigger and can jump
         //if (Input.GetButtonDown("Cross") && !Input.GetButton("LeftTrigger") && canJump)
-        if (InputManager.Instance.GetKeyDown(ControllerInput.Jump) && !InputManager.Instance.GetKey(ControllerInput.TriggerElementWheel)
-            && !InputManager.Instance.GetKey(ControllerInput.AbsorbEnergy))
+        if (InputManager.Instance.GetKeyDown(ControllerInput.Jump) && !GetComponentInChildren<ElementEffects>().isCasting )
         {
             if (CanJump)
             {
@@ -215,24 +216,26 @@ public class PlayerController : MonoBehaviour, IPausable
             //Multiply it to the movespeed
             moveDirection *= MoveSpeed;
 
-            //Add dash if turned onx
-            //float dash = (initialRollValue == 0) ? 0 : rollValue / initialRollValue;
-            //moveDirection.x += DashCurve.Evaluate(dash) * rollSpeed;
-            if (rollDirection.magnitude > 0)
-            {
-                moveDirection += rollDirection;
-            }
+			#region Dash Calculation (Unimplemented)
+			//Add dash if turned onx
+			//float dash = (initialRollValue == 0) ? 0 : rollValue / initialRollValue;
+			//moveDirection.x += DashCurve.Evaluate(dash) * rollSpeed;
+			//if (rollDirection.magnitude > 0)
+			//{
+			//    moveDirection += rollDirection;
+			//}
+			#endregion
 
-            #region Code for Jumping with Momentum
-            //else
-            //{
-            //	Vector3 currentInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            //	currentInput *= 0.25f;
-            //	moveDirection += currentInput;
-            //	moveDirection = Vector3.ClampMagnitude(moveDirection, 20);
-            //}
-            #endregion
-        }
+			#region Code for Jumping with Momentum (Unimplemented)
+			//else
+			//{
+			//	Vector3 currentInput = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+			//	currentInput *= 0.25f;
+			//	moveDirection += currentInput;
+			//	moveDirection = Vector3.ClampMagnitude(moveDirection, 20);
+			//}
+			#endregion
+		}
         else
         {
             moveDirection = Vector3.zero;

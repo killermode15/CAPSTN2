@@ -30,6 +30,8 @@ public class LockOn : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		allEnemies.RemoveAll(x => x == null);
+
 		CheckIfInCombat();
 		SortListByDistance();
 		if(inCombat)

@@ -21,8 +21,8 @@ public class WindElement : Element
 
 			//TEMPORARY
 			//player.position += new Vector3(0, 1.0f, 0);
-			player.GetComponent<PlayerController>().DoubleJump(JumpIncrease);
-			player.GetComponent<PlayerController>().anim.SetTriggerAnimParam("DoubleJump");
+			//player.GetComponent<PlayerController>().DoubleJump(JumpIncrease);
+			//player.GetComponent<PlayerController>().anim.SetTriggerAnimParam("DoubleJump");
 
 			///For the Wind Push L1
 			//Debug.Log(player.transform.eulerAngles);
