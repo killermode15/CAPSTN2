@@ -28,9 +28,9 @@ public class Plant : MonoBehaviour
 
 		if (!hasSpawnedPlatform)
 		{
-			//Spawn the plant here
 			hasSpawnedPlatform = true;
-			Debug.Log("Im hit with water");
+			//Spawn the plant here
+
 		}
 
 	}
