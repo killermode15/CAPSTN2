@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Post-Defense/Test Scenes/MainGame - New Altar Testing.unity
+- path: Assets/Scenes/Post-Defense/MainGame.unity
   isLoaded: 1
   isActive: 1
