@@ -49,7 +49,7 @@ public class UseSkill : MonoBehaviour
 
 		if (InputManager.Instance.GetKey(ControllerInput.UseCurrentElement))
 		{
-			if (!ActiveElement.IsElementUnlocked || ActiveElement.IsOnCooldown)
+			if (!ActiveElement.IsElementUnlocked || ActiveElement.IsOnCooldown || (!GetComponent<PlayerController>().IsGrounded() && ActiveElement != GetElement(typeof(LightElement))))
 				return;
 			UseElement();
 		}
@@ -92,8 +92,8 @@ public class UseSkill : MonoBehaviour
 								SwitchElement(ElementType.Earth);
 							break;
 						case DOWN:
-							if (GetElement(typeof(WindElement)).IsElementUnlocked)
-								SwitchElement(ElementType.Wind);
+							//if (GetElement(typeof(WindElement)).IsElementUnlocked)
+								//SwitchElement(ElementType.Wind);
 							break;
 						case LEFT:
 							if (GetElement(typeof(LightElement)).IsElementUnlocked)
@@ -126,6 +126,7 @@ public class UseSkill : MonoBehaviour
 			{
 				if (ActiveElement.GetType() == typeof(WaterElement) || ActiveElement.GetType() == typeof(EarthElement))
 					GetComponentInChildren<ElementEffects>().isCasting = true;
+
 				if (onSkillUse != null)
 					onSkillUse.Invoke(ActiveElement);
 

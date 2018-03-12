@@ -35,24 +35,33 @@ public class MainLevelManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //if first Altar activates the Wind Element
-        if (Altars[0].GetComponent<AltarObject>().isActivated)
-        {
-            SkillUI[1].SetActive(true);
-            Player.GetComponent<UseSkill>().GetElement(typeof(WindElement)).IsElementUnlocked = true;
-            if (DoubleJumpPlatform.transform.position.y < 26.04f)
-                DoubleJumpPlatform.transform.Translate(Vector3.up * 30.0f * Time.deltaTime, Space.World);
-        }
-        if (Altars[1].GetComponent<AltarObject>().isActivated)
-        {
-            SkillUI[2].SetActive(true);
-            Player.GetComponent<UseSkill>().GetElement(typeof(WaterElement)).IsElementUnlocked = true;
-        }
-        if (Altars[2].GetComponent<AltarObject>().isActivated)
-        {
-            SkillUI[3].SetActive(true);
-            Player.GetComponent<UseSkill>().GetElement(typeof(EarthElement)).IsElementUnlocked = true;
-        }
+		//if first Altar activates the Wind Element
+		if (Altars.Count > 1)
+		{
+			if (Altars[0].GetComponent<AltarObject>().isActivated)
+			{
+				SkillUI[1].SetActive(true);
+				Player.GetComponent<UseSkill>().GetElement(typeof(WindElement)).IsElementUnlocked = true;
+				if (DoubleJumpPlatform.transform.position.y < 26.04f)
+					DoubleJumpPlatform.transform.Translate(Vector3.up * 30.0f * Time.deltaTime, Space.World);
+			}
+		}
+		if (Altars.Count > 2)
+		{
+			if (Altars[1].GetComponent<AltarObject>().isActivated)
+			{
+				SkillUI[2].SetActive(true);
+				Player.GetComponent<UseSkill>().GetElement(typeof(WaterElement)).IsElementUnlocked = true;
+			}
+		}
+		if (Altars.Count > 3)
+		{
+			if (Altars[2].GetComponent<AltarObject>().isActivated)
+			{
+				SkillUI[3].SetActive(true);
+				Player.GetComponent<UseSkill>().GetElement(typeof(EarthElement)).IsElementUnlocked = true;
+			}
+		}
         //Check if Snake is dead to spawn dialogue trigger
         //if (Snake1.GetComponent<Dead>().isActiveAndEnabled)
         //{

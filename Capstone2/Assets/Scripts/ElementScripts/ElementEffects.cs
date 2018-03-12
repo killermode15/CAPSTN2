@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿	using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,24 +27,49 @@ public class ElementEffects : MonoBehaviour
 
 	}
 
-	public void SummonTerrain()
+	#region Earth Element Implementation
+	public void SummonTerrain(EarthElement earthElement)
 	{
-		Vector3 location;
-		///Terrain Effect
-		if (transform.eulerAngles.y >= 0 && transform.eulerAngles.y <= 180)
-		{
-			//right
-			location = new Vector3(transform.position.x + SpawnDistance, transform.position.y, transform.position.z);
-		}
-		else
-		{
-			location = new Vector3(transform.position.x - SpawnDistance, transform.position.y, transform.position.z);
-		}
-		StartCoroutine(SpawnTerrainChunks(location));
+		GameObject terrainSpawned = Instantiate(earthElement.TerrainPrefab, 
+									transform.parent.position +  earthElement.SpawnOffset, 
+									Quaternion.identity);
+
+		StartCoroutine(RaiseTerrain(terrainSpawned, earthElement));
+
+		#region Old Implementation of Earth Element
+		//Vector3 location;
+		/////Terrain Effect
+		//if (transform.eulerAngles.y >= 0 && transform.eulerAngles.y <= 180)
+		//{
+		//	//right
+		//	location = new Vector3(transform.position.x + SpawnDistance, transform.position.y, transform.position.z);
+		//}
+		//else
+		//{
+		//	location = new Vector3(transform.position.x - SpawnDistance, transform.position.y, transform.position.z);
+		//}
+		//StartCoroutine(SpawnTerrainChunks(location));
 		//GameObject Terrain = Instantiate(TerrainPrefab, location, Quaternion.identity);
 		//StartCoroutine(DestroyObject(Terrain, 5.0f));
+		#endregion
 	}
 
+	IEnumerator RaiseTerrain(GameObject terrain, EarthElement earthElement)
+	{
+		Vector3 originalPosition = terrain.transform.position;
+		Vector3 desiredPosition = originalPosition + new Vector3(0, earthElement.TerrainHeight, 0);
+
+		while(Vector3.Distance(desiredPosition, terrain.transform.position) > 1)
+		{
+
+			terrain.transform.position = Vector3.Lerp(terrain.transform.position, desiredPosition, Time.deltaTime);
+
+			yield return new WaitForEndOfFrame();
+		}
+		StartCoroutine(DestroyObject(terrain, earthElement.TerrainDuration));
+	}
+
+	/*
 	IEnumerator SpawnTerrainChunks(Vector3 location)
 	{
 		spawnedTerrain = new List<GameObject>();
@@ -58,6 +83,11 @@ public class ElementEffects : MonoBehaviour
 			yield return new WaitForSeconds(0.15f);
 		}
 	}
+	*/
+
+	#endregion
+
+	#region Helper Functions
 
 	IEnumerator DestroyObject(GameObject obj, float delay)
 	{
@@ -73,6 +103,8 @@ public class ElementEffects : MonoBehaviour
 		}
 		Destroy (obj);
 	}
+
+	#endregion
 
 	public void CastHeal(WaterElement waterElement)
 	{

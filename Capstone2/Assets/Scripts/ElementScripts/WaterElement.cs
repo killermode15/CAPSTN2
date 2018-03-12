@@ -19,12 +19,16 @@ public class WaterElement : Element
 		if (IsBaseUseable())
 		{
 			//TEMPORARY
-			player.GetComponent<PlayerController>().anim.SetTriggerAnimParam("CastWater");
+			//player.GetComponent<PlayerController>().anim.SetTriggerAnimParam("CastWater");
+			GameObject waterVFX = Instantiate(VFX, player.transform);
+			waterVFX.transform.localPosition = Vector3.zero;
+			Destroy(waterVFX, waterVFX.GetComponent<ParticleSystem>().main.duration);
 
 			List<Collider> detectedPlants = Physics.OverlapSphere(player.transform.position, WaterRange).ToList();
-			foreach(Collider plant in detectedPlants)
+			foreach (Collider plant in detectedPlants)
 			{
-				plant.GetComponent<Plant>().ActivatePlant();
+				if (plant.GetComponent<Plant>())
+					plant.GetComponent<Plant>().ActivatePlant();
 			}
 		}
 		return true;
