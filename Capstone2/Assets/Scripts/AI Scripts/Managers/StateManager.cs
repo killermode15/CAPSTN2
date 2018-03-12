@@ -25,8 +25,10 @@ public class StateManager : MonoBehaviour, IPausable {
 	}
 
 	void Update(){
-		StateTransition ();
-	}
+        StateTransition ();
+        CheckIfDead();
+
+    }
 
 	public virtual void StateTransition()
 	{
@@ -36,6 +38,14 @@ public class StateManager : MonoBehaviour, IPausable {
 			}
 		}
 	}
+
+    public virtual void CheckIfDead()
+    {
+        if (HP <= 0)
+        {
+            ChangeState(GetState("Dead"));
+        }
+    }
 
 	public void ChangeState(State newState)
 	{
@@ -67,15 +77,13 @@ public class StateManager : MonoBehaviour, IPausable {
 
 	public void GetDamage()
 	{
+        //Debug.Log("getDamanged");
         //Add damage function here
         if (HP > 0)
         {
             HP -= 1;
         }
-        else if(HP <= 0)
-        {
-            ChangeState(GetState("Dead"));
-        }
+        
 		#region Pseudo Code for conditions
 		/// if( enemy still has orbs )
 		/// {

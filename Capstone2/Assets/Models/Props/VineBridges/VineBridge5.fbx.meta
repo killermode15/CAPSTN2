@@ -1,0 +1,194 @@
+fileFormatVersion: 2
+guid: 60c2df72663107040b4c7bd43df893bc
+timeCreated: 1520863381
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: beanstalk:pCube1
+    100002: pCube1
+    100004: pCube10
+    100006: pCube11
+    100008: pCube12
+    100010: pCube13
+    100012: pCube14
+    100014: pCube15
+    100016: pCube2
+    100018: pCube3
+    100020: pCube4
+    100022: pCube5
+    100024: pCube6
+    100026: pCube7
+    100028: pCube8
+    100030: pCube9
+    100032: polySurface235
+    100034: polySurface238
+    100036: polySurface239
+    100038: polySurface240
+    100040: polySurface240 1
+    100042: polySurface241
+    100044: polySurface241 1
+    100046: polySurface242
+    100048: polySurface243
+    100050: transform261
+    100052: transform262
+    100054: transform263
+    100056: transform264
+    100058: transform265
+    100060: transform266
+    100062: transform267
+    100064: transform268
+    100066: transform269
+    100068: transform270
+    100070: transform271
+    100072: transform272
+    100074: transform273
+    100076: transform274
+    100078: transform275
+    100080: transform276
+    100082: transform277
+    100084: transform278
+    100086: transform279
+    100088: transform280
+    100090: transform281
+    100092: transform282
+    100094: transform283
+    100096: transform284
+    100098: //RootNode
+    400000: beanstalk:pCube1
+    400002: pCube1
+    400004: pCube10
+    400006: pCube11
+    400008: pCube12
+    400010: pCube13
+    400012: pCube14
+    400014: pCube15
+    400016: pCube2
+    400018: pCube3
+    400020: pCube4
+    400022: pCube5
+    400024: pCube6
+    400026: pCube7
+    400028: pCube8
+    400030: pCube9
+    400032: polySurface235
+    400034: polySurface238
+    400036: polySurface239
+    400038: polySurface240
+    400040: polySurface240 1
+    400042: polySurface241
+    400044: polySurface241 1
+    400046: polySurface242
+    400048: polySurface243
+    400050: transform261
+    400052: transform262
+    400054: transform263
+    400056: transform264
+    400058: transform265
+    400060: transform266
+    400062: transform267
+    400064: transform268
+    400066: transform269
+    400068: transform270
+    400070: transform271
+    400072: transform272
+    400074: transform273
+    400076: transform274
+    400078: transform275
+    400080: transform276
+    400082: transform277
+    400084: transform278
+    400086: transform279
+    400088: transform280
+    400090: transform281
+    400092: transform282
+    400094: transform283
+    400096: transform284
+    400098: //RootNode
+    2100000: beanstalk_lambert3
+    2100002: beanstalk_lambert2
+    2300000: pCube15
+    3300000: pCube15
+    4300000: pCube15
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

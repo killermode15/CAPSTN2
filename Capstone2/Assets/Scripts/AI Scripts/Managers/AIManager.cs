@@ -30,6 +30,7 @@ public class AIManager : StateManager {
 		if (!isPaused) {
 			CheckIfPlayerInRange ();
 			StateTransition ();
+            CheckIfDead();
 		}
         /*if(/*is hit)
         {
@@ -37,7 +38,16 @@ public class AIManager : StateManager {
         }*/
 	}
 
-	public override void StateTransition()
+    public override void CheckIfDead()
+    {
+        if (HP <= 0)
+        {
+            //Debug.Log("dead yo");
+            ChangeState(GetState("Dead"));
+        }
+    }
+
+    public override void StateTransition()
 	{
 		base.StateTransition ();
 		/*if(!GetComponent<AbsorbableCorruption>().HasEnergyLeft())
@@ -60,21 +70,37 @@ public class AIManager : StateManager {
 				ChangeState (GetState ("Idle"));
 			}
 		} else if (CompareToCurrentState (typeof(Chase))) {
-			if (!CurrentState.OnUpdate ()) {
-				if (playerDistance >= DetectionRange) {
+            if (HP <= 0)
+            {
+                ChangeState(GetState("Dead"));
+            }
+            if (!CurrentState.OnUpdate ()) {
+                if (playerDistance >= DetectionRange) {
 					//Debug.Log ("out of range!");
 					ChangeState (GetState ("Idle"));
 				} else if (playerDistance <= attackRange) {
 					//Debug.Log ("in range for attack!");
 					ChangeState (GetState ("Attack"));
 				}
-			}
+                if (HP <= 0)
+                {
+                    ChangeState(GetState("Dead"));
+                }
+            }
 		} else if (CompareToCurrentState (typeof(Attack))) {
-			if (!CurrentState.OnUpdate ()) {
-				if (playerDistance >= attackRange) {
+            if (HP <= 0)
+            {
+                ChangeState(GetState("Dead"));
+            }
+            if (!CurrentState.OnUpdate ()) {
+                if (playerDistance >= attackRange) {
 					ChangeState (GetState ("Chase"));
 				}
-			}
+                if (HP <= 0)
+                {
+                    ChangeState(GetState("Dead"));
+                }
+            }
 		}
 		else
 			CurrentState.OnUpdate ();

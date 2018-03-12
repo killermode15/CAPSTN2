@@ -44,12 +44,12 @@ public class LockOn : MonoBehaviour
 		{
 			inCombat = true;
 			firstSelecting = true;
-			Debug.Log("first in combat");
+			//Debug.Log("first in combat");
 		}
 		if (Input.GetButton("LeftTrigger"))
 		{
 			CheckForEnemiesInScreen();
-			Debug.Log("update in combat");
+			//Debug.Log("update in combat");
 			//FindAllEnemies ();
 		}
 		else if (Input.GetButtonUp("LeftTrigger"))
@@ -57,7 +57,7 @@ public class LockOn : MonoBehaviour
 			Crosshair.SetActive(false);
 			currentTarget = null;
 			inCombat = false;
-			Debug.Log("out of combat");
+			//Debug.Log("out of combat");
 		}
 	}
 
@@ -200,16 +200,19 @@ public class LockOn : MonoBehaviour
 		visibleEnemies = new List<GameObject>();
 		foreach (GameObject Enemy in allEnemies)
 		{
-			Vector3 screenPoint = Camera.main.WorldToViewportPoint(Enemy.transform.position);
-			bool onScreen = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
-			if (onScreen)
-			{
-				//CrosshairLock();
-				visibleEnemies.Add(Enemy);
-			}
+            if (Enemy != null)
+            {
+                Vector3 screenPoint = Camera.main.WorldToViewportPoint(Enemy.transform.position);
+                bool onScreen = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
+                if (onScreen)
+                {
+                    //CrosshairLock();
+                    visibleEnemies.Add(Enemy);
+                }
+            }
 		}
 
-		Debug.Log(visibleEnemies.Count);
+		//Debug.Log(visibleEnemies.Count);
 	}
 
 	void SortListByDistance()
