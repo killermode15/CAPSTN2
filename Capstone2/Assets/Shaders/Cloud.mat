@@ -92,8 +92,8 @@ Material:
     - _NoiseScale: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RimPower: 15.1
-    - _Scale: 0.01
+    - _RimPower: 22.4
+    - _Scale: 0.032
     - _SideScale: -0.09
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
