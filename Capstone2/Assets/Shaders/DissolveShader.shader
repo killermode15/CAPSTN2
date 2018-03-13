@@ -2,7 +2,12 @@
 {
 	Properties
 	{
+		_Tint ("Tint", Color) = (1,1,1,1)
 		_MainTex ("Texture", 2D) = "white" {}
+		_Glossiness ("Smoothness", Range(0,1)) = 0.5
+		_Metallic ("Metallic", Range(0,1)) = 0.0
+
+
 		_DissolveTexture ("DissolveTexture", 2D) = "white" {}
 		_SecondDissolveTexture ("2nd Dissolve Texture", 2D) = "white" {}
 		_ThirdDissolveTexture ("3rd Dissolve Texture", 2D) = "white" {}
@@ -26,15 +31,17 @@
 	SubShader
 	{
 		Tags { "RenderType"="Opaque" }
-		LOD 100
+		LOD 200
 
 		Pass
 		{
 			CGPROGRAM
+
 			#pragma vertex vert
 			#pragma fragment frag
 			
 			#include "UnityCG.cginc"
+
 
 			struct appdata
 			{
@@ -51,6 +58,7 @@
 
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
+			float4 _Tint;
 			sampler2D _DissolveTexture;
 			sampler2D _SecondDissolveTexture;
 			sampler2D _ThirdDissolveTexture;
@@ -81,6 +89,7 @@
 			fixed4 frag (v2f i) : SV_Target
 			{
 				float transition = _DissolvePositionX - i.worldPos.x;
+
 				if(_ShowXDissolve == 1)
 				{
 					clip(_StartingX + (transition + ((tex2D(_DissolveTexture, i.uv)) + tex2D(_SecondDissolveTexture, i.uv) + tex2D(_ThirdDissolveTexture, i.uv)) * _DissolveSize));
@@ -99,10 +108,38 @@
 				{
 					clip(_StartingZ + (transition + ((tex2D(_DissolveTexture, i.uv)) + tex2D(_SecondDissolveTexture, i.uv) + tex2D(_ThirdDissolveTexture, i.uv)) * _DissolveSize));
 				};
-				fixed4 col = tex2D(_MainTex, i.uv);
+				fixed4 col = tex2D(_MainTex, i.uv);// * _Tint;
 				return col;
 			}
 			ENDCG
 		}
-	}
+			CGPROGRAM
+			#pragma surface surf Standard fullforwardshadows
+
+			#pragma target 3.0
+			
+			sampler2D _MainTex;
+
+			struct Input {
+				float2 uv_MainTex;
+			};
+
+			half _Glossiness;
+			half _Metallic;
+			fixed4 _Tint;
+
+			void surf (Input IN, inout SurfaceOutputStandard o)
+			{
+				fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Tint;
+				o.Albedo = c.rgb;
+
+				o.Metallic = _Metallic;
+				o.Smoothness = _Glossiness;
+				o.Alpha = c.a;
+			}
+
+			ENDCG
+		}
+		//FallBack "Diffuse"
+
 }
