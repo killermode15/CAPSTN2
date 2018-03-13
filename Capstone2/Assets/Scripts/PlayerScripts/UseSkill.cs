@@ -124,7 +124,7 @@ public class UseSkill : MonoBehaviour
 		{
 			if (ActiveElement.Use(gameObject))
 			{
-				if (ActiveElement.GetType() == typeof(WaterElement) || ActiveElement.GetType() == typeof(EarthElement))
+				if (/*ActiveElement.GetType() == typeof(WaterElement) || */ActiveElement.GetType() == typeof(EarthElement))
 					GetComponentInChildren<ElementEffects>().isCasting = true;
 
 				if (onSkillUse != null)

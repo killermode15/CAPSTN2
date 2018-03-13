@@ -14,7 +14,7 @@ MonoBehaviour:
   Type: 2
   ElementIcon: {fileID: 21300000, guid: 0e221cbe160d0024f8ea7a86e9d760e9, type: 3}
   CooldownDuration: 2.2
-  IsElementUnlocked: 0
+  IsElementUnlocked: 1
   IsOnCooldown: 0
   JumpIncrease: 20
   WindPush: {fileID: 1956289843543182, guid: 3242f90f9436ad54fa58d9c7d2e6c947, type: 2}
