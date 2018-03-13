@@ -810,7 +810,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1443338875901368}
-  m_LocalRotation: {x: -0.6795814, y: 0.69824684, z: -0.18252471, w: 0.13155}
+  m_LocalRotation: {x: -0.67958134, y: 0.6982468, z: -0.1825247, w: 0.13154998}
   m_LocalPosition: {x: -1.29, y: -0.89, z: 0.15999451}
   m_LocalScale: {x: 68.017845, y: 68.01764, z: 68.01764}
   m_Children: []
@@ -888,8 +888,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840186980861732}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 149, y: 12.33, z: 0.1}
+  m_LocalRotation: {x: -0, y: 0.7114913, z: -0, w: 0.702695}
+  m_LocalPosition: {x: -134.07, y: 134.42, z: 364.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4449114079558704}
@@ -900,7 +900,7 @@ Transform:
   - {fileID: 4007257706373628}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -167.54501, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90.713005, z: 0}
 --- !u!4 &4862635973123084
 Transform:
   m_ObjectHideFlags: 1
@@ -2093,8 +2093,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.0422926, y: 1, z: 3.8225367}
-  m_Center: {x: 0.250675, y: 0, z: 1.9722784}
+  m_Size: {x: 6.3932543, y: 1, z: 3.9720092}
+  m_Center: {x: 0.05057168, y: 0, z: 3.4144933}
 --- !u!95 &95056427862220634
 Animator:
   serializedVersion: 3
@@ -2484,8 +2484,7 @@ MonoBehaviour:
   dialogue:
     name: 
     sentences:
-    - You have unlocked the Wind Element! You can now Use Double Jump!
-    - Double Tap X to Double Jump!
+    - Henlo this activates the boss. end of the level anyway
   triggered: 0
 --- !u!114 &114980564192981110
 MonoBehaviour:
