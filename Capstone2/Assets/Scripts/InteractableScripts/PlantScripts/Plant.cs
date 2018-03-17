@@ -13,7 +13,7 @@ public class Plant : MonoBehaviour
 		get { return isActivated; }
 	}
 
-	private bool isActivated;
+	[HideInInspector] public bool isActivated;
 	private bool hasSpawnedPlatform;
 
 
