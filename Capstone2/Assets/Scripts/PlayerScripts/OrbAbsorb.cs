@@ -24,7 +24,7 @@ public class OrbAbsorb : MonoBehaviour {
         //{
             if (OrbCount == 0)
             {
-                Debug.Log("disabled to 0");
+                //Debug.Log("disabled to 0");
                 for (int i = 0; i < OrbCounter.Count; i++)
                 {
                     OrbCounter[i].enabled = false;
@@ -32,7 +32,7 @@ public class OrbAbsorb : MonoBehaviour {
             }
             else
             {
-                Debug.Log("enabled");
+                //Debug.Log("enabled");
                 for (int i = 0; i < OrbCount; i++)
                 {
                     OrbCounter[i].enabled = true;

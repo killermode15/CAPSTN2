@@ -504,6 +504,7 @@ GameObject:
   - component: {fileID: 4901341878198324}
   - component: {fileID: 33422635649839906}
   - component: {fileID: 23484617097449126}
+  - component: {fileID: 64649998702170916}
   m_Layer: 0
   m_Name: AltarBaseTransform
   m_TagString: Untagged
@@ -888,9 +889,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840186980861732}
-  m_LocalRotation: {x: -0, y: 0.7114913, z: -0, w: 0.702695}
-  m_LocalPosition: {x: -134.07, y: 134.42, z: 364.53}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0.9364583, z: -0, w: 0.3507789}
+  m_LocalPosition: {x: -5.3, y: 1.34, z: -132.27}
+  m_LocalScale: {x: 0.99999976, y: 1, z: 0.99999976}
   m_Children:
   - {fileID: 4449114079558704}
   - {fileID: 4957747072246778}
@@ -900,7 +901,7 @@ Transform:
   - {fileID: 4007257706373628}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90.713005, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -138.93001, z: 0}
 --- !u!4 &4862635973123084
 Transform:
   m_ObjectHideFlags: 1
@@ -2041,6 +2042,20 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 76f97393a7dda3848b7043eee33d78cb, type: 3}
+--- !u!64 &64649998702170916
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1920852491980538}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300002, guid: 9eedaff55fb025048b1fb7c53e2abf93, type: 3}
 --- !u!64 &64663927443929254
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -2484,7 +2499,8 @@ MonoBehaviour:
   dialogue:
     name: 
     sentences:
-    - Henlo this activates the boss. end of the level anyway
+    - You have unlocked your Wind Element!
+    - Double Tap X to Double Jump!
   triggered: 0
 --- !u!114 &114980564192981110
 MonoBehaviour:

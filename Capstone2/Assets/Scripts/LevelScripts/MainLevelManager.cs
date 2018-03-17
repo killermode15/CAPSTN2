@@ -6,20 +6,23 @@ public class MainLevelManager : MonoBehaviour {
 
     public GameObject Player;
     public List<GameObject> Altars = new List<GameObject>();
-    //public GameObject OrbCounter;
-    //public GameObject OrbCounterTrigger;
-	//public GameObject Snake1;
+    public GameObject OrbCounterTrigger;
+	public GameObject Snake1;
 	public List<GameObject> BaseUI = new List<GameObject>();
     public List<GameObject> SkillUI = new List<GameObject>();
     public GameObject SetDialogue1;
     public GameObject DoubleJumpPlatform;
+    public GameObject ActivatedPlant;
+    public GameObject Dialogue6;
 
 	// Use this for initialization
 	void Start ()
     {
         //OrbCounter.SetActive(false);
-		//OrbCounterTrigger.SetActive(true); //dapat false
-		for (int i = 0; i < BaseUI.Count; i++)
+		OrbCounterTrigger.SetActive(false);
+        Dialogue6.SetActive(false);
+
+        for (int i = 0; i < BaseUI.Count; i++)
 		{
 			BaseUI[i].SetActive(false);
 		}
@@ -64,14 +67,11 @@ public class MainLevelManager : MonoBehaviour {
 			}
 		}
         //Check if Snake is dead to spawn dialogue trigger
-        //if (Snake1.GetComponent<Dead>().isActiveAndEnabled)
-        //{
-        /*OrbCounterTrigger.SetActive(true);
-			if (OrbCounterTrigger.GetComponent<DialogueTrigger>().triggered)
-			{
-				OrbCounter.SetActive(true);
-			}*/
-		//}
+        /*if (Snake1.GetComponent<StateManager>().GetState("Dead"))   
+        {
+            OrbCounterTrigger.SetActive(true);
+            Debug.Log("yes");
+		}*/
 		if (SetDialogue1.GetComponent<DialogueTrigger>().triggered)
 		{
             SkillUI[0].SetActive(true);
@@ -80,5 +80,10 @@ public class MainLevelManager : MonoBehaviour {
 				BaseUI[i].SetActive(true);
 			}
 		}
+
+        if (ActivatedPlant.GetComponent<Plant>().IsActivated)
+        {
+            Dialogue6.SetActive(true);
+        }
 	}
 }

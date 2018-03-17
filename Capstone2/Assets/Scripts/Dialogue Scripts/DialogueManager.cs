@@ -38,7 +38,7 @@ public class DialogueManager : MonoBehaviour {
     public void StartDialogue(Dialogue dialogue){
 		inDialogue = true;
 
-		Debug.Log ("dialogue startnow");
+		//Debug.Log ("dialogue startnow");
 
 		animator.SetBool ("IsOpen", true);
 
@@ -77,7 +77,7 @@ public class DialogueManager : MonoBehaviour {
 	void EndDialogue(){
 		//Player.GetComponent<PlayerController> ().CanJump = false;
 		inDialogue = false;
-		Debug.Log ("ending dialogue");
+		//Debug.Log ("ending dialogue");
 		PauseManager.Instance.UnPause ();
 		animator.SetBool ("IsOpen", false);
 	}

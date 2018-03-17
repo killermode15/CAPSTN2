@@ -33,7 +33,8 @@ public class Attack : State
 	{
 		if (!doneCharging)
 		{
-			Charge();
+            //Charge();
+            Bite();
 		}
 		else
 		{
@@ -47,6 +48,11 @@ public class Attack : State
 
 		return true;
 	}
+
+    void Bite()
+    {
+
+    }
 
 	void Charge()
 	{

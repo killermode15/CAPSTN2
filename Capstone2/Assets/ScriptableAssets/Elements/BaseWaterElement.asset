@@ -14,7 +14,7 @@ MonoBehaviour:
   Type: 1
   ElementIcon: {fileID: 21300000, guid: 571e45b929809464fa460abaa2b87ea8, type: 3}
   CooldownDuration: 3.5
-  IsElementUnlocked: 1
+  IsElementUnlocked: 0
   IsOnCooldown: 0
   WaterRange: 3.5
   VFX: {fileID: 1663782164871708, guid: e8da47eb90fcbe949aaaa9bd33c77f8a, type: 2}
