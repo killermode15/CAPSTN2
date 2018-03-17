@@ -15,15 +15,20 @@ namespace TMPro.Examples
 		public float PanSpeed;
 		public Vector3 Offset;
 		public Vector2 ElevationLimit;
+		public Vector3 eulerAngle;
+
+		[Space]
+		[Header("Targetting Variables")]
+		public float CenterTargetZoomDistance;
+		public Transform centeredTarget;
 
 		private GameObject player;
 		private Transform originalTarget;
+		private float originalZoomInValue;
 
 
 		[Space]
-		private Transform cameraTransform;
-		private Transform dummyTarget;
-
+		[Header("Original Variables")]
 		public Transform CameraTarget;
 
 		public float FollowDistance = 30.0f;
@@ -53,6 +58,9 @@ namespace TMPro.Examples
 		private float mouseY;
 		private Vector3 moveVector;
 		private float mouseWheel;
+
+		private Transform cameraTransform;
+		private Transform dummyTarget;
 
 		// Controls for Touches on Mobile devices
 		//private float prev_ZoomDelta;
@@ -88,6 +96,7 @@ namespace TMPro.Examples
 			}
 			else
 			{
+				originalZoomInValue = FollowDistance;
 				player = CameraTarget.transform.parent.gameObject;
 				originalTarget = CameraTarget;
 			}
@@ -114,38 +123,120 @@ namespace TMPro.Examples
 				{
 					// Free Camera implementation
 
+					GameObject playerTarget = player.GetComponent<LockOn>().currentTarget;
+
+					Transform target = (playerTarget != null) ? playerTarget.transform : null;
+					if (target)
+					{
+						Vector3 center = originalTarget.transform.parent.position + target.position;
+						center /= 2;
+
+						centeredTarget.position = center;
+						float distance = Vector3.Distance(player.transform.position, target.position);
+						FollowDistance = originalZoomInValue + (originalZoomInValue * (distance / (2 * CenterTargetZoomDistance)));
+
+						//Quaternion lookAt = Quaternion.LookRotation(transform.position - target.position, player.transform.up);
+						//Debug.Log("Angle: " + Mathf.Acos(Vector3.Dot(transform.forward, target.position) / (transform.position.magnitude * target.position.magnitude)) * Mathf.Rad2Deg);
+
+						Vector3 dir = new Vector3((target.position - player.transform.position).x, 0, (target.position - player.transform.position).z);
+
+						float angle = Vector3.Angle(dir, Vector3.forward);
+
+						Vector3 direction = target.position - player.transform.position;
+
+						float dot = Vector3.Dot(direction.normalized,  player.transform.position.normalized);
+						//Debug.Log(dot);
+
+						Vector3 relativePoint = transform.InverseTransformPoint(target.position);
+						float angleFromWorldZAxis = Vector3.SignedAngle(player.transform.position, target.position, Vector3.forward);
+						Debug.Log(angleFromWorldZAxis);
+
+						float desiredAngle = 0;
+
+						if (dot > 0.0f)
+						{
+							if(angleFromWorldZAxis < 0.0f)
+							{
+								desiredAngle = angle;
+							}
+							else
+							{
+								desiredAngle = angle * -1;
+							}
+						}
+						else if (dot < 0.0f)
+						{
+							if (angleFromWorldZAxis < 0.0f)
+							{
+								desiredAngle = angle;
+							}
+							else
+							{
+								desiredAngle = angle * -1;
+							}
+						}
+						OrbitalAngle = Mathf.Lerp(OrbitalAngle, desiredAngle, Time.deltaTime * 50);
+
+						//Debug.Log(desiredAngle);
+						#region idk
+						/*
+						//eulerAngle = Quaternion.AngleAxis((Vector3.Dot(transform.position, target.position) / (transform.position.magnitude * target.position.magnitude)) * Mathf.Rad2Deg, transform.up).eulerAngles;
+
+						//ElevationAngle = eulerAngle.y - 35;
+						//OrbitalAngle = eulerAngle.x;
+						//, Vector3.up);
+						//transform.rotation = lookAt;
+						//Debug.Log(lookAt.eulerAngles);
+						//OrbitalAngle = lookAt.eulerAngles.x;
+						//ElevationAngle = lookAt.eulerAngles.y;
+
+						//if (CameraTarget != centeredTarget)
+						//	CameraTarget = centeredTarget;
+						*/
+						#endregion
+						OrbitalAngle += Input.GetAxisRaw("RightStickX") * OrbitSpeed * Time.deltaTime;
+						//if (OrbitalAngle > 360) OrbitalAngle = 1;
+						//else if (OrbitalAngle < 0) OrbitalAngle = 359;
 
 
-					OrbitalAngle += Input.GetAxisRaw("RightStickX") * OrbitSpeed * Time.deltaTime;
-					if (OrbitalAngle > 360) OrbitalAngle = 1;
-					else if (OrbitalAngle < 0) OrbitalAngle = 359;
+						if (InvertCameraControlY)
+							ElevationAngle += Input.GetAxisRaw("RightStickY") * -1 * PanSpeed * Time.deltaTime;
+						else
+							ElevationAngle += Input.GetAxisRaw("RightStickY") * PanSpeed * Time.deltaTime;
 
+						ElevationAngle = Mathf.Clamp(ElevationAngle, ElevationLimit.x, ElevationLimit.y);
 
-					if (InvertCameraControlY)
-						ElevationAngle += Input.GetAxisRaw("RightStickY") * -1 * PanSpeed * Time.deltaTime;
+						desiredPosition = CameraTarget.position + Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * new Vector3(0, 0, -FollowDistance);
+						desiredPosition += transform.TransformDirection(Offset);
+					}
 					else
-						ElevationAngle += Input.GetAxisRaw("RightStickY") * PanSpeed * Time.deltaTime;
+					{
+						FollowDistance = originalZoomInValue;
+						if (CameraTarget != originalTarget)
+							CameraTarget = originalTarget;
 
-					ElevationAngle = Mathf.Clamp(ElevationAngle, ElevationLimit.x, ElevationLimit.y);
+						#region Panning and Rotation Behaviour
 
-					#region Camera Look At Target
-					//if (player.GetComponent<LockOn>().currentTarget != null)
-					//{
-					//	Vector3 targetPos = player.GetComponent<LockOn>().currentTarget.transform.position;
-					//	Vector3 playerPos = player.transform.position;
-					//	Vector3 centerPoint = (playerPos / 2) + (targetPos / 2);
-					//	desiredPosition = centerPoint + Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * new Vector3(0, 0, -FollowDistance);
-					//}
-					//else
-					//{
-					//	if (CameraTarget != originalTarget)
-					//		CameraTarget = originalTarget;
-					//	desiredPosition = CameraTarget.position + Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * new Vector3(0, 0, -FollowDistance);
-					//}
-					#endregion
+						OrbitalAngle += Input.GetAxisRaw("RightStickX") * OrbitSpeed * Time.deltaTime;
+						if (OrbitalAngle > 360) OrbitalAngle = 1;
+						else if (OrbitalAngle < 0) OrbitalAngle = 359;
 
-					desiredPosition = CameraTarget.position + Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * new Vector3(0, 0, -FollowDistance);
-					desiredPosition += transform.TransformDirection(Offset);
+
+						if (InvertCameraControlY)
+							ElevationAngle += Input.GetAxisRaw("RightStickY") * -1 * PanSpeed * Time.deltaTime;
+						else
+							ElevationAngle += Input.GetAxisRaw("RightStickY") * PanSpeed * Time.deltaTime;
+
+						ElevationAngle = Mathf.Clamp(ElevationAngle, ElevationLimit.x, ElevationLimit.y);
+
+
+						#endregion
+						desiredPosition = CameraTarget.position + Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * new Vector3(0, 0, -FollowDistance);
+						desiredPosition += transform.TransformDirection(Offset);
+					}
+
+
+
 				}
 
 				if (MovementSmoothing == true)
@@ -164,7 +255,13 @@ namespace TMPro.Examples
 					cameraTransform.rotation = Quaternion.Lerp(cameraTransform.rotation, Quaternion.LookRotation(CameraTarget.position - cameraTransform.position), RotationSmoothingValue * Time.deltaTime);
 				else
 				{
-					cameraTransform.LookAt(CameraTarget);
+					GameObject playerTarget = player.GetComponent<LockOn>().currentTarget;
+
+					Transform target = (playerTarget != null) ? playerTarget.transform : null;
+					if (target)
+						cameraTransform.LookAt(target);
+					else
+						cameraTransform.LookAt(CameraTarget);
 				}
 
 			}

@@ -6,23 +6,38 @@ using UnityEngine.UI;
 
 public class LockOn : MonoBehaviour
 {
-
+	public float LockOnRange;
 	public GameObject Crosshair;
 	public GameObject currentTarget;
 	public List<GameObject> allEnemies = new List<GameObject>();
 	public List<GameObject> visibleEnemies = new List<GameObject>();
-	bool firstSelecting;
-	bool switchButtonPressed;
+
+	[Space]
+	[Header("Gizmos")]
+	public bool ShowLockOnRange;
+	public Color RangeGizmoColor = Color.red;
+
 	private int selectedTarget;
 	private List<GameObject> sortedVisibleEnemies;
+	bool firstSelecting;
+	bool switchButtonPressed;
 	bool inCombat;
+
+	private void OnDrawGizmosSelected()
+	{
+		if (ShowLockOnRange)
+		{
+			Gizmos.color = RangeGizmoColor;
+			Gizmos.DrawWireSphere(transform.position, LockOnRange);
+		}
+	}
 
 	// Use this for initialization
 	void Start()
 	{
 		FindAllEnemies();
 		//allEnemies = GameObject.FindObjectsOfType<Absorbable>().ToList();
-
+		sortedVisibleEnemies = new List<GameObject>();
 		Crosshair = Instantiate(Crosshair);
 		Crosshair.SetActive(false);
 	}
@@ -33,31 +48,48 @@ public class LockOn : MonoBehaviour
 		allEnemies.RemoveAll(x => x == null);
 
 		CheckIfInCombat();
-		SortListByDistance();
-		if(inCombat)
-			PickTarget();
+	}
+
+	void EnableCombat()
+	{
+		inCombat = true;
+		firstSelecting = true;
+	}
+
+	void DisableCombat()
+	{
+		Crosshair.SetActive(false);
+		currentTarget = null;
+		inCombat = false;
+
+		if (firstSelecting)
+			firstSelecting = false;
 	}
 
 	void CheckIfInCombat()
 	{
 		if (Input.GetButtonDown("LeftTrigger"))
 		{
-			inCombat = true;
-			firstSelecting = true;
-			//Debug.Log("first in combat");
+			if (!inCombat)
+			{
+				EnableCombat();
+			}
+			else
+			{
+				DisableCombat();
+			}
 		}
-		if (Input.GetButton("LeftTrigger"))
+
+		if (inCombat)
 		{
 			CheckForEnemiesInScreen();
-			//Debug.Log("update in combat");
-			//FindAllEnemies ();
-		}
-		else if (Input.GetButtonUp("LeftTrigger"))
-		{
-			Crosshair.SetActive(false);
-			currentTarget = null;
-			inCombat = false;
-			//Debug.Log("out of combat");
+			SortListByDistance();
+			PickTarget();
+
+			if (sortedVisibleEnemies.Count <= 0)
+			{
+				DisableCombat();
+			}
 		}
 	}
 
@@ -75,39 +107,22 @@ public class LockOn : MonoBehaviour
 		{
 			if (sortedVisibleEnemies.Count > 0)
 			{
-				currentTarget = sortedVisibleEnemies[selectedTarget];
-
-				if (Input.GetKeyDown(KeyCode.Joystick1Button11))
+				if (selectedTarget > sortedVisibleEnemies.Count)
 				{
-					Debug.Log("R3 Pressed");
-					selectedTarget++;
-					Debug.Log(visibleEnemies.Count);
-					if (selectedTarget >= visibleEnemies.Count)
-					{
-						selectedTarget = 0;
-					}
+					//selectedTarget = sortedVisibleEnemies.FindIndex(x => x == currentTarget);
+					//selectedTarget = 0;
 				}
 
-				#region old code for targeting
-				//Debug.Log(visibleEnemies.Count);
+				if (Input.GetButtonDown("RightTrigger"))
+				{
+					selectedTarget++;
 
-				//if (Input.GetButtonDown("R3") && !switchButtonPressed)
-				//{
-				//	if (currentTarget == visibleEnemies[visibleEnemies.Count])
-				//		switchButtonPressed = true;
-				//	index++;
-				//	Debug.Log(visibleEnemies.Count);
-				//	if (index > visibleEnemies.Count)
-				//	{
-				//		index = 0;
-				//	}
-				//	currentTarget = visibleEnemies[index];
-				//}
-				//else if (Input.GetButtonUp("R3") && switchButtonPressed)
-				//{
-				//	switchButtonPressed = false;
-				//}
-				#endregion
+					if (selectedTarget >= visibleEnemies.Count)
+						selectedTarget = 0;
+
+				}
+				currentTarget = sortedVisibleEnemies[selectedTarget];
+
 			}
 		}
 		CrosshairLock();
@@ -200,16 +215,18 @@ public class LockOn : MonoBehaviour
 		visibleEnemies = new List<GameObject>();
 		foreach (GameObject Enemy in allEnemies)
 		{
-            if (Enemy != null)
-            {
-                Vector3 screenPoint = Camera.main.WorldToViewportPoint(Enemy.transform.position);
-                bool onScreen = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
-                if (onScreen)
-                {
-                    //CrosshairLock();
-                    visibleEnemies.Add(Enemy);
-                }
-            }
+			if (Enemy != null)
+			{
+				float distance = Vector3.Distance(transform.position, Enemy.transform.position);
+
+				Vector3 screenPoint = Camera.main.WorldToViewportPoint(Enemy.transform.position);
+				bool onScreen = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1;
+				if (onScreen && distance <= LockOnRange)
+				{
+					//CrosshairLock();
+					visibleEnemies.Add(Enemy);
+				}
+			}
 		}
 
 		//Debug.Log(visibleEnemies.Count);
@@ -227,6 +244,7 @@ public class LockOn : MonoBehaviour
 			sortedList.Add(nearestTarget);
 			index++;
 		}
+
 		sortedVisibleEnemies = sortedList;
 	}
 
