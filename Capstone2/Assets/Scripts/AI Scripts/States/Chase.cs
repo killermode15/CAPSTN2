@@ -16,7 +16,10 @@ public class Chase : State {
 
 	public override bool OnUpdate()
 	{
-		Vector3 chaseTargetPos = new Vector3 (Manager.Player.transform.position.x, transform.position.y, Manager.Player.transform.position.z);
+        Debug.Log("chasing");
+        GetComponentInChildren<Animator>().SetBool("Slither", true);
+        GetComponentInChildren<Animator>().SetBool("Bite", false);
+        Vector3 chaseTargetPos = new Vector3 (Manager.Player.transform.position.x, transform.position.y, Manager.Player.transform.position.z);
 		//transform.position = Vector3.MoveTowards(transform.position, chaseTargetPos, moveSpeed * Time.deltaTime);
 		agent.destination = chaseTargetPos;
 		float distance = Vector3.Distance (transform.localPosition, Manager.Player.transform.localPosition);

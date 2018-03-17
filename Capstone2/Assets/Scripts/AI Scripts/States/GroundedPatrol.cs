@@ -21,7 +21,9 @@ public class GroundedPatrol : State {
 	public override bool OnUpdate()
 	{
 		base.OnUpdate();
-		if(!IsPatrolDone())
+        GetComponentInChildren<Animator>().SetBool("Slither", true);
+        GetComponentInChildren<Animator>().SetBool("Bite", false);
+        if (!IsPatrolDone())
 		{
 			//Movement
 			//transform.position = Vector3.MoveTowards(transform.position, PatrolPoints[CurrentPatrolPoint].position, moveSpeed * Time.deltaTime);

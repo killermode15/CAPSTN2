@@ -17,9 +17,13 @@ public class Idle : State
 
 	public override bool OnUpdate()
 	{
-		if(!IsIdling)
+        GetComponentInChildren<Animator>().SetBool("Slither", false);
+        GetComponentInChildren<Animator>().SetBool("Bite", false);
+        if (!IsIdling)
 		{
-			return false;
+            GetComponentInChildren<Animator>().SetBool("Slither", false);
+            GetComponentInChildren<Animator>().SetBool("Bite", false);
+            return false;
 		}
 		return true;
 	}

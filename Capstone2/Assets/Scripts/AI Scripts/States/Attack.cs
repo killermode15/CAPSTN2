@@ -11,7 +11,7 @@ public class Attack : State
 
 	private float chargeValue;
 	private float initialChargeValue;
-	private bool doneCharging;
+	private bool doneAttacking;
 	private Vector3 chargeDir;
 
 
@@ -23,7 +23,7 @@ public class Attack : State
 			ChargeDuration = 1;
 		chargeValue = ChargeDuration;
 		initialChargeValue = ChargeDuration;
-		doneCharging = false;
+		doneAttacking = false;
 
 		chargeDir = (new Vector3(Manager.Player.transform.position.x, 0, 0) - new Vector3(transform.position.x, 0, 0)).normalized;
 
@@ -31,19 +31,21 @@ public class Attack : State
 
 	public override bool OnUpdate()
 	{
-		if (!doneCharging)
+		if (!doneAttacking)
 		{
             //Charge();
+            transform.LookAt(new Vector3(Manager.Player.transform.position.x, transform.position.y, Manager.Player.transform.position.z));
             Bite();
 		}
 		else
 		{
-			transform.position += chargeDir * MoveAwaySpeed * Time.deltaTime;
+            /*transform.position += chargeDir * MoveAwaySpeed * Time.deltaTime;
 			GetComponent<Collider>().isTrigger = false;
 			if (Vector3.Distance(transform.position, Manager.Player.transform.position) > Manager.attackRange)
 			{
 				return false;
-			}
+			}*/
+            return false;
 		}
 
 		return true;
@@ -51,7 +53,19 @@ public class Attack : State
 
     void Bite()
     {
+        //stops
+        float distance = Vector3.Distance(transform.localPosition, Manager.Player.transform.localPosition);
+        if (distance >= Manager.attackRange)
+        {
+            doneAttacking = true;
+        }
+        GetComponentInChildren<Animator>().SetBool("Slither", false);
+        GetComponentInChildren<Animator>().SetBool("Bite", true);
 
+        /*if ()
+        {
+            doneAttacking = true;
+        }*/
     }
 
 	void Charge()
@@ -62,7 +76,7 @@ public class Attack : State
 		transform.position += chargeDir * (ChargeCurve.Evaluate(currentDashValue) * ChargeSpeed);
 
 		if (currentDashValue <= 0)
-			doneCharging = true;
+			doneAttacking = true;
 	}
 
 	IEnumerator Wait()
@@ -75,6 +89,6 @@ public class Attack : State
 		base.OnDisable();
 		GetComponent<Collider>().isTrigger = false;
 		chargeDir = Vector3.zero;
-		doneCharging = false;
+		doneAttacking = false;
 	}
 }
