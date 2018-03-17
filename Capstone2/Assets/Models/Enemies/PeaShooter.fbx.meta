@@ -1,17 +1,78 @@
 fileFormatVersion: 2
-guid: 8ab24024686f52445b1cc670d2394d2f
-timeCreated: 1517896759
+guid: 52b52f8e5d0eb9541884e222bfccb372
+timeCreated: 1521297468
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: joint1
+    100002: joint10
+    100004: joint11
+    100006: joint12
+    100008: joint12 1
+    100010: joint13
+    100012: joint13 1
+    100014: joint14
+    100016: joint14 1
+    100018: joint15
+    100020: joint16
+    100022: joint17
+    100024: joint18
+    100026: joint19
+    100028: joint2
+    100030: joint20
+    100032: joint21
+    100034: joint22
+    100036: joint23
+    100038: joint23 1
+    100040: joint24
+    100042: joint24 1
+    100044: joint25
+    100046: joint3
+    100048: joint4
+    100050: joint5
+    100052: joint6
+    100054: joint7
+    100056: joint8
+    100058: joint9
+    100060: pCylinder9
+    100062: //RootNode
+    400000: joint1
+    400002: joint10
+    400004: joint11
+    400006: joint12
+    400008: joint12 1
+    400010: joint13
+    400012: joint13 1
+    400014: joint14
+    400016: joint14 1
+    400018: joint15
+    400020: joint16
+    400022: joint17
+    400024: joint18
+    400026: joint19
+    400028: joint2
+    400030: joint20
+    400032: joint21
+    400034: joint22
+    400036: joint23
+    400038: joint23 1
+    400040: joint24
+    400042: joint24 1
+    400044: joint25
+    400046: joint3
+    400048: joint4
+    400050: joint5
+    400052: joint6
+    400054: joint7
+    400056: joint8
+    400058: joint9
+    400060: pCylinder9
+    400062: //RootNode
     2100000: lambert9
-    2300000: //RootNode
-    3300000: //RootNode
     4300000: pCylinder9
     9500000: //RootNode
+    13700000: pCylinder9
   externalObjects: {}
   materials:
     importMaterials: 1

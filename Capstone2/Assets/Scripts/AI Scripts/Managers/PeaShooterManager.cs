@@ -9,6 +9,7 @@ public class PeaShooterManager : StateManager {
 	private void OnDrawGizmosSelected()
 	{
 		Gizmos.DrawWireSphere(transform.position, DetectionRange);
+		Gizmos.DrawWireSphere(transform.position, attackRange);
 	}
 
 	// Use this for initialization
@@ -41,8 +42,23 @@ public class PeaShooterManager : StateManager {
 		if (CompareToCurrentState (typeof(Patrol))) {
 			//If the current state is not updating
 			if (!CurrentState.OnUpdate ()) {
-				ChangeState (GetState ("Patrol"));
+				ChangeState (GetState ("PeaChase"));
 			}
+		} else if (CompareToCurrentState (typeof(PeaChase))){
+			if (!CurrentState.OnUpdate())
+			{
+				ChangeState(GetState("Patrol"));
+			}
+		}
+	}
+
+	public override void CheckIfPlayerInRange()
+	{
+		playerDistance = Vector3.Distance(Player.transform.position, transform.position);
+		if (playerDistance <= DetectionRange)
+		{
+			if (!CompareToCurrentState(typeof(Chase)) && !CompareToCurrentState(typeof(Attack)) && !CompareToCurrentState(typeof(StunnedState)))
+				ChangeState(GetState("PeaChase"));
 		}
 	}
 

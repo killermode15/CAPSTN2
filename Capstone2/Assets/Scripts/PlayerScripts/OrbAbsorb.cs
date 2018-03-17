@@ -20,8 +20,8 @@ public class OrbAbsorb : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //if (OrbCount <= MaxOrbs)
-        //{
+        if (OrbCount <= MaxOrbs)
+        {
             if (OrbCount == 0)
             {
                 //Debug.Log("disabled to 0");
@@ -38,7 +38,7 @@ public class OrbAbsorb : MonoBehaviour {
                     OrbCounter[i].enabled = true;
                 }   
             }
-        //}
+        }
         //else
         //{
         //    for (int i = 0; i < MaxOrbs; i++)

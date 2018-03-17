@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Attack : State
 {
@@ -26,6 +27,7 @@ public class Attack : State
 		doneAttacking = false;
 
 		chargeDir = (new Vector3(Manager.Player.transform.position.x, 0, 0) - new Vector3(transform.position.x, 0, 0)).normalized;
+		
 
 	}
 
@@ -90,5 +92,6 @@ public class Attack : State
 		GetComponent<Collider>().isTrigger = false;
 		chargeDir = Vector3.zero;
 		doneAttacking = false;
+		
 	}
 }
