@@ -33,9 +33,6 @@ public class Projectile : MonoBehaviour {
 		if (other.CompareTag ("Ground")) {
 			Destroy (this.gameObject);
 		}
-		if (other.CompareTag ("EarthTerrain")) {
-			Destroy (this.gameObject);
-		}
 	}
 
 }

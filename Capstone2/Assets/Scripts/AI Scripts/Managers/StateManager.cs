@@ -56,7 +56,7 @@ public class StateManager : MonoBehaviour, IPausable {
 		}
 		stateBeforeStun = CurrentState;
 		CurrentState = newState;
-		newState.enabled = true;
+		CurrentState.enabled = true;
 	}
 
 	public State GetState(string name)

@@ -19,11 +19,15 @@ public class Patrol : State {
 
 	public override bool OnUpdate()
 	{
+		Debug.Log("Patrolling");
 		base.OnUpdate();
-		if(!IsPatrolDone())
+		GetComponentInChildren<Animator>().SetBool("Attack", false);
+		GetComponentInChildren<Animator>().SetBool("Flying", true);
+		if (!IsPatrolDone())
 		{
 			//Movement
 			transform.position = Vector3.MoveTowards(transform.position, PatrolPoints[CurrentPatrolPoint].position, moveSpeed * Time.deltaTime);
+			transform.LookAt(new Vector3(PatrolPoints[CurrentPatrolPoint].position.x, transform.position.y, PatrolPoints[CurrentPatrolPoint].position.z));
 			return true;
 		}
 

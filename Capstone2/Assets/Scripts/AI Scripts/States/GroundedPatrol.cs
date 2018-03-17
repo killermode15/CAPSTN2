@@ -21,6 +21,7 @@ public class GroundedPatrol : State {
 	public override bool OnUpdate()
 	{
 		base.OnUpdate();
+		Debug.Log("Patrolling");
         GetComponentInChildren<Animator>().SetBool("Slither", true);
         GetComponentInChildren<Animator>().SetBool("Bite", false);
         if (!IsPatrolDone())
@@ -41,6 +42,7 @@ public class GroundedPatrol : State {
 
 	public override void OnDisable()
 	{
+		Debug.Log("ptrolling done");
 		base.OnDisable();
 	}
 
@@ -48,6 +50,6 @@ public class GroundedPatrol : State {
 	{
 		float dist = Vector3.Distance(transform.position, PatrolPoints[CurrentPatrolPoint].position);
 
-		return (dist <= 1);
+		return (dist <= GetComponent<NavMeshAgent>().stoppingDistance);
 	}
 }

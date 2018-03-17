@@ -14,8 +14,9 @@ public class AIAnimationEvent : MonoBehaviour {
 		
 	}
 
-    public void DamagePlayer()
+    public void PlayerDamage()
     {
+		Debug.Log(name);
         GetComponentInParent<StateManager>().Player.GetComponent<HP>().RemoveHealth(GetComponentInParent<StateManager>().damage );
     }
 }
