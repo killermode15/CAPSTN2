@@ -15,7 +15,6 @@ namespace TMPro.Examples
 		public float PanSpeed;
 		public Vector3 Offset;
 		public Vector2 ElevationLimit;
-		public Vector3 eulerAngle;
 
 		[Space]
 		[Header("Targetting Variables")]
@@ -123,6 +122,8 @@ namespace TMPro.Examples
 				{
 					// Free Camera implementation
 
+					#region Lock On Behaviour
+
 					GameObject playerTarget = player.GetComponent<LockOn>().currentTarget;
 
 					Transform target = (playerTarget != null) ? playerTarget.transform : null;
@@ -134,18 +135,13 @@ namespace TMPro.Examples
 						centeredTarget.position = center;
 						float distance = Vector3.Distance(player.transform.position, target.position);
 						FollowDistance = originalZoomInValue + (originalZoomInValue * (distance / (2 * CenterTargetZoomDistance)));
-
-						//Quaternion lookAt = Quaternion.LookRotation(transform.position - target.position, player.transform.up);
-						//Debug.Log("Angle: " + Mathf.Acos(Vector3.Dot(transform.forward, target.position) / (transform.position.magnitude * target.position.magnitude)) * Mathf.Rad2Deg);
-
 						Vector3 dir = new Vector3((target.position - player.transform.position).x, 0, (target.position - player.transform.position).z);
 
 						float angle = Vector3.Angle(dir, Vector3.forward);
 
 						Vector3 direction = target.position - player.transform.position;
 
-						float dot = Vector3.Dot(direction.normalized,  player.transform.position.normalized);
-						//Debug.Log(dot);
+						float dot = Vector3.Dot(direction.normalized, player.transform.position.normalized);
 
 						Vector3 relativePoint = transform.InverseTransformPoint(target.position);
 						float angleFromWorldZAxis = Vector3.SignedAngle(player.transform.position, target.position, Vector3.forward);
@@ -155,7 +151,7 @@ namespace TMPro.Examples
 
 						if (dot > 0.0f)
 						{
-							if(angleFromWorldZAxis < 0.0f)
+							if (angleFromWorldZAxis < 0.0f)
 							{
 								desiredAngle = angle;
 							}
@@ -177,27 +173,7 @@ namespace TMPro.Examples
 						}
 						OrbitalAngle = Mathf.Lerp(OrbitalAngle, desiredAngle, Time.deltaTime * 50);
 
-						//Debug.Log(desiredAngle);
-						#region idk
-						/*
-						//eulerAngle = Quaternion.AngleAxis((Vector3.Dot(transform.position, target.position) / (transform.position.magnitude * target.position.magnitude)) * Mathf.Rad2Deg, transform.up).eulerAngles;
-
-						//ElevationAngle = eulerAngle.y - 35;
-						//OrbitalAngle = eulerAngle.x;
-						//, Vector3.up);
-						//transform.rotation = lookAt;
-						//Debug.Log(lookAt.eulerAngles);
-						//OrbitalAngle = lookAt.eulerAngles.x;
-						//ElevationAngle = lookAt.eulerAngles.y;
-
-						//if (CameraTarget != centeredTarget)
-						//	CameraTarget = centeredTarget;
-						*/
-						#endregion
 						OrbitalAngle += Input.GetAxisRaw("RightStickX") * OrbitSpeed * Time.deltaTime;
-						//if (OrbitalAngle > 360) OrbitalAngle = 1;
-						//else if (OrbitalAngle < 0) OrbitalAngle = 359;
-
 
 						if (InvertCameraControlY)
 							ElevationAngle += Input.GetAxisRaw("RightStickY") * -1 * PanSpeed * Time.deltaTime;
@@ -208,7 +184,10 @@ namespace TMPro.Examples
 
 						desiredPosition = CameraTarget.position + Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * new Vector3(0, 0, -FollowDistance);
 						desiredPosition += transform.TransformDirection(Offset);
+
 					}
+					#endregion
+					#region Normal Camera Behaviour
 					else
 					{
 						FollowDistance = originalZoomInValue;
@@ -234,7 +213,7 @@ namespace TMPro.Examples
 						desiredPosition = CameraTarget.position + Quaternion.Euler(ElevationAngle, OrbitalAngle, 0f) * new Vector3(0, 0, -FollowDistance);
 						desiredPosition += transform.TransformDirection(Offset);
 					}
-
+					#endregion
 
 
 				}
@@ -255,12 +234,12 @@ namespace TMPro.Examples
 					cameraTransform.rotation = Quaternion.Lerp(cameraTransform.rotation, Quaternion.LookRotation(CameraTarget.position - cameraTransform.position), RotationSmoothingValue * Time.deltaTime);
 				else
 				{
-					GameObject playerTarget = player.GetComponent<LockOn>().currentTarget;
+					//GameObject playerTarget = player.GetComponent<LockOn>().currentTarget;
 
-					Transform target = (playerTarget != null) ? playerTarget.transform : null;
-					if (target)
-						cameraTransform.LookAt(target);
-					else
+					//Transform target = (playerTarget != null) ? playerTarget.transform : null;
+					//if (target)
+					//	cameraTransform.LookAt(target);
+					//else
 						cameraTransform.LookAt(CameraTarget);
 				}
 
