@@ -1,24 +1,49 @@
 fileFormatVersion: 2
-guid: b28a3ac4c18685341b0aa142e8de3af1
-timeCreated: 1517897946
+guid: a8569e67c7f838541b1573a8ba8712d4
+timeCreated: 1521279112
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: lambert7
-    2100002: body3
-    2100004: mouth3
-    2100006: throat3
-    2100008: horns3
-    2100010: eyes3
-    2100012: head3
-    2100014: teeth3
-    2300000: //RootNode
-    3300000: //RootNode
+    100000: joint1
+    100002: joint10
+    100004: joint11
+    100006: joint12
+    100008: joint2
+    100010: joint3
+    100012: joint4
+    100014: joint5
+    100016: joint6
+    100018: joint7
+    100020: joint8
+    100022: joint9
+    100024: polySurface3
+    100026: //RootNode
+    400000: joint1
+    400002: joint10
+    400004: joint11
+    400006: joint12
+    400008: joint2
+    400010: joint3
+    400012: joint4
+    400014: joint5
+    400016: joint6
+    400018: joint7
+    400020: joint8
+    400022: joint9
+    400024: polySurface3
+    400026: //RootNode
+    2100000: lambert8
+    2100002: body4
+    2100004: mouth4
+    2100006: throat4
+    2100008: horns4
+    2100010: eyes4
+    2100012: head4
+    2100014: teeth4
     4300000: polySurface3
     9500000: //RootNode
+    13700000: polySurface3
   externalObjects: {}
   materials:
     importMaterials: 1

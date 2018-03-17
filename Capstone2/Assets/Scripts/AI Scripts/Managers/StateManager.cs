@@ -6,6 +6,7 @@ using UnityEngine;
 public class StateManager : MonoBehaviour, IPausable {
 
     public int HP;
+    public float damage;
 	public float collisionDamage;
 	public GameObject Player;
 	public List<State> PossibleStates;
