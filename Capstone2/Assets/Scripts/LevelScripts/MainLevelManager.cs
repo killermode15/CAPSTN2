@@ -6,8 +6,8 @@ public class MainLevelManager : MonoBehaviour {
 
     public GameObject Player;
     public List<GameObject> Altars = new List<GameObject>();
-    public GameObject OrbCounter;
-    public GameObject OrbCounterTrigger;
+    //public GameObject OrbCounter;
+    //public GameObject OrbCounterTrigger;
 	//public GameObject Snake1;
 	public List<GameObject> BaseUI = new List<GameObject>();
     public List<GameObject> SkillUI = new List<GameObject>();
@@ -17,8 +17,8 @@ public class MainLevelManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        OrbCounter.SetActive(false);
-		OrbCounterTrigger.SetActive(true); //dapat false
+        //OrbCounter.SetActive(false);
+		//OrbCounterTrigger.SetActive(true); //dapat false
 		for (int i = 0; i < BaseUI.Count; i++)
 		{
 			BaseUI[i].SetActive(false);
@@ -36,7 +36,7 @@ public class MainLevelManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//if first Altar activates the Wind Element
-		if (Altars.Count > 1)
+		//if (Altars.Count > 1)
 		{
 			if (Altars[0].GetComponent<AltarObject>().isActivated)
 			{
@@ -46,7 +46,7 @@ public class MainLevelManager : MonoBehaviour {
 					DoubleJumpPlatform.transform.Translate(Vector3.up * 30.0f * Time.deltaTime, Space.World);
 			}
 		}
-		if (Altars.Count > 2)
+		//if (Altars.Count > 2)
 		{
 			if (Altars[1].GetComponent<AltarObject>().isActivated)
 			{
@@ -54,10 +54,11 @@ public class MainLevelManager : MonoBehaviour {
 				Player.GetComponent<UseSkill>().GetElement(typeof(WaterElement)).IsElementUnlocked = true;
 			}
 		}
-		if (Altars.Count > 3)
+		//if (Altars.Count > 3)
 		{
 			if (Altars[2].GetComponent<AltarObject>().isActivated)
 			{
+                Debug.Log("Earth activateD");
 				SkillUI[3].SetActive(true);
 				Player.GetComponent<UseSkill>().GetElement(typeof(EarthElement)).IsElementUnlocked = true;
 			}
@@ -65,11 +66,11 @@ public class MainLevelManager : MonoBehaviour {
         //Check if Snake is dead to spawn dialogue trigger
         //if (Snake1.GetComponent<Dead>().isActiveAndEnabled)
         //{
-        OrbCounterTrigger.SetActive(true);
+        /*OrbCounterTrigger.SetActive(true);
 			if (OrbCounterTrigger.GetComponent<DialogueTrigger>().triggered)
 			{
 				OrbCounter.SetActive(true);
-			}
+			}*/
 		//}
 		if (SetDialogue1.GetComponent<DialogueTrigger>().triggered)
 		{

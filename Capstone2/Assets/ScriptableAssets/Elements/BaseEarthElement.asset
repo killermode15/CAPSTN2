@@ -13,11 +13,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   ElementIcon: {fileID: 21300000, guid: d6cf59b87cf0b01468db627afceab43c, type: 3}
-  CooldownDuration: 5.1
+  CooldownDuration: 4
   IsElementUnlocked: 1
   IsOnCooldown: 0
   TerrainPrefab: {fileID: 1733431312861020, guid: fab958f5c8d87344ab9f2fef155dcf60,
     type: 2}
-  TerrainDuration: 1e+13
+  TerrainDuration: 1.5
   SpawnOffset: {x: 0, y: -5, z: 0}
-  TerrainHeight: 10
+  TerrainHeight: 5.5
