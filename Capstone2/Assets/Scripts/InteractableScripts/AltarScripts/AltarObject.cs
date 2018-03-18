@@ -7,6 +7,8 @@ public class AltarObject : MonoBehaviour
 	public bool isActivated;
 	public List<FloatingObject> FloatingObjects;
 	public List<ParticleSystem> ParticleFX;
+    public GameObject WorldTreeOrbParticlePrefab;
+    public string ParticlePathName;
 
 	private GameObject player;
 	private bool hasTriggeredEffects;
@@ -30,6 +32,12 @@ public class AltarObject : MonoBehaviour
 				transform.GetChild(0).GetComponent<DialogueTrigger>().TriggerDialogue();
 				if (player)
 					player.GetComponent<OrbAbsorb>().OrbCount = 0;
+
+                Vector3 stonePosition = transform.GetChild(2).GetChild(1).position;
+                GameObject ps = Instantiate(WorldTreeOrbParticlePrefab, GameObject.Find("WorldTree").transform);
+                ps.transform.position = stonePosition;
+                ps.GetComponent<ParticleFollowPath>().PathName = ParticlePathName;
+                ps.GetComponent<ParticleFollowPath>().Activate();
 			}
 		}
 
@@ -46,7 +54,7 @@ public class AltarObject : MonoBehaviour
         }
         else if (!player.GetComponent<OrbAbsorb>().IsOrbCounterFull() && !isActivated)
         {
-            if (InputManager.Instance.GetKey(ControllerInput.ActivateAltar))
+            if (InputManager.Instance.GetKeyDown(ControllerInput.ActivateAltar))
             {
                 transform.GetChild(1).GetComponent<DialogueTrigger>().TriggerDialogue();
             }

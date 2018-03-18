@@ -51,17 +51,18 @@ public class iTweenPath : MonoBehaviour
 			}	
 		}
 	}
-	
-	/// <summary>
-	/// Returns the visually edited path as a Vector3 array.
-	/// </summary>
-	/// <param name="requestedName">
-	/// A <see cref="System.String"/> the requested name of a path.
-	/// </param>
-	/// <returns>
-	/// A <see cref="Vector3[]"/>
-	/// </returns>
-	public static Vector3[] GetPath(string requestedName){
+
+
+    /// <summary>
+    /// Returns the visually edited path as a Vector3 array.
+    /// </summary>
+    /// <param name="requestedName">
+    /// A <see cref="System.String"/> the requested name of a path.
+    /// </param>
+    /// <returns>
+    /// A <see cref="Vector3[]"/>
+    /// </returns>
+    public static Vector3[] GetPath(string requestedName){
 		requestedName = requestedName.ToLower();
 		if(paths.ContainsKey(requestedName)){
 			return paths[requestedName].nodes.ToArray();
