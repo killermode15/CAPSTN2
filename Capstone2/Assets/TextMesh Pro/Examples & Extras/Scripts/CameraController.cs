@@ -193,13 +193,31 @@ namespace TMPro.Examples
 						FollowDistance = originalZoomInValue;
 						if (CameraTarget != originalTarget)
 							CameraTarget = originalTarget;
+						Debug.Log("TEST");
+						#region Reset Camera Position
+
+						if (Input.GetKeyDown(KeyCode.Joystick1Button11))
+						{
+							float angle = Vector3.Angle(player.transform.forward, Vector3.forward);
+							float angleFromWorldZAxis = Vector3.SignedAngle(player.transform.position, player.transform.forward, Vector3.forward);
+
+							if (angleFromWorldZAxis < 0.0f)
+							{
+								Debug.Log("[Angle: " + angle + "] [Angle From Z: " + angleFromWorldZAxis + "] Facing Left");
+								OrbitalAngle = angle;
+							}
+							else
+							{
+								Debug.Log("[Angle: " + angle + "] [Angle From Z: " + angleFromWorldZAxis + "] Facing Right");
+								OrbitalAngle = angle * -1;
+							}
+						}
+						#endregion
+
 
 						#region Panning and Rotation Behaviour
 
 						OrbitalAngle += Input.GetAxisRaw("RightStickX") * OrbitSpeed * Time.deltaTime;
-						if (OrbitalAngle > 360) OrbitalAngle = 1;
-						else if (OrbitalAngle < 0) OrbitalAngle = 359;
-
 
 						if (InvertCameraControlY)
 							ElevationAngle += Input.GetAxisRaw("RightStickY") * -1 * PanSpeed * Time.deltaTime;
