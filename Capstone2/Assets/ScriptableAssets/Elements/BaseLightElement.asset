@@ -16,5 +16,5 @@ MonoBehaviour:
   CooldownDuration: 1.75
   IsElementUnlocked: 1
   IsOnCooldown: 0
-  LightProjectilePrefab: {fileID: 1645646564628518, guid: f656dc0704a3a2a41ac9b320f161d7dc,
+  LightProjectilePrefab: {fileID: 1169011972153702, guid: 3b3e2f11ff01646419212aa3998f125b,
     type: 2}

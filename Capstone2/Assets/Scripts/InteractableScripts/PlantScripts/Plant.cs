@@ -42,7 +42,7 @@ public class Plant : MonoBehaviour
 			{
 				script.ActivateDissolver();
 			}
-
+			GetComponent<ActivatePlantCollider>().ActivateColliders();
 			hasSpawnedPlatform = true;
 			Debug.Log("Im hit with water");
 		}
