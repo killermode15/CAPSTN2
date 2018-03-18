@@ -2223,7 +2223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 0}
-  ObjectCounterpart: {fileID: 1980495399745334, guid: 26616f59de95bcc4582e2f2bde1e5c44,
+  ObjectCounterpart: {fileID: 1174414831696246, guid: 0966ab124d0b73d4dbd65ab9f9eebb98,
     type: 2}
 --- !u!135 &135206656491800274
 SphereCollider:

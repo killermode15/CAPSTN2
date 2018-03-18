@@ -1169,7 +1169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Manager: {fileID: 0}
-  ObjectCounterpart: {fileID: 1900258081299240, guid: e1dff21bfaf34eb489a5349dc84d3643,
+  ObjectCounterpart: {fileID: 1174414831696246, guid: 0966ab124d0b73d4dbd65ab9f9eebb98,
     type: 2}
 --- !u!135 &135756486595925264
 SphereCollider:
