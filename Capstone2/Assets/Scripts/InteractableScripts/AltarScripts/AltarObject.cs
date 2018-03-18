@@ -36,13 +36,21 @@ public class AltarObject : MonoBehaviour
 		if (!player)
 			return;
 
-		if (player.GetComponent<OrbAbsorb>().IsOrbCounterFull() && !isActivated)
-		{
-			if (InputManager.Instance.GetKey(ControllerInput.ActivateAltar))
-			{
-				isActivated = true;
-			}
-		}
+
+        if (player.GetComponent<OrbAbsorb>().IsOrbCounterFull() && !isActivated)
+        {
+            if (InputManager.Instance.GetKey(ControllerInput.ActivateAltar))
+            {
+                isActivated = true;
+            }
+        }
+        else if (!player.GetComponent<OrbAbsorb>().IsOrbCounterFull() && !isActivated)
+        {
+            if (InputManager.Instance.GetKey(ControllerInput.ActivateAltar))
+            {
+                transform.GetChild(1).GetComponent<DialogueTrigger>().TriggerDialogue();
+            }
+        }
 
 
 

@@ -23,6 +23,7 @@ public class Plant : MonoBehaviour
 		VineBridge = this.gameObject.transform.GetChild(0);
 		PlantShoot = this.gameObject.transform.GetChild(1);
 		VineBridge.gameObject.SetActive(false);
+        transform.GetChild(3).gameObject.SetActive(false);
     }
 
 	// Update is called once per frame
@@ -53,4 +54,20 @@ public class Plant : MonoBehaviour
 	{
 		isActivated = true;
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            transform.GetChild(3).gameObject.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            transform.GetChild(3).gameObject.SetActive(false);
+        }
+    }
 }

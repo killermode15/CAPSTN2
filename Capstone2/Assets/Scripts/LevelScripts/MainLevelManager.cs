@@ -14,6 +14,7 @@ public class MainLevelManager : MonoBehaviour {
     public GameObject DoubleJumpPlatform;
     public GameObject ActivatedPlant;
     public GameObject Dialogue6;
+    public GameObject OrbCounterUI;
 
 	// Use this for initialization
 	void Start ()
@@ -21,6 +22,7 @@ public class MainLevelManager : MonoBehaviour {
         //OrbCounter.SetActive(false);
         Dialogue2.SetActive(false);
         Dialogue6.SetActive(false);
+        OrbCounterUI.SetActive(false);
 
         for (int i = 0; i < BaseUI.Count; i++)
 		{
@@ -72,7 +74,7 @@ public class MainLevelManager : MonoBehaviour {
             if (Snake1.GetComponent<AIManager>().HP <= 0)
             {
                 Dialogue2.SetActive(true);
-                Debug.Log("yes");
+                OrbCounterUI.SetActive(true);
             }
         }
 		if (SetDialogue1.GetComponent<DialogueTrigger>().triggered)

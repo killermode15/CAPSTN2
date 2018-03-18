@@ -319,6 +319,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
   m_IsActive: 1
+--- !u!1 &1569713604680784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4471673303018850}
+  - component: {fileID: 114264607217064268}
+  m_Layer: 0
+  m_Name: DialogueTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1632620795626410
 GameObject:
   m_ObjectHideFlags: 1
@@ -451,7 +467,7 @@ GameObject:
   - component: {fileID: 4449114079558704}
   - component: {fileID: 114912410176070826}
   m_Layer: 0
-  m_Name: DialogueTrigger
+  m_Name: Insufficient Orbs Prompt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -467,6 +483,7 @@ GameObject:
   - component: {fileID: 4795909475871022}
   - component: {fileID: 65703180650732378}
   - component: {fileID: 114720297006659496}
+  - component: {fileID: 64257856614127350}
   m_Layer: 0
   m_Name: altar_stone
   m_TagString: Untagged
@@ -561,7 +578,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4795909475871022}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4029787193110252
 Transform:
@@ -603,7 +620,7 @@ Transform:
   - {fileID: 4758922658166688}
   - {fileID: 4734960310307010}
   m_Father: {fileID: 4795909475871022}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4071148356983272
 Transform:
@@ -631,7 +648,7 @@ Transform:
   - {fileID: 4090206989983164}
   - {fileID: 4664036463931690}
   m_Father: {fileID: 4795909475871022}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4090206989983164
 Transform:
@@ -738,7 +755,7 @@ Transform:
   - {fileID: 4563511259225346}
   - {fileID: 4983188641704060}
   m_Father: {fileID: 4795909475871022}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4432080392246072
 Transform:
@@ -772,6 +789,19 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1794096262444954}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.00000037248154, y: 0, z: -0.0000018706257}
+  m_LocalScale: {x: 1.0000017, y: 1, z: 1.0000017}
+  m_Children: []
+  m_Father: {fileID: 4795909475871022}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4471673303018850
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1569713604680784}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -811,7 +841,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1443338875901368}
-  m_LocalRotation: {x: -0.67958134, y: 0.6982468, z: -0.1825247, w: 0.13154998}
+  m_LocalRotation: {x: -0.6795814, y: 0.69824684, z: -0.18252471, w: 0.13155}
   m_LocalPosition: {x: -1.29, y: -0.89, z: 0.15999451}
   m_LocalScale: {x: 68.017845, y: 68.01764, z: 68.01764}
   m_Children: []
@@ -889,10 +919,11 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840186980861732}
-  m_LocalRotation: {x: -0, y: -0.9364583, z: -0, w: 0.3507789}
-  m_LocalPosition: {x: -5.3, y: 1.34, z: -132.27}
+  m_LocalRotation: {x: -0, y: -0.99517494, z: -0, w: 0.098117195}
+  m_LocalPosition: {x: 149.9, y: 12.33, z: 10.83}
   m_LocalScale: {x: 0.99999976, y: 1, z: 0.99999976}
   m_Children:
+  - {fileID: 4471673303018850}
   - {fileID: 4449114079558704}
   - {fileID: 4957747072246778}
   - {fileID: 4071148356983272}
@@ -901,7 +932,7 @@ Transform:
   - {fileID: 4007257706373628}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -138.93001, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -168.738, z: 0}
 --- !u!4 &4862635973123084
 Transform:
   m_ObjectHideFlags: 1
@@ -941,7 +972,7 @@ Transform:
   - {fileID: 4901341878198324}
   - {fileID: 4306778508168094}
   m_Father: {fileID: 4795909475871022}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4965017519543278
 Transform:
@@ -1832,6 +1863,20 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: bc3bf61158c8be8449103a6a409891b5, type: 3}
+--- !u!64 &64257856614127350
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1840186980861732}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 0}
 --- !u!64 &64279936403363442
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -2433,6 +2478,23 @@ MonoBehaviour:
   DampSpeed: 2
   BobbingSpeed: 1.25
   RotationSpeed: 0.5
+--- !u!114 &114264607217064268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1569713604680784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdd00f90705de444e8edc847eee6c42c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: 
+    sentences:
+    - You have unlocked your Wind Element!
+    - Double Tap X to Double Jump!
+  triggered: 0
 --- !u!114 &114308041032018902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2499,8 +2561,7 @@ MonoBehaviour:
   dialogue:
     name: 
     sentences:
-    - You have unlocked your Wind Element!
-    - Double Tap X to Double Jump!
+    - You don't have enough orbs! Collect 10 to activate.
   triggered: 0
 --- !u!114 &114980564192981110
 MonoBehaviour:

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UseSkill : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class UseSkill : MonoBehaviour
 
 	private int currentActiveElementIndex;
 
+    public List<Image> highLightUI;
+
 	private void OnDrawGizmos()
 	{
 		WaterElement waterElement = GetElement(typeof(WaterElement)) as WaterElement;
@@ -30,8 +33,12 @@ public class UseSkill : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+        for (int i = 0; i < highLightUI.Count; i++)
+        {
+            highLightUI[i].gameObject.SetActive(false);
+        }
 
-		foreach (Element element in ElementalSkills)
+        foreach (Element element in ElementalSkills)
 		{
 			element.IsOnCooldown = false;
 		}
@@ -88,20 +95,41 @@ public class UseSkill : MonoBehaviour
 					switch (input)
 					{
 						case UP:
-							if (GetElement(typeof(EarthElement)).IsElementUnlocked)
-								SwitchElement(ElementType.Earth);
+                            if (GetElement(typeof(EarthElement)).IsElementUnlocked)
+                            {
+                                SwitchElement(ElementType.Earth);
+                                for (int i = 0; i < highLightUI.Count; i++)
+                                {
+                                    highLightUI[i].gameObject.SetActive(false);
+                                }
+                                highLightUI[2].gameObject.SetActive(true);
+                            }
 							break;
 						case DOWN:
 							//if (GetElement(typeof(WindElement)).IsElementUnlocked)
 								//SwitchElement(ElementType.Wind);
 							break;
 						case LEFT:
-							if (GetElement(typeof(LightElement)).IsElementUnlocked)
-								SwitchElement(ElementType.Light);
+                            if (GetElement(typeof(LightElement)).IsElementUnlocked)
+                            {
+                                SwitchElement(ElementType.Light);
+                                for (int i = 0; i < highLightUI.Count; i++)
+                                {
+                                    highLightUI[i].gameObject.SetActive(false);
+                                }
+                                highLightUI[3].gameObject.SetActive(true);
+                            }
 							break;
 						case RIGHT:
-							if (GetElement(typeof(WaterElement)).IsElementUnlocked)
-								SwitchElement(ElementType.Water);
+                            if (GetElement(typeof(WaterElement)).IsElementUnlocked)
+                            {
+                                SwitchElement(ElementType.Water);
+                                for (int i = 0; i < highLightUI.Count; i++)
+                                {
+                                    highLightUI[i].gameObject.SetActive(false);
+                                }
+                                highLightUI[1].gameObject.SetActive(true);
+                            }
 							break;
 					}
 				}

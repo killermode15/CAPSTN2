@@ -48,10 +48,6 @@ public class LightProjectile : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if(other.CompareTag("Ground"))
-		{
-			Destroy(gameObject);
-		}
 		if(other.CompareTag("Enemy"))
 		{
 			other.GetComponent<StateManager>().GetDamage();
