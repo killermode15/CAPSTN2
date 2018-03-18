@@ -6,7 +6,7 @@ public class MainLevelManager : MonoBehaviour {
 
     public GameObject Player;
     public List<GameObject> Altars = new List<GameObject>();
-    public GameObject OrbCounterTrigger;
+    public GameObject Dialogue2;
 	public GameObject Snake1;
 	public List<GameObject> BaseUI = new List<GameObject>();
     public List<GameObject> SkillUI = new List<GameObject>();
@@ -19,7 +19,7 @@ public class MainLevelManager : MonoBehaviour {
 	void Start ()
     {
         //OrbCounter.SetActive(false);
-		OrbCounterTrigger.SetActive(false);
+        Dialogue2.SetActive(false);
         Dialogue6.SetActive(false);
 
         for (int i = 0; i < BaseUI.Count; i++)
@@ -38,9 +38,9 @@ public class MainLevelManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//if first Altar activates the Wind Element
-		//if (Altars.Count > 1)
-		{
+        //if first Altar activates the Wind Element
+        //if (Altars.Count > 1)
+        {
 			if (Altars[0].GetComponent<AltarObject>().isActivated)
 			{
 				SkillUI[1].SetActive(true);
@@ -67,11 +67,14 @@ public class MainLevelManager : MonoBehaviour {
 			}
 		}
         //Check if Snake is dead to spawn dialogue trigger
-        /*if (Snake1.GetComponent<StateManager>().GetState("Dead"))   
+        if (Snake1 != null)
         {
-            OrbCounterTrigger.SetActive(true);
-            Debug.Log("yes");
-		}*/
+            if (Snake1.GetComponent<AIManager>().HP <= 0)
+            {
+                Dialogue2.SetActive(true);
+                Debug.Log("yes");
+            }
+        }
 		if (SetDialogue1.GetComponent<DialogueTrigger>().triggered)
 		{
             SkillUI[0].SetActive(true);
