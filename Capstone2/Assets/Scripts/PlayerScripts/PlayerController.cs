@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour, IPausable
     [HideInInspector] public bool CanJump = true;
     [HideInInspector] public bool CanMove = true;
 
+	private bool hasActivatedDoubleJump;
     private bool canDoubleJump;
     private float initialRollValue;
     private float turnSmoothVel;
@@ -87,11 +88,24 @@ public class PlayerController : MonoBehaviour, IPausable
         {
             CanJump = true;
             moveDirection.y = (Physics.gravity.y * Time.deltaTime);
-        }
+
+			if (hasActivatedDoubleJump && canDoubleJump)
+			{
+				canDoubleJump = false;
+				hasActivatedDoubleJump = false;
+			}
+		}
         else
         {
-            if (!IsGrounded())
-                CanJump = false;
+			if (!IsGrounded())
+			{
+				CanJump = false;
+				if(!hasActivatedDoubleJump && !canDoubleJump)
+				{
+					canDoubleJump = true;
+					hasActivatedDoubleJump = true;
+				}
+			}
             if (!CanJump || moveDirection.y > 0)
             {
                 if (!IsGrounded())
