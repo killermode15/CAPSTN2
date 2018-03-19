@@ -85,5 +85,5 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DissolvePosition: {r: 0, g: 0, b: 0, a: 0}
-    - _DissolveStartPosition: {r: 128.62715, g: 103.16418, b: 458.64798, a: 0}
+    - _DissolveStartPosition: {r: 128.62714, g: 103.164185, b: 458.648, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

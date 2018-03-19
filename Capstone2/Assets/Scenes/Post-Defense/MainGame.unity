@@ -52654,7 +52654,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 250b334732b33ef4f9315b94b0dd6bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   PushForce: 10
+=======
+>>>>>>> 8c48023cc230bf3ff25de4dc68a807da2ed32302
   sphereRadius: 1
   isOnVines: 0
   x: 0
