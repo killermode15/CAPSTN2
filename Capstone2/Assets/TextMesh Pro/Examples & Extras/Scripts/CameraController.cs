@@ -145,7 +145,7 @@ namespace TMPro.Examples
 
 						Vector3 relativePoint = transform.InverseTransformPoint(target.position);
 						float angleFromWorldZAxis = Vector3.SignedAngle(player.transform.position, target.position, Vector3.forward);
-						Debug.Log(angleFromWorldZAxis);
+						//Debug.Log(angleFromWorldZAxis);
 
 						float desiredAngle = 0;
 

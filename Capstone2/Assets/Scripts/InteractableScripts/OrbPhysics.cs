@@ -6,8 +6,6 @@ public class OrbPhysics : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        transform.GetComponentInChildren<FloatingObject>().enabled = false;
-        transform.GetComponentInChildren<SphereCollider>().isTrigger = false;
         GetComponent<Rigidbody>().useGravity = true;
         GetComponent<Rigidbody>().isKinematic = false;
     }
@@ -17,15 +15,14 @@ public class OrbPhysics : MonoBehaviour {
 
 	}
 
-    void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground"))
         {
             Debug.Log("hit groumd");
-            transform.GetComponentInChildren<FloatingObject>().enabled = false;
-            transform.GetComponentInChildren<SphereCollider>().isTrigger = true;
             GetComponent<Rigidbody>().useGravity = false;
             GetComponent<Rigidbody>().isKinematic = true;
+            transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
         }
     }
 }

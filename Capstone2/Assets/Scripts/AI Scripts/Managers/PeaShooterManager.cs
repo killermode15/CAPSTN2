@@ -28,23 +28,47 @@ public class PeaShooterManager : StateManager {
 		if (!isPaused) {
 			CheckIfPlayerInRange ();
 			StateTransition ();
-		}
+            CheckIfDead();
+        }
 	}
 
-	public override void StateTransition()
+    public override void CheckIfDead()
+    {
+        if (HP <= 0)
+        {
+            //Debug.Log("dead yo");
+            ChangeState(GetState("Dead"));
+        }
+    }
+
+    public override void StateTransition()
 	{
-		base.StateTransition ();
-		/*if(!GetComponent<AbsorbableCorruption>().HasEnergyLeft())
+		    base.StateTransition ();
+        if (Player.GetComponent<HP>().Health <= 0)
+        {
+            ChangeState(GetState("Patrol"));
+        }
+        /*if(!GetComponent<AbsorbableCorruption>().HasEnergyLeft())
 		{
 			ChangeState(GetState("Dead"));
 			CurrentState.OnUpdate();
 		}*/
-		if (CompareToCurrentState (typeof(Patrol))) {
-			//If the current state is not updating
-			if (!CurrentState.OnUpdate ()) {
+        if (CompareToCurrentState (typeof(Patrol))) {
+            //If the current state is not updating
+            if (HP <= 0)
+            {
+                ChangeState(GetState("Dead"));
+                GetComponent<PeaShooting>().enabled = false;
+            }
+            if (!CurrentState.OnUpdate ()) {
 				ChangeState (GetState ("PeaChase"));
 			}
 		} else if (CompareToCurrentState (typeof(PeaChase))){
+            if (HP <= 0)
+            {
+                ChangeState(GetState("Dead"));
+                GetComponent<PeaShooting>().enabled = false;
+            }
 			if (!CurrentState.OnUpdate())
 			{
 				ChangeState(GetState("Patrol"));

@@ -15,14 +15,33 @@ public class MainLevelManager : MonoBehaviour {
     public GameObject ActivatedPlant;
     public GameObject Dialogue6;
     public GameObject OrbCounterUI;
+    public List<GameObject> DoubleSpider;
+    public GameObject Dialogue32;
+    public GameObject PeaShooter1;
+    public GameObject Dialogue42;
+    private bool shit1, shit2, shit3, shit4;
+    public GameObject ActivatedPlant1;
+    public GameObject Dialogue7;
+    public GameObject Dialogue43;
+    public List<GameObject> TagTeam;
+    public GameObject Checkpoint51;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
+        shit1 = false;
+        shit2 = false;
+        shit3 = false;
+        shit4 = false;
         //OrbCounter.SetActive(false);
         Dialogue2.SetActive(false);
         Dialogue6.SetActive(false);
         OrbCounterUI.SetActive(false);
+        Dialogue32.SetActive(false);
+        Dialogue42.SetActive(false);
+        Dialogue7.SetActive(false);
+        Dialogue43.SetActive(false);
+        Checkpoint51.SetActive(false);
 
         for (int i = 0; i < BaseUI.Count; i++)
 		{
@@ -90,5 +109,61 @@ public class MainLevelManager : MonoBehaviour {
         {
             Dialogue6.SetActive(true);
         }
-	}
+
+        if(DoubleSpider[0] != null) {
+            if (DoubleSpider[0].GetComponent<StateManager>().HP <= 0)
+            {
+                shit1 = true;
+            }
+        }
+        if (DoubleSpider[1] != null)
+        {
+            if (DoubleSpider[1].GetComponent<StateManager>().HP <= 0)
+            {
+                shit2 = true;
+            }
+        }
+        if (shit1 && shit2)
+        {
+            Dialogue32.SetActive(true);
+            StartCoroutine(Wait());
+        }
+
+        if (PeaShooter1 != null)
+        {
+            if (PeaShooter1.GetComponent<StateManager>().HP <= 0)
+            {
+                StartCoroutine(Wait());
+                Dialogue42.SetActive(true);
+            }
+        }
+
+        if(ActivatedPlant1.GetComponent<Plant>().IsActivated)
+            Dialogue7.SetActive(true);
+
+        if (TagTeam[0] != null)
+        {
+            if (TagTeam[0].GetComponent<StateManager>().HP <= 0)
+            {
+                shit3 = true;
+            }
+        }
+        if (TagTeam[1] != null)
+        {
+            if (TagTeam[1].GetComponent<StateManager>().HP <= 0)
+            {
+                shit4 = true;
+            }
+        }
+        if (shit3 && shit4)
+        {
+            Dialogue43.SetActive(true);
+            Checkpoint51.SetActive(true);
+        }
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1.5f);
+    }
 }
