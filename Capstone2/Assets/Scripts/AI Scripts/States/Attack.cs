@@ -37,7 +37,11 @@ public class Attack : State
 		{
             //Charge();
             transform.LookAt(new Vector3(Manager.Player.transform.position.x, transform.position.y, Manager.Player.transform.position.z));
-            Bite();
+            if (Manager.Player.GetComponent<HP>().Health > 0)
+            {
+                Debug.Log(Manager.Player.GetComponent<HP>().Health);
+                Bite();
+            }
 		}
 		else
 		{

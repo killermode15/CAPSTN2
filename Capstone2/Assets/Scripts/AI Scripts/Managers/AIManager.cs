@@ -50,14 +50,19 @@ public class AIManager : StateManager {
     public override void StateTransition()
 	{
 		base.StateTransition ();
-		/*if(!GetComponent<AbsorbableCorruption>().HasEnergyLeft())
+
+        if (Player.GetComponent<HP>().Health <= 0)
+        {
+            ChangeState(GetState("GroundedPatrol"));
+        }
+        /*if(!GetComponent<AbsorbableCorruption>().HasEnergyLeft())
 		{
 			ChangeState(GetState("Dead"));
 			CurrentState.OnUpdate();
 		}*/
 
-		//Compare the current state to check if the current state is idle
-		if (CompareToCurrentState (typeof(Idle))) {
+        //Compare the current state to check if the current state is idle
+        if (CompareToCurrentState (typeof(Idle))) {
 			//If the current state is not updating
 			if (!CurrentState.OnUpdate ()) {
 				//Transition to Patrol
@@ -80,7 +85,7 @@ public class AIManager : StateManager {
 					ChangeState (GetState ("Idle"));
 				} else if (playerDistance <= attackRange) {
 					//Debug.Log ("in range for attack!");
-					ChangeState (GetState ("Attack"));
+                    ChangeState (GetState ("Attack"));
 				}
                 if (HP <= 0)
                 {

@@ -256,7 +256,8 @@ public class LockOn : MonoBehaviour
 		if (currentTarget)
 		{
 			Crosshair.SetActive(true);
-			Crosshair.transform.position = currentTarget.transform.position;
+			Crosshair.transform.position = 
+                new Vector3(currentTarget.transform.position.x, currentTarget.transform.position.y + 1.0f, currentTarget.transform.position.z);
 		}
 	}
 }

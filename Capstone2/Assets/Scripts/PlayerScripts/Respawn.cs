@@ -22,7 +22,7 @@ public class Respawn : MonoBehaviour {
 	public void respawn(){
 		GetComponent<PlayerController> ().StopMovement ();
 		transform.position = respawnLocation.transform.position;
-		GetComponent<HP> ().AddHealth (GetComponent<HP> ().MaxHealth);
+		GetComponent<HP> ().AddHealth (GetComponent<HP> ().MaxHealth * 0.75f);
 		GetComponent<PlayerController> ().CanMove = true;
 		GetComponent<PlayerController> ().enabled = true;
 
