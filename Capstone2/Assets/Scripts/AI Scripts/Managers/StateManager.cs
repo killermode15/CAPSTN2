@@ -95,7 +95,7 @@ public class StateManager : MonoBehaviour, IPausable {
 
 		//Temporary
 		GameObject orbSpawned = 
-            Instantiate(OrbPrefab, new Vector3(transform.position.x, transform.position.y + 3.0f, transform.position.z), Quaternion.identity);
+            Instantiate(OrbPrefab, new Vector3(transform.position.x - 1.0f, transform.position.y + 3.5f, transform.position.z), Quaternion.identity);
 
 	}
 

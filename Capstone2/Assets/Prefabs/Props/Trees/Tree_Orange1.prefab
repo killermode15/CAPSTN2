@@ -769,7 +769,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4464450685967224}
-  - component: {fileID: 64653325314969456}
   m_Layer: 0
   m_Name: Tree_Orange1
   m_TagString: Untagged
@@ -922,6 +921,7 @@ GameObject:
   - component: {fileID: 4853447357591736}
   - component: {fileID: 33900693364201006}
   - component: {fileID: 23121967815189076}
+  - component: {fileID: 64599195146324660}
   m_Layer: 0
   m_Name: polySurface22
   m_TagString: Untagged
@@ -2549,12 +2549,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1729022893257390}
   m_Mesh: {fileID: 4300000, guid: 5796eb3db39a791478a554815c8477ab, type: 3}
---- !u!64 &64653325314969456
+--- !u!64 &64599195146324660
 MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1632962576645330}
+  m_GameObject: {fileID: 1729022893257390}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -2562,4 +2562,4 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 4300000, guid: 5796eb3db39a791478a554815c8477ab, type: 3}

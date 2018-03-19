@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 136813758323849212}
   m_Layer: 0
   m_Name: Vine Colliders (6)
-  m_TagString: Untagged
+  m_TagString: Vine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 136145759355743592}
   m_Layer: 0
   m_Name: Vine Colliders (9)
-  m_TagString: Untagged
+  m_TagString: Vine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 136750864247516852}
   m_Layer: 0
   m_Name: Vine Colliders (5)
-  m_TagString: Untagged
+  m_TagString: Vine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 136972396756521774}
   m_Layer: 0
   m_Name: Vine Colliders (1)
-  m_TagString: Untagged
+  m_TagString: Vine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 136952666827517976}
   m_Layer: 0
   m_Name: Vine Colliders (8)
-  m_TagString: Untagged
+  m_TagString: Vine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 136592423746531818}
   m_Layer: 0
   m_Name: Vine Colliders
-  m_TagString: Untagged
+  m_TagString: Vine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 136415121829286448}
   m_Layer: 0
   m_Name: Vine Colliders (3)
-  m_TagString: Untagged
+  m_TagString: Vine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 136380075432564404}
   m_Layer: 0
   m_Name: Vine Colliders (7)
-  m_TagString: Untagged
+  m_TagString: Vine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -429,7 +429,6 @@ GameObject:
   - component: {fileID: 33178788613979328}
   - component: {fileID: 23280548328904580}
   - component: {fileID: 54939807079343508}
-  - component: {fileID: 64967851854761218}
   m_Layer: 0
   m_Name: pCube7
   m_TagString: Untagged
@@ -448,7 +447,7 @@ GameObject:
   - component: {fileID: 136316103143304052}
   m_Layer: 0
   m_Name: Vine Colliders (4)
-  m_TagString: Untagged
+  m_TagString: Vine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -464,7 +463,7 @@ GameObject:
   - component: {fileID: 136211908039591816}
   m_Layer: 0
   m_Name: Vine Colliders (2)
-  m_TagString: Untagged
+  m_TagString: Vine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -480,7 +479,7 @@ GameObject:
   - component: {fileID: 136534779300417408}
   m_Layer: 0
   m_Name: Vine Colliders (10)
-  m_TagString: Untagged
+  m_TagString: Vine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -867,7 +866,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1582736799931484}
-  m_LocalRotation: {x: 0.0721755, y: -0.99383247, z: 0.0346893, w: -0.07670912}
+  m_LocalRotation: {x: 0.07217551, y: -0.9938325, z: 0.034689303, w: -0.07670913}
   m_LocalPosition: {x: -0.041347414, y: 0.0028720459, z: -0.015918856}
   m_LocalScale: {x: 0.4260437, y: 0.03496031, z: 0.34376997}
   m_Children: []
@@ -919,7 +918,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1184488200270514}
-  m_LocalRotation: {x: 0.0721755, y: -0.99383247, z: 0.0346893, w: -0.07670912}
+  m_LocalRotation: {x: 0.07217551, y: -0.9938325, z: 0.034689303, w: -0.07670913}
   m_LocalPosition: {x: -0.04064, y: 0.00285, z: -0.01677}
   m_LocalScale: {x: 0.42590454, y: 0.03494893, z: 0.34376925}
   m_Children: []
@@ -1170,20 +1169,6 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 0}
---- !u!64 &64967851854761218
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1807863667975612}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: e3a10519a087edc43ad90aad11a82c1a, type: 3}
 --- !u!65 &65050088907975712
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1691,7 +1676,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -50050829
+  randomSeed: -932378765
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -1781,7 +1766,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.2794118, g: 1, b: 0.43346855, a: 1}
+      maxColor: {r: 0, g: 0.503448, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

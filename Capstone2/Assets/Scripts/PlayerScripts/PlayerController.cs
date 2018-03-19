@@ -21,13 +21,14 @@ public class PlayerController : MonoBehaviour, IPausable
     [HideInInspector] public bool CanJump = true;
     [HideInInspector] public bool CanMove = true;
 
-	private bool hasActivatedDoubleJump;
+    private bool hasActivatedDoubleJump;
     private bool canDoubleJump;
     private float initialRollValue;
     private float turnSmoothVel;
     private float origZPos;
     private float currentRotateTo;
     private Vector3 moveDirection;
+    private Vector3 externalForce;
     private CharacterController controller;
 
 	#region Roll Variables (Unimplemented)
@@ -84,28 +85,28 @@ public class PlayerController : MonoBehaviour, IPausable
     //or is falling
     void CalculateGravity()
     {
-        if (IsGrounded()/* && !InDialogue*/)
+        if (IsGrounded() && GetComponent<RaycastCheck>().isOnVines == false)
         {
             CanJump = true;
             moveDirection.y = (Physics.gravity.y * Time.deltaTime);
 
-			if (hasActivatedDoubleJump && canDoubleJump)
-			{
-				canDoubleJump = false;
-				hasActivatedDoubleJump = false;
-			}
-		}
+            if(hasActivatedDoubleJump && canDoubleJump)
+            {
+                canDoubleJump = false;
+                hasActivatedDoubleJump = false;
+            }
+        }
         else
         {
-			if (!IsGrounded())
-			{
-				CanJump = false;
-				if(!hasActivatedDoubleJump && !canDoubleJump)
-				{
-					canDoubleJump = true;
-					hasActivatedDoubleJump = true;
-				}
-			}
+            if (!IsGrounded())
+            {
+                CanJump = false;
+                if (!hasActivatedDoubleJump && !canDoubleJump)
+                {
+                    canDoubleJump = true;
+                    hasActivatedDoubleJump = true;
+                }
+            }
             if (!CanJump || moveDirection.y > 0)
             {
                 if (!IsGrounded())
@@ -119,6 +120,11 @@ public class PlayerController : MonoBehaviour, IPausable
             }
         }
         anim.SetBoolAnimParam("HasLanded", IsGrounded());
+    }
+
+    public void ApplyExternalForce(Vector3 force)
+    {
+        externalForce = force;
     }
 
 	#endregion
@@ -223,7 +229,7 @@ public class PlayerController : MonoBehaviour, IPausable
         //Get the current y velocity of the movement direction
         float currY = moveDirection.y;
         //Then get the movement input from the player
-        if (CanMove)
+        if (CanMove && !GetComponentInChildren<ElementEffects>().isCasting)
         {
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
@@ -260,9 +266,12 @@ public class PlayerController : MonoBehaviour, IPausable
         //Then set the y velocity back
         moveDirection.y = currY;
 
+        moveDirection += externalForce;
+
 
         controller.Move(moveDirection * Time.deltaTime);
 
+        moveDirection -= externalForce;
         if (IsGrounded()/* && !InDialogue*/)
         {
             moveDirection.y = 0;

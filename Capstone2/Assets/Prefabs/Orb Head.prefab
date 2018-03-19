@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 33334626965766302}
   - component: {fileID: 135466177429586136}
   - component: {fileID: 23757859780215686}
-  - component: {fileID: 54889071846162286}
   - component: {fileID: 114158328824178662}
-  - component: {fileID: 114272426693646650}
+  - component: {fileID: 54176833098370436}
+  - component: {fileID: 114118322319048398}
   m_Layer: 0
   m_Name: Orb
   m_TagString: AbsorbOrb
@@ -180,7 +180,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1120684504579258}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.5791225, z: 0}
+  m_LocalPosition: {x: 0, y: -3.61, z: 0}
   m_LocalScale: {x: 2.2233794, y: 2.2233813, z: 2.2233813}
   m_Children:
   - {fileID: 4744000004496556}
@@ -208,7 +208,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1618789754123116}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.55, y: 26.127655, z: -48.27}
+  m_LocalPosition: {x: 103.45, y: 110.73, z: 438.81}
   m_LocalScale: {x: 0.74549997, y: 0.74549985, z: 0.74549985}
   m_Children:
   - {fileID: 4337592212653002}
@@ -340,7 +340,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1937545490762634}
   m_Mesh: {fileID: 4300000, guid: 0ee150be3c41ab14ab0dd09fbf1d6909, type: 3}
---- !u!54 &54889071846162286
+--- !u!54 &54176833098370436
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -355,6 +355,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114118322319048398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1120684504579258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd92036ed2998d44b255ae0dec1cebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114158328824178662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -366,23 +377,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fdec521c77083e4998ad605e6ab7348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114272426693646650
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1120684504579258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d28f40fbbeeb5e46a14e7ac7bbb2ee9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FloatPositionReference: {fileID: 4619777085490060}
-  UseReference: 0
-  PlayOnAwake: 1
-  DampSpeed: 1
-  BobbingSpeed: 3
-  RotationSpeed: 0
 --- !u!135 &135466177429586136
 SphereCollider:
   m_ObjectHideFlags: 1
