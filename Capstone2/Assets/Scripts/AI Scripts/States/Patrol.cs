@@ -19,7 +19,7 @@ public class Patrol : State {
 
 	public override bool OnUpdate()
 	{
-		Debug.Log("Patrolling");
+		//Debug.Log("Patrolling");
 		base.OnUpdate();
 		GetComponentInChildren<Animator>().SetBool("Attack", false);
 		GetComponentInChildren<Animator>().SetBool("Flying", true);

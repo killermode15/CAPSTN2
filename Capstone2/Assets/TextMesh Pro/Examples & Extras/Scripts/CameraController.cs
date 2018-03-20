@@ -193,7 +193,7 @@ namespace TMPro.Examples
 						FollowDistance = originalZoomInValue;
 						if (CameraTarget != originalTarget)
 							CameraTarget = originalTarget;
-						Debug.Log("TEST");
+						//Debug.Log("TEST");
 						#region Reset Camera Position
 
 						if (Input.GetKeyDown(KeyCode.Joystick1Button11))

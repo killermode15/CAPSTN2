@@ -17,7 +17,6 @@ public class Idle : State
 
 	public override bool OnUpdate()
 	{
-		Debug.Log("idling");
 		if (!IsIdling)
 		{
 			return false;

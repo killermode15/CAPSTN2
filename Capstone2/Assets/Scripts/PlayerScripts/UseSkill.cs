@@ -52,6 +52,20 @@ public class UseSkill : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+
+		if(Input.GetKeyDown(KeyCode.Space))
+		{
+			if (GetElement(typeof(WaterElement)).IsElementUnlocked)
+			{
+				SwitchElement(ElementType.Water);
+				for (int i = 0; i < highLightUI.Count; i++)
+				{
+					highLightUI[i].gameObject.SetActive(false);
+				}
+				highLightUI[1].gameObject.SetActive(true);
+			}
+		}
+
 		UpdateElementCooldowns();
 
 		if (InputManager.Instance.GetKey(ControllerInput.UseCurrentElement))
@@ -72,6 +86,7 @@ public class UseSkill : MonoBehaviour
 			{
 				if (Input.GetAxis("DPadX") == 1)
 				{
+					Debug.Log(Input.GetAxis("DPadX"));
 					input = RIGHT;
 					isKeyPressed = true;
 				}
@@ -132,6 +147,7 @@ public class UseSkill : MonoBehaviour
                             }
 							break;
 					}
+					Debug.Log(input);
 				}
 			}
 			else
@@ -141,6 +157,8 @@ public class UseSkill : MonoBehaviour
 					isKeyPressed = false;
 				}
 			}
+
+
 
 			yield return new WaitForEndOfFrame();
 		}

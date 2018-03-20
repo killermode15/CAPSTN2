@@ -15,6 +15,7 @@ public class Element : ScriptableObject {
 
 	public ElementType Type;
 	public Sprite ElementIcon;
+	public AudioClip SoundEffect;
 	public float CooldownDuration;
 	public bool IsElementUnlocked;
 	public bool IsOnCooldown;

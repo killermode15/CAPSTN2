@@ -5,7 +5,7 @@ using UnityEngine;
 public class ElementEffects : MonoBehaviour
 {
 
-	[HideInInspector] public bool isCasting;
+	 public bool isCasting;
 
 	[Header("Earth Element Variables")]
 	public GameObject TerrainPrefab;

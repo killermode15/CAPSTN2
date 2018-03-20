@@ -17,11 +17,22 @@ public class PlayerController : MonoBehaviour, IPausable
     [Header("Prefabs")]
     public GameObject JumpVFX;
 
+	[Space]
+	[Header("Sounds")]
+	public AudioClip JumpSFX;
+	public AudioClip DoubleJumpSFX;
+
     [HideInInspector] public PlayerAnimation anim;
     [HideInInspector] public bool CanJump = true;
     [HideInInspector] public bool CanMove = true;
 
-    private bool hasActivatedDoubleJump;
+	public delegate void OnJump();
+	public OnJump onJump;
+
+	public delegate void OnDoubleJump();
+	public OnDoubleJump onDoubleJump;
+
+	private bool hasActivatedDoubleJump;
     private bool canDoubleJump;
     private float initialRollValue;
     private float turnSmoothVel;
@@ -29,6 +40,7 @@ public class PlayerController : MonoBehaviour, IPausable
     private float currentRotateTo;
     private Vector3 moveDirection;
     private Vector3 externalForce;
+	private AudioSource source;
     private CharacterController controller;
 
 	#region Roll Variables (Unimplemented)
@@ -47,6 +59,7 @@ public class PlayerController : MonoBehaviour, IPausable
 
         controller = GetComponent<CharacterController>();
         anim = GetComponent<PlayerAnimation>();
+		source = GetComponent<AudioSource>();
 
         controller.detectCollisions = true;
 
@@ -203,6 +216,15 @@ public class PlayerController : MonoBehaviour, IPausable
                 moveDirection.y = JumpHeight;
                 //And set canJump to false
                 CanJump = false;
+
+				source.clip = JumpSFX;
+				source.Play();
+
+				if(onJump != null)
+				{
+					onJump.Invoke();
+				}
+
                 if (GetComponent<UseSkill>().GetElement(typeof(WindElement)).IsElementUnlocked)
                     canDoubleJump = true;
             }
@@ -213,7 +235,15 @@ public class PlayerController : MonoBehaviour, IPausable
                 moveDirection.y += JumpHeight;
                 CanJump = false;
                 canDoubleJump = false;
-            }
+
+				source.clip = DoubleJumpSFX;
+				source.Play();
+
+				if (onDoubleJump != null)
+				{
+					onDoubleJump.Invoke();
+				}
+			}
         }
     }
 
