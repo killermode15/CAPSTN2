@@ -30,6 +30,7 @@ public class EndingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        ///for the orb being white
         for (int i = 0; i < OrbParticles.Count; i++)
         {
             //lerpedColor = Color.Lerp(OrbParticles[i].GetComponent<ParticleSystem>().startColor;

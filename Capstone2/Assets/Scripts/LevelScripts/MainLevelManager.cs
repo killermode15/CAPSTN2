@@ -25,6 +25,7 @@ public class MainLevelManager : MonoBehaviour {
     public GameObject Dialogue43;
     public List<GameObject> TagTeam;
     public GameObject Checkpoint51;
+    public GameObject VineSpawn3;
 
     // Use this for initialization
     void Start ()
@@ -131,9 +132,8 @@ public class MainLevelManager : MonoBehaviour {
 
         if (PeaShooter1 != null)
         {
-            if (PeaShooter1.GetComponent<StateManager>().HP <= 0)
+            if (PeaShooter1.GetComponent<StateManager>().HP <= 0 && !VineSpawn3.GetComponent<Plant>().IsActivated)
             {
-                StartCoroutine(Wait());
                 Dialogue42.SetActive(true);
             }
         }
