@@ -29,7 +29,7 @@ public class RaycastCheck : MonoBehaviour {
         //if(Physics.SphereCast(transform.position, sphereRadius, -Vector3.up, out hit))
 
         RaycastHit hit;
-        if (Physics.SphereCast(transform.position, sphereRadius, -Vector3.up, out hit))
+        if (Physics.SphereCast(transform.position, sphereRadius, -Vector3.up, out hit, 0.25f))
         {
             if (hit.collider.CompareTag("Vine"))
             {
@@ -51,4 +51,11 @@ public class RaycastCheck : MonoBehaviour {
 
         Debug.DrawRay(transform.position, -Vector3.up);
 	}
+
+	private void OnDrawGizmosSelected()
+	{
+		Gizmos.DrawWireSphere(transform.position - Vector3.up, sphereRadius);
+	}
+
+
 }

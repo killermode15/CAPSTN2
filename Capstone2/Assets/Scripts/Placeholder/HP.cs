@@ -8,8 +8,8 @@ public class HP : MonoBehaviour
 
 	public float Health;
 	public float MaxHealth;
-
 	public Slider HealthBar;
+	public AudioClip DamageSFX;
 
 	private float hpPercent;
 	private float dampTime = 5f;
@@ -63,6 +63,13 @@ public class HP : MonoBehaviour
 	public void RemoveHealth(float val)
 	{
 		Health -= val;
+
+		AudioSource source = gameObject.AddComponent<AudioSource>();
+		source.clip = DamageSFX;
+		source.GetComponent<AudioSource>().Play();
+		Destroy(source, source.clip.length);
+
+
 		if(val >= 5)
 		{
 			GetComponent<PlayerAnimation>().SetTriggerAnimParam("Hit");

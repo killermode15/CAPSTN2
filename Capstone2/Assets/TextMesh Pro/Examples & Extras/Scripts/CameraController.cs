@@ -105,7 +105,7 @@ namespace TMPro.Examples
 		void LateUpdate()
 		{
 			GetPlayerInput();
-
+			
 
 			// Check if we still have a valid target
 			if (CameraTarget != null)

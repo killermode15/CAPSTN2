@@ -10,6 +10,8 @@ public class AltarObject : MonoBehaviour
     public GameObject WorldTreeOrbParticlePrefab;
     public string ParticlePathName;
 
+	public AudioClip ActivationSFX;
+
 	private GameObject player;
 	private bool hasTriggeredEffects;
 
@@ -38,6 +40,11 @@ public class AltarObject : MonoBehaviour
                 ps.transform.position = stonePosition;
                 ps.GetComponent<ParticleFollowPath>().PathName = ParticlePathName;
                 ps.GetComponent<ParticleFollowPath>().Activate();
+
+				AudioSource source = gameObject.AddComponent<AudioSource>();
+				source.clip = ActivationSFX;
+				source.Play();
+				Destroy(source, source.clip.length);
 			}
 		}
 

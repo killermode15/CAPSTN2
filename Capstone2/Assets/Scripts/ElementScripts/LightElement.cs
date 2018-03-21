@@ -22,6 +22,11 @@ public class LightElement : Element
 			GameObject projectile = Instantiate(LightProjectilePrefab, player.transform.position, Quaternion.identity);
 			projectile.GetComponent<LightProjectile>().InitializeProjectile(target.transform);
 
+			AudioSource source = player.AddComponent<AudioSource>();
+			source.clip = SoundEffect;
+			source.Play();
+			Destroy(source, source.clip.length);
+
 		}
 		return true;
 	}

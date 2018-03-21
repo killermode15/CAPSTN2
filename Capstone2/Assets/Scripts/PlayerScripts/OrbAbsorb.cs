@@ -10,6 +10,8 @@ public class OrbAbsorb : MonoBehaviour {
     //public List<Image> OrbCounter = new List<Image>();
     public TextMeshProUGUI Counter;
 
+	public AudioClip OrbPickupSFX;
+
     // Use this for initialization
     void Start () {
         /*for (int i = 0; i < OrbCounter.Count; i++)
@@ -55,6 +57,11 @@ public class OrbAbsorb : MonoBehaviour {
         {
             OrbCount++;
             Destroy(other.gameObject);
+
+			AudioSource source = gameObject.AddComponent<AudioSource>();
+			source.clip = OrbPickupSFX;
+			source.Play();
+			Destroy(source, source.clip.length);
         }
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
+	public AudioClip PlantGrowthSFX;
+
     private Transform VineBridge;
     private Transform PlantShoot;
 
@@ -44,8 +46,15 @@ public class Plant : MonoBehaviour
                 script.ActivateDissolver();
             }
             ActivatePlantCollider scriptReference = GetComponent<ActivatePlantCollider>();
+
             if (scriptReference)
                 GetComponent<ActivatePlantCollider>().ActivateColliders();
+
+			AudioSource source = gameObject.AddComponent<AudioSource>();
+			source.clip = PlantGrowthSFX;
+			source.Play();
+			Destroy(source, source.clip.length);
+
             hasSpawnedPlatform = true;
             Debug.Log("Im hit with water");
         }

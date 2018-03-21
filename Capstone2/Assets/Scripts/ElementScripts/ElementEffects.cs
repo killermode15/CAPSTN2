@@ -1,6 +1,8 @@
 ﻿	using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ElementEffects : MonoBehaviour
 {
@@ -109,9 +111,23 @@ public class ElementEffects : MonoBehaviour
 	public void CastHeal(WaterElement waterElement)
 	{
 		//GetComponentInParent<HP>().AddHealth(waterElement.HealValue);
-		GameObject spawnedVFX = Instantiate(waterElement.VFX, transform.parent.transform.position, Quaternion.identity);
-		spawnedVFX.GetComponent<ParticleFollowPath>().Activate();
-		Destroy(spawnedVFX, spawnedVFX.GetComponent<ParticleFollowPath>().TimeToFinish + 0.5f);
+
+		//GameObject spawnedVFX = Instantiate(waterElement.VFX, transform.parent.transform.position, Quaternion.identity);
+		//spawnedVFX.GetComponent<ParticleFollowPath>().Activate();
+		//Destroy(spawnedVFX, spawnedVFX.GetComponent<ParticleFollowPath>().TimeToFinish + 0.5f);
+
+		GameObject waterVFX = Instantiate(waterElement.VFX, transform.parent.transform);
+		waterVFX.transform.localPosition = Vector3.zero;
+		Destroy(waterVFX, waterVFX.GetComponent<ParticleSystem>().main.duration);
+
+		AudioSource.PlayClipAtPoint(waterElement.SoundEffect, transform.parent.transform.position);
+
+		List<Collider> detectedPlants = Physics.OverlapSphere(transform.parent.transform.position, waterElement.WaterRange).ToList();
+		foreach (Collider plant in detectedPlants)
+		{
+			if (plant.GetComponent<Plant>())
+				plant.GetComponent<Plant>().ActivatePlant();
+		}
 	}
 
 	public void StopCast()
