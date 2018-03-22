@@ -19,7 +19,8 @@ public class LightElement : Element
 			if (!target)
 				return false;
 
-			GameObject projectile = Instantiate(LightProjectilePrefab, player.transform.position, Quaternion.identity);
+			GameObject projectile = Instantiate(LightProjectilePrefab, 
+				new Vector3(player.transform.position.x, player.transform.position.y + 0.5f, player.transform.position.z), Quaternion.identity);
 			projectile.GetComponent<LightProjectile>().InitializeProjectile(target.transform);
 
 			AudioSource source = player.AddComponent<AudioSource>();

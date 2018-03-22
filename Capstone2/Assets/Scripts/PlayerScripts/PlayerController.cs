@@ -103,22 +103,22 @@ public class PlayerController : MonoBehaviour, IPausable
             CanJump = true;
             moveDirection.y = (Physics.gravity.y * Time.deltaTime);
 
-            if(hasActivatedDoubleJump && canDoubleJump)
-            {
-                canDoubleJump = false;
-                hasActivatedDoubleJump = false;
-            }
+            //if(hasActivatedDoubleJump && canDoubleJump)
+            //{
+            //    canDoubleJump = false;
+            //    hasActivatedDoubleJump = false;
+            //}
         }
         else
         {
             if (!IsGrounded())
             {
                 CanJump = false;
-                if (!hasActivatedDoubleJump && !canDoubleJump)
-                {
-                    canDoubleJump = true;
-                    hasActivatedDoubleJump = true;
-                }
+                //if (!hasActivatedDoubleJump && !canDoubleJump)
+                //{
+                //    canDoubleJump = true;
+                //    hasActivatedDoubleJump = true;
+                //}
             }
             if (!CanJump || moveDirection.y > 0)
             {

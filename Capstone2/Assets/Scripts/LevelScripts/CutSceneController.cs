@@ -23,7 +23,7 @@ public class CutSceneController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Cross"))
         {
             NextFrame();
             //NextPage();

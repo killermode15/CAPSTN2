@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class EndingManager : MonoBehaviour
 {
-    public bool isEndingActivated;
 
     public GameObject EndAltar;
-    public GameObject EndDialogue;
+    //public GameObject EndDialogue;
 
     public List<GameObject> OrbParticles;
     public Color lerpedColor;
@@ -29,7 +28,7 @@ public class EndingManager : MonoBehaviour
     void Start()
     {
         GoodOrb.SetActive(false);
-        EndDialogue.SetActive(false);
+        //EndDialogue.SetActive(false);
         PrettyTrees.SetActive(true);
         for (int i = 0; i < PrettyTrees.gameObject.transform.childCount; i++)
         {
@@ -42,7 +41,6 @@ public class EndingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        EndAltar.GetComponent<AltarObject>().isActivated = isEndingActivated;
         ///for the orb being white
         /*for (int i = 0; i < OrbParticles.Count; i++)
         {
@@ -65,7 +63,7 @@ public class EndingManager : MonoBehaviour
                 StartCoroutine(ColorLerp(2));
                 hasStartedSkyboxColor = true;
             }
-            EndDialogue.SetActive(true);
+            //EndDialogue.SetActive(true);
             StartCoroutine(PrettyTreeSpawn());
             StartCoroutine(DeadTreeSpawn());
 

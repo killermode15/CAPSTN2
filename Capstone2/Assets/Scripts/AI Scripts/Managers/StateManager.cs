@@ -23,6 +23,8 @@ public class StateManager : MonoBehaviour, IPausable {
 		PossibleStates = GetComponents<State>().ToList();
 		PauseManager.Instance.addPausable (this);
 		isPaused = false;
+		if (!Player)
+			Player = GameObject.FindGameObjectWithTag("Player");
 	}
 
 	void Update(){

@@ -59,6 +59,7 @@ public class OrbAbsorb : MonoBehaviour {
             Destroy(other.gameObject);
 
 			AudioSource source = gameObject.AddComponent<AudioSource>();
+			source.volume = 0.1f;
 			source.clip = OrbPickupSFX;
 			source.Play();
 			Destroy(source, source.clip.length);

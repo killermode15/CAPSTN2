@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RaycastCheck : MonoBehaviour {
 
+	public float DetectionRange = 0.5f;
     public float PushForce;
     public float sphereRadius;
     public bool isOnVines;
@@ -29,7 +30,7 @@ public class RaycastCheck : MonoBehaviour {
         //if(Physics.SphereCast(transform.position, sphereRadius, -Vector3.up, out hit))
 
         RaycastHit hit;
-        if (Physics.SphereCast(transform.position, sphereRadius, -Vector3.up, out hit, 0.25f))
+        if (Physics.SphereCast(transform.position, sphereRadius, -transform.up, out hit, DetectionRange))
         {
             if (hit.collider.CompareTag("Vine"))
             {
