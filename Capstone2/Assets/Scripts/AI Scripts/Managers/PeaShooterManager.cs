@@ -60,9 +60,6 @@ public class PeaShooterManager : StateManager {
                 ChangeState(GetState("Dead"));
                 GetComponent<PeaShooting>().enabled = false;
             }
-            if (!CurrentState.OnUpdate ()) {
-				ChangeState (GetState ("PeaChase"));
-			}
 		} else if (CompareToCurrentState (typeof(PeaChase))){
             if (HP <= 0)
             {

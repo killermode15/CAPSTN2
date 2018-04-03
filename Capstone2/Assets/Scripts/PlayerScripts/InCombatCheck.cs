@@ -5,8 +5,8 @@ using UnityEngine.Audio;
 
 public class InCombatCheck : MonoBehaviour {
 
-	public AudioMixerSnapshot InCombatSnapshot;
-	public AudioMixerSnapshot NormalBGM;
+	//public AudioMixerSnapshot InCombatSnapshot;
+	//public AudioMixerSnapshot NormalBGM;
     public bool inCombat;
 
 	private bool isCombatBGMPlaying;
@@ -51,11 +51,13 @@ public class InCombatCheck : MonoBehaviour {
         inCombat = true;
 		StopAllCoroutines();
 
-		// This is for bgm changing
-		if (!isCombatBGMPlaying)
-		{
-			InCombatSnapshot.TransitionTo(4.0f);
-		}
+		//// This is for bgm changing
+		//if (!isCombatBGMPlaying)
+		//{
+		//	Debug.Log("TEST COMBAT BGM");
+		//	InCombatSnapshot.TransitionTo(1.0f);
+		//	isCombatBGMPlaying = true;
+		//}
     }
 
     IEnumerator WaitBeforeExitCombat(float time)
@@ -65,9 +67,9 @@ public class InCombatCheck : MonoBehaviour {
         GetComponent<HP>().damagedByEnemy = false;
 		StopAllCoroutines();
 
-		// This is for bgm changing
-		NormalBGM.TransitionTo(4.0f);
-		isCombatBGMPlaying = false;
+		//// This is for bgm changing
+		//NormalBGM.TransitionTo(1.0f);
+		//isCombatBGMPlaying = false;
 	}
 
 }
