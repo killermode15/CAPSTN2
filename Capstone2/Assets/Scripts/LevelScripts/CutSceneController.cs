@@ -1,85 +1,105 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class CutSceneController : MonoBehaviour {
+public class CutSceneController : MonoBehaviour
+{
 
-    public GameObject Camera;
-    public List<iTweenPath> Paths;
-    public Image FadeImage;
-    public GameObject PressToContinue;
+	[System.Serializable]
+	public class CutsceneAudioPlayer
+	{
+		public int PlayAtIndex;
+		public AudioMixerSnapshot Clip;
+	}
 
-    private int currentPathIndex;
-    private bool canShowNextFrame;
+	public GameObject Camera;
+	public List<CutsceneAudioPlayer> Audio;
+	public List<iTweenPath> Paths;
+	public Image FadeImage;
+	public GameObject PressToContinue;
+
+	private int currentPathIndex;
+	private bool canShowNextFrame;
 
 	// Use this for initialization
-	void Start () {
-        currentPathIndex = 0;
-        canShowNextFrame = true;
-        NextFrame();
+	void Start()
+	{
+		currentPathIndex = 0;
+		canShowNextFrame = true;
+		NextFrame();
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
-        if (Input.GetButtonDown("Cross"))
-        {
-            NextFrame();
-            //NextPage();
-        }
-    }
+	void Update()
+	{
+		if (Input.GetButtonDown("Cross"))
+		{
+			NextFrame();
+			//NextPage();
+		}
+	}
 
-    void NextFrame()
-    {
-        if (canShowNextFrame)
-        {
-            if (currentPathIndex < Paths.Count)
-            {
-                Camera.GetComponent<ParticleFollowPath>().PathName = Paths[currentPathIndex].pathName;
-                Camera.GetComponent<ParticleFollowPath>().Activate();
+	void NextFrame()
+	{
+		if (canShowNextFrame)
+		{
+			if (currentPathIndex < Paths.Count)
+			{
+				Camera.GetComponent<ParticleFollowPath>().PathName = Paths[currentPathIndex].pathName;
+				Camera.GetComponent<ParticleFollowPath>().Activate();
 
-                currentPathIndex++;
-                StartCoroutine(WaitForFrame());
-            }
-            else
-            {
-                StartCoroutine(FadeScreen(4));
-            }
-        }
-    }
+				foreach (CutsceneAudioPlayer player in Audio)
+				{
+					if (player.PlayAtIndex == currentPathIndex)
+					{
+						player.Clip.TransitionTo(2);
+					}
+				}
 
-    IEnumerator WaitForFrame()
-    {
-        PressToContinue.SetActive(false);
-        canShowNextFrame = false;
-        yield return new WaitForSeconds(Camera.GetComponent<ParticleFollowPath>().TimeToFinish);
-        canShowNextFrame = true;
-        PressToContinue.SetActive(true);
-    }
+				currentPathIndex++;
+				StartCoroutine(WaitForFrame());
+			}
+			else
+			{
+				StartCoroutine(FadeScreen(4));
+			}
+		}
+	}
 
-    IEnumerator FadeScreen(float duration)
-    {
-        float alpha = 0;
-        float perc = 0;
-        float currTime = 0;
+	IEnumerator WaitForFrame()
+	{
+		PressToContinue.SetActive(false);
+		canShowNextFrame = false;
+		yield return new WaitForSeconds(Camera.GetComponent<ParticleFollowPath>().TimeToFinish);
+		canShowNextFrame = true;
+		PressToContinue.SetActive(true);
+	}
 
-        while(perc < 1)
-        {
-            currTime += Time.deltaTime;
-            perc = currTime / duration;
-            alpha = Mathf.Lerp(alpha, 1, perc);
-            //FadeImage.material.color = new Color(FadeImage.material.color.r, FadeImage.material.color.g, FadeImage.material.color.b, alpha);
-            FadeImage.GetComponent<Image>().color = new Color(0,0,0, alpha);
-            yield return new WaitForEndOfFrame();
-        }
+	IEnumerator FadeScreen(float duration)
+	{
+		float alpha = 0;
+		float perc = 0;
+		float currTime = 0;
 
-        StartMainGame();
-    }
+		while (perc < 1)
+		{
+			currTime += Time.deltaTime;
+			perc = currTime / duration;
+			alpha = Mathf.Lerp(alpha, 1, perc);
+			//FadeImage.material.color = new Color(FadeImage.material.color.r, FadeImage.material.color.g, FadeImage.material.color.b, alpha);
+			FadeImage.GetComponent<Image>().color = new Color(0, 0, 0, alpha);
+			yield return new WaitForEndOfFrame();
+		}
 
-    void StartMainGame()
-    {
-        Debug.Log("start game");
-        SceneManager.LoadScene("MainGame");
-    }
+		StartMainGame();
+	}
+
+	void StartMainGame()
+	{
+		Debug.Log("start game");
+		SceneManager.LoadScene("MainGame");
+	}
 }
