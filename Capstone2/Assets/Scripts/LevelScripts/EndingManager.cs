@@ -8,9 +8,6 @@ public class EndingManager : MonoBehaviour
     public GameObject EndAltar;
     //public GameObject EndDialogue;
 
-    public List<GameObject> OrbParticles;
-    public Color lerpedColor;
-
     public GameObject DeadTrees;
     public GameObject PrettyTrees;
 
@@ -41,13 +38,6 @@ public class EndingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ///for the orb being white
-        /*for (int i = 0; i < OrbParticles.Count; i++)
-        {
-            //lerpedColor = Color.Lerp(OrbParticles[i].GetComponent<ParticleSystem>().startColor;
-            OrbParticles[i].GetComponent<ParticleSystem>().startColor = Color.Lerp(Color.white, Color.white, 4.0f * Time.deltaTime);
-        }*/
-
         ///ending altar is activated, ending begins
         if (EndAltar.GetComponent<AltarObject>().isActivated)
         {

@@ -13,23 +13,46 @@ public class InCombatCheck : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log("In Combat is: " + inCombat);
         ///Will true if:
         ///uses LockOn
         ///getsDamaged (by enemy)
         if (GetComponent<LockOn>().currentTarget != null)
         {
-            Debug.Log("Play Music");
+            SetInCombat();
+
+            ///Will false if:
+            ///no enemies within vicinity && dead targets
+            if (GetComponent<LockOn>().currentTarget.GetComponent<StateManager>().HP <= 0 && GetComponent<LockOn>().visibleEnemies.Count == 0)
+            {
+                StartCoroutine(WaitBeforeExitCombat(3.0f));
+            }
         }
         if (GetComponent<HP>().damagedByEnemy)
         {
-            Debug.Log("Play Music");
+            SetInCombat();
         }
 
         ///Will false if:
-        ///releases LockOn after 3 seconds
-        ///no enemies within vicinity && dead targets
-        
+        ///no enemies within vicinity && releases LockOn after 3 seconds
+        if (GetComponent<LockOn>().currentTarget == null && GetComponent<LockOn>().visibleEnemies.Count == 0)
+        {
+            StartCoroutine(WaitBeforeExitCombat(1.0f));
+        }
     }
 
+    public void SetInCombat()
+    {
+        inCombat = true;
+        StopAllCoroutines();
+    }
+
+    IEnumerator WaitBeforeExitCombat(float time)
+    {
+        yield return new WaitForSeconds(time);
+        
+        inCombat = false;
+        GetComponent<HP>().damagedByEnemy = false;
+    }
 
 }

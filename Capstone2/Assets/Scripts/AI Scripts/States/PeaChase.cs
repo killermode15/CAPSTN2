@@ -15,8 +15,9 @@ public class PeaChase : State
 
 	public override bool OnUpdate()
 	{
-		//Debug.Log("PeaCchasing");
-		GetComponentInChildren<Animator>().SetBool("Attack", false);
+        //Debug.Log("PeaCchasing");
+        Manager.Player.GetComponent<InCombatCheck>().SetInCombat();
+        GetComponentInChildren<Animator>().SetBool("Attack", false);
 		GetComponentInChildren<Animator>().SetBool("Flying", true);
 		transform.LookAt(new Vector3(Manager.Player.transform.position.x, transform.position.y, Manager.Player.transform.position.z));
 		Vector3 chaseTargetPos = new Vector3(Manager.Player.transform.position.x, transform.position.y, Manager.Player.transform.position.z);
