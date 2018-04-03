@@ -26,7 +26,6 @@ public class ParticleFollowPath : MonoBehaviour
 		{
 			StartCoroutine(StartLoop());
 		}
-
 	}
 
 	public void StopParticleFollow()

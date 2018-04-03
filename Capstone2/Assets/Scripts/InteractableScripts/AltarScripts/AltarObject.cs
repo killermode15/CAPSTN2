@@ -66,10 +66,6 @@ public class AltarObject : MonoBehaviour
                 transform.GetChild(1).GetComponent<DialogueTrigger>().TriggerDialogue();
             }
         }
-
-
-
-
 	}
 
 	void ActivateFloatingObjects()

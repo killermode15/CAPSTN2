@@ -15,9 +15,12 @@ public class HP : MonoBehaviour
 	private float dampTime = 5f;
 	private float currentLerpTime;
 
+    [HideInInspector] public bool damagedByEnemy;
+
 	public void Start()
 	{
-		Health = MaxHealth;
+        damagedByEnemy = false;
+        Health = MaxHealth;
 		if (!HealthBar)
 		{
 			HealthBar = GameObject.FindGameObjectWithTag("HPBar").GetComponent<Slider>();
@@ -78,23 +81,20 @@ public class HP : MonoBehaviour
 	}
 
 	void OnTriggerEnter(Collider other){
-		if (other.gameObject.CompareTag ("DeathFall")) {
-			RemoveHealth (Health);
-		} else if (other.gameObject.CompareTag ("Projectile")) {
+		if (other.gameObject.CompareTag ("Projectile")) {
+            damagedByEnemy = true;
 			RemoveHealth (other.gameObject.GetComponent<Projectile> ().damage);
 			Destroy (other.gameObject);
 		}
 		if (other.gameObject.CompareTag ("Enemy")) {
-			RemoveHealth (other.gameObject.GetComponent<StateManager>().collisionDamage);
-		}
-		if (other.gameObject.CompareTag ("Stalactite")) {
-			RemoveHealth (other.gameObject.GetComponent<Stalactite>().Damage);
+            damagedByEnemy = true;
+            RemoveHealth (other.gameObject.GetComponent<StateManager>().collisionDamage);
 		}
 	}
 
 	void OnControllerColliderHit(ControllerColliderHit collision){
-		if (collision.gameObject.CompareTag ("Spike")) {
-			RemoveHealth (collision.gameObject.GetComponent<Spike> ().damage);
-		}
+		if (collision.gameObject.CompareTag ("DeathFall")) {
+            RemoveHealth(Health);
+        }
 	}
 }
