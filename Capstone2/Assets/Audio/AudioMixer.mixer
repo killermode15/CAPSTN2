@@ -14,6 +14,8 @@ AudioMixerController:
   - {fileID: 245597400514093772}
   - {fileID: 245375360842772776}
   - {fileID: 245183033822741884}
+  - {fileID: 245925452500150632}
+  - {fileID: 245498057697239372}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
@@ -38,7 +40,7 @@ AudioMixerController:
     - adea61e407b65524a84c9c2d6e355ade
     name: View
   m_CurrentViewIndex: 0
-  m_TargetSnapshot: {fileID: 245597400514093772}
+  m_TargetSnapshot: {fileID: 245498057697239372}
 --- !u!243 &24300002
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -522,6 +524,28 @@ AudioMixerSnapshotController:
     9dc2627c369c6174fbb2a92e7f298ba6: -0.037667945
     b1be6faec1379c9408114d8a5b610d8e: 179
   m_TransitionOverrides: {}
+--- !u!245 &245498057697239372
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Ambient
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: 3b0a5328b6045584cbe613977168453b
+  m_FloatValues:
+    0768e2d06f27aa545b9367547b29177d: -80
+    577f178165ad6f14d8a1e4816e16883b: 0.888
+    262efa92caee2e64f82abc40c67d4d6f: -80
+    92307937e850ec644a05c6bd1def0c85: 9.260412
+    d5d89dc7749fb404983795c3e8cbf933: -80
+    d8ef2cd9e91449041b08dcddbc64b19b: 0
+    341fb1f96df30cc439bc24d9d7c90910: 0.04171297
+    94ca5d7a8addcc948b8e72d9222a7ed0: 23.8
+    b51ff63ce70fc084aa1afd29b78ed77a: -30.3
+    9dc2627c369c6174fbb2a92e7f298ba6: -80
+    b1be6faec1379c9408114d8a5b610d8e: 179
+    079d55cf76926ea4ea0ead3ed42a370c: -80
+  m_TransitionOverrides: {}
 --- !u!245 &245597400514093772
 AudioMixerSnapshotController:
   m_ObjectHideFlags: 0
@@ -560,4 +584,26 @@ AudioMixerSnapshotController:
     b51ff63ce70fc084aa1afd29b78ed77a: -30.3
     9dc2627c369c6174fbb2a92e7f298ba6: -80
     b1be6faec1379c9408114d8a5b610d8e: 179
+  m_TransitionOverrides: {}
+--- !u!245 &245925452500150632
+AudioMixerSnapshotController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: InCombat
+  m_AudioMixer: {fileID: 24100000}
+  m_SnapshotID: f0a29067e9a2f744e90671ec9dc1c30b
+  m_FloatValues:
+    1ae378508dcc9884d937236edd9ca294: -80
+    0768e2d06f27aa545b9367547b29177d: -0.30163807
+    577f178165ad6f14d8a1e4816e16883b: 0.888
+    262efa92caee2e64f82abc40c67d4d6f: -80
+    92307937e850ec644a05c6bd1def0c85: 9.260412
+    d8ef2cd9e91449041b08dcddbc64b19b: 0
+    341fb1f96df30cc439bc24d9d7c90910: 0.04171297
+    94ca5d7a8addcc948b8e72d9222a7ed0: 23.8
+    b51ff63ce70fc084aa1afd29b78ed77a: -30.3
+    9dc2627c369c6174fbb2a92e7f298ba6: -80
+    b1be6faec1379c9408114d8a5b610d8e: 179
+    0d45453fe0aea7c4cbf66e1c92330ddd: -80
   m_TransitionOverrides: {}

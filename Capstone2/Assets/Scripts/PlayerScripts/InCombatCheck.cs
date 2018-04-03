@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class InCombatCheck : MonoBehaviour {
 
+	public AudioMixerSnapshot InCombatSnapshot;
+	public AudioMixerSnapshot NormalBGM;
     public bool inCombat;
+
+	private bool isCombatBGMPlaying;
 
 	// Use this for initialization
 	void Start () {
@@ -44,15 +49,25 @@ public class InCombatCheck : MonoBehaviour {
     public void SetInCombat()
     {
         inCombat = true;
-        StopAllCoroutines();
+		StopAllCoroutines();
+
+		// This is for bgm changing
+		if (!isCombatBGMPlaying)
+		{
+			InCombatSnapshot.TransitionTo(4.0f);
+		}
     }
 
     IEnumerator WaitBeforeExitCombat(float time)
     {
         yield return new WaitForSeconds(time);
-        
         inCombat = false;
         GetComponent<HP>().damagedByEnemy = false;
-    }
+		StopAllCoroutines();
+
+		// This is for bgm changing
+		NormalBGM.TransitionTo(4.0f);
+		isCombatBGMPlaying = false;
+	}
 
 }
