@@ -16,7 +16,7 @@ public class Chase : State {
 
 	public override bool OnUpdate()
 	{
-        Debug.Log("chasing");
+        Manager.Player.GetComponent<InCombatCheck>().SetInCombat();
         GetComponentInChildren<Animator>().SetBool("Slither", true);
         GetComponentInChildren<Animator>().SetBool("Bite", false);
         Vector3 chaseTargetPos = new Vector3 (Manager.Player.transform.position.x, transform.position.y, Manager.Player.transform.position.z);

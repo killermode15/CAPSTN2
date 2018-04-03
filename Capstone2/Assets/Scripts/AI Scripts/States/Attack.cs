@@ -27,13 +27,12 @@ public class Attack : State
 		doneAttacking = false;
 
 		chargeDir = (new Vector3(Manager.Player.transform.position.x, 0, 0) - new Vector3(transform.position.x, 0, 0)).normalized;
-		
-
 	}
 
 	public override bool OnUpdate()
-	{
-		if (!doneAttacking)
+    {
+        Manager.Player.GetComponent<InCombatCheck>().SetInCombat();
+        if (!doneAttacking)
 		{
             //Charge();
             transform.LookAt(new Vector3(Manager.Player.transform.position.x, transform.position.y, Manager.Player.transform.position.z));
@@ -67,6 +66,7 @@ public class Attack : State
         }
         GetComponentInChildren<Animator>().SetBool("Slither", false);
         GetComponentInChildren<Animator>().SetBool("Bite", true);
+
 
         /*if ()
         {

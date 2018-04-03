@@ -555,6 +555,7 @@ MonoBehaviour:
   Manager: {fileID: 0}
   ObjectCounterpart: {fileID: 1174414831696246, guid: 0966ab124d0b73d4dbd65ab9f9eebb98,
     type: 2}
+  FairySmoke: {fileID: 1301784271439470, guid: d0cc16ee655889c46a28f455683ccd56, type: 2}
 --- !u!114 &114445618351411510
 MonoBehaviour:
   m_ObjectHideFlags: 1
