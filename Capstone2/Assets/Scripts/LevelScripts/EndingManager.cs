@@ -87,7 +87,7 @@ public class EndingManager : MonoBehaviour
             skybox.SetColor("_Tint", Color.Lerp(initialColor/255, changeColor / 255, perc));
 
             perc = currentDuration / duration;
-            Debug.Log(perc);
+            //Debug.Log(perc);
             yield return new WaitForEndOfFrame();
         }
 
