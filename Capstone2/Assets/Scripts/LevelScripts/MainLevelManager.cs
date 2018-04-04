@@ -104,7 +104,15 @@ public class MainLevelManager : MonoBehaviour {
 			{
 				BaseUI[i].SetActive(true);
 			}
-		}
+        }
+
+        if (Altars[3].GetComponent<AltarObject>().isActivated)
+        {
+            for (int i = 0; i < BaseUI.Count; i++)
+            {
+                BaseUI[i].SetActive(false);
+            }
+        }
 
         if (ActivatedPlant.GetComponent<Plant>().IsActivated)
         {

@@ -43,7 +43,7 @@ public class EndAltar : MonoBehaviour {
         if (canRestart)
         {
             PressX.SetActive(true);
-            if (Input.GetButtonDown("cross"))
+            if (Input.GetButtonDown("Cross"))
                 SceneManager.LoadScene("MainMenu");
         }
     }
